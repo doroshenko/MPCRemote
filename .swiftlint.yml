@@ -1,0 +1,85 @@
+disabled_rules:
+ # - force_cast
+ # - nesting
+ # - no_fallthrough_only
+  - todo
+ # - trailing_whitespace
+ # - valid_ibinspectable
+ # - vertical_whitespace
+opt_in_rules:
+  - anyobject_protocol
+  - attributes
+  - closure_body_length
+  - closure_spacing
+  - collection_alignment
+  - contains_over_filter_count
+  - contains_over_filter_is_empty
+  - contains_over_first_not_nil
+  - discouraged_object_literal
+  - discouraged_optional_boolean
+  - empty_collection_literal
+  - empty_count
+  - empty_string
+  - empty_xctest_method
+  - explicit_init
+  - extension_access_modifier
+  - fallthrough
+  - fatal_error_message
+  - first_where
+  - identical_operands
+  - implicit_return
+  - last_where
+  - legacy_random
+  - lower_acl_than_parent
+  - modifier_order
+  - multiline_arguments
+  - multiline_parameters
+  - pattern_matching_keywords
+  - strict_fileprivate
+  - reduce_into
+  - single_test_class
+  - sorted_first_last
+  - static_operator
+  - toggle_bool
+  - unavailable_function
+  - unneeded_parentheses_in_closure_argument
+  - untyped_error_in_catch
+  - vertical_whitespace_closing_braces
+  - xct_specific_matcher
+included: # paths to include during linting. `--path` is ignored if present.
+  - MPCRemote
+  - MPCRemoteTests
+  - MPCRemoteUITests
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Pods
+attributes:
+  always_on_same_line: ["@objc", "@IBAction"]
+multiline_arguments:
+  only_enforce_after_first_closure_on_first_line: true
+function_parameter_count:
+  warning: 7
+  error: 9
+line_length: 300
+file_length:
+  warning: 600
+  error: 800
+function_body_length:
+  warning: 200
+  error: 300
+type_body_length:
+  warning: 400
+  error: 550
+type_name:
+  max_length:
+    warning: 60
+    error: 100
+identifier_name:
+  min_length: 2
+custom_rules:
+  custom_todo_format: # Validates for TODO format `// TODO: Full Name - text`
+    name: "TODO format"
+    regex: (\/\/ (?:(?i)TODO|FIXME)(?!\:\ [A-Z][^\n]+?(?=[^ ] - [^ ]).+)|(?<!\/\/ )(?:(?i)TODO|FIXME))
+    match_kinds:
+      - comment
+    message: "TODOs should be in format `// TODO: Full name - text`"
+    severity: warning

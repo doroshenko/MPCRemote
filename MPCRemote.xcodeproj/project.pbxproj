@@ -1,0 +1,686 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */; };
+		0CD0EA5E2408973100DE10E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */; };
+		0CD0EA602408973100DE10E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5F2408973100DE10E5 /* ViewController.swift */; };
+		0CD0EA632408973100DE10E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA612408973100DE10E5 /* Main.storyboard */; };
+		0CD0EA652408973100DE10E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA642408973100DE10E5 /* Assets.xcassets */; };
+		0CD0EA682408973100DE10E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */; };
+		0CD0EA732408973100DE10E5 /* MPCRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA722408973100DE10E5 /* MPCRemoteTests.swift */; };
+		0CD0EA7E2408973200DE10E5 /* MPCRemoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA7D2408973200DE10E5 /* MPCRemoteUITests.swift */; };
+		619538E4078294F295F1F9FE /* Pods_MPCRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C6747E28DB4D59FD198872 /* Pods_MPCRemote.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0CD0EA6F2408973100DE10E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0CD0EA502408973100DE10E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0CD0EA572408973100DE10E5;
+			remoteInfo = MPCRemote;
+		};
+		0CD0EA7A2408973200DE10E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0CD0EA502408973100DE10E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0CD0EA572408973100DE10E5;
+			remoteInfo = MPCRemote;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0CD0EA582408973100DE10E5 /* MPCRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPCRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		0CD0EA5F2408973100DE10E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0CD0EA622408973100DE10E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0CD0EA642408973100DE10E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0CD0EA672408973100DE10E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0CD0EA692408973100DE10E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CD0EA6E2408973100DE10E5 /* MPCRemoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MPCRemoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CD0EA722408973100DE10E5 /* MPCRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCRemoteTests.swift; sourceTree = "<group>"; };
+		0CD0EA742408973100DE10E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CD0EA792408973200DE10E5 /* MPCRemoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MPCRemoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CD0EA7D2408973200DE10E5 /* MPCRemoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCRemoteUITests.swift; sourceTree = "<group>"; };
+		0CD0EA7F2408973200DE10E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34C6747E28DB4D59FD198872 /* Pods_MPCRemote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MPCRemote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50C3BA18751B7D2CA696F0E3 /* Pods-MPCRemote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemote.debug.xcconfig"; path = "Target Support Files/Pods-MPCRemote/Pods-MPCRemote.debug.xcconfig"; sourceTree = "<group>"; };
+		F42A904E21ED902ACC08802F /* Pods-MPCRemote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemote.release.xcconfig"; path = "Target Support Files/Pods-MPCRemote/Pods-MPCRemote.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0CD0EA552408973100DE10E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				619538E4078294F295F1F9FE /* Pods_MPCRemote.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CD0EA6B2408973100DE10E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CD0EA762408973200DE10E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0CD0EA4F2408973100DE10E5 = {
+			isa = PBXGroup;
+			children = (
+				0CD0EA5A2408973100DE10E5 /* MPCRemote */,
+				0CD0EA712408973100DE10E5 /* MPCRemoteTests */,
+				0CD0EA7C2408973200DE10E5 /* MPCRemoteUITests */,
+				0CD0EA592408973100DE10E5 /* Products */,
+				B292F8FB8811D1E145EF0B78 /* Pods */,
+				4C0936CFCE210878E59491B8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		0CD0EA592408973100DE10E5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0CD0EA582408973100DE10E5 /* MPCRemote.app */,
+				0CD0EA6E2408973100DE10E5 /* MPCRemoteTests.xctest */,
+				0CD0EA792408973200DE10E5 /* MPCRemoteUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0CD0EA5A2408973100DE10E5 /* MPCRemote */ = {
+			isa = PBXGroup;
+			children = (
+				0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */,
+				0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */,
+				0CD0EA5F2408973100DE10E5 /* ViewController.swift */,
+				0CD0EA612408973100DE10E5 /* Main.storyboard */,
+				0CD0EA642408973100DE10E5 /* Assets.xcassets */,
+				0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */,
+				0CD0EA692408973100DE10E5 /* Info.plist */,
+			);
+			path = MPCRemote;
+			sourceTree = "<group>";
+		};
+		0CD0EA712408973100DE10E5 /* MPCRemoteTests */ = {
+			isa = PBXGroup;
+			children = (
+				0CD0EA722408973100DE10E5 /* MPCRemoteTests.swift */,
+				0CD0EA742408973100DE10E5 /* Info.plist */,
+			);
+			path = MPCRemoteTests;
+			sourceTree = "<group>";
+		};
+		0CD0EA7C2408973200DE10E5 /* MPCRemoteUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0CD0EA7D2408973200DE10E5 /* MPCRemoteUITests.swift */,
+				0CD0EA7F2408973200DE10E5 /* Info.plist */,
+			);
+			path = MPCRemoteUITests;
+			sourceTree = "<group>";
+		};
+		4C0936CFCE210878E59491B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				34C6747E28DB4D59FD198872 /* Pods_MPCRemote.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B292F8FB8811D1E145EF0B78 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				50C3BA18751B7D2CA696F0E3 /* Pods-MPCRemote.debug.xcconfig */,
+				F42A904E21ED902ACC08802F /* Pods-MPCRemote.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0CD0EA572408973100DE10E5 /* MPCRemote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0CD0EA822408973200DE10E5 /* Build configuration list for PBXNativeTarget "MPCRemote" */;
+			buildPhases = (
+				2509F1DA617BED114DCFD370 /* [CP] Check Pods Manifest.lock */,
+				0CD897E724089ED100E350FB /* SwiftLint */,
+				0CD0EA542408973100DE10E5 /* Sources */,
+				0CD0EA552408973100DE10E5 /* Frameworks */,
+				0CD0EA562408973100DE10E5 /* Resources */,
+				AF93E29B3D264A30FCF1EB77 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MPCRemote;
+			productName = MPCRemote;
+			productReference = 0CD0EA582408973100DE10E5 /* MPCRemote.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0CD0EA6D2408973100DE10E5 /* MPCRemoteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0CD0EA852408973200DE10E5 /* Build configuration list for PBXNativeTarget "MPCRemoteTests" */;
+			buildPhases = (
+				0CD0EA6A2408973100DE10E5 /* Sources */,
+				0CD0EA6B2408973100DE10E5 /* Frameworks */,
+				0CD0EA6C2408973100DE10E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0CD0EA702408973100DE10E5 /* PBXTargetDependency */,
+			);
+			name = MPCRemoteTests;
+			productName = MPCRemoteTests;
+			productReference = 0CD0EA6E2408973100DE10E5 /* MPCRemoteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0CD0EA782408973200DE10E5 /* MPCRemoteUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0CD0EA882408973200DE10E5 /* Build configuration list for PBXNativeTarget "MPCRemoteUITests" */;
+			buildPhases = (
+				0CD0EA752408973200DE10E5 /* Sources */,
+				0CD0EA762408973200DE10E5 /* Frameworks */,
+				0CD0EA772408973200DE10E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0CD0EA7B2408973200DE10E5 /* PBXTargetDependency */,
+			);
+			name = MPCRemoteUITests;
+			productName = MPCRemoteUITests;
+			productReference = 0CD0EA792408973200DE10E5 /* MPCRemoteUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0CD0EA502408973100DE10E5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = doroshenko;
+				TargetAttributes = {
+					0CD0EA572408973100DE10E5 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					0CD0EA6D2408973100DE10E5 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 0CD0EA572408973100DE10E5;
+					};
+					0CD0EA782408973200DE10E5 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 0CD0EA572408973100DE10E5;
+					};
+				};
+			};
+			buildConfigurationList = 0CD0EA532408973100DE10E5 /* Build configuration list for PBXProject "MPCRemote" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0CD0EA4F2408973100DE10E5;
+			productRefGroup = 0CD0EA592408973100DE10E5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0CD0EA572408973100DE10E5 /* MPCRemote */,
+				0CD0EA6D2408973100DE10E5 /* MPCRemoteTests */,
+				0CD0EA782408973200DE10E5 /* MPCRemoteUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0CD0EA562408973100DE10E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CD0EA682408973100DE10E5 /* LaunchScreen.storyboard in Resources */,
+				0CD0EA652408973100DE10E5 /* Assets.xcassets in Resources */,
+				0CD0EA632408973100DE10E5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CD0EA6C2408973100DE10E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CD0EA772408973200DE10E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0CD897E724089ED100E350FB /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$SRCROOT/Scripts/swiftlint.sh\" -s -a\n";
+		};
+		2509F1DA617BED114DCFD370 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MPCRemote-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF93E29B3D264A30FCF1EB77 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MPCRemote/Pods-MPCRemote-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MPCRemote/Pods-MPCRemote-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MPCRemote/Pods-MPCRemote-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0CD0EA542408973100DE10E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CD0EA602408973100DE10E5 /* ViewController.swift in Sources */,
+				0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */,
+				0CD0EA5E2408973100DE10E5 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CD0EA6A2408973100DE10E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CD0EA732408973100DE10E5 /* MPCRemoteTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CD0EA752408973200DE10E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CD0EA7E2408973200DE10E5 /* MPCRemoteUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0CD0EA702408973100DE10E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0CD0EA572408973100DE10E5 /* MPCRemote */;
+			targetProxy = 0CD0EA6F2408973100DE10E5 /* PBXContainerItemProxy */;
+		};
+		0CD0EA7B2408973200DE10E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0CD0EA572408973100DE10E5 /* MPCRemote */;
+			targetProxy = 0CD0EA7A2408973200DE10E5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0CD0EA612408973100DE10E5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0CD0EA622408973100DE10E5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0CD0EA672408973100DE10E5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0CD0EA802408973200DE10E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0CD0EA812408973200DE10E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0CD0EA832408973200DE10E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50C3BA18751B7D2CA696F0E3 /* Pods-MPCRemote.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2F77Z345GA;
+				INFOPLIST_FILE = MPCRemote/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.doroshenko.mpcremote;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0CD0EA842408973200DE10E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F42A904E21ED902ACC08802F /* Pods-MPCRemote.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2F77Z345GA;
+				INFOPLIST_FILE = MPCRemote/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.doroshenko.mpcremote;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0CD0EA862408973200DE10E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2F77Z345GA;
+				INFOPLIST_FILE = MPCRemoteTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.doroshenko.MPCRemoteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MPCRemote.app/MPCRemote";
+			};
+			name = Debug;
+		};
+		0CD0EA872408973200DE10E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2F77Z345GA;
+				INFOPLIST_FILE = MPCRemoteTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.doroshenko.MPCRemoteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MPCRemote.app/MPCRemote";
+			};
+			name = Release;
+		};
+		0CD0EA892408973200DE10E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2F77Z345GA;
+				INFOPLIST_FILE = MPCRemoteUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.doroshenko.MPCRemoteUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MPCRemote;
+			};
+			name = Debug;
+		};
+		0CD0EA8A2408973200DE10E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2F77Z345GA;
+				INFOPLIST_FILE = MPCRemoteUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.doroshenko.MPCRemoteUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MPCRemote;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0CD0EA532408973100DE10E5 /* Build configuration list for PBXProject "MPCRemote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CD0EA802408973200DE10E5 /* Debug */,
+				0CD0EA812408973200DE10E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0CD0EA822408973200DE10E5 /* Build configuration list for PBXNativeTarget "MPCRemote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CD0EA832408973200DE10E5 /* Debug */,
+				0CD0EA842408973200DE10E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0CD0EA852408973200DE10E5 /* Build configuration list for PBXNativeTarget "MPCRemoteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CD0EA862408973200DE10E5 /* Debug */,
+				0CD0EA872408973200DE10E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0CD0EA882408973200DE10E5 /* Build configuration list for PBXNativeTarget "MPCRemoteUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CD0EA892408973200DE10E5 /* Debug */,
+				0CD0EA8A2408973200DE10E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0CD0EA502408973100DE10E5 /* Project object */;
+}
