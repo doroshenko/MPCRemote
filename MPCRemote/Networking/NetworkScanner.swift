@@ -19,8 +19,8 @@ final class NetworkScanner {
 
         logInfo("Hosts enumeration started", domain: .networking)
 
-        for firstIndex in 1...255 {
-            for secondIndex in 1...255 {
+        for firstIndex in 1...1 {
+            for secondIndex in 1...254 {
                 hosts.append("192.168.\(firstIndex).\(secondIndex)")
             }
         }

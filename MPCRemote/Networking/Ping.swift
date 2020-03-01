@@ -46,17 +46,10 @@ final class Ping: NSObject {
 
     func cancel() {
         simplePing.stop()
-
-        timer?.invalidate()
-        timer = nil
+        invalidateTimer()
     }
 
-    private func verifyHost() {
-        if hostName.isEmpty {
-            logError("Couldn't verify host: \(hostName)", domain: .networking)
-            completionHandler(.failure(.invalidHost))
-        }
-    }
+    // MARK: - Setup
 
     private func setupPing() {
         simplePing.delegate = self
@@ -72,6 +65,19 @@ final class Ping: NSObject {
         RunLoop.main.add(timer!, forMode: .common)
     }
 
+    // MARK: - Internal methods
+
+    private func verifyHost() {
+        if hostName.isEmpty {
+            completionHandler(.failure(.invalidHost))
+        }
+    }
+
+    private func invalidateTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+
     @objc private func timeout() {
         completionHandler(.failure(.timeout))
         cancel()
@@ -81,6 +87,11 @@ final class Ping: NSObject {
 // MARK: - SimplePingDelegate
 
 extension Ping: SimplePingDelegate {
+    func simplePing(_ pinger: SimplePing, didStartWithAddress address: Data) {
+        guard pinger == simplePing else { return }
+        pinger.send(with: nil)
+    }
+
     func simplePing(_ pinger: SimplePing, didFailWithError error: Error) {
         completionHandler(.failure(.startupFailure(error)))
     }
