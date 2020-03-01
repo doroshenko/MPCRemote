@@ -91,7 +91,7 @@ extension Ping: SimplePingDelegate {
     func simplePing(_ pinger: SimplePing, didFailWithError error: Error) {
         guard pinger == simplePing else { return }
 
-        logError("Ping failed at startup for host: \(hostName) with error: \(error.localizedDescription)", domain: .networking)
+        logError("Ping failed at startup for host: \(hostName) with error: \(error)", domain: .networking)
         completionHandler(.failure(.startupFailure(error)))
     }
 
@@ -104,7 +104,7 @@ extension Ping: SimplePingDelegate {
     func simplePing(_ pinger: SimplePing, didFailToSendPacket packet: Data, sequenceNumber: UInt16, error: Error) {
         guard pinger == simplePing else { return }
 
-        logError("Ping failed at sending for host: \(hostName) with error: \(error.localizedDescription)", domain: .networking)
+        logError("Ping failed at sending for host: \(hostName) with error: \(error)", domain: .networking)
         completionHandler(.failure(.sendingFailure(error)))
     }
 

@@ -25,6 +25,7 @@ extension LogDomain: CustomStringConvertible {
 }
 
 enum LogLevel {
+    case trace
     case info
     case warning
     case error
@@ -34,6 +35,8 @@ enum LogLevel {
 extension LogLevel: CustomStringConvertible {
     var description: String {
         switch self {
+        case .trace:
+            return "[TRACE]"
         case .info:
             return "[INFO]"
         case .warning:

@@ -22,31 +22,39 @@ private struct Logger {
         dateFormatter.string(from: Date())
     }
 
-    static var location: String {
-        let file = #file.components(separatedBy: "/").last ?? "unknown"
-        return "\(file):\(#line) \(#function)"
+    static func location(_ file: String, _ line: Int, _ function: String) -> String {
+        let file = file.components(separatedBy: "/").last ?? "unknown"
+        return "\(file):\(line) \(function)"
     }
 
-    static func log(message: String, level: LogLevel, domain: LogDomain) {
+    static func text(_ message: String) -> String {
+        message.isEmpty ? String() : " -> \(message)"
+    }
+
+    static func log(message: String, level: LogLevel, domain: LogDomain, file: String, line: Int, function: String) {
         #if DEBUG
         // swiftlint:disable:next insecure_log
-        print("\(date) \(domain.description) \(location) : \(level.description) \(message)")
+        print("\(date) \(level)\(domain) \(location(file, line, function))\(text(message))")
         #endif
     }
 }
 
-func logInfo(_ message: String, domain: LogDomain = .default) {
-    Logger.log(message: message, level: .info, domain: domain)
+func logTrace(_ message: String = String(), domain: LogDomain = .default, file: String = #file, line: Int = #line, function: String = #function) {
+    Logger.log(message: message, level: .trace, domain: domain, file: file, line: line, function: function)
 }
 
-func logWarning(_ message: String, domain: LogDomain = .default) {
-    Logger.log(message: message, level: .warning, domain: domain)
+func logInfo(_ message: String = String(), domain: LogDomain = .default, file: String = #file, line: Int = #line, function: String = #function) {
+    Logger.log(message: message, level: .info, domain: domain, file: file, line: line, function: function)
 }
 
-func logError(_ message: String, domain: LogDomain = .default) {
-    Logger.log(message: message, level: .error, domain: domain)
+func logWarning(_ message: String = String(), domain: LogDomain = .default, file: String = #file, line: Int = #line, function: String = #function) {
+    Logger.log(message: message, level: .warning, domain: domain, file: file, line: line, function: function)
 }
 
-func logCritical(_ message: String, domain: LogDomain = .default) {
-    Logger.log(message: message, level: .critical, domain: domain)
+func logError(_ message: String = String(), domain: LogDomain = .default, file: String = #file, line: Int = #line, function: String = #function) {
+    Logger.log(message: message, level: .error, domain: domain, file: file, line: line, function: function)
+}
+
+func logCritical(_ message: String = String(), domain: LogDomain = .default, file: String = #file, line: Int = #line, function: String = #function) {
+    Logger.log(message: message, level: .critical, domain: domain, file: file, line: line, function: function)
 }

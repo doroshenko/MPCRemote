@@ -10,15 +10,22 @@ import Foundation
 
 final class NetworkScanner {
 
-    func isConnectedToLAN() -> Bool {
+    var isConnectedToLAN: Bool {
         true
     }
 
     func enumerateHosts() -> [String] {
-        []
+        ["192.168.1.1"]
     }
 
     func scan() {
+        guard isConnectedToLAN else {
+            logError("Not connected to LAN", domain: .networking)
+            return
+        }
+
+        logInfo("Network scan started", domain: .networking)
+
         let hosts = enumerateHosts()
 
         hosts.forEach { performPing(hostName: $0) }
@@ -30,7 +37,7 @@ final class NetworkScanner {
             case .success(let hostName):
                 logInfo("Found host: \(hostName)", domain: .networking)
             case .failure(let error):
-                logError("Error pinging host: \(hostName) due to: \(error.localizedDescription)")
+                logError("Couldn't ping host: \(hostName) with error: \(error)", domain: .networking)
             }
         }
     }
