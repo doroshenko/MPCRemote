@@ -21,6 +21,17 @@ final class NetworkScanner {
     func scan() {
         let hosts = enumerateHosts()
 
-        hosts.forEach { Ping(hostName: $0, completionHandler: { _ in })}
+        hosts.forEach { performPing(hostName: $0) }
+    }
+
+    private func performPing(hostName: String) {
+        Ping(hostName: hostName) { result in
+            switch result {
+            case .success(let hostName):
+                logInfo("Found host: \(hostName)", domain: .networking)
+            case .failure(let error):
+                logError("Error pinging host: \(hostName) due to: \(error.localizedDescription)")
+            }
+        }
     }
 }

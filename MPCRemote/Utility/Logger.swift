@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct Logger {
+private struct Logger {
 
-    private static var dateFormatter: DateFormatter {
+    static var dateFormatter: DateFormatter {
       let formatter = DateFormatter()
       formatter.dateFormat = "yyyy-MM-dd hh:mm:ssSSS"
       formatter.locale = .current
@@ -18,11 +18,11 @@ struct Logger {
       return formatter
     }
 
-    private static var date: String {
+    static var date: String {
         dateFormatter.string(from: Date())
     }
 
-    private static var location: String {
+    static var location: String {
         let file = #file.components(separatedBy: "/").last ?? "unknown"
         return "\(file):\(#line) \(#function)"
     }
@@ -35,18 +35,18 @@ struct Logger {
     }
 }
 
-func logInfo(message: String, domain: LogDomain = .default) {
+func logInfo(_ message: String, domain: LogDomain = .default) {
     Logger.log(message: message, level: .info, domain: domain)
 }
 
-func logWarning(message: String, domain: LogDomain = .default) {
+func logWarning(_ message: String, domain: LogDomain = .default) {
     Logger.log(message: message, level: .warning, domain: domain)
 }
 
-func logError(message: String, domain: LogDomain = .default) {
+func logError(_ message: String, domain: LogDomain = .default) {
     Logger.log(message: message, level: .error, domain: domain)
 }
 
-func logCritical(message: String, domain: LogDomain = .default) {
+func logCritical(_ message: String, domain: LogDomain = .default) {
     Logger.log(message: message, level: .critical, domain: domain)
 }

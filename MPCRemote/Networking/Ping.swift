@@ -16,7 +16,7 @@ enum PingError: Error {
     case timeout
 }
 
-typealias PingResult = (Result<Bool, PingError>) -> Void
+typealias PingResult = (Result<Data, PingError>) -> Void
 
 final class Ping: NSObject {
 
@@ -32,14 +32,15 @@ final class Ping: NSObject {
 
     static let timeoutInterval: TimeInterval = 5.0
 
+    @discardableResult
     init(hostName: String, completionHandler: @escaping PingResult) {
         self.completionHandler = completionHandler
         self.hostName = hostName
+        self.simplePing = SimplePing(hostName: hostName)
 
-        simplePing = SimplePing(hostName: hostName)
-        simplePing.delegate = self
-        simplePing.start()
+        super.init()
 
+        setupPing()
         setupTimer()
     }
 
@@ -52,8 +53,14 @@ final class Ping: NSObject {
 
     private func verifyHost() {
         if hostName.isEmpty {
+            logError("Couldn't verify host: \(hostName)", domain: .networking)
             completionHandler(.failure(.invalidHost))
         }
+    }
+
+    private func setupPing() {
+        simplePing.delegate = self
+        simplePing.start()
     }
 
     private func setupTimer() {
@@ -66,6 +73,7 @@ final class Ping: NSObject {
     }
 
     @objc private func timeout() {
+        logError("Timeout for host: \(hostName)", domain: .networking)
         completionHandler(.failure(.timeout))
         cancel()
     }
@@ -75,27 +83,42 @@ final class Ping: NSObject {
 
 extension Ping: SimplePingDelegate {
     func simplePing(_ pinger: SimplePing, didStartWithAddress address: Data) {
-        
+        guard pinger == simplePing else { return }
+
+        logInfo("Ping started for host: \(hostName)", domain: .networking)
     }
-    
+
     func simplePing(_ pinger: SimplePing, didFailWithError error: Error) {
-        <#code#>
+        guard pinger == simplePing else { return }
+
+        logError("Ping failed at startup for host: \(hostName) with error: \(error.localizedDescription)", domain: .networking)
+        completionHandler(.failure(.startupFailure(error)))
     }
-    
+
     func simplePing(_ pinger: SimplePing, didSendPacket packet: Data, sequenceNumber: UInt16) {
-        <#code#>
+        guard pinger == simplePing else { return }
+
+        logInfo("Ping sent for host: \(hostName)", domain: .networking)
     }
-    
+
     func simplePing(_ pinger: SimplePing, didFailToSendPacket packet: Data, sequenceNumber: UInt16, error: Error) {
-        <#code#>
+        guard pinger == simplePing else { return }
+
+        logError("Ping failed at sending for host: \(hostName) with error: \(error.localizedDescription)", domain: .networking)
+        completionHandler(.failure(.sendingFailure(error)))
     }
-    
+
     func simplePing(_ pinger: SimplePing, didReceivePingResponsePacket packet: Data, sequenceNumber: UInt16) {
-        <#code#>
+        guard pinger == simplePing else { return }
+
+        logInfo("Ping started for host: \(hostName)", domain: .networking)
+        completionHandler(.success(packet))
     }
-    
+
     func simplePing(_ pinger: SimplePing, didReceiveUnexpectedPacket packet: Data) {
-        <#code#>
+        guard pinger == simplePing else { return }
+
+        logError("Invalid response for host: \(hostName)", domain: .networking)
+        completionHandler(.failure(.invalidResponse))
     }
-    
 }
