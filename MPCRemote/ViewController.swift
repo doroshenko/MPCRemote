@@ -37,4 +37,11 @@ class ViewController: UIViewController {
         let scanner = NetworkScanner()
         scanner.scan()
     }
+
+    @IBAction func cancelButtonClicked(_ sender: Any) {
+        logTrace()
+
+        let scanner = NetworkScanner()
+        scanner.cancel()
+    }
 }

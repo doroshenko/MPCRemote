@@ -11,7 +11,6 @@ import Foundation
 enum PingError: Error {
     case startupFailure(Error)
     case sendingFailure(Error)
-    case invalidResponse
     case timeout
 }
 
@@ -47,8 +46,8 @@ final class Ping: AsynchronousOperation {
     override func cancel() {
         super.cancel()
 
-        simplePing.stop()
-        invalidateTimer()
+        stopActivity()
+        finish()
     }
 
     // MARK: - Setup
@@ -60,16 +59,17 @@ final class Ping: AsynchronousOperation {
         })
     }
 
-    // MARK: - Internal methods
+    // MARK: - Internal functions
 
-    private func invalidateTimer() {
+    private func stopActivity() {
+        simplePing.stop()
         timer?.invalidate()
         timer = nil
     }
 
     private func timeout() {
         completionHandler(.failure(.timeout))
-        finish()
+        cancel()
     }
 }
 
@@ -97,11 +97,6 @@ extension Ping: SimplePingDelegate {
     func simplePing(_ pinger: SimplePing, didReceivePingResponsePacket packet: Data, sequenceNumber: UInt16) {
         let duration = Date.timeIntervalSinceReferenceDate - sendTime
         completionHandler(.success(duration))
-        finish()
-    }
-
-    func simplePing(_ pinger: SimplePing, didReceiveUnexpectedPacket packet: Data) {
-        completionHandler(.failure(.invalidResponse))
         finish()
     }
 }

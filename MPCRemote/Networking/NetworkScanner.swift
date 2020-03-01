@@ -10,32 +10,18 @@ import Foundation
 
 final class NetworkScanner {
 
-    private let operationQueue: OperationQueue = {
+    private static let operationQueue: OperationQueue = {
         let queue = OperationQueue()
         queue.name = "network_scanner_queue"
-        queue.maxConcurrentOperationCount = 10
+        queue.maxConcurrentOperationCount = 50
         return queue
     }()
 
-    var isConnectedToLAN: Bool {
+    private var isConnectedToLAN: Bool {
         true
     }
 
-    func enumerateHosts() -> [String] {
-        var hosts: [String] = []
-
-        logInfo("Hosts enumeration started", domain: .networking)
-
-        for firstIndex in 1...1 {
-            for secondIndex in 1...254 {
-                hosts.append("192.168.\(firstIndex).\(secondIndex)")
-            }
-        }
-
-        logInfo("Hosts enumeration finished", domain: .networking)
-
-        return hosts
-    }
+    // MARK: - Public API
 
     func scan() {
         guard isConnectedToLAN else {
@@ -56,6 +42,26 @@ final class NetworkScanner {
 
         performPing(hostName: hostName, errorLogging: true)
     }
+    func cancel() {
+        logInfo("All active operations canceled", domain: .networking)
+        NetworkScanner.operationQueue.cancelAllOperations()
+    }
+
+    // MARK: - Internal functions
+
+    private func enumerateHosts() -> [String] {
+        var hosts: [String] = []
+
+        logInfo("Hosts enumeration started", domain: .networking)
+        for firstIndex in 1...1 {
+            for secondIndex in 1...254 {
+                hosts.append("192.168.\(firstIndex).\(secondIndex)")
+            }
+        }
+
+        logInfo("Hosts enumeration finished", domain: .networking)
+        return hosts
+    }
 
     private func performPing(hostName: String, errorLogging: Bool) {
         let ping = Ping(hostName: hostName) { result in
@@ -69,6 +75,6 @@ final class NetworkScanner {
             }
         }
 
-        operationQueue.addOperation(ping)
+        NetworkScanner.operationQueue.addOperation(ping)
     }
 }
