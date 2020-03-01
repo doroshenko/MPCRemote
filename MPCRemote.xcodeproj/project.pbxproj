@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C4AF235240B35030057AC86 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF233240B35030057AC86 /* SimplePing.m */; };
+		0C4AF237240B35BF0057AC86 /* NetworkScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF236240B35BF0057AC86 /* NetworkScanner.swift */; };
+		0C4AF23A240B3B5B0057AC86 /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF239240B3B5B0057AC86 /* Ping.swift */; };
+		0C4AF23D240B59040057AC86 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF23C240B59040057AC86 /* Logger.swift */; };
+		0C4AF23F240B71DF0057AC86 /* LogEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF23E240B71DF0057AC86 /* LogEnums.swift */; };
 		0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */; };
 		0CD0EA5E2408973100DE10E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */; };
 		0CD0EA602408973100DE10E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5F2408973100DE10E5 /* ViewController.swift */; };
@@ -36,6 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C4AF232240B35020057AC86 /* MPCRemote-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MPCRemote-Bridging-Header.h"; sourceTree = "<group>"; };
+		0C4AF233240B35030057AC86 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
+		0C4AF234240B35030057AC86 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
+		0C4AF236240B35BF0057AC86 /* NetworkScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkScanner.swift; sourceTree = "<group>"; };
+		0C4AF239240B3B5B0057AC86 /* Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
+		0C4AF23C240B59040057AC86 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		0C4AF23E240B71DF0057AC86 /* LogEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEnums.swift; sourceTree = "<group>"; };
 		0CD0EA582408973100DE10E5 /* MPCRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPCRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +93,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C4AF231240B34970057AC86 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				0C4AF238240B35D40057AC86 /* SimplePing */,
+				0C4AF236240B35BF0057AC86 /* NetworkScanner.swift */,
+				0C4AF239240B3B5B0057AC86 /* Ping.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		0C4AF238240B35D40057AC86 /* SimplePing */ = {
+			isa = PBXGroup;
+			children = (
+				0C4AF234240B35030057AC86 /* SimplePing.h */,
+				0C4AF233240B35030057AC86 /* SimplePing.m */,
+			);
+			name = SimplePing;
+			sourceTree = "<group>";
+		};
+		0C4AF23B240B58ED0057AC86 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				0C4AF23C240B59040057AC86 /* Logger.swift */,
+				0C4AF23E240B71DF0057AC86 /* LogEnums.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		0CD0EA4F2408973100DE10E5 = {
 			isa = PBXGroup;
 			children = (
@@ -106,9 +146,12 @@
 		0CD0EA5A2408973100DE10E5 /* MPCRemote */ = {
 			isa = PBXGroup;
 			children = (
+				0C4AF231240B34970057AC86 /* Networking */,
+				0C4AF23B240B58ED0057AC86 /* Utility */,
 				0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */,
 				0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */,
 				0CD0EA5F2408973100DE10E5 /* ViewController.swift */,
+				0C4AF232240B35020057AC86 /* MPCRemote-Bridging-Header.h */,
 				0CD0EA612408973100DE10E5 /* Main.storyboard */,
 				0CD0EA642408973100DE10E5 /* Assets.xcassets */,
 				0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */,
@@ -223,6 +266,7 @@
 				TargetAttributes = {
 					0CD0EA572408973100DE10E5 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 					0CD0EA6D2408973100DE10E5 = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -348,7 +392,12 @@
 			files = (
 				0CD0EA602408973100DE10E5 /* ViewController.swift in Sources */,
 				0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */,
+				0C4AF237240B35BF0057AC86 /* NetworkScanner.swift in Sources */,
+				0C4AF23F240B71DF0057AC86 /* LogEnums.swift in Sources */,
+				0C4AF23A240B3B5B0057AC86 /* Ping.swift in Sources */,
+				0C4AF23D240B59040057AC86 /* Logger.swift in Sources */,
 				0CD0EA5E2408973100DE10E5 /* SceneDelegate.swift in Sources */,
+				0C4AF235240B35030057AC86 /* SimplePing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,6 +571,7 @@
 			baseConfigurationReference = 50C3BA18751B7D2CA696F0E3 /* Pods-MPCRemote.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2F77Z345GA;
 				INFOPLIST_FILE = MPCRemote/Info.plist;
@@ -532,6 +582,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.doroshenko.mpcremote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MPCRemote/MPCRemote-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -542,6 +594,7 @@
 			baseConfigurationReference = F42A904E21ED902ACC08802F /* Pods-MPCRemote.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2F77Z345GA;
 				INFOPLIST_FILE = MPCRemote/Info.plist;
@@ -552,6 +605,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.doroshenko.mpcremote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MPCRemote/MPCRemote-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
