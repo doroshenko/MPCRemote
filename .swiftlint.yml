@@ -76,6 +76,16 @@ type_name:
 identifier_name:
   min_length: 2
 custom_rules:
+  insecure_log: # All logging should be performed through debug-safe Logger API and not use native NSLog/print/asl_log/etc
+    excluded: ".*Tests"
+    name: "Secure Logging"
+    regex: '((NSLog|print|debugPrint|syslog|asl\_vlog)\ *\([^\)]*\))'
+    match_kinds:
+      - identifier
+      - string
+      - string_interpolation_anchor
+    message: "Use log(_:) instead of standard logging APIs."
+    severity: error
   custom_todo_format: # Validates for TODO format `// TODO: Full Name - text`
     name: "TODO format"
     regex: (\/\/ (?:(?i)TODO|FIXME)(?!\:\ [A-Z][^\n]+?(?=[^ ] - [^ ]).+)|(?<!\/\/ )(?:(?i)TODO|FIXME))

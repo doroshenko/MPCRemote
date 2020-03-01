@@ -6,6 +6,8 @@ Search LAN or enter directly
 
 Find valid hosts, default port 13579, scan others
 
+Handle wifi detection, multiple players selection
+
 ## II. API
 
 ### 1. Perform command
@@ -29,3 +31,5 @@ Check if web preview is enabled - can be enabled in MPC options: `/snapshot.jpg`
 Retrieve current server status in html form: `/variables.html`
 
 ## III. Check integration with native player controls
+
+## IV. Compatibility with MPC BE, older and other custom versions
