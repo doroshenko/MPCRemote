@@ -18,69 +18,62 @@ enum PingError: Error {
 
 typealias PingResult = (Result<TimeInterval, PingError>) -> Void
 
-final class Ping: NSObject {
-
-    private var hostName: String {
-        didSet {
-            verifyHost()
-        }
-    }
+final class Ping: AsynchronousOperation {
 
     private let completionHandler: PingResult
     private let simplePing: SimplePing
+
     private var timer: Timer?
+    private var sendTime: TimeInterval = 0.0
 
-    static let timeoutInterval: TimeInterval = 5.0
+    private static let timeoutInterval: TimeInterval = 5.0
 
-    @discardableResult
     init(hostName: String, completionHandler: @escaping PingResult) {
         self.completionHandler = completionHandler
-        self.hostName = hostName
         self.simplePing = SimplePing(hostName: hostName)
 
         super.init()
+    }
 
-        setupPing()
+    deinit {
+        logTrace()
+    }
+
+    override func start() {
+        super.start()
+
+        simplePing.delegate = self
+        simplePing.start()
         setupTimer()
     }
 
-    func cancel() {
+    override func cancel() {
+        super.cancel()
+
         simplePing.stop()
         invalidateTimer()
     }
 
     // MARK: - Setup
 
-    private func setupPing() {
-        simplePing.delegate = self
-        simplePing.start()
-    }
-
     private func setupTimer() {
-        timer = Timer.scheduledTimer(timeInterval: Ping.timeoutInterval,
-                                     target: self,
-                                     selector: #selector(timeout),
-                                     userInfo: nil,
-                                     repeats: false)
+        timer = Timer.scheduledTimer(withTimeInterval: Ping.timeoutInterval, repeats: false, block: { [weak self] _ in
+            self?.timeout()
+        })
         RunLoop.main.add(timer!, forMode: .common)
     }
 
     // MARK: - Internal methods
-
-    private func verifyHost() {
-        if hostName.isEmpty {
-            completionHandler(.failure(.invalidHost))
-        }
-    }
 
     private func invalidateTimer() {
         timer?.invalidate()
         timer = nil
     }
 
-    @objc private func timeout() {
+    private func timeout() {
         completionHandler(.failure(.timeout))
         cancel()
+        finish()
     }
 }
 
@@ -89,23 +82,28 @@ final class Ping: NSObject {
 extension Ping: SimplePingDelegate {
     func simplePing(_ pinger: SimplePing, didStartWithAddress address: Data) {
         guard pinger == simplePing else { return }
+        sendTime = Date.timeIntervalSinceReferenceDate
         pinger.send(with: nil)
     }
 
     func simplePing(_ pinger: SimplePing, didFailWithError error: Error) {
         completionHandler(.failure(.startupFailure(error)))
+        finish()
     }
 
     func simplePing(_ pinger: SimplePing, didFailToSendPacket packet: Data, sequenceNumber: UInt16, error: Error) {
         completionHandler(.failure(.sendingFailure(error)))
+        finish()
     }
 
     func simplePing(_ pinger: SimplePing, didReceivePingResponsePacket packet: Data, sequenceNumber: UInt16) {
-        let duration = timer?.timeInterval ?? Ping.timeoutInterval
+        let duration = Date.timeIntervalSinceReferenceDate - sendTime
         completionHandler(.success(duration))
+        finish()
     }
 
     func simplePing(_ pinger: SimplePing, didReceiveUnexpectedPacket packet: Data) {
         completionHandler(.failure(.invalidResponse))
+        finish()
     }
 }

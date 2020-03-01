@@ -12,7 +12,7 @@ private struct Logger {
 
     static var dateFormatter: DateFormatter {
       let formatter = DateFormatter()
-      formatter.dateFormat = "yyyy-MM-dd hh:mm:ssSSS"
+      formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
       formatter.locale = .current
       formatter.timeZone = .current
       return formatter

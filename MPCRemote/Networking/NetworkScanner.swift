@@ -10,6 +10,13 @@ import Foundation
 
 final class NetworkScanner {
 
+    private let operationQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.name = "network_scanner_queue"
+        queue.maxConcurrentOperationCount = 10
+        return queue
+    }()
+
     var isConnectedToLAN: Bool {
         true
     }
@@ -51,7 +58,7 @@ final class NetworkScanner {
     }
 
     private func performPing(hostName: String, errorLogging: Bool) {
-        Ping(hostName: hostName) { result in
+        let ping = Ping(hostName: hostName) { result in
             switch result {
             case .success(let duration):
                 logInfo("Found host: \(hostName) with ping \(duration)", domain: .networking)
@@ -60,5 +67,7 @@ final class NetworkScanner {
                 logError("Couldn't ping host: \(hostName) with error: \(error)", domain: .networking)
             }
         }
+
+        operationQueue.addOperation(ping)
     }
 }
