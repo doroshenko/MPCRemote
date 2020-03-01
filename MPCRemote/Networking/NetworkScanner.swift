@@ -15,7 +15,19 @@ final class NetworkScanner {
     }
 
     func enumerateHosts() -> [String] {
-        ["192.168.1.1"]
+        var hosts: [String] = []
+
+        logInfo("Hosts enumeration started", domain: .networking)
+
+        for firstIndex in 1...255 {
+            for secondIndex in 1...255 {
+                hosts.append("192.168.\(firstIndex).\(secondIndex)")
+            }
+        }
+
+        logInfo("Hosts enumeration finished", domain: .networking)
+
+        return hosts
     }
 
     func scan() {
@@ -24,18 +36,25 @@ final class NetworkScanner {
             return
         }
 
-        logInfo("Network scan started", domain: .networking)
+        logInfo("Network scan initiated", domain: .networking)
 
         let hosts = enumerateHosts()
-
         hosts.forEach { performPing(hostName: $0) }
+
+        logInfo("Network scan finished", domain: .networking)
+    }
+
+    func ping(hostName: String) {
+        logInfo("Ping initated for host: \(hostName)", domain: .networking)
+
+        performPing(hostName: hostName)
     }
 
     private func performPing(hostName: String) {
         Ping(hostName: hostName) { result in
             switch result {
-            case .success(let hostName):
-                logInfo("Found host: \(hostName)", domain: .networking)
+            case .success(let duration):
+                logInfo("Found host: \(hostName) with ping \(duration)", domain: .networking)
             case .failure(let error):
                 logError("Couldn't ping host: \(hostName) with error: \(error)", domain: .networking)
             }

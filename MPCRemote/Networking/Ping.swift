@@ -16,7 +16,7 @@ enum PingError: Error {
     case timeout
 }
 
-typealias PingResult = (Result<Data, PingError>) -> Void
+typealias PingResult = (Result<TimeInterval, PingError>) -> Void
 
 final class Ping: NSObject {
 
@@ -111,8 +111,9 @@ extension Ping: SimplePingDelegate {
     func simplePing(_ pinger: SimplePing, didReceivePingResponsePacket packet: Data, sequenceNumber: UInt16) {
         guard pinger == simplePing else { return }
 
-        logInfo("Ping started for host: \(hostName)", domain: .networking)
-        completionHandler(.success(packet))
+        logInfo("Ping received from host: \(hostName)", domain: .networking)
+        let duration = timer?.timeInterval ?? Ping.timeoutInterval
+        completionHandler(.success(duration))
     }
 
     func simplePing(_ pinger: SimplePing, didReceiveUnexpectedPacket packet: Data) {

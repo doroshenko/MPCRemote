@@ -10,8 +10,31 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var textInput: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        logTrace()
+    }
+
+    @IBAction func pingButtonClicked(_ sender: Any) {
+        logTrace()
+
+        guard let hostName = textInput.text else {
+            logError("No host specified", domain: .default)
+            UIAlertController(message: "No host specified", target: self)
+            return
+        }
+
+        let scanner = NetworkScanner()
+        scanner.ping(hostName: hostName)
+    }
+
+    @IBAction func scanButtonClicked(_ sender: Any) {
+        logTrace()
+
+        let scanner = NetworkScanner()
+        scanner.scan()
     }
 }
