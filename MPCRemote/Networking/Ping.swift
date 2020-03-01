@@ -9,7 +9,6 @@
 import Foundation
 
 enum PingError: Error {
-    case invalidHost
     case startupFailure(Error)
     case sendingFailure(Error)
     case invalidResponse
@@ -26,7 +25,7 @@ final class Ping: AsynchronousOperation {
     private var timer: Timer?
     private var sendTime: TimeInterval = 0.0
 
-    private static let timeoutInterval: TimeInterval = 5.0
+    private static let timeoutInterval: TimeInterval = 1.0
 
     init(hostName: String, completionHandler: @escaping PingResult) {
         self.completionHandler = completionHandler
@@ -35,16 +34,14 @@ final class Ping: AsynchronousOperation {
         super.init()
     }
 
-    deinit {
-        logTrace()
-    }
-
     override func start() {
         super.start()
 
         simplePing.delegate = self
-        simplePing.start()
-        setupTimer()
+
+        DispatchQueue.main.async {
+            self.simplePing.start()
+        }
     }
 
     override func cancel() {
@@ -57,10 +54,10 @@ final class Ping: AsynchronousOperation {
     // MARK: - Setup
 
     private func setupTimer() {
+        sendTime = Date.timeIntervalSinceReferenceDate
         timer = Timer.scheduledTimer(withTimeInterval: Ping.timeoutInterval, repeats: false, block: { [weak self] _ in
             self?.timeout()
         })
-        RunLoop.main.add(timer!, forMode: .common)
     }
 
     // MARK: - Internal methods
@@ -72,7 +69,6 @@ final class Ping: AsynchronousOperation {
 
     private func timeout() {
         completionHandler(.failure(.timeout))
-        cancel()
         finish()
     }
 }
@@ -81,14 +77,16 @@ final class Ping: AsynchronousOperation {
 
 extension Ping: SimplePingDelegate {
     func simplePing(_ pinger: SimplePing, didStartWithAddress address: Data) {
-        guard pinger == simplePing else { return }
-        sendTime = Date.timeIntervalSinceReferenceDate
         pinger.send(with: nil)
     }
 
     func simplePing(_ pinger: SimplePing, didFailWithError error: Error) {
         completionHandler(.failure(.startupFailure(error)))
         finish()
+    }
+
+    func simplePing(_ pinger: SimplePing, didSendPacket packet: Data, sequenceNumber: UInt16) {
+        setupTimer()
     }
 
     func simplePing(_ pinger: SimplePing, didFailToSendPacket packet: Data, sequenceNumber: UInt16, error: Error) {

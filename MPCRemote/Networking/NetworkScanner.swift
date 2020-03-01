@@ -61,7 +61,8 @@ final class NetworkScanner {
         let ping = Ping(hostName: hostName) { result in
             switch result {
             case .success(let duration):
-                logInfo("Found host: \(hostName) with ping \(duration)", domain: .networking)
+                let msValue = Int(duration * 1000)
+                logInfo("Found host: \(hostName) after \(msValue) ms", domain: .networking)
             case .failure(let error):
                 guard errorLogging else { return }
                 logError("Couldn't ping host: \(hostName) with error: \(error)", domain: .networking)
