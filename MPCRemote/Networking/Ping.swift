@@ -73,7 +73,6 @@ final class Ping: NSObject {
     }
 
     @objc private func timeout() {
-        logError("Timeout for host: \(hostName)", domain: .networking)
         completionHandler(.failure(.timeout))
         cancel()
     }
@@ -82,44 +81,20 @@ final class Ping: NSObject {
 // MARK: - SimplePingDelegate
 
 extension Ping: SimplePingDelegate {
-    func simplePing(_ pinger: SimplePing, didStartWithAddress address: Data) {
-        guard pinger == simplePing else { return }
-
-        logInfo("Ping started for host: \(hostName)", domain: .networking)
-    }
-
     func simplePing(_ pinger: SimplePing, didFailWithError error: Error) {
-        guard pinger == simplePing else { return }
-
-        logError("Ping failed at startup for host: \(hostName) with error: \(error)", domain: .networking)
         completionHandler(.failure(.startupFailure(error)))
     }
 
-    func simplePing(_ pinger: SimplePing, didSendPacket packet: Data, sequenceNumber: UInt16) {
-        guard pinger == simplePing else { return }
-
-        logInfo("Ping sent for host: \(hostName)", domain: .networking)
-    }
-
     func simplePing(_ pinger: SimplePing, didFailToSendPacket packet: Data, sequenceNumber: UInt16, error: Error) {
-        guard pinger == simplePing else { return }
-
-        logError("Ping failed at sending for host: \(hostName) with error: \(error)", domain: .networking)
         completionHandler(.failure(.sendingFailure(error)))
     }
 
     func simplePing(_ pinger: SimplePing, didReceivePingResponsePacket packet: Data, sequenceNumber: UInt16) {
-        guard pinger == simplePing else { return }
-
-        logInfo("Ping received from host: \(hostName)", domain: .networking)
         let duration = timer?.timeInterval ?? Ping.timeoutInterval
         completionHandler(.success(duration))
     }
 
     func simplePing(_ pinger: SimplePing, didReceiveUnexpectedPacket packet: Data) {
-        guard pinger == simplePing else { return }
-
-        logError("Invalid response for host: \(hostName)", domain: .networking)
         completionHandler(.failure(.invalidResponse))
     }
 }
