@@ -22,7 +22,7 @@
 		0CD0EA682408973100DE10E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */; };
 		0CD0EA732408973100DE10E5 /* MPCRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA722408973100DE10E5 /* MPCRemoteTests.swift */; };
 		0CD0EA7E2408973200DE10E5 /* MPCRemoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA7D2408973200DE10E5 /* MPCRemoteUITests.swift */; };
-		619538E4078294F295F1F9FE /* Pods_MPCRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C6747E28DB4D59FD198872 /* Pods_MPCRemote.framework */; };
+		68A8754AB49698381BB3ECAA /* libPods-MPCRemote.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 446C02256618854692F558C1 /* libPods-MPCRemote.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,9 +66,9 @@
 		0CD0EA792408973200DE10E5 /* MPCRemoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MPCRemoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD0EA7D2408973200DE10E5 /* MPCRemoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCRemoteUITests.swift; sourceTree = "<group>"; };
 		0CD0EA7F2408973200DE10E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		34C6747E28DB4D59FD198872 /* Pods_MPCRemote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MPCRemote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		50C3BA18751B7D2CA696F0E3 /* Pods-MPCRemote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemote.debug.xcconfig"; path = "Target Support Files/Pods-MPCRemote/Pods-MPCRemote.debug.xcconfig"; sourceTree = "<group>"; };
-		F42A904E21ED902ACC08802F /* Pods-MPCRemote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemote.release.xcconfig"; path = "Target Support Files/Pods-MPCRemote/Pods-MPCRemote.release.xcconfig"; sourceTree = "<group>"; };
+		446C02256618854692F558C1 /* libPods-MPCRemote.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPCRemote.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5C8B703A7CFA87376B810BB /* Pods-MPCRemote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemote.debug.xcconfig"; path = "Target Support Files/Pods-MPCRemote/Pods-MPCRemote.debug.xcconfig"; sourceTree = "<group>"; };
+		E3F3BECB67CC264A4B5E9241 /* Pods-MPCRemote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemote.release.xcconfig"; path = "Target Support Files/Pods-MPCRemote/Pods-MPCRemote.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				619538E4078294F295F1F9FE /* Pods_MPCRemote.framework in Frameworks */,
+				68A8754AB49698381BB3ECAA /* libPods-MPCRemote.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +135,7 @@
 				0CD0EA7C2408973200DE10E5 /* MPCRemoteUITests */,
 				0CD0EA592408973100DE10E5 /* Products */,
 				B292F8FB8811D1E145EF0B78 /* Pods */,
-				4C0936CFCE210878E59491B8 /* Frameworks */,
+				F444164DA0AF0981391EDA1F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -184,21 +184,21 @@
 			path = MPCRemoteUITests;
 			sourceTree = "<group>";
 		};
-		4C0936CFCE210878E59491B8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				34C6747E28DB4D59FD198872 /* Pods_MPCRemote.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		B292F8FB8811D1E145EF0B78 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				50C3BA18751B7D2CA696F0E3 /* Pods-MPCRemote.debug.xcconfig */,
-				F42A904E21ED902ACC08802F /* Pods-MPCRemote.release.xcconfig */,
+				B5C8B703A7CFA87376B810BB /* Pods-MPCRemote.debug.xcconfig */,
+				E3F3BECB67CC264A4B5E9241 /* Pods-MPCRemote.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F444164DA0AF0981391EDA1F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				446C02256618854692F558C1 /* libPods-MPCRemote.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,12 +208,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0CD0EA822408973200DE10E5 /* Build configuration list for PBXNativeTarget "MPCRemote" */;
 			buildPhases = (
-				2509F1DA617BED114DCFD370 /* [CP] Check Pods Manifest.lock */,
+				6F616D6F7B203101CDA493D8 /* [CP] Check Pods Manifest.lock */,
 				0CD897E724089ED100E350FB /* SwiftLint */,
 				0CD0EA542408973100DE10E5 /* Sources */,
 				0CD0EA552408973100DE10E5 /* Frameworks */,
 				0CD0EA562408973100DE10E5 /* Resources */,
-				AF93E29B3D264A30FCF1EB77 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -350,7 +349,7 @@
 			shellPath = /bin/sh;
 			shellScript = "\"$SRCROOT/Scripts/swiftlint.sh\" -s -a\n";
 		};
-		2509F1DA617BED114DCFD370 /* [CP] Check Pods Manifest.lock */ = {
+		6F616D6F7B203101CDA493D8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -370,23 +369,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AF93E29B3D264A30FCF1EB77 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MPCRemote/Pods-MPCRemote-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MPCRemote/Pods-MPCRemote-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MPCRemote/Pods-MPCRemote-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -576,7 +558,7 @@
 		};
 		0CD0EA832408973200DE10E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 50C3BA18751B7D2CA696F0E3 /* Pods-MPCRemote.debug.xcconfig */;
+			baseConfigurationReference = B5C8B703A7CFA87376B810BB /* Pods-MPCRemote.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -599,7 +581,7 @@
 		};
 		0CD0EA842408973200DE10E5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F42A904E21ED902ACC08802F /* Pods-MPCRemote.release.xcconfig */;
+			baseConfigurationReference = E3F3BECB67CC264A4B5E9241 /* Pods-MPCRemote.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

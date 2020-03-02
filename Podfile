@@ -1,6 +1,6 @@
 platform :ios, '11.0'
 inhibit_all_warnings!
-use_frameworks!
+use_modular_headers!
 
 def common_pods
     pod 'SwiftLint', '~> 0.39.1'

@@ -1,4 +1,4 @@
-framework module Pods_MPCRemote {
+module Pods_MPCRemote {
   umbrella header "Pods-MPCRemote-umbrella.h"
 
   export *
