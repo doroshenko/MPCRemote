@@ -17,14 +17,10 @@ final class NetworkScanner {
         return queue
     }()
 
-    private var isConnectedToLAN: Bool {
-        true
-    }
-
     // MARK: - Public API
 
     func scan() {
-        guard isConnectedToLAN else {
+        guard Connectivity.isConnectedToWifi else {
             logError("Not connected to LAN", domain: .networking)
             return
         }
@@ -38,6 +34,11 @@ final class NetworkScanner {
     }
 
     func ping(hostName: String) {
+        guard Connectivity.isHostReachable(hostName: hostName) else {
+            logError("Cannot reach host: \(hostName)", domain: .networking)
+            return
+        }
+
         logInfo("Ping initated for host: \(hostName)", domain: .networking)
 
         performPing(hostName: hostName, errorLogging: true)
