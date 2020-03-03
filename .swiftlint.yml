@@ -86,10 +86,3 @@ custom_rules:
       - string_interpolation_anchor
     message: "Use log(_:) instead of standard logging APIs."
     severity: error
-  custom_todo_format: # Validates for TODO format `// TODO: Full Name - text`
-    name: "TODO format"
-    regex: (\/\/ (?:(?i)TODO|FIXME)(?!\:\ [A-Z][^\n]+?(?=[^ ] - [^ ]).+)|(?<!\/\/ )(?:(?i)TODO|FIXME))
-    match_kinds:
-      - comment
-    message: "TODOs should be in format `// TODO: Full name - text`"
-    severity: warning
