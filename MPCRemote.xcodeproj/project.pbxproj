@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0C30E249240DD390001C1EC9 /* AsyncroneousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C30E248240DD390001C1EC9 /* AsyncroneousOperation.swift */; };
 		0C30E24B240DD3BA001C1EC9 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C30E24A240DD3BA001C1EC9 /* Connectivity.swift */; };
-		0C30E253240DD5A1001C1EC9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C30E24F240DD5A1001C1EC9 /* Reachability.m */; };
 		0C30E254240DD5A1001C1EC9 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C30E250240DD5A1001C1EC9 /* SimplePing.m */; };
 		0C4AF237240B35BF0057AC86 /* NetworkScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF236240B35BF0057AC86 /* NetworkScanner.swift */; };
 		0C4AF23A240B3B5B0057AC86 /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF239240B3B5B0057AC86 /* Ping.swift */; };
@@ -47,9 +46,7 @@
 /* Begin PBXFileReference section */
 		0C30E248240DD390001C1EC9 /* AsyncroneousOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncroneousOperation.swift; sourceTree = "<group>"; };
 		0C30E24A240DD3BA001C1EC9 /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
-		0C30E24F240DD5A1001C1EC9 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		0C30E250240DD5A1001C1EC9 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
-		0C30E251240DD5A1001C1EC9 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		0C30E252240DD5A1001C1EC9 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
 		0C4AF232240B35020057AC86 /* MPCRemote-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MPCRemote-Bridging-Header.h"; sourceTree = "<group>"; };
 		0C4AF236240B35BF0057AC86 /* NetworkScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkScanner.swift; sourceTree = "<group>"; };
@@ -105,8 +102,6 @@
 		0C30E24E240DD528001C1EC9 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				0C30E251240DD5A1001C1EC9 /* Reachability.h */,
-				0C30E24F240DD5A1001C1EC9 /* Reachability.m */,
 				0C30E252240DD5A1001C1EC9 /* SimplePing.h */,
 				0C30E250240DD5A1001C1EC9 /* SimplePing.m */,
 			);
@@ -397,7 +392,6 @@
 				0C4AF241240C03700057AC86 /* UIAlertController+Convenience.swift in Sources */,
 				0CD0EA5E2408973100DE10E5 /* SceneDelegate.swift in Sources */,
 				0C30E254240DD5A1001C1EC9 /* SimplePing.m in Sources */,
-				0C30E253240DD5A1001C1EC9 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

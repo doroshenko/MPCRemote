@@ -43,6 +43,7 @@ final class NetworkScanner {
 
         performPing(hostName: hostName, errorLogging: true)
     }
+
     func cancel() {
         logInfo("All active operations canceled", domain: .networking)
         NetworkScanner.operationQueue.cancelAllOperations()
@@ -54,6 +55,28 @@ final class NetworkScanner {
         var hosts: [String] = []
 
         logInfo("Hosts enumeration started", domain: .networking)
+
+        let localAddress = Connectivity.localIPAddress
+        guard let address = localAddress.address, let mask = localAddress.mask else {
+            logError("Couldn't retrieve local IP address and network mask", domain: .networking)
+            return []
+        }
+
+        let addressComponents = address.components(separatedBy: ".").compactMap { UInt8($0) }
+        let maskComponents = mask.components(separatedBy: ".").compactMap { UInt8($0) }
+        let componentCount = 4
+
+        guard addressComponents.count == componentCount, maskComponents.count == componentCount else {
+            logError("Invalid local IP address and network mask", domain: .networking)
+            return []
+        }
+
+        var baseAddress: [UInt8] = []
+        for index in 0...3 {
+            baseAddress.append(addressComponents[index] & maskComponents[index])
+        }
+
+        // TODO: integrate base address 
         for firstIndex in 1...1 {
             for secondIndex in 1...254 {
                 hosts.append("192.168.\(firstIndex).\(secondIndex)")
