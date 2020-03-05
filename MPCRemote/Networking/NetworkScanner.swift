@@ -76,10 +76,12 @@ final class NetworkScanner {
             baseAddress.append(addressComponents[index] & maskComponents[index])
         }
 
-        // TODO: integrate base address 
-        for firstIndex in 1...1 {
-            for secondIndex in 1...254 {
-                hosts.append("192.168.\(firstIndex).\(secondIndex)")
+        logInfo("Base IP address: \(baseAddress)", domain: .networking)
+        let maxIndex: UInt8 = 254
+        let thirdIndexCap = baseAddress[2] == 0 ? maxIndex : baseAddress[2]
+        for thirdIndex in 1...thirdIndexCap {
+            for fourthIndex in 1...maxIndex {
+                hosts.append("\(baseAddress[0]).\(baseAddress[1]).\(thirdIndex).\(fourthIndex)")
             }
         }
 
