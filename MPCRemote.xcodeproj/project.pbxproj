@@ -23,6 +23,7 @@
 		0CD0EA682408973100DE10E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */; };
 		0CD0EA732408973100DE10E5 /* MPCRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA722408973100DE10E5 /* MPCRemoteTests.swift */; };
 		0CD0EA7E2408973200DE10E5 /* MPCRemoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA7D2408973200DE10E5 /* MPCRemoteUITests.swift */; };
+		0CFAC4CC2410A0C900EF83E1 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAC4CB2410A0C900EF83E1 /* State.swift */; };
 		68A8754AB49698381BB3ECAA /* libPods-MPCRemote.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 446C02256618854692F558C1 /* libPods-MPCRemote.a */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 		0CD0EA792408973200DE10E5 /* MPCRemoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MPCRemoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD0EA7D2408973200DE10E5 /* MPCRemoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCRemoteUITests.swift; sourceTree = "<group>"; };
 		0CD0EA7F2408973200DE10E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CFAC4CB2410A0C900EF83E1 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		446C02256618854692F558C1 /* libPods-MPCRemote.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPCRemote.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C8B703A7CFA87376B810BB /* Pods-MPCRemote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemote.debug.xcconfig"; path = "Target Support Files/Pods-MPCRemote/Pods-MPCRemote.debug.xcconfig"; sourceTree = "<group>"; };
 		E3F3BECB67CC264A4B5E9241 /* Pods-MPCRemote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemote.release.xcconfig"; path = "Target Support Files/Pods-MPCRemote/Pods-MPCRemote.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			children = (
 				0C30E24E240DD528001C1EC9 /* Dependencies */,
 				0C4AF231240B34970057AC86 /* Networking */,
+				0CFAC4C82410A03200EF83E1 /* Server */,
 				0C4AF23B240B58ED0057AC86 /* Utility */,
 				0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */,
 				0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */,
@@ -185,6 +188,14 @@
 				0CD0EA7F2408973200DE10E5 /* Info.plist */,
 			);
 			path = MPCRemoteUITests;
+			sourceTree = "<group>";
+		};
+		0CFAC4C82410A03200EF83E1 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				0CFAC4CB2410A0C900EF83E1 /* State.swift */,
+			);
+			path = Server;
 			sourceTree = "<group>";
 		};
 		B292F8FB8811D1E145EF0B78 /* Pods */ = {
@@ -390,6 +401,7 @@
 				0C4AF23D240B59040057AC86 /* Logger.swift in Sources */,
 				0C30E24B240DD3BA001C1EC9 /* Connectivity.swift in Sources */,
 				0C4AF241240C03700057AC86 /* UIAlertController+Convenience.swift in Sources */,
+				0CFAC4CC2410A0C900EF83E1 /* State.swift in Sources */,
 				0CD0EA5E2408973100DE10E5 /* SceneDelegate.swift in Sources */,
 				0C30E254240DD5A1001C1EC9 /* SimplePing.m in Sources */,
 			);
