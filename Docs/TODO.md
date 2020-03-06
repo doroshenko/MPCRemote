@@ -13,3 +13,4 @@ TODO:
 [ ] Plan architecture - data and UI separation
 [ ] MPC HC/BE server detection
 [ ] Multiple scan cancelations
+[ ] MVCS. S for services. S encapsulates API. Change to static?

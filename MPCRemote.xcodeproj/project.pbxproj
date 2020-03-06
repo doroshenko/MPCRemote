@@ -10,11 +10,13 @@
 		0C30E249240DD390001C1EC9 /* AsyncroneousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C30E248240DD390001C1EC9 /* AsyncroneousOperation.swift */; };
 		0C30E24B240DD3BA001C1EC9 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C30E24A240DD3BA001C1EC9 /* Connectivity.swift */; };
 		0C30E254240DD5A1001C1EC9 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C30E250240DD5A1001C1EC9 /* SimplePing.m */; };
-		0C4AF237240B35BF0057AC86 /* NetworkScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF236240B35BF0057AC86 /* NetworkScanner.swift */; };
+		0C4AF237240B35BF0057AC86 /* ScannerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF236240B35BF0057AC86 /* ScannerService.swift */; };
 		0C4AF23A240B3B5B0057AC86 /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF239240B3B5B0057AC86 /* Ping.swift */; };
 		0C4AF23D240B59040057AC86 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF23C240B59040057AC86 /* Logger.swift */; };
 		0C4AF23F240B71DF0057AC86 /* LogEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF23E240B71DF0057AC86 /* LogEnums.swift */; };
 		0C4AF241240C03700057AC86 /* UIAlertController+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF240240C03700057AC86 /* UIAlertController+Convenience.swift */; };
+		0C8271712411E9C600E5474B /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8271702411E9C600E5474B /* APIService.swift */; };
+		0C8271732411EEEB00E5474B /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8271722411EEEB00E5474B /* Command.swift */; };
 		0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */; };
 		0CD0EA5E2408973100DE10E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */; };
 		0CD0EA602408973100DE10E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5F2408973100DE10E5 /* ViewController.swift */; };
@@ -50,11 +52,13 @@
 		0C30E250240DD5A1001C1EC9 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
 		0C30E252240DD5A1001C1EC9 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
 		0C4AF232240B35020057AC86 /* MPCRemote-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MPCRemote-Bridging-Header.h"; sourceTree = "<group>"; };
-		0C4AF236240B35BF0057AC86 /* NetworkScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkScanner.swift; sourceTree = "<group>"; };
+		0C4AF236240B35BF0057AC86 /* ScannerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerService.swift; sourceTree = "<group>"; };
 		0C4AF239240B3B5B0057AC86 /* Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
 		0C4AF23C240B59040057AC86 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		0C4AF23E240B71DF0057AC86 /* LogEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEnums.swift; sourceTree = "<group>"; };
 		0C4AF240240C03700057AC86 /* UIAlertController+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Convenience.swift"; sourceTree = "<group>"; };
+		0C8271702411E9C600E5474B /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		0C8271722411EEEB00E5474B /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		0CD0EA582408973100DE10E5 /* MPCRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPCRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,7 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				0C30E24A240DD3BA001C1EC9 /* Connectivity.swift */,
-				0C4AF236240B35BF0057AC86 /* NetworkScanner.swift */,
+				0C4AF236240B35BF0057AC86 /* ScannerService.swift */,
 				0C4AF239240B3B5B0057AC86 /* Ping.swift */,
 			);
 			path = Networking;
@@ -158,7 +162,7 @@
 			children = (
 				0C30E24E240DD528001C1EC9 /* Dependencies */,
 				0C4AF231240B34970057AC86 /* Networking */,
-				0CFAC4C82410A03200EF83E1 /* Server */,
+				0CFAC4C82410A03200EF83E1 /* APIClient */,
 				0C4AF23B240B58ED0057AC86 /* Utility */,
 				0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */,
 				0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */,
@@ -190,12 +194,14 @@
 			path = MPCRemoteUITests;
 			sourceTree = "<group>";
 		};
-		0CFAC4C82410A03200EF83E1 /* Server */ = {
+		0CFAC4C82410A03200EF83E1 /* APIClient */ = {
 			isa = PBXGroup;
 			children = (
+				0C8271702411E9C600E5474B /* APIService.swift */,
+				0C8271722411EEEB00E5474B /* Command.swift */,
 				0CFAC4CB2410A0C900EF83E1 /* State.swift */,
 			);
-			path = Server;
+			path = APIClient;
 			sourceTree = "<group>";
 		};
 		B292F8FB8811D1E145EF0B78 /* Pods */ = {
@@ -394,14 +400,16 @@
 			files = (
 				0CD0EA602408973100DE10E5 /* ViewController.swift in Sources */,
 				0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */,
-				0C4AF237240B35BF0057AC86 /* NetworkScanner.swift in Sources */,
+				0C4AF237240B35BF0057AC86 /* ScannerService.swift in Sources */,
 				0C4AF23F240B71DF0057AC86 /* LogEnums.swift in Sources */,
 				0C30E249240DD390001C1EC9 /* AsyncroneousOperation.swift in Sources */,
 				0C4AF23A240B3B5B0057AC86 /* Ping.swift in Sources */,
 				0C4AF23D240B59040057AC86 /* Logger.swift in Sources */,
 				0C30E24B240DD3BA001C1EC9 /* Connectivity.swift in Sources */,
 				0C4AF241240C03700057AC86 /* UIAlertController+Convenience.swift in Sources */,
+				0C8271712411E9C600E5474B /* APIService.swift in Sources */,
 				0CFAC4CC2410A0C900EF83E1 /* State.swift in Sources */,
+				0C8271732411EEEB00E5474B /* Command.swift in Sources */,
 				0CD0EA5E2408973100DE10E5 /* SceneDelegate.swift in Sources */,
 				0C30E254240DD5A1001C1EC9 /* SimplePing.m in Sources */,
 			);

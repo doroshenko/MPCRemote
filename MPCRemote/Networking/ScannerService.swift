@@ -1,5 +1,5 @@
 //
-//  NetworkScanner.swift
+//  ScannerService.swift
 //  MPCRemote
 //
 //  Created by doroshenko on 01.03.20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class NetworkScanner {
+struct ScannerService {
 
     private static let operationQueue: OperationQueue = {
         let queue = OperationQueue()
@@ -19,7 +19,7 @@ final class NetworkScanner {
 
     // MARK: - Public API
 
-    func scan() {
+    static func scan() {
         guard Connectivity.isConnectedToWifi else {
             logError("Not connected to LAN", domain: .networking)
             return
@@ -33,7 +33,7 @@ final class NetworkScanner {
         logInfo("Network scan finished", domain: .networking)
     }
 
-    func ping(hostName: String) {
+    static func ping(hostName: String) {
         guard Connectivity.isHostReachable(hostName: hostName) else {
             logError("Cannot reach host: \(hostName)", domain: .networking)
             return
@@ -44,14 +44,14 @@ final class NetworkScanner {
         performPing(hostName: hostName, errorLogging: true)
     }
 
-    func cancel() {
+    static func cancel() {
         logInfo("All active operations canceled", domain: .networking)
-        NetworkScanner.operationQueue.cancelAllOperations()
+        ScannerService.operationQueue.cancelAllOperations()
     }
 
     // MARK: - Internal functions
 
-    private func enumerateHosts() -> [String] {
+    private static func enumerateHosts() -> [String] {
         var hosts: [String] = []
 
         logInfo("Hosts enumeration started", domain: .networking)
@@ -95,7 +95,7 @@ final class NetworkScanner {
         return hosts
     }
 
-    private func performPing(hostName: String, errorLogging: Bool) {
+    private static func performPing(hostName: String, errorLogging: Bool) {
         let ping = Ping(hostName: hostName) { result in
             switch result {
             case .success(let duration):
@@ -107,6 +107,6 @@ final class NetworkScanner {
             }
         }
 
-        NetworkScanner.operationQueue.addOperation(ping)
+        ScannerService.operationQueue.addOperation(ping)
     }
 }
