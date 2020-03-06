@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import Alamofire
 
-struct State: Codable {
+struct State {
     enum PlaybackState {
         case stopped
         case playing

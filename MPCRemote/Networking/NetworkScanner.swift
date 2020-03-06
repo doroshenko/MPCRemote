@@ -78,10 +78,16 @@ final class NetworkScanner {
 
         logInfo("Base IP address: \(baseAddress)", domain: .networking)
         let maxIndex: UInt8 = 254
-        let thirdIndexCap = baseAddress[2] == 0 ? maxIndex : baseAddress[2]
-        for thirdIndex in 1...thirdIndexCap {
+
+        if baseAddress[2] == 0 {
+            for thirdIndex in 1...maxIndex {
+                for fourthIndex in 1...maxIndex {
+                    hosts.append("\(baseAddress[0]).\(baseAddress[1]).\(thirdIndex).\(fourthIndex)")
+                }
+            }
+        } else {
             for fourthIndex in 1...maxIndex {
-                hosts.append("\(baseAddress[0]).\(baseAddress[1]).\(thirdIndex).\(fourthIndex)")
+                hosts.append("\(baseAddress[0]).\(baseAddress[1]).\(baseAddress[2]).\(fourthIndex)")
             }
         }
 
