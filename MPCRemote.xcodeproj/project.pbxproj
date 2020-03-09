@@ -10,7 +10,7 @@
 		0C30E249240DD390001C1EC9 /* AsyncroneousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C30E248240DD390001C1EC9 /* AsyncroneousOperation.swift */; };
 		0C30E24B240DD3BA001C1EC9 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C30E24A240DD3BA001C1EC9 /* Connectivity.swift */; };
 		0C30E254240DD5A1001C1EC9 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C30E250240DD5A1001C1EC9 /* SimplePing.m */; };
-		0C4AF237240B35BF0057AC86 /* ScannerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF236240B35BF0057AC86 /* ScannerService.swift */; };
+		0C4AF237240B35BF0057AC86 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF236240B35BF0057AC86 /* Scanner.swift */; };
 		0C4AF23A240B3B5B0057AC86 /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF239240B3B5B0057AC86 /* Ping.swift */; };
 		0C4AF23D240B59040057AC86 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF23C240B59040057AC86 /* Logger.swift */; };
 		0C4AF23F240B71DF0057AC86 /* LogEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF23E240B71DF0057AC86 /* LogEnums.swift */; };
@@ -52,7 +52,7 @@
 		0C30E250240DD5A1001C1EC9 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
 		0C30E252240DD5A1001C1EC9 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
 		0C4AF232240B35020057AC86 /* MPCRemote-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MPCRemote-Bridging-Header.h"; sourceTree = "<group>"; };
-		0C4AF236240B35BF0057AC86 /* ScannerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerService.swift; sourceTree = "<group>"; };
+		0C4AF236240B35BF0057AC86 /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
 		0C4AF239240B3B5B0057AC86 /* Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
 		0C4AF23C240B59040057AC86 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		0C4AF23E240B71DF0057AC86 /* LogEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEnums.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				0C30E24A240DD3BA001C1EC9 /* Connectivity.swift */,
-				0C4AF236240B35BF0057AC86 /* ScannerService.swift */,
+				0C4AF236240B35BF0057AC86 /* Scanner.swift */,
 				0C4AF239240B3B5B0057AC86 /* Ping.swift */,
 			);
 			path = Networking;
@@ -400,7 +400,7 @@
 			files = (
 				0CD0EA602408973100DE10E5 /* ViewController.swift in Sources */,
 				0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */,
-				0C4AF237240B35BF0057AC86 /* ScannerService.swift in Sources */,
+				0C4AF237240B35BF0057AC86 /* Scanner.swift in Sources */,
 				0C4AF23F240B71DF0057AC86 /* LogEnums.swift in Sources */,
 				0C30E249240DD390001C1EC9 /* AsyncroneousOperation.swift in Sources */,
 				0C4AF23A240B3B5B0057AC86 /* Ping.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  ScannerService.swift
+//  Scanner.swift
 //  MPCRemote
 //
 //  Created by doroshenko on 01.03.20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ScannerService {
+struct Scanner {
 
     private static let operationQueue: OperationQueue = {
         let queue = OperationQueue()
@@ -28,6 +28,10 @@ struct ScannerService {
         logInfo("Network scan initiated", domain: .networking)
 
         let hosts = enumerateHosts()
+        for host in hosts {
+            performPing(hostName: host, errorLogging: false)
+        }
+
         hosts.forEach { performPing(hostName: $0, errorLogging: false) }
 
         logInfo("Network scan finished", domain: .networking)
@@ -41,12 +45,14 @@ struct ScannerService {
 
         logInfo("Ping initated for host: \(hostName)", domain: .networking)
 
+        cancel()
+
         performPing(hostName: hostName, errorLogging: true)
     }
 
     static func cancel() {
         logInfo("All active operations canceled", domain: .networking)
-        ScannerService.operationQueue.cancelAllOperations()
+        Scanner.operationQueue.cancelAllOperations()
     }
 
     // MARK: - Internal functions
@@ -107,6 +113,6 @@ struct ScannerService {
             }
         }
 
-        ScannerService.operationQueue.addOperation(ping)
+        Scanner.operationQueue.addOperation(ping)
     }
 }
