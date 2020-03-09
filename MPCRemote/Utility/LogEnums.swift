@@ -11,6 +11,7 @@ import Foundation
 enum LogDomain {
     case `default`
     case networking
+    case api
 }
 
 extension LogDomain: CustomStringConvertible {
@@ -20,6 +21,8 @@ extension LogDomain: CustomStringConvertible {
             return "[DEFAULT]"
         case .networking:
             return "[NETWORKING]"
+        case .api:
+            return "[API]"
         }
     }
 }

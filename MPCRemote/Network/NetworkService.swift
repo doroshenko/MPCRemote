@@ -1,5 +1,5 @@
 //
-//  Scanner.swift
+//  NetworkService.swift
 //  MPCRemote
 //
 //  Created by doroshenko on 01.03.20.
@@ -8,16 +8,7 @@
 
 import Foundation
 
-struct Scanner {
-
-    private static let operationQueue: OperationQueue = {
-        let queue = OperationQueue()
-        queue.name = "network_scanner_queue"
-        queue.maxConcurrentOperationCount = 50
-        return queue
-    }()
-
-    // MARK: - Public API
+final class NetworkService {
 
     static func scan() {
         guard Connectivity.isConnectedToWifi else {
@@ -25,14 +16,16 @@ struct Scanner {
             return
         }
 
+        cancel()
+
         logInfo("Network scan initiated", domain: .networking)
-
-        let hosts = enumerateHosts()
-        for host in hosts {
-            performPing(hostName: host, errorLogging: false)
+        for hostName in enumerateHosts() {
+            performPing(hostName: hostName) { result in
+                if case let .success(duration) = result {
+                    logInfo("Found host: \(hostName) after \(Int(duration * 1000)) ms", domain: .networking)
+                }
+            }
         }
-
-        hosts.forEach { performPing(hostName: $0, errorLogging: false) }
 
         logInfo("Network scan finished", domain: .networking)
     }
@@ -44,24 +37,38 @@ struct Scanner {
         }
 
         logInfo("Ping initated for host: \(hostName)", domain: .networking)
-
-        cancel()
-
-        performPing(hostName: hostName, errorLogging: true)
+        performPing(hostName: hostName) { result in
+            switch result {
+            case .success(let duration):
+                let msValue = Int(duration * 1000)
+                logInfo("Found host: \(hostName) after \(msValue) ms", domain: .networking)
+            case .failure(let error):
+                logError("Couldn't ping host: \(hostName) with error: \(error)", domain: .networking)
+            }
+        }
     }
 
     static func cancel() {
         logInfo("All active operations canceled", domain: .networking)
-        Scanner.operationQueue.cancelAllOperations()
+        NetworkService.operationQueue.cancelAllOperations()
     }
+}
 
-    // MARK: - Internal functions
+// MARK: - Internals
 
-    private static func enumerateHosts() -> [String] {
+private extension NetworkService {
+
+    static let operationQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.name = "network_scanner_queue"
+        queue.maxConcurrentOperationCount = 50
+        return queue
+    }()
+
+    static func enumerateHosts() -> [String] {
         var hosts: [String] = []
 
         logInfo("Hosts enumeration started", domain: .networking)
-
         let localAddress = Connectivity.localIPAddress
         guard let address = localAddress.address, let mask = localAddress.mask else {
             logError("Couldn't retrieve local IP address and network mask", domain: .networking)
@@ -101,18 +108,11 @@ struct Scanner {
         return hosts
     }
 
-    private static func performPing(hostName: String, errorLogging: Bool) {
+    static func performPing(hostName: String, completion: @escaping PingResult) {
         let ping = Ping(hostName: hostName) { result in
-            switch result {
-            case .success(let duration):
-                let msValue = Int(duration * 1000)
-                logInfo("Found host: \(hostName) after \(msValue) ms", domain: .networking)
-            case .failure(let error):
-                guard errorLogging else { return }
-                logError("Couldn't ping host: \(hostName) with error: \(error)", domain: .networking)
-            }
+            completion(result)
         }
 
-        Scanner.operationQueue.addOperation(ping)
+        NetworkService.operationQueue.addOperation(ping)
     }
 }

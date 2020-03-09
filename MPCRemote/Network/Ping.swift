@@ -26,8 +26,8 @@ final class Ping: AsynchronousOperation {
 
     private static let timeoutInterval: TimeInterval = 1.0
 
-    init(hostName: String, completionHandler: @escaping PingResult) {
-        self.completionHandler = completionHandler
+    init(hostName: String, completion: @escaping PingResult) {
+        self.completionHandler = completion
         self.simplePing = SimplePing(hostName: hostName)
 
         super.init()

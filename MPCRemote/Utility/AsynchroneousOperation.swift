@@ -1,5 +1,5 @@
 //
-//  AsyncroneousOperation.swift
+//  AsynchroneousOperation.swift
 //  MPCRemote
 //
 //  Created by doroshenko on 01.03.20.

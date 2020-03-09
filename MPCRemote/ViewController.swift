@@ -27,18 +27,18 @@ class ViewController: UIViewController {
             return
         }
 
-        Scanner.ping(hostName: hostName)
+        NetworkService.ping(hostName: hostName)
     }
 
     @IBAction func scanButtonClicked(_ sender: Any) {
         logTrace()
 
-        Scanner.scan()
+        NetworkService.scan()
     }
 
     @IBAction func cancelButtonClicked(_ sender: Any) {
         logTrace()
 
-        Scanner.cancel()
+        NetworkService.cancel()
     }
 }
