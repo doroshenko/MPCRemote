@@ -16,10 +16,10 @@ final class StorageService {
     }
 
     private static var userDefaults: UserDefaults {
-        return .standard
+        .standard
     }
-    
+
     static var server: Server {
-        userDefaults.object(forKey: Key.server.rawValue) as! Server
+        userDefaults.object(forKey: Key.server.rawValue) as? Server ?? Server(name: "", address: "", port: 0)
     }
 }

@@ -31,7 +31,7 @@ class ViewController: UIViewController {
 
         let server = Server(name: "MPC", address: "192.168.1.202", port: 13579)
         APIService.getState(server: server) { state in
-            logInfo("!!! \(state)")
+            logInfo("!!! \(String(describing: state))")
         }
     }
 
