@@ -47,7 +47,9 @@ final class Ping: AsynchronousOperation {
         super.cancel()
 
         stopActivity()
-        finish()
+        if isExecuting {
+            finish()
+        }
     }
 
     // MARK: - Setup
