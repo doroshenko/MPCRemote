@@ -44,8 +44,8 @@ enum Command: Int {
     case playPause = 889
 }
 
-extension Command: CustomStringConvertible {
-    var description: String {
+extension Command: CustomDebugStringConvertible {
+    var debugDescription: String {
         switch self {
         case .seek:
             return "Seek"

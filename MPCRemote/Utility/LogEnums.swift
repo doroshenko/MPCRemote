@@ -14,8 +14,8 @@ enum LogDomain {
     case api
 }
 
-extension LogDomain: CustomStringConvertible {
-    var description: String {
+extension LogDomain: CustomDebugStringConvertible {
+    var debugDescription: String {
         switch self {
         case .default:
             return "[DEFAULT]"
@@ -35,8 +35,8 @@ enum LogLevel {
     case critical
 }
 
-extension LogLevel: CustomStringConvertible {
-    var description: String {
+extension LogLevel: CustomDebugStringConvertible {
+    var debugDescription: String {
         switch self {
         case .trace:
             return "[TRACE]"
