@@ -8,77 +8,63 @@
 
 import Foundation
 
-struct IPv4: Codable, Equatable, Hashable {
-    let blocks: [UInt8]
+typealias IPv4 = UInt32
 
-    private static let blockCount = 4
+extension IPv4 {
+    private static let octetCount = Self.bitWidth / UInt8.bitWidth
 
-    enum FormatError: Error {
-        case invalidBlockCount
-        case outOfBounds
+    init?(octets: [UInt8]) {
+        guard octets.count == IPv4.octetCount else { return nil }
+
+        self = UInt32(littleEndianBytes: octets)
     }
 
-    init(blocks: [UInt8]) throws {
-        guard blocks.count == IPv4.blockCount else {
-            throw FormatError.outOfBounds
-        }
-
-        self.blocks = blocks
-    }
-
-    init(string: String) throws {
+    init?(string: String) {
         let components = string.components(separatedBy: ".")
 
-        guard components.count == IPv4.blockCount else {
-            throw FormatError.invalidBlockCount
-        }
+        guard components.count == IPv4.octetCount else { return nil }
 
-        let blocks = components.compactMap { UInt8($0) }
-        try self.init(blocks: blocks)
+        let octets = components.compactMap { UInt8($0) }
+        self.init(octets: octets)
     }
 }
 
 extension IPv4 {
-    func baseAddress(with mask: IPv4) -> IPv4? {
-        var baseAddress: [UInt8] = []
-        for index in 0..<IPv4.blockCount {
-            baseAddress.append(blocks[index] & mask.blocks[index])
-        }
-
-        return try? IPv4(blocks: baseAddress)
+    func baseAddress(with mask: IPv4) -> IPv4 {
+        self & mask
     }
 
-    func firstUsableAddress(with mask: IPv4) -> IPv4? {
-        var base = baseAddress(with: mask)
-        return base?.next()
+    func broadcastAddress(with mask: IPv4) -> IPv4 {
+        self | ~mask
     }
-}
 
-extension IPv4: IteratorProtocol {
-    typealias Element = IPv4
-
-    mutating func next() -> IPv4? {
-        var blocks = self.blocks
-
-        for index in stride(from: IPv4.blockCount, to: 0, by: -1) {
-            if blocks[index] == UInt8.max {
-                if index > 0 {
-                    blocks[index] = 0
-                } else {
-                    return nil
-                }
-            } else {
-                blocks[index] += 1
-                break
-            }
-        }
-
-        return try? IPv4(blocks: blocks)
+    func firstUsableAddress(with mask: IPv4) -> IPv4 {
+        baseAddress(with: mask) + 1
     }
-}
 
-extension IPv4: CustomStringConvertible {
+    func lastUsableAddress(with mask: IPv4) -> IPv4 {
+        broadcastAddress(with: mask) - 1
+    }
+
     var description: String {
-        blocks.map { String(describing: $0) }.joined(separator: ".")
+        littleEndianBytes.map { String(describing: $0) }.joined(separator: ".")
+    }
+}
+
+extension FixedWidthInteger {
+    init<I>(littleEndianBytes iterator: inout I) where I: IteratorProtocol, I.Element == UInt8 {
+        self = stride(from: 0, to: Self.bitWidth, by: UInt8.bitWidth).reduce(into: 0) {
+            $0 |= Self(truncatingIfNeeded: iterator.next()!) &<< $1
+        }
+    }
+
+    init<C>(littleEndianBytes bytes: C) where C: Collection, C.Element == UInt8 {
+        precondition(bytes.count == (Self.bitWidth + 7)/UInt8.bitWidth)
+        var iter = bytes.makeIterator()
+        self.init(littleEndianBytes: &iter)
+    }
+
+    var littleEndianBytes: [UInt8] {
+        stride(from: 0, to: Self.bitWidth, by: UInt8.bitWidth).map { UInt8(exactly: self >> UInt32($0)) ?? 0 }
     }
 }

@@ -1,0 +1,6 @@
+module Pods_MPCRemoteTests {
+  umbrella header "Pods-MPCRemoteTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

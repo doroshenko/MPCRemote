@@ -22,27 +22,21 @@
 		0C4FA7802416B0A300F71F9E /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4FA77F2416B0A300F71F9E /* Server.swift */; };
 		0C8271712411E9C600E5474B /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8271702411E9C600E5474B /* APIService.swift */; };
 		0C8271732411EEEB00E5474B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8271722411EEEB00E5474B /* Constants.swift */; };
+		0C8D9110241844CF00439554 /* IPv4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D910F241844CF00439554 /* IPv4Tests.swift */; };
+		0C8D91122418452F00439554 /* IPv4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D91112418452F00439554 /* IPv4.swift */; };
 		0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */; };
 		0CD0EA5E2408973100DE10E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */; };
 		0CD0EA602408973100DE10E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5F2408973100DE10E5 /* ViewController.swift */; };
 		0CD0EA632408973100DE10E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA612408973100DE10E5 /* Main.storyboard */; };
 		0CD0EA652408973100DE10E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA642408973100DE10E5 /* Assets.xcassets */; };
 		0CD0EA682408973100DE10E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */; };
-		0CD0EA732408973100DE10E5 /* MPCRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA722408973100DE10E5 /* MPCRemoteTests.swift */; };
-		0CD0EA7E2408973200DE10E5 /* MPCRemoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA7D2408973200DE10E5 /* MPCRemoteUITests.swift */; };
 		0CFAC4CC2410A0C900EF83E1 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAC4CB2410A0C900EF83E1 /* State.swift */; };
 		68A8754AB49698381BB3ECAA /* libPods-MPCRemote.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 446C02256618854692F558C1 /* libPods-MPCRemote.a */; };
+		A5FF385E4BB36FD0ECCC75E6 /* libPods-MPCRemoteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA2C60F8CEB863720C2F1C8 /* libPods-MPCRemoteTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		0CD0EA6F2408973100DE10E5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0CD0EA502408973100DE10E5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0CD0EA572408973100DE10E5;
-			remoteInfo = MPCRemote;
-		};
-		0CD0EA7A2408973200DE10E5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0CD0EA502408973100DE10E5 /* Project object */;
 			proxyType = 1;
@@ -69,6 +63,8 @@
 		0C4FA77F2416B0A300F71F9E /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		0C8271702411E9C600E5474B /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		0C8271722411EEEB00E5474B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0C8D910F241844CF00439554 /* IPv4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPv4Tests.swift; sourceTree = "<group>"; };
+		0C8D91112418452F00439554 /* IPv4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPv4.swift; sourceTree = "<group>"; };
 		0CD0EA582408973100DE10E5 /* MPCRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPCRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,14 +74,15 @@
 		0CD0EA672408973100DE10E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CD0EA692408973100DE10E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CD0EA6E2408973100DE10E5 /* MPCRemoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MPCRemoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0CD0EA722408973100DE10E5 /* MPCRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCRemoteTests.swift; sourceTree = "<group>"; };
 		0CD0EA742408973100DE10E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0CD0EA792408973200DE10E5 /* MPCRemoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MPCRemoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD0EA7D2408973200DE10E5 /* MPCRemoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCRemoteUITests.swift; sourceTree = "<group>"; };
 		0CD0EA7F2408973200DE10E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CFAC4CB2410A0C900EF83E1 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		2E8E34B052AE5F7D36196E34 /* Pods-MPCRemoteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemoteTests.debug.xcconfig"; path = "Target Support Files/Pods-MPCRemoteTests/Pods-MPCRemoteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		446C02256618854692F558C1 /* libPods-MPCRemote.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPCRemote.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DE8C9BB30817CF5E0F279ED /* Pods-MPCRemoteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemoteTests.release.xcconfig"; path = "Target Support Files/Pods-MPCRemoteTests/Pods-MPCRemoteTests.release.xcconfig"; sourceTree = "<group>"; };
 		B5C8B703A7CFA87376B810BB /* Pods-MPCRemote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemote.debug.xcconfig"; path = "Target Support Files/Pods-MPCRemote/Pods-MPCRemote.debug.xcconfig"; sourceTree = "<group>"; };
+		CAA2C60F8CEB863720C2F1C8 /* libPods-MPCRemoteTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPCRemoteTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3F3BECB67CC264A4B5E9241 /* Pods-MPCRemote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemote.release.xcconfig"; path = "Target Support Files/Pods-MPCRemote/Pods-MPCRemote.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,13 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0CD0EA762408973200DE10E5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				A5FF385E4BB36FD0ECCC75E6 /* libPods-MPCRemoteTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,10 +137,11 @@
 			isa = PBXGroup;
 			children = (
 				0C30E248240DD390001C1EC9 /* AsynchroneousOperation.swift */,
+				0C18D5E6241713390035C3A5 /* Comparable+Clamped.swift */,
+				0C8D91112418452F00439554 /* IPv4.swift */,
 				0C4AF23C240B59040057AC86 /* Logger.swift */,
 				0C4AF23E240B71DF0057AC86 /* LogEnums.swift */,
 				0C4AF240240C03700057AC86 /* UIAlertController+Convenience.swift */,
-				0C18D5E6241713390035C3A5 /* Comparable+Clamped.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -171,7 +163,6 @@
 			children = (
 				0CD0EA582408973100DE10E5 /* MPCRemote.app */,
 				0CD0EA6E2408973100DE10E5 /* MPCRemoteTests.xctest */,
-				0CD0EA792408973200DE10E5 /* MPCRemoteUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -199,7 +190,7 @@
 		0CD0EA712408973100DE10E5 /* MPCRemoteTests */ = {
 			isa = PBXGroup;
 			children = (
-				0CD0EA722408973100DE10E5 /* MPCRemoteTests.swift */,
+				0C8D910F241844CF00439554 /* IPv4Tests.swift */,
 				0CD0EA742408973100DE10E5 /* Info.plist */,
 			);
 			path = MPCRemoteTests;
@@ -232,6 +223,8 @@
 			children = (
 				B5C8B703A7CFA87376B810BB /* Pods-MPCRemote.debug.xcconfig */,
 				E3F3BECB67CC264A4B5E9241 /* Pods-MPCRemote.release.xcconfig */,
+				2E8E34B052AE5F7D36196E34 /* Pods-MPCRemoteTests.debug.xcconfig */,
+				6DE8C9BB30817CF5E0F279ED /* Pods-MPCRemoteTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -240,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				446C02256618854692F558C1 /* libPods-MPCRemote.a */,
+				CAA2C60F8CEB863720C2F1C8 /* libPods-MPCRemoteTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -270,6 +264,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0CD0EA852408973200DE10E5 /* Build configuration list for PBXNativeTarget "MPCRemoteTests" */;
 			buildPhases = (
+				FA00DD1FB3A6AEDB1F028936 /* [CP] Check Pods Manifest.lock */,
 				0CD0EA6A2408973100DE10E5 /* Sources */,
 				0CD0EA6B2408973100DE10E5 /* Frameworks */,
 				0CD0EA6C2408973100DE10E5 /* Resources */,
@@ -283,24 +278,6 @@
 			productName = MPCRemoteTests;
 			productReference = 0CD0EA6E2408973100DE10E5 /* MPCRemoteTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		0CD0EA782408973200DE10E5 /* MPCRemoteUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0CD0EA882408973200DE10E5 /* Build configuration list for PBXNativeTarget "MPCRemoteUITests" */;
-			buildPhases = (
-				0CD0EA752408973200DE10E5 /* Sources */,
-				0CD0EA762408973200DE10E5 /* Frameworks */,
-				0CD0EA772408973200DE10E5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0CD0EA7B2408973200DE10E5 /* PBXTargetDependency */,
-			);
-			name = MPCRemoteUITests;
-			productName = MPCRemoteUITests;
-			productReference = 0CD0EA792408973200DE10E5 /* MPCRemoteUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -317,10 +294,6 @@
 						LastSwiftMigration = 1130;
 					};
 					0CD0EA6D2408973100DE10E5 = {
-						CreatedOnToolsVersion = 11.3.1;
-						TestTargetID = 0CD0EA572408973100DE10E5;
-					};
-					0CD0EA782408973200DE10E5 = {
 						CreatedOnToolsVersion = 11.3.1;
 						TestTargetID = 0CD0EA572408973100DE10E5;
 					};
@@ -341,7 +314,6 @@
 			targets = (
 				0CD0EA572408973100DE10E5 /* MPCRemote */,
 				0CD0EA6D2408973100DE10E5 /* MPCRemoteTests */,
-				0CD0EA782408973200DE10E5 /* MPCRemoteUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -358,13 +330,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		0CD0EA6C2408973100DE10E5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0CD0EA772408973200DE10E5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -414,6 +379,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FA00DD1FB3A6AEDB1F028936 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MPCRemoteTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -429,6 +416,7 @@
 				0C18D5EC241719470035C3A5 /* StorageService.swift in Sources */,
 				0C4AF23A240B3B5B0057AC86 /* Ping.swift in Sources */,
 				0C18D5E9241714C80035C3A5 /* HTTPParametersFactory.swift in Sources */,
+				0C8D91122418452F00439554 /* IPv4.swift in Sources */,
 				0C4AF23D240B59040057AC86 /* Logger.swift in Sources */,
 				0C30E24B240DD3BA001C1EC9 /* Connectivity.swift in Sources */,
 				0C4AF241240C03700057AC86 /* UIAlertController+Convenience.swift in Sources */,
@@ -447,15 +435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CD0EA732408973100DE10E5 /* MPCRemoteTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0CD0EA752408973200DE10E5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0CD0EA7E2408973200DE10E5 /* MPCRemoteUITests.swift in Sources */,
+				0C8D9110241844CF00439554 /* IPv4Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,11 +446,6 @@
 			isa = PBXTargetDependency;
 			target = 0CD0EA572408973100DE10E5 /* MPCRemote */;
 			targetProxy = 0CD0EA6F2408973100DE10E5 /* PBXContainerItemProxy */;
-		};
-		0CD0EA7B2408973200DE10E5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0CD0EA572408973100DE10E5 /* MPCRemote */;
-			targetProxy = 0CD0EA7A2408973200DE10E5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -655,6 +630,7 @@
 		};
 		0CD0EA862408973200DE10E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E8E34B052AE5F7D36196E34 /* Pods-MPCRemoteTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -677,6 +653,7 @@
 		};
 		0CD0EA872408973200DE10E5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DE8C9BB30817CF5E0F279ED /* Pods-MPCRemoteTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -694,46 +671,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MPCRemote.app/MPCRemote";
-			};
-			name = Release;
-		};
-		0CD0EA892408973200DE10E5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2F77Z345GA;
-				INFOPLIST_FILE = MPCRemoteUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.doroshenko.MPCRemoteUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MPCRemote;
-			};
-			name = Debug;
-		};
-		0CD0EA8A2408973200DE10E5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2F77Z345GA;
-				INFOPLIST_FILE = MPCRemoteUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.doroshenko.MPCRemoteUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MPCRemote;
 			};
 			name = Release;
 		};
@@ -763,15 +700,6 @@
 			buildConfigurations = (
 				0CD0EA862408973200DE10E5 /* Debug */,
 				0CD0EA872408973200DE10E5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0CD0EA882408973200DE10E5 /* Build configuration list for PBXNativeTarget "MPCRemoteUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0CD0EA892408973200DE10E5 /* Debug */,
-				0CD0EA8A2408973200DE10E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
