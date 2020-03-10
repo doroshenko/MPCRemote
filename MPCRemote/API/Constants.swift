@@ -24,10 +24,14 @@ struct Parameter {
         static let name = "wm_command"
     }
 
-    struct Percent {
+    struct Seek {
         static let name = "percent"
-        static let min = 0
-        static let max = 100
+        static let range = 0...100
+    }
+
+    struct Volume {
+        static let name = "volume"
+        static let range = 0...100
     }
 }
 

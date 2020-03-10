@@ -9,36 +9,38 @@
 import Foundation
 import Alamofire
 
+typealias HTTPParameters = [String: String]
+
 final class APIService {
 
-    static func postCommand(server: Server, command: Command) {
-        let url = APIFactory.URL(server: server, endpoint: .command)
-        let parameters = APIFactory.parameters(command: command)
+    static func post(command: Command, server: Server = StorageService.server) {
+        let url = URLFactory.make(server: server, endpoint: .command)
+        let parameters = HTTPParametersFactory.make(command: command)
 
-        logInfo("Posting command: \(command) with parameters: \(String(describing: parameters))", domain: .api)
+        logInfo(domain: .api)
         postInternal(url: url, parameters: parameters)
     }
 
-    static func postCommandVolume(server: Server, volume: Int) {
-        let url = APIFactory.URL(server: server, endpoint: .command)
-        let parameters = APIFactory.parameters(command: .volume, value: volume)
+    static func post(volume: Int, server: Server = StorageService.server) {
+        let url = URLFactory.make(server: server, endpoint: .command)
+        let parameters = HTTPParametersFactory.make(volume: volume)
 
-        logInfo("Posting command: \(Command.volume) with parameters: \(String(describing: parameters))", domain: .api)
+        logInfo(domain: .api)
         postInternal(url: url, parameters: parameters)
     }
 
-    static func postCommandSeek(server: Server, seek: Int) {
-        let url = APIFactory.URL(server: server, endpoint: .command)
-        let parameters = APIFactory.parameters(command: .seek, value: seek)
+    static func post(seek: Int, server: Server = StorageService.server) {
+        let url = URLFactory.make(server: server, endpoint: .command)
+        let parameters = HTTPParametersFactory.make(seek: seek)
 
-        logInfo("Posting command: \(Command.seek) with parameters: \(String(describing: parameters))", domain: .api)
+        logInfo(domain: .api)
         postInternal(url: url, parameters: parameters)
     }
 
-    static func getState(server: Server, completion: @escaping (State?) -> Void) {
-        let url = APIFactory.URL(server: server, endpoint: .state)
+    static func getState(server: Server = StorageService.server, completion: @escaping (State?) -> Void) {
+        let url = URLFactory.make(server: server, endpoint: .state)
 
-        logInfo("Requesting state", domain: .api)
+        logInfo(domain: .api)
         getInternal(url: url) { data in
             guard let data = data else {
                 logError("Invalid response data", domain: .api)
@@ -46,15 +48,15 @@ final class APIService {
                 return
             }
 
-            let state = APIFactory.state(data)
+            let state = State(data: data)
             completion(state)
         }
     }
 
-    static func getSnapshot(server: Server, completion: @escaping (UIImage?) -> Void) {
-        let url = APIFactory.URL(server: server, endpoint: .snapshot)
+    static func getSnapshot(server: Server = StorageService.server, completion: @escaping (UIImage?) -> Void) {
+        let url = URLFactory.make(server: server, endpoint: .snapshot)
 
-        logInfo("Requesting snapshot", domain: .api)
+        logInfo(domain: .api)
         getInternal(url: url) { data in
             guard let data = data else {
                 logError("Invalid response data", domain: .api)
@@ -62,7 +64,7 @@ final class APIService {
                 return
             }
 
-            let snapshot = APIFactory.snapshot(data)
+            let snapshot = UIImage(data: data)
             completion(snapshot)
         }
     }
@@ -72,23 +74,19 @@ final class APIService {
 
 private extension APIService {
 
-    static func postInternal(url: URL?, parameters: [String: String]?) {
+    static func postInternal(url: URL?, parameters: HTTPParameters) {
         guard let url = url else {
             logError("Invalid endpoint URL", domain: .api)
             return
         }
 
-        guard let parameters = parameters else {
-            logError("Empty parameters list", domain: .api)
-            return
-        }
-
-        AF.request(url, method: .post, parameters: parameters).validate().responseData { response in
+        logInfo("Making a POST request to url: \(url) with parameters: \(parameters)", domain: .api)
+        AF.request(url, method: .post, parameters: parameters).validate().response { response in
             switch response.result {
             case .success:
                 logInfo("Request successful", domain: .api)
             case let .failure(error):
-                logError("Request failed with error: \(error)", domain: .api)
+                logError("Request failed with error: \(error.localizedDescription)", domain: .api)
             }
         }
     }
@@ -99,13 +97,14 @@ private extension APIService {
             return
         }
 
+        logInfo("Making a GET request to url: \(url)", domain: .api)
         AF.request(url, method: .get).validate().responseData { response in
             switch response.result {
             case .success:
                 logInfo("Request succeded: \(response.description)", domain: .api)
                 completion(response.data)
             case let .failure(error):
-                logError("Request failed with error: \(error)", domain: .api)
+                logError("Request failed with error: \(error.localizedDescription)", domain: .api)
                 completion(nil)
             }
         }

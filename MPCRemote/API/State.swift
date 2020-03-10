@@ -34,22 +34,30 @@ struct State {
     let version: String
 
     static var `default`: State {
-        self.init(fileName: String(),
-                  filePath: String(),
-                  filePathArg: String(),
-                  fileDir: String(),
-                  fileDirArg: String(),
-                  playbackState: .stopped,
-                  playbackStateString: String(describing: PlaybackState.stopped),
-                  position: 0,
-                  positionString: "00:00:00",
-                  duration: 0,
-                  durationString: "00:00:00",
-                  volume: 0,
-                  muted: false,
-                  playbackRate: 1.0,
-                  size: "0",
-                  reloadTime: String(),
-                  version: "1.0.0.0")
+        State()
+    }
+
+    init() {
+        fileName = String()
+        filePath = String()
+        filePathArg = String()
+        fileDir = String()
+        fileDirArg = String()
+        playbackState = .stopped
+        playbackStateString = String(describing: PlaybackState.stopped)
+        position = 0
+        positionString = "00:00:00"
+        duration = 0
+        durationString = "00:00:00"
+        volume = 0
+        muted = false
+        playbackRate = 1.0
+        size = "0"
+        reloadTime = String()
+        version = "1.0.0.0"
+    }
+
+    init(data: Data) {
+        self = State.default
     }
 }
