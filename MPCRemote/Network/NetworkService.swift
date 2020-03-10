@@ -85,7 +85,7 @@ private extension NetworkService {
         }
 
         var baseAddress: [UInt8] = []
-        for index in 0...3 {
+        for index in 0..<componentCount {
             baseAddress.append(addressComponents[index] & maskComponents[index])
         }
 
