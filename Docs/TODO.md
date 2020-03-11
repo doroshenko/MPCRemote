@@ -12,6 +12,7 @@ TODO:
 [x] MVCS. S for services. S encapsulates API. Change to static?
 [x] Plan architecture - data and UI separation
 [x] Int in range 0...100 for volume and seek
+[ ] Finished IP address integration
 [ ] Scan finished detection  
 [ ] Create a list of found hosts 
 [ ] MPC HC/BE server detection - just call status

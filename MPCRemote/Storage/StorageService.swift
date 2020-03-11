@@ -20,6 +20,6 @@ final class StorageService {
     }
 
     static var server: Server {
-        userDefaults.object(forKey: Key.server.rawValue) as? Server ?? Server(name: "", address: "", port: 0)
+        userDefaults.object(forKey: Key.server.rawValue) as? Server ?? Server(name: "", ip: IPv4(string: "192.168.1.1")!, port: 0)
     }
 }

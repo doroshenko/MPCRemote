@@ -14,7 +14,7 @@ final class URLFactory {
     static func make(scheme: Scheme = .http, server: Server, endpoint: Endpoint) -> URL? {
         var components = URLComponents()
         components.scheme = scheme.rawValue
-        components.host = server.address
+        components.host = server.ip.address
         components.path = endpoint.rawValue
         components.port = server.port
 

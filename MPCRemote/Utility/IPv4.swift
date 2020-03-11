@@ -16,7 +16,7 @@ extension IPv4 {
     init?(octets: [UInt8]) {
         guard octets.count == IPv4.octetCount else { return nil }
 
-        self = UInt32(littleEndianBytes: octets)
+        self = UInt32(bigEndianBytes: octets)
     }
 
     init?(string: String) {
@@ -46,25 +46,33 @@ extension IPv4 {
         broadcastAddress(with: mask) - 1
     }
 
-    var description: String {
-        littleEndianBytes.map { String(describing: $0) }.joined(separator: ".")
+    func usableAddressRange(with mask: IPv4) -> CountableClosedRange<IPv4> {
+        firstUsableAddress(with: mask)...lastUsableAddress(with: mask)
+    }
+}
+
+extension IPv4 {
+    var address: String {
+        bigEndianBytes.map { String(describing: $0) }.joined(separator: ".")
     }
 }
 
 extension FixedWidthInteger {
-    init<I>(littleEndianBytes iterator: inout I) where I: IteratorProtocol, I.Element == UInt8 {
-        self = stride(from: 0, to: Self.bitWidth, by: UInt8.bitWidth).reduce(into: 0) {
+    init<I>(bigEndianBytes iterator: inout I) where I: IteratorProtocol, I.Element == UInt8 {
+        self = stride(from: 0, to: Self.bitWidth, by: UInt8.bitWidth).reversed().reduce(into: 0) {
             $0 |= Self(truncatingIfNeeded: iterator.next()!) &<< $1
         }
     }
 
-    init<C>(littleEndianBytes bytes: C) where C: Collection, C.Element == UInt8 {
+    init<C>(bigEndianBytes bytes: C) where C: Collection, C.Element == UInt8 {
         precondition(bytes.count == (Self.bitWidth + 7)/UInt8.bitWidth)
         var iter = bytes.makeIterator()
-        self.init(littleEndianBytes: &iter)
+        self.init(bigEndianBytes: &iter)
     }
 
-    var littleEndianBytes: [UInt8] {
-        stride(from: 0, to: Self.bitWidth, by: UInt8.bitWidth).map { UInt8(exactly: self >> UInt32($0)) ?? 0 }
+    var bigEndianBytes: [UInt8] {
+        stride(from: 0, to: Self.bitWidth, by: UInt8.bitWidth).reversed().map {
+            UInt8(truncatingIfNeeded: self >> $0)
+        }
     }
 }

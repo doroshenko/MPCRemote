@@ -10,6 +10,6 @@ import Foundation
 
 struct Server: Codable {
     let name: String
-    let address: String
+    let ip: IPv4
     let port: Int
 }

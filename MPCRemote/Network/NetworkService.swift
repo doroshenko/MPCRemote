@@ -16,18 +16,18 @@ final class NetworkService {
             return
         }
 
+        guard let addressRange = addressRange else { return }
+
         cancel()
 
         logInfo("Network scan initiated", domain: .networking)
-        for hostName in enumerateHosts() {
-            performPing(hostName: hostName) { result in
+        for ip in addressRange {
+            performPing(hostName: ip.address) { result in
                 if case let .success(duration) = result {
-                    logInfo("Found host: \(hostName) after \(Int(duration * 1000)) ms", domain: .networking)
+                    logInfo("Found host: \(ip.address) after \(Int(duration * 1000)) ms", domain: .networking)
                 }
             }
         }
-
-        logInfo("Network scan finished", domain: .networking)
     }
 
     static func ping(hostName: String) {
@@ -65,47 +65,20 @@ private extension NetworkService {
         return queue
     }()
 
-    static func enumerateHosts() -> [String] {
-        var hosts: [String] = []
-
-        logInfo("Hosts enumeration started", domain: .networking)
+    static var addressRange: CountableClosedRange<IPv4>? {
+        logInfo(domain: .networking)
         let localAddress = Connectivity.localIPAddress
-        guard let address = localAddress.address, let mask = localAddress.mask else {
-            logError("Couldn't retrieve local IP address and network mask", domain: .networking)
-            return []
+        guard let addressString = localAddress.address, let ip = IPv4(string: addressString) else {
+            logError("Invalid local IP address", domain: .networking)
+            return nil
         }
 
-        let addressComponents = address.components(separatedBy: ".").compactMap { UInt8($0) }
-        let maskComponents = mask.components(separatedBy: ".").compactMap { UInt8($0) }
-        let componentCount = 4
-
-        guard addressComponents.count == componentCount, maskComponents.count == componentCount else {
-            logError("Invalid local IP address and network mask", domain: .networking)
-            return []
+        guard let maskString = localAddress.mask, let mask = IPv4(string: maskString) else {
+            logError("Invalid network mask", domain: .networking)
+            return nil
         }
 
-        var baseAddress: [UInt8] = []
-        for index in 0..<componentCount {
-            baseAddress.append(addressComponents[index] & maskComponents[index])
-        }
-
-        logInfo("Base IP address: \(baseAddress)", domain: .networking)
-        let maxIndex: UInt8 = 254
-
-        if baseAddress[2] == 0 {
-            for thirdIndex in 1...maxIndex {
-                for fourthIndex in 1...maxIndex {
-                    hosts.append("\(baseAddress[0]).\(baseAddress[1]).\(thirdIndex).\(fourthIndex)")
-                }
-            }
-        } else {
-            for fourthIndex in 1...maxIndex {
-                hosts.append("\(baseAddress[0]).\(baseAddress[1]).\(baseAddress[2]).\(fourthIndex)")
-            }
-        }
-
-        logInfo("Hosts enumeration finished", domain: .networking)
-        return hosts
+        return ip.usableAddressRange(with: mask)
     }
 
     static func performPing(hostName: String, completion: @escaping PingResult) {
