@@ -80,11 +80,11 @@ private extension APIService {
             return
         }
 
-        logInfo("Making a POST request to url: \(url) with parameters: \(parameters)", domain: .api)
+        logDebug("Making a POST request to url: \(url) with parameters: \(parameters)", domain: .api)
         AF.request(url, method: .post, parameters: parameters).validate().response { response in
             switch response.result {
             case .success:
-                logInfo("Request successful", domain: .api)
+                logDebug("Request successful", domain: .api)
             case let .failure(error):
                 logError("Request failed with error: \(error.localizedDescription)", domain: .api)
             }
@@ -97,11 +97,11 @@ private extension APIService {
             return
         }
 
-        logInfo("Making a GET request to url: \(url)", domain: .api)
+        logDebug("Making a GET request to url: \(url)", domain: .api)
         AF.request(url, method: .get).validate().responseData { response in
             switch response.result {
             case .success:
-                logInfo("Request succeded: \(response.description)", domain: .api)
+                logDebug("Request succeded: \(response.description)", domain: .api)
                 completion(response.data)
             case let .failure(error):
                 logError("Request failed with error: \(error.localizedDescription)", domain: .api)

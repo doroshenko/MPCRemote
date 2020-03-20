@@ -17,6 +17,6 @@ extension UIAlertController {
         addAction(UIAlertAction(title: buttonTitle, style: .default, handler: nil))
         target.present(self, animated: true, completion: nil)
 
-        logTrace("Alert shown with message: \(title) from controller: \(target)", domain: .default)
+        logDebug("Alert shown with message: \(title) from controller: \(target)", domain: .default)
     }
 }

@@ -32,15 +32,15 @@ private struct Logger {
     }
 
     static func log(message: String, level: LogLevel, domain: LogDomain, file: String, line: Int, function: String) {
-        #if DEBUG
         // swiftlint:disable:next insecure_log
-        print("\(date) \(level)\(domain) \(location(file, line, function))\(text(message))")
-        #endif
+        NSLog("\(date) \(level)\(domain) \(location(file, line, function))\(text(message))")
     }
 }
 
-func logTrace(_ message: String = String(), domain: LogDomain = .default, file: String = #file, line: Int = #line, function: String = #function) {
-    Logger.log(message: message, level: .trace, domain: domain, file: file, line: line, function: function)
+func logDebug(_ message: String = String(), domain: LogDomain = .default, file: String = #file, line: Int = #line, function: String = #function) {
+    #if DEBUG
+    Logger.log(message: message, level: .debug, domain: domain, file: file, line: line, function: function)
+    #endif
 }
 
 func logInfo(_ message: String = String(), domain: LogDomain = .default, file: String = #file, line: Int = #line, function: String = #function) {

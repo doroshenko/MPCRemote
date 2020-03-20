@@ -15,11 +15,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        logTrace()
+        logDebug()
     }
 
     @IBAction func pingButtonClicked(_ sender: Any) {
-        logTrace()
+        logDebug()
 
 //        guard let hostName = textInput.text else {
 //            logError("No host specified", domain: .default)
@@ -31,18 +31,18 @@ class ViewController: UIViewController {
 
         let server = Server(name: "MPC", ip: IPv4(string: "192.168.1.202")!, port: 13579)
         APIService.getState(server: server) { state in
-            logInfo("!!! \(String(describing: state))")
+            logDebug("!!! \(String(describing: state))")
         }
     }
 
     @IBAction func scanButtonClicked(_ sender: Any) {
-        logTrace()
+        logDebug()
 
         NetworkService.scan()
     }
 
     @IBAction func cancelButtonClicked(_ sender: Any) {
-        logTrace()
+        logDebug()
 
         NetworkService.cancel()
     }

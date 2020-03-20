@@ -20,7 +20,7 @@ final class NetworkService {
 
         cancel()
 
-        logInfo("Network scan initiated", domain: .networking)
+        logDebug("Network scan initiated", domain: .networking)
         for ip in addressRange {
             performPing(hostName: ip.address) { result in
                 if case let .success(duration) = result {
@@ -36,7 +36,7 @@ final class NetworkService {
             return
         }
 
-        logInfo("Ping initated for host: \(hostName)", domain: .networking)
+        logDebug("Ping initated for host: \(hostName)", domain: .networking)
         performPing(hostName: hostName) { result in
             switch result {
             case .success(let duration):
@@ -49,7 +49,7 @@ final class NetworkService {
     }
 
     static func cancel() {
-        logInfo("All active operations canceled", domain: .networking)
+        logDebug("All active operations canceled", domain: .networking)
         NetworkService.operationQueue.cancelAllOperations()
     }
 }
@@ -66,7 +66,7 @@ private extension NetworkService {
     }()
 
     static var addressRange: CountableClosedRange<IPv4>? {
-        logInfo(domain: .networking)
+        logDebug(domain: .networking)
         let localAddress = Connectivity.localIPAddress
         guard let addressString = localAddress.address, let ip = IPv4(string: addressString) else {
             logError("Invalid local IP address", domain: .networking)
