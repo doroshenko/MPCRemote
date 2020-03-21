@@ -31,8 +31,8 @@
 		0CD0EA652408973100DE10E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA642408973100DE10E5 /* Assets.xcassets */; };
 		0CD0EA682408973100DE10E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */; };
 		0CFAC4CC2410A0C900EF83E1 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAC4CB2410A0C900EF83E1 /* State.swift */; };
-		68A8754AB49698381BB3ECAA /* libPods-MPCRemote.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 446C02256618854692F558C1 /* libPods-MPCRemote.a */; };
-		A5FF385E4BB36FD0ECCC75E6 /* libPods-MPCRemoteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA2C60F8CEB863720C2F1C8 /* libPods-MPCRemoteTests.a */; };
+		ABB7103A3758090544BECD14 /* libPods-MPCRemoteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8E237D84CA8F64B517A74F /* libPods-MPCRemoteTests.a */; };
+		F1CDBB008BD9848EE0F83594 /* libPods-MPCRemote.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A90B73EB470EB98F0EED69 /* libPods-MPCRemote.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0115685AAFD50309556E0E25 /* Pods-MPCRemote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemote.debug.xcconfig"; path = "Target Support Files/Pods-MPCRemote/Pods-MPCRemote.debug.xcconfig"; sourceTree = "<group>"; };
 		0C18D5E42416D31B0035C3A5 /* URLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLFactory.swift; sourceTree = "<group>"; };
 		0C18D5E6241713390035C3A5 /* Comparable+Clamped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Clamped.swift"; sourceTree = "<group>"; };
 		0C18D5E8241714C80035C3A5 /* HTTPParametersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPParametersFactory.swift; sourceTree = "<group>"; };
@@ -78,12 +79,11 @@
 		0CD0EA7D2408973200DE10E5 /* MPCRemoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCRemoteUITests.swift; sourceTree = "<group>"; };
 		0CD0EA7F2408973200DE10E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CFAC4CB2410A0C900EF83E1 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
-		2E8E34B052AE5F7D36196E34 /* Pods-MPCRemoteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemoteTests.debug.xcconfig"; path = "Target Support Files/Pods-MPCRemoteTests/Pods-MPCRemoteTests.debug.xcconfig"; sourceTree = "<group>"; };
-		446C02256618854692F558C1 /* libPods-MPCRemote.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPCRemote.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6DE8C9BB30817CF5E0F279ED /* Pods-MPCRemoteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemoteTests.release.xcconfig"; path = "Target Support Files/Pods-MPCRemoteTests/Pods-MPCRemoteTests.release.xcconfig"; sourceTree = "<group>"; };
-		B5C8B703A7CFA87376B810BB /* Pods-MPCRemote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemote.debug.xcconfig"; path = "Target Support Files/Pods-MPCRemote/Pods-MPCRemote.debug.xcconfig"; sourceTree = "<group>"; };
-		CAA2C60F8CEB863720C2F1C8 /* libPods-MPCRemoteTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPCRemoteTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3F3BECB67CC264A4B5E9241 /* Pods-MPCRemote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemote.release.xcconfig"; path = "Target Support Files/Pods-MPCRemote/Pods-MPCRemote.release.xcconfig"; sourceTree = "<group>"; };
+		0F8E237D84CA8F64B517A74F /* libPods-MPCRemoteTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPCRemoteTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		17197D0CED7CA9FAFADE9318 /* Pods-MPCRemoteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemoteTests.debug.xcconfig"; path = "Target Support Files/Pods-MPCRemoteTests/Pods-MPCRemoteTests.debug.xcconfig"; sourceTree = "<group>"; };
+		60DB67B32CC759A164C73B81 /* Pods-MPCRemoteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemoteTests.release.xcconfig"; path = "Target Support Files/Pods-MPCRemoteTests/Pods-MPCRemoteTests.release.xcconfig"; sourceTree = "<group>"; };
+		9A39C415E62E14B34DCF0826 /* Pods-MPCRemote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemote.release.xcconfig"; path = "Target Support Files/Pods-MPCRemote/Pods-MPCRemote.release.xcconfig"; sourceTree = "<group>"; };
+		E1A90B73EB470EB98F0EED69 /* libPods-MPCRemote.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPCRemote.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68A8754AB49698381BB3ECAA /* libPods-MPCRemote.a in Frameworks */,
+				F1CDBB008BD9848EE0F83594 /* libPods-MPCRemote.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5FF385E4BB36FD0ECCC75E6 /* libPods-MPCRemoteTests.a in Frameworks */,
+				ABB7103A3758090544BECD14 /* libPods-MPCRemoteTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +154,7 @@
 				0CD0EA7C2408973200DE10E5 /* MPCRemoteUITests */,
 				0CD0EA592408973100DE10E5 /* Products */,
 				B292F8FB8811D1E145EF0B78 /* Pods */,
-				F444164DA0AF0981391EDA1F /* Frameworks */,
+				FAE8E01BE4E9C15D8623F464 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -221,19 +221,19 @@
 		B292F8FB8811D1E145EF0B78 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B5C8B703A7CFA87376B810BB /* Pods-MPCRemote.debug.xcconfig */,
-				E3F3BECB67CC264A4B5E9241 /* Pods-MPCRemote.release.xcconfig */,
-				2E8E34B052AE5F7D36196E34 /* Pods-MPCRemoteTests.debug.xcconfig */,
-				6DE8C9BB30817CF5E0F279ED /* Pods-MPCRemoteTests.release.xcconfig */,
+				0115685AAFD50309556E0E25 /* Pods-MPCRemote.debug.xcconfig */,
+				9A39C415E62E14B34DCF0826 /* Pods-MPCRemote.release.xcconfig */,
+				17197D0CED7CA9FAFADE9318 /* Pods-MPCRemoteTests.debug.xcconfig */,
+				60DB67B32CC759A164C73B81 /* Pods-MPCRemoteTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		F444164DA0AF0981391EDA1F /* Frameworks */ = {
+		FAE8E01BE4E9C15D8623F464 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				446C02256618854692F558C1 /* libPods-MPCRemote.a */,
-				CAA2C60F8CEB863720C2F1C8 /* libPods-MPCRemoteTests.a */,
+				E1A90B73EB470EB98F0EED69 /* libPods-MPCRemote.a */,
+				0F8E237D84CA8F64B517A74F /* libPods-MPCRemoteTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -245,7 +245,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0CD0EA822408973200DE10E5 /* Build configuration list for PBXNativeTarget "MPCRemote" */;
 			buildPhases = (
-				6F616D6F7B203101CDA493D8 /* [CP] Check Pods Manifest.lock */,
+				FB37D206BAF2040A3D92B10D /* [CP] Check Pods Manifest.lock */,
 				0CD897E724089ED100E350FB /* SwiftLint */,
 				0CD0EA542408973100DE10E5 /* Sources */,
 				0CD0EA552408973100DE10E5 /* Frameworks */,
@@ -264,7 +264,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0CD0EA852408973200DE10E5 /* Build configuration list for PBXNativeTarget "MPCRemoteTests" */;
 			buildPhases = (
-				FA00DD1FB3A6AEDB1F028936 /* [CP] Check Pods Manifest.lock */,
+				48AEAF9822E8E16D40A9CDF2 /* [CP] Check Pods Manifest.lock */,
 				0CD0EA6A2408973100DE10E5 /* Sources */,
 				0CD0EA6B2408973100DE10E5 /* Frameworks */,
 				0CD0EA6C2408973100DE10E5 /* Resources */,
@@ -357,29 +357,7 @@
 			shellPath = /bin/sh;
 			shellScript = "\"$SRCROOT/Scripts/swiftlint.sh\" -s -a\n";
 		};
-		6F616D6F7B203101CDA493D8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MPCRemote-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FA00DD1FB3A6AEDB1F028936 /* [CP] Check Pods Manifest.lock */ = {
+		48AEAF9822E8E16D40A9CDF2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -395,6 +373,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-MPCRemoteTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB37D206BAF2040A3D92B10D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MPCRemote-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -585,7 +585,7 @@
 		};
 		0CD0EA832408973200DE10E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B5C8B703A7CFA87376B810BB /* Pods-MPCRemote.debug.xcconfig */;
+			baseConfigurationReference = 0115685AAFD50309556E0E25 /* Pods-MPCRemote.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -608,7 +608,7 @@
 		};
 		0CD0EA842408973200DE10E5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E3F3BECB67CC264A4B5E9241 /* Pods-MPCRemote.release.xcconfig */;
+			baseConfigurationReference = 9A39C415E62E14B34DCF0826 /* Pods-MPCRemote.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -630,7 +630,7 @@
 		};
 		0CD0EA862408973200DE10E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E8E34B052AE5F7D36196E34 /* Pods-MPCRemoteTests.debug.xcconfig */;
+			baseConfigurationReference = 17197D0CED7CA9FAFADE9318 /* Pods-MPCRemoteTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -653,7 +653,7 @@
 		};
 		0CD0EA872408973200DE10E5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6DE8C9BB30817CF5E0F279ED /* Pods-MPCRemoteTests.release.xcconfig */;
+			baseConfigurationReference = 60DB67B32CC759A164C73B81 /* Pods-MPCRemoteTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
