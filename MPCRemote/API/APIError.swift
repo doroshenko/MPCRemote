@@ -14,15 +14,13 @@ enum APIError: Error {
     case requestFailed(AFError)
     case emptyResponse
     case conversionFailed
-}
 
-extension APIError: CustomDebugStringConvertible {
-    var debugDescription: String {
+    var localizedDescription: String {
         switch self {
         case .invalidEndpoint:
             return "Invalid endpoint URL"
         case .requestFailed(let error):
-            return "Request failed with error: \(error.localizedDescription) "
+            return error.localizedDescription
         case .emptyResponse:
             return "Empty response data"
         case .conversionFailed:
@@ -31,7 +29,7 @@ extension APIError: CustomDebugStringConvertible {
     }
 }
 
-typealias PostResult = (Result<Void, APIError>) -> Void
-typealias GetResult = (Result<Data, APIError>) -> Void
-typealias StateResult = (Result<State, APIError>) -> Void
-typealias SnapshotResult = (Result<UIImage, APIError>) -> Void
+typealias APIResult<Value> = (Result<Value, APIError>) -> Void
+typealias PostResult = APIResult<Void>
+typealias StateResult = APIResult<State>
+typealias SnapshotResult = APIResult<UIImage>
