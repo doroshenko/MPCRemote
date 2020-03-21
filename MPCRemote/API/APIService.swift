@@ -13,7 +13,7 @@ typealias HTTPParameters = [String: String]
 
 final class APIService {
 
-    static func post(command: Command, server: Server = StorageService.server) {
+    static func post(command: Command, server: Server? = StorageService.server) {
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(command: command)
 
@@ -21,7 +21,7 @@ final class APIService {
         postInternal(url: url, parameters: parameters)
     }
 
-    static func post(volume: Int, server: Server = StorageService.server) {
+    static func post(volume: Int, server: Server? = StorageService.server) {
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(volume: volume)
 
@@ -29,7 +29,7 @@ final class APIService {
         postInternal(url: url, parameters: parameters)
     }
 
-    static func post(seek: Int, server: Server = StorageService.server) {
+    static func post(seek: Int, server: Server? = StorageService.server) {
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(seek: seek)
 
@@ -37,7 +37,7 @@ final class APIService {
         postInternal(url: url, parameters: parameters)
     }
 
-    static func getState(server: Server = StorageService.server, completion: @escaping (State?) -> Void) {
+    static func getState(server: Server? = StorageService.server, completion: @escaping (State?) -> Void) {
         let url = URLFactory.make(server: server, endpoint: .state)
 
         logInfo(domain: .api)
@@ -53,7 +53,7 @@ final class APIService {
         }
     }
 
-    static func getSnapshot(server: Server = StorageService.server, completion: @escaping (UIImage?) -> Void) {
+    static func getSnapshot(server: Server? = StorageService.server, completion: @escaping (UIImage?) -> Void) {
         let url = URLFactory.make(server: server, endpoint: .snapshot)
 
         logInfo(domain: .api)

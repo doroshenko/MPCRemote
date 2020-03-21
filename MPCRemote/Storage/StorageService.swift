@@ -10,16 +10,18 @@ import Foundation
 
 final class StorageService {
 
-    private enum Key: String {
+    private enum Key: String, UserDefaultKey {
         case server
         case state
+        case servers
     }
 
-    private static var userDefaults: UserDefaults {
-        .standard
-    }
+    @UserDefault(StorageService.Key.server, defaultValue: nil)
+    static var server: Server?
 
-    static var server: Server {
-        userDefaults.object(forKey: Key.server.rawValue) as? Server ?? Server(name: "", ip: IPv4(string: "192.168.1.1")!, port: 0)
-    }
+    @UserDefault(StorageService.Key.state, defaultValue: State.default)
+    static var state: State
+
+    @UserDefault(StorageService.Key.servers, defaultValue: [])
+    static var servers: [Server]
 }
