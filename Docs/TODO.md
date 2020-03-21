@@ -15,6 +15,7 @@ TODO:
 [ ] Finished IP address integration
 [ ] Scan finished detection  
 [ ] Create a list of found hosts 
+[ ] IPv6 support
 [ ] MPC HC/BE server detection - just call status
 [ ] NSUserDefaults data storage - server data, current state, save state for server, multiserver possibility
 [ ] Check timeouts when performing API calls
