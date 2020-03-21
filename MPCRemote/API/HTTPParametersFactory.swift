@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias HTTPParameters = [String: String]
+
 final class HTTPParametersFactory {
 
     static func make(command: Command) -> HTTPParameters {

@@ -18,6 +18,7 @@
 		0C48B3E524267EC200EEFE98 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C48B3E424267EC200EEFE98 /* Validation.swift */; };
 		0C48B3E7242691D800EEFE98 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C48B3E6242691D800EEFE98 /* APIError.swift */; };
 		0C48B3E92426938C00EEFE98 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C48B3E82426938C00EEFE98 /* APIService.swift */; };
+		0C48B3EB2426BEDF00EEFE98 /* PingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C48B3EA2426BEDF00EEFE98 /* PingError.swift */; };
 		0C4AF237240B35BF0057AC86 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF236240B35BF0057AC86 /* NetworkService.swift */; };
 		0C4AF23A240B3B5B0057AC86 /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF239240B3B5B0057AC86 /* Ping.swift */; };
 		0C4AF23D240B59040057AC86 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF23C240B59040057AC86 /* Logger.swift */; };
@@ -62,6 +63,7 @@
 		0C48B3E424267EC200EEFE98 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		0C48B3E6242691D800EEFE98 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		0C48B3E82426938C00EEFE98 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		0C48B3EA2426BEDF00EEFE98 /* PingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingError.swift; sourceTree = "<group>"; };
 		0C4AF232240B35020057AC86 /* MPCRemote-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MPCRemote-Bridging-Header.h"; sourceTree = "<group>"; };
 		0C4AF236240B35BF0057AC86 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		0C4AF239240B3B5B0057AC86 /* Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				0C4AF236240B35BF0057AC86 /* NetworkService.swift */,
 				0C30E24A240DD3BA001C1EC9 /* Connectivity.swift */,
 				0C4AF239240B3B5B0057AC86 /* Ping.swift */,
+				0C48B3EA2426BEDF00EEFE98 /* PingError.swift */,
 				0C48B3E424267EC200EEFE98 /* Validation.swift */,
 			);
 			path = Network;
@@ -435,6 +438,7 @@
 				0C4FA7802416B0A300F71F9E /* Server.swift in Sources */,
 				0CFAC4CC2410A0C900EF83E1 /* State.swift in Sources */,
 				0C18D5E7241713390035C3A5 /* Comparable+Clamped.swift in Sources */,
+				0C48B3EB2426BEDF00EEFE98 /* PingError.swift in Sources */,
 				0C48B3E92426938C00EEFE98 /* APIService.swift in Sources */,
 				0C8271732411EEEB00E5474B /* Constants.swift in Sources */,
 				0CD0EA5E2408973100DE10E5 /* SceneDelegate.swift in Sources */,

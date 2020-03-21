@@ -9,8 +9,6 @@
 import Foundation
 import Alamofire
 
-typealias HTTPParameters = [String: String]
-
 final class APIService {
 
     static func post(command: Command, server: Server? = StorageService.server, completion: @escaping PostResult) {
@@ -37,13 +35,13 @@ final class APIService {
     static func getState(server: Server? = StorageService.server, completion: @escaping StateResult) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .state)
-        performGet(url: url, conversion: stateConversion, completion: completion)
+        performGetState(url: url, completion: completion)
     }
 
     static func getSnapshot(server: Server? = StorageService.server, completion: @escaping SnapshotResult) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .snapshot)
-        performGet(url: url, conversion: imageConversion, completion: completion)
+        performGetSnapshot(url: url, completion: completion)
     }
 }
 
@@ -69,7 +67,30 @@ private extension APIService {
         }
     }
 
-    static func performGet<Value>(url: URL?, conversion: @escaping (Data) -> Value?, completion: @escaping APIResult<Value>) {
+    static func performGetState(url: URL?, completion: @escaping StateResult) {
+        guard let url = url else {
+            completion(.failure(.invalidEndpoint))
+            return
+        }
+
+        logDebug("Making a GET request to url: \(url)", domain: .api)
+        AF.request(url, method: .get).validate().responseString { response in
+            switch response.result {
+            case .success(let string):
+                guard let state = State(string: string) else {
+                    completion(.failure(.conversionFailed))
+                    return
+                }
+
+                logDebug("Request succeded: \(response.description)", domain: .api)
+                completion(.success(state))
+            case let .failure(error):
+                completion(.failure(.requestFailed(error)))
+            }
+        }
+    }
+
+    static func performGetSnapshot(url: URL?, completion: @escaping SnapshotResult) {
         guard let url = url else {
             completion(.failure(.invalidEndpoint))
             return
@@ -78,13 +99,8 @@ private extension APIService {
         logDebug("Making a GET request to url: \(url)", domain: .api)
         AF.request(url, method: .get).validate().responseData { response in
             switch response.result {
-            case .success:
-                guard let data = response.data else {
-                    completion(.failure(.emptyResponse))
-                    return
-                }
-
-                guard let output = conversion(data) else {
+            case .success(let data):
+                guard let output = UIImage(data: data) else {
                     completion(.failure(.conversionFailed))
                     return
                 }
@@ -95,18 +111,5 @@ private extension APIService {
                 completion(.failure(.requestFailed(error)))
             }
         }
-    }
-}
-
-// MARK: - Data conversion functions
-
-private extension APIService {
-
-    static func imageConversion(data: Data) -> UIImage? {
-        UIImage(data: data)
-    }
-
-    static func stateConversion(data: Data) -> State? {
-        State(data: data)
     }
 }

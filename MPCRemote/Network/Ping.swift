@@ -8,23 +8,6 @@
 
 import Foundation
 
-enum PingError: Error {
-    case startupFailure(Error)
-    case sendingFailure(Error)
-    case timeout
-
-    var localizedDescription: String {
-        switch self {
-        case .startupFailure(let error), .sendingFailure(let error):
-            return error.localizedDescription
-        case .timeout:
-            return "Timeout"
-        }
-    }
-}
-
-typealias PingResult = (Result<TimeInterval, PingError>) -> Void
-
 final class Ping: AsynchronousOperation {
 
     private let completionHandler: PingResult

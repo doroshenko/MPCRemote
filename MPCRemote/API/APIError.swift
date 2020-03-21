@@ -12,7 +12,6 @@ import Alamofire
 enum APIError: Error {
     case invalidEndpoint
     case requestFailed(AFError)
-    case emptyResponse
     case conversionFailed
 
     var localizedDescription: String {
@@ -21,8 +20,6 @@ enum APIError: Error {
             return "Invalid endpoint URL"
         case .requestFailed(let error):
             return error.localizedDescription
-        case .emptyResponse:
-            return "Empty response data"
         case .conversionFailed:
             return "Response data conversion failed"
         }
