@@ -17,33 +17,33 @@ final class APIService {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(command: command)
-        postInternal(url: url, parameters: parameters, completion: completion)
+        performPost(url: url, parameters: parameters, completion: completion)
     }
 
     static func post(volume: Int, server: Server? = StorageService.server, completion: @escaping PostResult) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(volume: volume)
-        postInternal(url: url, parameters: parameters, completion: completion)
+        performPost(url: url, parameters: parameters, completion: completion)
     }
 
     static func post(seek: Int, server: Server? = StorageService.server, completion: @escaping PostResult) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(seek: seek)
-        postInternal(url: url, parameters: parameters, completion: completion)
+        performPost(url: url, parameters: parameters, completion: completion)
     }
 
     static func getState(server: Server? = StorageService.server, completion: @escaping StateResult) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .state)
-        getInternal(url: url, conversion: stateConversion, completion: completion)
+        performGet(url: url, conversion: stateConversion, completion: completion)
     }
 
     static func getSnapshot(server: Server? = StorageService.server, completion: @escaping SnapshotResult) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .snapshot)
-        getInternal(url: url, conversion: imageConversion, completion: completion)
+        performGet(url: url, conversion: imageConversion, completion: completion)
     }
 }
 
@@ -51,7 +51,7 @@ final class APIService {
 
 private extension APIService {
 
-    static func postInternal(url: URL?, parameters: HTTPParameters, completion: @escaping PostResult) {
+    static func performPost(url: URL?, parameters: HTTPParameters, completion: @escaping PostResult) {
         guard let url = url else {
             completion(.failure(.invalidEndpoint))
             return
@@ -69,7 +69,7 @@ private extension APIService {
         }
     }
 
-    static func getInternal<Value>(url: URL?, conversion: @escaping (Data) -> Value?, completion: @escaping APIResult<Value>) {
+    static func performGet<Value>(url: URL?, conversion: @escaping (Data) -> Value?, completion: @escaping APIResult<Value>) {
         guard let url = url else {
             completion(.failure(.invalidEndpoint))
             return

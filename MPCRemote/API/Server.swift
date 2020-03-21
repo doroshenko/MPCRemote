@@ -9,7 +9,13 @@
 import Foundation
 
 struct Server: Codable {
-    let name: String
     let address: String
     let port: UInt16
+    let name: String
+
+    init(address: String, port: UInt16 = Port.default, name: String? = nil) {
+        self.address = address
+        self.port = port
+        self.name = name ?? "\(address):\(port)"
+    }
 }

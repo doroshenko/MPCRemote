@@ -21,18 +21,13 @@ class ViewController: UIViewController {
     @IBAction func pingButtonClicked(_ sender: Any) {
         logDebug()
 
-//        guard let hostName = textInput.text else {
-//            logError("No host specified", domain: .default)
-//            UIAlertController(message: "No host specified", target: self)
-//            return
-//        }
-//
-//        NetworkService.ping(hostName: hostName)
-
-        let server = Server(name: "MPC", address: "192.168.1.202", port: Port.default)
-        APIService.getState(server: server) { state in
-            logDebug("!!! \(String(describing: state))")
+        guard let hostName = textInput.text else {
+            logError("No host specified", domain: .default)
+            UIAlertController(message: "No host specified", target: self)
+            return
         }
+
+        NetworkService.ping(hostName: hostName)
     }
 
     @IBAction func scanButtonClicked(_ sender: Any) {

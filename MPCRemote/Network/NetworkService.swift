@@ -21,12 +21,8 @@ final class NetworkService {
         cancel()
 
         logDebug("Network scan initiated", domain: .networking)
-        for ip in addressRange {
-            performPing(hostName: ip.address) { result in
-                if case let .success(duration) = result {
-                    logInfo("Found host: \(ip.address) after \(Int(duration * 1000)) ms", domain: .networking)
-                }
-            }
+        addressRange.forEach { ip in
+            performPing(hostName: ip.address)
         }
     }
 
@@ -37,15 +33,7 @@ final class NetworkService {
         }
 
         logDebug("Ping initated for host: \(hostName)", domain: .networking)
-        performPing(hostName: hostName) { result in
-            switch result {
-            case .success(let duration):
-                let msValue = Int(duration * 1000)
-                logInfo("Found host: \(hostName) after \(msValue) ms", domain: .networking)
-            case .failure(let error):
-                logError("Couldn't ping host: \(hostName) with error: \(error)", domain: .networking)
-            }
-        }
+        performPing(hostName: hostName)
     }
 
     static func cancel() {
@@ -57,13 +45,6 @@ final class NetworkService {
 // MARK: - Internals
 
 private extension NetworkService {
-
-    static let operationQueue: OperationQueue = {
-        let queue = OperationQueue()
-        queue.name = "network_scanner_queue"
-        queue.maxConcurrentOperationCount = 50
-        return queue
-    }()
 
     static var addressRange: CountableClosedRange<IPv4>? {
         logDebug(domain: .networking)
@@ -81,12 +62,52 @@ private extension NetworkService {
         return ip.usableAddressRange(with: mask)
     }
 
-    static func performPing(hostName: String, completion: @escaping PingResult) {
+    static func performPing(hostName: String) {
+        pingOperation(hostName: hostName) { pingResult in
+            switch pingResult {
+            case let .success(duration):
+                logDebug("Found host: \(hostName) after \(Int(duration * 1000)) ms", domain: .networking)
+                performValidation(hostName: hostName)
+            case .failure:
+                // Uncomment to debug
+                // logDebug(error.localizedDescription, domain: .networking)
+                break
+            }
+        }
+    }
+
+    static func performValidation(hostName: String) {
+        let server = Server(address: hostName)
+        validationOperation(server: server) { validateResult in
+            switch validateResult {
+            case let .success(state):
+                logInfo("Found MPC server at: \(hostName) with state: \(state)", domain: .networking)
+            case .failure:
+                // Uncomment to debug
+                // logDebug(error.localizedDescription, domain: .networking)
+                break
+            }
+        }
+    }
+}
+
+// MARK: - Operations
+
+private extension NetworkService {
+
+    static let operationQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.name = "network_scanner_queue"
+        queue.maxConcurrentOperationCount = 50
+        return queue
+    }()
+
+    static func pingOperation(hostName: String, completion: @escaping PingResult) {
         let ping = Ping(hostName: hostName, completion: completion)
         NetworkService.operationQueue.addOperation(ping)
     }
 
-    static func validateServer(server: Server, completion: @escaping StateResult) {
+    static func validationOperation(server: Server, completion: @escaping StateResult) {
         let validation = Validation(server: server, completion: completion)
         NetworkService.operationQueue.addOperation(validation)
     }
