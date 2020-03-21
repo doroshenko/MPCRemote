@@ -35,6 +35,15 @@ struct Parameter {
     }
 }
 
+struct Port {
+    static let `default`: UInt16 = 13579
+}
+
+struct Timeout {
+    static let ping: TimeInterval = 1.0
+    static let validation: TimeInterval = 1.0
+}
+
 enum Command: Int {
     case seek = -1
     case volume = -2

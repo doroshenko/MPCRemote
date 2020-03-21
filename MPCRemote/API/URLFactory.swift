@@ -19,9 +19,9 @@ final class URLFactory {
 
         var components = URLComponents()
         components.scheme = scheme.rawValue
-        components.host = server.ip.address
+        components.host = server.address
         components.path = endpoint.rawValue
-        components.port = server.port
+        components.port = Int(server.port)
 
         return components.url
     }

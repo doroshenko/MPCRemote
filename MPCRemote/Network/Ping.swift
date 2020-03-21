@@ -24,8 +24,6 @@ final class Ping: AsynchronousOperation {
     private var timer: Timer?
     private var sendTime: TimeInterval = 0.0
 
-    private static let timeoutInterval: TimeInterval = 1.0
-
     init(hostName: String, completion: @escaping PingResult) {
         self.completionHandler = completion
         self.simplePing = SimplePing(hostName: hostName)
@@ -56,7 +54,7 @@ final class Ping: AsynchronousOperation {
 
     private func setupTimer() {
         sendTime = Date.timeIntervalSinceReferenceDate
-        timer = Timer.scheduledTimer(withTimeInterval: Ping.timeoutInterval, repeats: false, block: { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: Timeout.ping, repeats: false, block: { [weak self] _ in
             self?.timeout()
         })
     }

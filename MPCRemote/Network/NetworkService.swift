@@ -82,10 +82,12 @@ private extension NetworkService {
     }
 
     static func performPing(hostName: String, completion: @escaping PingResult) {
-        let ping = Ping(hostName: hostName) { result in
-            completion(result)
-        }
-
+        let ping = Ping(hostName: hostName, completion: completion)
         NetworkService.operationQueue.addOperation(ping)
+    }
+
+    static func validateServer(server: Server, completion: @escaping StateResult) {
+        let validation = Validation(server: server, completion: completion)
+        NetworkService.operationQueue.addOperation(validation)
     }
 }

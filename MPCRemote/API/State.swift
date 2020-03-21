@@ -57,7 +57,8 @@ struct State {
         version = "1.0.0.0"
     }
 
-    init(data: Data) {
+    init?(data: Data) {
+        // TODO
         self = State.default
     }
 }

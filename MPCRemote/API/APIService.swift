@@ -13,59 +13,65 @@ typealias HTTPParameters = [String: String]
 
 final class APIService {
 
-    static func post(command: Command, server: Server? = StorageService.server) {
+    static func post(command: Command, server: Server? = StorageService.server, completion: @escaping PostResult) {
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(command: command)
 
         logInfo(domain: .api)
-        postInternal(url: url, parameters: parameters)
+        postInternal(url: url, parameters: parameters, completion: completion)
     }
 
-    static func post(volume: Int, server: Server? = StorageService.server) {
+    static func post(volume: Int, server: Server? = StorageService.server, completion: @escaping PostResult) {
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(volume: volume)
 
         logInfo(domain: .api)
-        postInternal(url: url, parameters: parameters)
+        postInternal(url: url, parameters: parameters, completion: completion)
     }
 
-    static func post(seek: Int, server: Server? = StorageService.server) {
+    static func post(seek: Int, server: Server? = StorageService.server, completion: @escaping PostResult) {
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(seek: seek)
 
         logInfo(domain: .api)
-        postInternal(url: url, parameters: parameters)
+        postInternal(url: url, parameters: parameters, completion: completion)
     }
 
-    static func getState(server: Server? = StorageService.server, completion: @escaping (State?) -> Void) {
+    static func getState(server: Server? = StorageService.server, completion: @escaping StateResult) {
         let url = URLFactory.make(server: server, endpoint: .state)
 
         logInfo(domain: .api)
-        getInternal(url: url) { data in
-            guard let data = data else {
-                logError("Invalid response data", domain: .api)
-                completion(nil)
-                return
+        getInternal(url: url) { result in
+            switch result {
+            case let .success(data):
+                if let state = State(data: data) {
+                    logDebug("Request successful", domain: .api)
+                    completion(.success(state))
+                } else {
+                    completion(.failure(.conversionFailed))
+                }
+            case let .failure(error):
+                completion(.failure(error))
             }
-
-            let state = State(data: data)
-            completion(state)
         }
     }
 
-    static func getSnapshot(server: Server? = StorageService.server, completion: @escaping (UIImage?) -> Void) {
+    static func getSnapshot(server: Server? = StorageService.server, completion: @escaping SnapshotResult) {
         let url = URLFactory.make(server: server, endpoint: .snapshot)
 
         logInfo(domain: .api)
-        getInternal(url: url) { data in
-            guard let data = data else {
-                logError("Invalid response data", domain: .api)
-                completion(nil)
-                return
+        getInternal(url: url) { result in
+            switch result {
+            case let .success(data):
+                if let snapshot = UIImage(data: data) {
+                    logDebug("Request successful", domain: .api)
+                    completion(.success(snapshot))
+                } else {
+                    completion(.failure(.conversionFailed))
+                }
+            case let .failure(error):
+                completion(.failure(error))
             }
-
-            let snapshot = UIImage(data: data)
-            completion(snapshot)
         }
     }
 }
@@ -74,9 +80,9 @@ final class APIService {
 
 private extension APIService {
 
-    static func postInternal(url: URL?, parameters: HTTPParameters) {
+    static func postInternal(url: URL?, parameters: HTTPParameters, completion: @escaping PostResult) {
         guard let url = url else {
-            logError("Invalid endpoint URL", domain: .api)
+            completion(.failure(.invalidEndpoint))
             return
         }
 
@@ -85,15 +91,16 @@ private extension APIService {
             switch response.result {
             case .success:
                 logDebug("Request successful", domain: .api)
+                completion(.success(()))
             case let .failure(error):
-                logError("Request failed with error: \(error.localizedDescription)", domain: .api)
+                completion(.failure(.requestFailed(error)))
             }
         }
     }
 
-    static func getInternal(url: URL?, completion: @escaping (Data?) -> Void) {
+    static func getInternal(url: URL?, completion: @escaping GetResult) {
         guard let url = url else {
-            logError("Invalid endpoint URL", domain: .api)
+            completion(.failure(.invalidEndpoint))
             return
         }
 
@@ -101,11 +108,14 @@ private extension APIService {
         AF.request(url, method: .get).validate().responseData { response in
             switch response.result {
             case .success:
-                logDebug("Request succeded: \(response.description)", domain: .api)
-                completion(response.data)
+                if let data = response.data {
+                    logDebug("Request succeded: \(response.description)", domain: .api)
+                    completion(.success(data))
+                } else {
+                    completion(.failure(.emptyResponse))
+                }
             case let .failure(error):
-                logError("Request failed with error: \(error.localizedDescription)", domain: .api)
-                completion(nil)
+                completion(.failure(.requestFailed(error)))
             }
         }
     }

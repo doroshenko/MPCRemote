@@ -29,7 +29,7 @@ class ViewController: UIViewController {
 //
 //        NetworkService.ping(hostName: hostName)
 
-        let server = Server(name: "MPC", ip: IPv4(string: "192.168.1.202")!, port: 13579)
+        let server = Server(name: "MPC", address: "192.168.1.202", port: Port.default)
         APIService.getState(server: server) { state in
             logDebug("!!! \(String(describing: state))")
         }
