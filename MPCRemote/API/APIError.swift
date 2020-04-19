@@ -28,5 +28,5 @@ enum APIError: Error {
 
 typealias APIResult<Value> = (Result<Value, APIError>) -> Void
 typealias PostResult = APIResult<Void>
-typealias StateResult = APIResult<State>
+typealias StateResult = APIResult<PlaybackState>
 typealias SnapshotResult = APIResult<UIImage>

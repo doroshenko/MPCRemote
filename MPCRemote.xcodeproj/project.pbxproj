@@ -23,18 +23,16 @@
 		0C4AF23A240B3B5B0057AC86 /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF239240B3B5B0057AC86 /* Ping.swift */; };
 		0C4AF23D240B59040057AC86 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF23C240B59040057AC86 /* Logger.swift */; };
 		0C4AF23F240B71DF0057AC86 /* LogEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF23E240B71DF0057AC86 /* LogEnums.swift */; };
-		0C4AF241240C03700057AC86 /* UIAlertController+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF240240C03700057AC86 /* UIAlertController+Convenience.swift */; };
 		0C4FA7802416B0A300F71F9E /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4FA77F2416B0A300F71F9E /* Server.swift */; };
 		0C8271732411EEEB00E5474B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8271722411EEEB00E5474B /* Constants.swift */; };
 		0C8D9110241844CF00439554 /* IPv4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D910F241844CF00439554 /* IPv4Tests.swift */; };
 		0C8D91122418452F00439554 /* IPv4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D91112418452F00439554 /* IPv4.swift */; };
 		0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */; };
 		0CD0EA5E2408973100DE10E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */; };
-		0CD0EA602408973100DE10E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5F2408973100DE10E5 /* ViewController.swift */; };
-		0CD0EA632408973100DE10E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA612408973100DE10E5 /* Main.storyboard */; };
 		0CD0EA652408973100DE10E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA642408973100DE10E5 /* Assets.xcassets */; };
 		0CD0EA682408973100DE10E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */; };
-		0CFAC4CC2410A0C900EF83E1 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAC4CB2410A0C900EF83E1 /* State.swift */; };
+		0CF31E56244CC2290078F414 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF31E55244CC2290078F414 /* ContentView.swift */; };
+		0CFAC4CC2410A0C900EF83E1 /* PlaybackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAC4CB2410A0C900EF83E1 /* PlaybackState.swift */; };
 		ABB7103A3758090544BECD14 /* libPods-MPCRemoteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8E237D84CA8F64B517A74F /* libPods-MPCRemoteTests.a */; };
 		F1CDBB008BD9848EE0F83594 /* libPods-MPCRemote.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A90B73EB470EB98F0EED69 /* libPods-MPCRemote.a */; };
 /* End PBXBuildFile section */
@@ -69,7 +67,6 @@
 		0C4AF239240B3B5B0057AC86 /* Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
 		0C4AF23C240B59040057AC86 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		0C4AF23E240B71DF0057AC86 /* LogEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEnums.swift; sourceTree = "<group>"; };
-		0C4AF240240C03700057AC86 /* UIAlertController+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Convenience.swift"; sourceTree = "<group>"; };
 		0C4FA77F2416B0A300F71F9E /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		0C8271722411EEEB00E5474B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0C8D910F241844CF00439554 /* IPv4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPv4Tests.swift; sourceTree = "<group>"; };
@@ -77,16 +74,14 @@
 		0CD0EA582408973100DE10E5 /* MPCRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPCRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0CD0EA5F2408973100DE10E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0CD0EA622408973100DE10E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0CD0EA642408973100DE10E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CD0EA672408973100DE10E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CD0EA692408973100DE10E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CD0EA6E2408973100DE10E5 /* MPCRemoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MPCRemoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD0EA742408973100DE10E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0CD0EA7D2408973200DE10E5 /* MPCRemoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCRemoteUITests.swift; sourceTree = "<group>"; };
-		0CD0EA7F2408973200DE10E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0CFAC4CB2410A0C900EF83E1 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		0CF31E17244CBD700078F414 /* MPCRemote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MPCRemote.entitlements; sourceTree = "<group>"; };
+		0CF31E55244CC2290078F414 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0CFAC4CB2410A0C900EF83E1 /* PlaybackState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackState.swift; sourceTree = "<group>"; };
 		0F8E237D84CA8F64B517A74F /* libPods-MPCRemoteTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPCRemoteTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17197D0CED7CA9FAFADE9318 /* Pods-MPCRemoteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemoteTests.debug.xcconfig"; path = "Target Support Files/Pods-MPCRemoteTests/Pods-MPCRemoteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		60DB67B32CC759A164C73B81 /* Pods-MPCRemoteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemoteTests.release.xcconfig"; path = "Target Support Files/Pods-MPCRemoteTests/Pods-MPCRemoteTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,7 +147,6 @@
 				0C8D91112418452F00439554 /* IPv4.swift */,
 				0C4AF23C240B59040057AC86 /* Logger.swift */,
 				0C4AF23E240B71DF0057AC86 /* LogEnums.swift */,
-				0C4AF240240C03700057AC86 /* UIAlertController+Convenience.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -162,7 +156,6 @@
 			children = (
 				0CD0EA5A2408973100DE10E5 /* MPCRemote */,
 				0CD0EA712408973100DE10E5 /* MPCRemoteTests */,
-				0CD0EA7C2408973200DE10E5 /* MPCRemoteUITests */,
 				0CD0EA592408973100DE10E5 /* Products */,
 				B292F8FB8811D1E145EF0B78 /* Pods */,
 				FAE8E01BE4E9C15D8623F464 /* Frameworks */,
@@ -185,14 +178,11 @@
 				0C4AF231240B34970057AC86 /* Network */,
 				0CFAC4C82410A03200EF83E1 /* API */,
 				0C18D5EA241719240035C3A5 /* Storage */,
+				0CF31E18244CBE650078F414 /* UI */,
 				0C4AF23B240B58ED0057AC86 /* Utility */,
-				0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */,
-				0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */,
-				0CD0EA5F2408973100DE10E5 /* ViewController.swift */,
 				0C4AF232240B35020057AC86 /* MPCRemote-Bridging-Header.h */,
-				0CD0EA612408973100DE10E5 /* Main.storyboard */,
+				0CF31E17244CBD700078F414 /* MPCRemote.entitlements */,
 				0CD0EA642408973100DE10E5 /* Assets.xcassets */,
-				0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */,
 				0CD0EA692408973100DE10E5 /* Info.plist */,
 			);
 			path = MPCRemote;
@@ -207,13 +197,15 @@
 			path = MPCRemoteTests;
 			sourceTree = "<group>";
 		};
-		0CD0EA7C2408973200DE10E5 /* MPCRemoteUITests */ = {
+		0CF31E18244CBE650078F414 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				0CD0EA7D2408973200DE10E5 /* MPCRemoteUITests.swift */,
-				0CD0EA7F2408973200DE10E5 /* Info.plist */,
+				0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */,
+				0CF31E55244CC2290078F414 /* ContentView.swift */,
+				0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */,
+				0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */,
 			);
-			path = MPCRemoteUITests;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		0CFAC4C82410A03200EF83E1 /* API */ = {
@@ -224,7 +216,7 @@
 				0C8271722411EEEB00E5474B /* Constants.swift */,
 				0C18D5E8241714C80035C3A5 /* HTTPParametersFactory.swift */,
 				0C4FA77F2416B0A300F71F9E /* Server.swift */,
-				0CFAC4CB2410A0C900EF83E1 /* State.swift */,
+				0CFAC4CB2410A0C900EF83E1 /* PlaybackState.swift */,
 				0C18D5E42416D31B0035C3A5 /* URLFactory.swift */,
 			);
 			path = API;
@@ -337,7 +329,6 @@
 			files = (
 				0CD0EA682408973100DE10E5 /* LaunchScreen.storyboard in Resources */,
 				0CD0EA652408973100DE10E5 /* Assets.xcassets in Resources */,
-				0CD0EA632408973100DE10E5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,7 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CD0EA602408973100DE10E5 /* ViewController.swift in Sources */,
+				0CF31E56244CC2290078F414 /* ContentView.swift in Sources */,
 				0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */,
 				0C48B3E524267EC200EEFE98 /* Validation.swift in Sources */,
 				0C4AF237240B35BF0057AC86 /* NetworkService.swift in Sources */,
@@ -434,9 +425,8 @@
 				0C48B3E7242691D800EEFE98 /* APIError.swift in Sources */,
 				0C4AF23D240B59040057AC86 /* Logger.swift in Sources */,
 				0C30E24B240DD3BA001C1EC9 /* Connectivity.swift in Sources */,
-				0C4AF241240C03700057AC86 /* UIAlertController+Convenience.swift in Sources */,
 				0C4FA7802416B0A300F71F9E /* Server.swift in Sources */,
-				0CFAC4CC2410A0C900EF83E1 /* State.swift in Sources */,
+				0CFAC4CC2410A0C900EF83E1 /* PlaybackState.swift in Sources */,
 				0C18D5E7241713390035C3A5 /* Comparable+Clamped.swift in Sources */,
 				0C48B3EB2426BEDF00EEFE98 /* PingError.swift in Sources */,
 				0C48B3E92426938C00EEFE98 /* APIService.swift in Sources */,
@@ -466,14 +456,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0CD0EA612408973100DE10E5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0CD0EA622408973100DE10E5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -535,7 +517,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -589,7 +571,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -605,16 +587,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = MPCRemote/MPCRemote.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2F77Z345GA;
 				INFOPLIST_FILE = MPCRemote/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.doroshenko.mpcremote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "MPCRemote/MPCRemote-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -628,16 +612,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = MPCRemote/MPCRemote.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2F77Z345GA;
 				INFOPLIST_FILE = MPCRemote/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.doroshenko.mpcremote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "MPCRemote/MPCRemote-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

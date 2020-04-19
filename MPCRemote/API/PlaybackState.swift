@@ -1,5 +1,5 @@
 //
-//  State.swift
+//  PlaybackState.swift
 //  MPCRemote
 //
 //  Created by doroshenko on 05.03.20.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct State {
-    enum PlaybackState: String {
+struct PlaybackState {
+    enum Playback: String {
         case stopped
         case playing
         case paused
@@ -20,8 +20,8 @@ struct State {
     let filePathArg: String
     let fileDir: String
     let fileDirArg: String
-    let playbackState: PlaybackState
-    let playbackStateString: String
+    let playback: Playback
+    let playbackString: String
     let position: UInt64
     let positionString: String
     let duration: UInt64
@@ -33,8 +33,8 @@ struct State {
     let reloadTime: String // TODO: verify this
     let version: String
 
-    static var `default`: State {
-        State()
+    static var `default`: PlaybackState {
+        PlaybackState()
     }
 
     init() {
@@ -43,8 +43,8 @@ struct State {
         filePathArg = String()
         fileDir = String()
         fileDirArg = String()
-        playbackState = .stopped
-        playbackStateString = String(describing: PlaybackState.stopped)
+        playback = .stopped
+        playbackString = String(describing: Playback.stopped)
         position = 0
         positionString = "00:00:00"
         duration = 0
@@ -59,6 +59,6 @@ struct State {
 
     init?(string: String) {
         // TODO
-        self = State.default
+        self = PlaybackState.default
     }
 }

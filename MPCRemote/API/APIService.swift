@@ -77,7 +77,7 @@ private extension APIService {
         AF.request(url, method: .get).validate().responseString { response in
             switch response.result {
             case .success(let string):
-                guard let state = State(string: string) else {
+                guard let state = PlaybackState(string: string) else {
                     completion(.failure(.conversionFailed))
                     return
                 }

@@ -7,8 +7,8 @@
 //
 
 import UIKit
+import SwiftUI
 
-@available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -17,7 +17,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard (scene as? UIWindowScene) != nil else { return }
+        // Create the SwiftUI view that provides the window contents.
+        let contentView = ContentView()
+
+        // Use a UIHostingController as window root view controller.
+        guard let windowScene = scene as? UIWindowScene else { return }
+
+        let window = UIWindow(windowScene: windowScene)
+        window.rootViewController = UIHostingController(rootView: contentView)
+        self.window = window
+        window.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
