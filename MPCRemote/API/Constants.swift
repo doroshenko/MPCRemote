@@ -41,7 +41,6 @@ struct Port {
 
 struct Timeout {
     static let ping: TimeInterval = 1.0
-    static let validation: TimeInterval = 1.0
 }
 
 enum Command: Int {
