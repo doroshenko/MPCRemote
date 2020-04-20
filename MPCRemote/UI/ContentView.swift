@@ -18,7 +18,7 @@ struct ContentView: View {
             Spacer()
 
             TextField("IP address", text: $addressText)
-                .frame(width: 200, alignment: .center)
+                .padding([.leading, .trailing])
                 .font(.title)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
 
