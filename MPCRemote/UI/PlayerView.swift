@@ -13,7 +13,12 @@ struct PlayerView: View {
     @Binding var playbackState: PlaybackState
 
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: {
+            logInfo()
+        }, label: {
+            Image(systemName: "play.fill")
+        })
+        .buttonStyle(PlayerButtonStyle())
     }
 }
 
