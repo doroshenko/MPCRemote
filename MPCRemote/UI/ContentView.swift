@@ -27,7 +27,7 @@ struct ContentView: View {
             }
             .font(.title)
             .alert(isPresented: $showingAlert, content: {
-                Alert(title: Text("MPC Remote"), message: Text("No host specified"))
+                Alert(title: Text("MPCRemote"), message: Text("No host specified"))
             })
 
             Button(action: scanAction) {

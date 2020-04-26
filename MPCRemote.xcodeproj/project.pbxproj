@@ -25,9 +25,11 @@
 		0C4AF23D240B59040057AC86 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF23C240B59040057AC86 /* Logger.swift */; };
 		0C4AF23F240B71DF0057AC86 /* LogEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF23E240B71DF0057AC86 /* LogEnums.swift */; };
 		0C4FA7802416B0A300F71F9E /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4FA77F2416B0A300F71F9E /* Server.swift */; };
+		0C520B182455CE0700FB3D14 /* APIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C520B172455CE0700FB3D14 /* APIState.swift */; };
 		0C6773DC24547BA700FFD6DE /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6773DB24547BA700FFD6DE /* PlayerButton.swift */; };
 		0C6773E02454D71F00FFD6DE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6773DF2454D71F00FFD6DE /* Colors.swift */; };
 		0C6773E22454DDE200FFD6DE /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6773E12454DDE200FFD6DE /* Gradients.swift */; };
+		0C78C3352455BED500589C3E /* PlayerStateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C78C3342455BED500589C3E /* PlayerStateFactory.swift */; };
 		0C8271732411EEEB00E5474B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8271722411EEEB00E5474B /* Constants.swift */; };
 		0C8D9110241844CF00439554 /* IPv4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D910F241844CF00439554 /* IPv4Tests.swift */; };
 		0C8D91122418452F00439554 /* IPv4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D91112418452F00439554 /* IPv4.swift */; };
@@ -36,7 +38,7 @@
 		0CD0EA652408973100DE10E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA642408973100DE10E5 /* Assets.xcassets */; };
 		0CD0EA682408973100DE10E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */; };
 		0CF31E56244CC2290078F414 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF31E55244CC2290078F414 /* ContentView.swift */; };
-		0CFAC4CC2410A0C900EF83E1 /* PlaybackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAC4CB2410A0C900EF83E1 /* PlaybackState.swift */; };
+		0CFAC4CC2410A0C900EF83E1 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAC4CB2410A0C900EF83E1 /* PlayerState.swift */; };
 		ABB7103A3758090544BECD14 /* libPods-MPCRemoteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8E237D84CA8F64B517A74F /* libPods-MPCRemoteTests.a */; };
 		F1CDBB008BD9848EE0F83594 /* libPods-MPCRemote.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A90B73EB470EB98F0EED69 /* libPods-MPCRemote.a */; };
 /* End PBXBuildFile section */
@@ -73,9 +75,11 @@
 		0C4AF23C240B59040057AC86 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		0C4AF23E240B71DF0057AC86 /* LogEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEnums.swift; sourceTree = "<group>"; };
 		0C4FA77F2416B0A300F71F9E /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		0C520B172455CE0700FB3D14 /* APIState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIState.swift; sourceTree = "<group>"; };
 		0C6773DB24547BA700FFD6DE /* PlayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
 		0C6773DF2454D71F00FFD6DE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		0C6773E12454DDE200FFD6DE /* Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
+		0C78C3342455BED500589C3E /* PlayerStateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStateFactory.swift; sourceTree = "<group>"; };
 		0C8271722411EEEB00E5474B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0C8D910F241844CF00439554 /* IPv4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPv4Tests.swift; sourceTree = "<group>"; };
 		0C8D91112418452F00439554 /* IPv4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPv4.swift; sourceTree = "<group>"; };
@@ -89,7 +93,7 @@
 		0CD0EA742408973100DE10E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CF31E17244CBD700078F414 /* MPCRemote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MPCRemote.entitlements; sourceTree = "<group>"; };
 		0CF31E55244CC2290078F414 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		0CFAC4CB2410A0C900EF83E1 /* PlaybackState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackState.swift; sourceTree = "<group>"; };
+		0CFAC4CB2410A0C900EF83E1 /* PlayerState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
 		0F8E237D84CA8F64B517A74F /* libPods-MPCRemoteTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPCRemoteTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17197D0CED7CA9FAFADE9318 /* Pods-MPCRemoteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemoteTests.debug.xcconfig"; path = "Target Support Files/Pods-MPCRemoteTests/Pods-MPCRemoteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		60DB67B32CC759A164C73B81 /* Pods-MPCRemoteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemoteTests.release.xcconfig"; path = "Target Support Files/Pods-MPCRemoteTests/Pods-MPCRemoteTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +163,16 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		0C78C3332455BE9600589C3E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0CFAC4CB2410A0C900EF83E1 /* PlayerState.swift */,
+				0C78C3342455BED500589C3E /* PlayerStateFactory.swift */,
+				0C4FA77F2416B0A300F71F9E /* Server.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		0CD0EA4F2408973100DE10E5 = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +199,7 @@
 				0C30E24E240DD528001C1EC9 /* Dependencies */,
 				0C4AF231240B34970057AC86 /* Network */,
 				0CFAC4C82410A03200EF83E1 /* API */,
+				0C78C3332455BE9600589C3E /* Models */,
 				0C18D5EA241719240035C3A5 /* Storage */,
 				0CF31E18244CBE650078F414 /* UI */,
 				0C4AF23B240B58ED0057AC86 /* Utility */,
@@ -225,10 +240,9 @@
 			children = (
 				0C48B3E82426938C00EEFE98 /* APIService.swift */,
 				0C48B3E6242691D800EEFE98 /* APIError.swift */,
+				0C520B172455CE0700FB3D14 /* APIState.swift */,
 				0C8271722411EEEB00E5474B /* Constants.swift */,
 				0C18D5E8241714C80035C3A5 /* HTTPParametersFactory.swift */,
-				0C4FA77F2416B0A300F71F9E /* Server.swift */,
-				0CFAC4CB2410A0C900EF83E1 /* PlaybackState.swift */,
 				0C18D5E42416D31B0035C3A5 /* URLFactory.swift */,
 			);
 			path = API;
@@ -429,6 +443,7 @@
 				0C3A1E0C244DAD630030AF17 /* PlayerView.swift in Sources */,
 				0C4AF237240B35BF0057AC86 /* NetworkService.swift in Sources */,
 				0C4AF23F240B71DF0057AC86 /* LogEnums.swift in Sources */,
+				0C78C3352455BED500589C3E /* PlayerStateFactory.swift in Sources */,
 				0C30E249240DD390001C1EC9 /* AsynchroneousOperation.swift in Sources */,
 				0C18D5EC241719470035C3A5 /* StorageService.swift in Sources */,
 				0C6773DC24547BA700FFD6DE /* PlayerButton.swift in Sources */,
@@ -441,10 +456,11 @@
 				0C4AF23D240B59040057AC86 /* Logger.swift in Sources */,
 				0C30E24B240DD3BA001C1EC9 /* Connectivity.swift in Sources */,
 				0C4FA7802416B0A300F71F9E /* Server.swift in Sources */,
-				0CFAC4CC2410A0C900EF83E1 /* PlaybackState.swift in Sources */,
+				0CFAC4CC2410A0C900EF83E1 /* PlayerState.swift in Sources */,
 				0C18D5E7241713390035C3A5 /* Comparable+Clamped.swift in Sources */,
 				0C48B3EB2426BEDF00EEFE98 /* PingError.swift in Sources */,
 				0C48B3E92426938C00EEFE98 /* APIService.swift in Sources */,
+				0C520B182455CE0700FB3D14 /* APIState.swift in Sources */,
 				0C6773E02454D71F00FFD6DE /* Colors.swift in Sources */,
 				0C8271732411EEEB00E5474B /* Constants.swift in Sources */,
 				0CD0EA5E2408973100DE10E5 /* SceneDelegate.swift in Sources */,

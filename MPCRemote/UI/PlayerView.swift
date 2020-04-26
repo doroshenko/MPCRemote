@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PlayerView: View {
 
-    @Binding var playbackState: PlaybackState
+    @Binding var playerState: PlayerState
 
     var body: some View {
         Button(action: {
@@ -24,9 +24,9 @@ struct PlayerView: View {
 
 struct PlayerView_Previews: PreviewProvider {
 
-    @State private static var playbackState: PlaybackState = .default
+    @State private static var playerState: PlayerState = StorageService.state
 
     static var previews: some View {
-        PlayerView(playbackState: $playbackState)
+        PlayerView(playerState: $playerState)
     }
 }

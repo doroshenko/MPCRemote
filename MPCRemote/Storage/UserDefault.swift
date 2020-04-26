@@ -13,7 +13,7 @@ protocol UserDefaultKey {
 }
 
 @propertyWrapper
-struct UserDefault<Value> {
+struct UserDefault<Value: Codable> {
 
     let userDefaults: UserDefaults = .standard
     let key: UserDefaultKey
@@ -25,8 +25,17 @@ struct UserDefault<Value> {
     }
 
     var wrappedValue: Value {
-        get { userDefaults.object(forKey: key.rawValue) as? Value ?? defaultValue }
-        set { userDefaults.set(newValue, forKey: key.rawValue) }
+        get {
+            guard let data = userDefaults.data(forKey: key.rawValue),
+                let decodedValue = try? JSONDecoder().decode(Value.self, from: data) else {
+                    return defaultValue
+            }
+            return decodedValue
+        }
+        set {
+            guard let encodedValue = try? JSONEncoder().encode(newValue) else { return }
+            userDefaults.set(encodedValue, forKey: key.rawValue)
+        }
     }
 
     func resetValue() {
