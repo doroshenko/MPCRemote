@@ -8,8 +8,23 @@
 
 import SwiftUI
 
+struct PlayerButton: View {
+    var action: () -> Void
+    var image: Image
+    var scale: PlayerButtonScale
+
+    var body: some View {
+        Button(action: action, label: {
+            image
+                .resizable()
+                .frame(width: scale.imageSize, height: scale.imageSize)
+        })
+            .buttonStyle(PlayerButtonStyle(padding: scale.padding))
+    }
+}
+
 struct PlayerButtonStyle: ButtonStyle {
-    var padding = Constants.Padding.small
+    var padding: CGFloat
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
@@ -53,12 +68,35 @@ struct PlayerButtonShadow: ViewModifier {
     }
 }
 
-private struct Constants {
-    enum Padding {
-        static let small: CGFloat = 30
-        static let large: CGFloat = 50
+enum PlayerButtonScale: CaseIterable {
+    case small
+    case medium
+    case large
+
+    var imageSize: CGFloat {
+        switch self {
+        case .small:
+            return 15
+        case .medium:
+            return 20
+        case .large:
+            return 30
+        }
     }
 
+    var padding: CGFloat {
+        switch self {
+        case .small:
+            return 20
+        case .medium:
+            return 30
+        case .large:
+            return 40
+        }
+    }
+}
+
+private struct Constants {
     enum Shadow {
         static let radius: CGFloat = 10
         static let highlighted: CGFloat = 5
@@ -69,29 +107,25 @@ private struct Constants {
 }
 
 struct PlayerButton_Previews: PreviewProvider {
+    static var buttons: some View {
+        ZStack {
+            Color(.systemBackground)
+            VStack {
+                ForEach(PlayerButtonScale.allCases, id: \.self) { scale in
+                    PlayerButton(action: {
+                        logDebug()
+                    }, image: Image(systemName: "play.fill"),
+                       scale: scale)
+                }
+            }
+        }
+    }
+
     static var previews: some View {
         Group {
-            ZStack {
-                Color(.systemBackground)
-                Button(action: {
-                    logInfo()
-                }, label: {
-                    Image(systemName: "play.fill")
-                })
-                .buttonStyle(PlayerButtonStyle())
+            ForEach([ColorScheme.light, .dark], id: \.self) { scheme in
+                buttons.environment(\.colorScheme, scheme)
             }
-            .environment(\.colorScheme, .light)
-
-            ZStack {
-                Color(.systemBackground)
-                Button(action: {
-                    logInfo()
-                }, label: {
-                    Image(systemName: "play.fill")
-                })
-                .buttonStyle(PlayerButtonStyle())
-            }
-            .environment(\.colorScheme, .dark)
         }
     }
 }

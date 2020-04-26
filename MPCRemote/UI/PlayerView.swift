@@ -13,12 +13,12 @@ struct PlayerView: View {
     @Binding var playerState: PlayerState
 
     var body: some View {
-        Button(action: {
-            logInfo()
-        }, label: {
-            Image(systemName: "play.fill")
-        })
-        .buttonStyle(PlayerButtonStyle())
+        VStack {
+            PlayerButton(action: {
+                logDebug()
+            }, image: Image(systemName: "play.fill"),
+               scale: .large)
+        }
     }
 }
 
