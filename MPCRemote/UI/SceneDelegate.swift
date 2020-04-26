@@ -13,24 +13,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-    @State private var playerState: PlayerState = StorageService.state
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         // Create the SwiftUI view that provides the window contents.
 
-        APIService.getState { result in
-            switch result {
-            case let .success(state):
-                self.playerState = state
-            case let .failure(error):
-                logDebug(error.localizedDescription, domain: .api)
-            }
-        }
-
-        let playerView = PlayerView(playerState: $playerState)
+        let playerView = PlayerView()
 
         // Use a UIHostingController as window root view controller.
         guard let windowScene = scene as? UIWindowScene else { return }

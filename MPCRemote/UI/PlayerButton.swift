@@ -17,6 +17,7 @@ struct PlayerButton: View {
         Button(action: action, label: {
             image
                 .resizable()
+                .aspectRatio(contentMode: .fit)
                 .frame(width: scale.imageSize, height: scale.imageSize)
         })
             .buttonStyle(PlayerButtonStyle(padding: scale.padding))
@@ -76,11 +77,11 @@ enum PlayerButtonScale: CaseIterable {
     var imageSize: CGFloat {
         switch self {
         case .small:
-            return 15
-        case .medium:
             return 20
+        case .medium:
+            return 28
         case .large:
-            return 30
+            return 35
         }
     }
 
@@ -89,7 +90,7 @@ enum PlayerButtonScale: CaseIterable {
         case .small:
             return 20
         case .medium:
-            return 30
+            return 25
         case .large:
             return 40
         }
@@ -114,7 +115,7 @@ struct PlayerButton_Previews: PreviewProvider {
                 ForEach(PlayerButtonScale.allCases, id: \.self) { scale in
                     PlayerButton(action: {
                         logDebug()
-                    }, image: Image(systemName: "play.fill"),
+                    }, image: Image(systemName: "backward.fill"),
                        scale: scale)
                 }
             }

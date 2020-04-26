@@ -26,12 +26,12 @@ struct Parameter {
 
     struct Seek {
         static let name = "percent"
-        static let range = 0...100
+        static let range: ClosedRange<Double> = 0...100
     }
 
     struct Volume {
         static let name = "volume"
-        static let range = 0...100
+        static let range: ClosedRange<Double> = 0...100
     }
 }
 
@@ -50,21 +50,18 @@ enum Command: Int {
     case play = 887
     case pause = 888
     case playPause = 889
-}
 
-extension Command: CustomDebugStringConvertible {
-    var debugDescription: String {
-        switch self {
-        case .seek:
-            return "Seek"
-        case .volume:
-            return "Volume"
-        case .play:
-            return "Play"
-        case .pause:
-            return "Pause"
-        case .playPause:
-            return "Play/Pause"
-        }
-    }
+    case seekBackwardKey = 897
+    case seekForwardKey = 898
+    case seekBackwardSmall = 899
+    case seekForwardSmall = 900
+    case seekBackwardMedium = 901
+    case seekForwardMedium = 902
+    case seekBackwardLarge = 903
+    case seekForwardLarge = 904
+
+    case mute = 909
+    case audioNext = 952
+    case subtitleNext = 954
+    case fullscreen = 830
 }

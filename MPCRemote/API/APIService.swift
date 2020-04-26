@@ -11,21 +11,21 @@ import Alamofire
 
 final class APIService {
 
-    static func post(command: Command, server: Server? = StorageService.server, completion: @escaping PostResult) {
+    static func post(command: Command, server: Server? = StorageService.server, completion: PostResult? = nil) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(command: command)
         performPost(url: url, parameters: parameters, completion: completion)
     }
 
-    static func post(volume: Int, server: Server? = StorageService.server, completion: @escaping PostResult) {
+    static func post(volume: Double, server: Server? = StorageService.server, completion: PostResult? = nil) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(volume: volume)
         performPost(url: url, parameters: parameters, completion: completion)
     }
 
-    static func post(seek: Int, server: Server? = StorageService.server, completion: @escaping PostResult) {
+    static func post(seek: Double, server: Server? = StorageService.server, completion: PostResult? = nil) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(seek: seek)
@@ -49,9 +49,9 @@ final class APIService {
 
 private extension APIService {
 
-    static func performPost(url: URL?, parameters: HTTPParameters, completion: @escaping PostResult) {
+    static func performPost(url: URL?, parameters: HTTPParameters, completion: PostResult?) {
         guard let url = url else {
-            completion(.failure(.invalidEndpoint))
+            completion?(.failure(.invalidEndpoint))
             return
         }
 
@@ -60,9 +60,9 @@ private extension APIService {
             switch response.result {
             case .success:
                 logDebug("Request successful", domain: .api)
-                completion(.success(()))
+                completion?(.success(()))
             case let .failure(error):
-                completion(.failure(.requestFailed(error)))
+                completion?(.failure(.requestFailed(error)))
             }
         }
     }

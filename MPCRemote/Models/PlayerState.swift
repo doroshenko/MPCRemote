@@ -54,6 +54,16 @@ struct PlayerState: Codable {
     let reloadTime: String
     let version: String
 
+    var isPlaying: Bool {
+        playbackState == .playing
+    }
+
+    var isQuiet: Bool {
+        volume == 0
+    }
+}
+
+extension PlayerState {
     static var `default`: PlayerState {
         PlayerState(file: String(),
                     filePath: String(),
