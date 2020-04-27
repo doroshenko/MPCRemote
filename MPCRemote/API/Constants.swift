@@ -27,13 +27,13 @@ struct Parameter {
     struct Seek {
         static let name = "percent"
         static let range: ClosedRange<Int> = 0...100
-        static let doubleRange: ClosedRange<Double> = Double(range.lowerBound)...Double(range.upperBound)
+        static let floatRange: ClosedRange<Float> = Float(range.lowerBound)...Float(range.upperBound)
     }
 
     struct Volume {
         static let name = "volume"
         static let range: ClosedRange<Int> = 0...100
-        static let doubleRange: ClosedRange<Double> = Double(range.lowerBound)...Double(range.upperBound)
+        static let floatRange: ClosedRange<Float> = Float(range.lowerBound)...Float(range.upperBound)
     }
 }
 

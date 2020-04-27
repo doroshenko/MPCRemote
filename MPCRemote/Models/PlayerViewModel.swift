@@ -10,8 +10,26 @@ import SwiftUI
 
 final class PlayerViewModel: ObservableObject {
     @Published var playerState: PlayerState = .default
-    @Published var seek: Int = 0
-    @Published var volume: Int = 0
+    @Published var seek: Float = 0
+    @Published var volume: Float = 0
+
+    private var seekInternal: Int {
+        get {
+            Int(seek.clamped(to: Parameter.Seek.floatRange))
+        }
+        set {
+            seek = Float(newValue)
+        }
+    }
+
+    private var volumeInternal: Int {
+        get {
+            Int(volume.clamped(to: Parameter.Volume.floatRange))
+        }
+        set {
+            volume = Float(newValue)
+        }
+    }
 
     lazy var postCompletion: PostResult = { [weak self] result in
         guard case .success() = result else { return }
@@ -34,8 +52,8 @@ final class PlayerViewModel: ObservableObject {
             switch result {
             case let .success(state):
                 self.playerState = state
-                self.seek = state.seek
-                self.volume = state.volume
+                self.seekInternal = state.seek
+                self.volumeInternal = state.volume
             case let .failure(error):
                 logDebug(error.localizedDescription, domain: .api)
             }
@@ -47,10 +65,10 @@ final class PlayerViewModel: ObservableObject {
     }
 
     func postSeek() {
-        APIService.post(seek: seek, completion: postCompletion)
+        APIService.post(seek: seekInternal, completion: postCompletion)
     }
 
     func postVolume() {
-        APIService.post(volume: volume, completion: postCompletion)
+        APIService.post(volume: volumeInternal, completion: postCompletion)
     }
 }

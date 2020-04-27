@@ -74,7 +74,7 @@ extension PlayerState {
                     playbackString: String(),
                     position: 0,
                     positionString: "00:00:00",
-                    duration: 0,
+                    duration: 1,
                     durationString: "00:00:00",
                     volume: 0,
                     muted: false,

@@ -42,14 +42,12 @@ struct PlayerView: View {
                 Spacer()
                 Text(model.playerState.durationString)
             }
-            Slider(value: Binding(get: {
-                Double(self.model.seek)
-            }, set: { newValue in
-                self.model.seek = Int(newValue)
-                self.model.postSeek()
-            }),
-                   in: Parameter.Seek.doubleRange,
-                   step: 1)
+            Slider(value: $model.seek,
+                   in: Parameter.Seek.floatRange,
+                   step: 1,
+                   onEditingChanged: { _ in
+                    self.model.postSeek()
+                   })
         }
     }
 
@@ -75,14 +73,12 @@ struct PlayerView: View {
     var volumeView: some View {
         HStack {
             Image(systemName: "speaker.fill")
-            Slider(value: Binding(get: {
-                Double(self.model.volume)
-            }, set: { newValue in
-                self.model.volume = Int(newValue)
-                self.model.postVolume()
-            }),
-                   in: Parameter.Volume.doubleRange,
-                   step: 1)
+            Slider(value: $model.volume,
+                   in: Parameter.Volume.floatRange,
+                   step: 1,
+                   onEditingChanged: {_ in
+                    self.model.postVolume()
+            })
             Image(systemName: "speaker.3.fill")
         }
         .foregroundColor(.accentColor)
