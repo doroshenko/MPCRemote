@@ -7,68 +7,91 @@
 //
 
 import SwiftUI
+import Combine
 
 final class PlayerViewModel: ObservableObject {
+
+    let didChange = PassthroughSubject<PlayerViewModel, Never>()
+
     @Published var playerState: PlayerState = .default
-    @Published var seek: Float = 0
-    @Published var volume: Float = 0
-
-    private var seekInternal: Int {
-        get {
-            Int(seek.clamped(to: Parameter.Seek.floatRange))
-        }
-        set {
-            seek = Float(newValue)
+    @Published var seek: Double = 0
+    @Published var volume: Double = 0 {
+        willSet {
+            if isVolumeSliding {
+                post(volume: newValue)
+            }
+            didChange.send(self)
         }
     }
 
-    private var volumeInternal: Int {
-        get {
-            Int(volume.clamped(to: Parameter.Volume.floatRange))
-        }
-        set {
-            volume = Float(newValue)
+    private var isSeekSliding: Bool = false
+    private var isVolumeSliding: Bool = false
+
+    lazy var onSeekChanged: (Bool) -> Void = { [weak self] isSliding in
+        guard let strongSelf = self else { return }
+
+        strongSelf.isSeekSliding = isSliding
+
+        if !isSliding {
+            strongSelf.post(seek: strongSelf.seek)
         }
     }
 
-    lazy var postCompletion: PostResult = { [weak self] result in
-        guard case .success() = result else { return }
+    lazy var onVolumeChanged: (Bool) -> Void = { [weak self] isSliding in
+        guard let strongSelf = self else { return }
 
-        self?.refreshPlayerState()
+        strongSelf.isVolumeSliding = isSliding
+
+        if !isSliding {
+            strongSelf.post(volume: strongSelf.volume)
+        }
     }
 
     init() {
-        refreshPlayerState()
+        playerStateRefresh()
 
-        Timer.scheduledTimer(withTimeInterval: Timeout.refresh,
+        Timer.scheduledTimer(withTimeInterval: Interval.refresh,
                              repeats: true,
                              block: { [weak self] _ in
-                                self?.refreshPlayerState()
+                                self?.playerStateRefresh()
         })
     }
 
-    func refreshPlayerState() {
+    func playerStateRefresh() {
         APIService.getState { result in
             switch result {
             case let .success(state):
                 self.playerState = state
-                self.seekInternal = state.seek
-                self.volumeInternal = state.volume
+                if !self.isSeekSliding {
+                    self.seek = Double(state.seek)
+                }
+                if !self.isVolumeSliding {
+                    self.volume = Double(state.volume)
+                }
             case let .failure(error):
                 logDebug(error.localizedDescription, domain: .api)
             }
         }
     }
+}
+
+extension PlayerViewModel {
 
     func post(command: Command) {
-        APIService.post(command: command, completion: postCompletion)
+        APIService.post(command: command) { _ in
+            self.playerStateRefresh()
+        }
     }
 
-    func postSeek() {
-        APIService.post(seek: seekInternal, completion: postCompletion)
+    func post(seek: Double) {
+        APIService.post(seek: seek) { _ in
+            self.playerStateRefresh()
+        }
     }
 
-    func postVolume() {
-        APIService.post(volume: volumeInternal, completion: postCompletion)
+    func post(volume: Double) {
+        APIService.post(volume: volume) { _ in
+            self.playerStateRefresh()
+        }
     }
 }

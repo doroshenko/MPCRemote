@@ -46,7 +46,7 @@ final class Ping: AsynchronousOperation {
 
     private func setupTimer() {
         sendTime = Date.timeIntervalSinceReferenceDate
-        timer = Timer.scheduledTimer(withTimeInterval: Timeout.ping, repeats: false, block: { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: Interval.ping, repeats: false, block: { [weak self] _ in
             self?.timeout()
         })
     }

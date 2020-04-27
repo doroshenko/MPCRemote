@@ -13,3 +13,9 @@ extension Comparable {
         min(max(self, range.lowerBound), range.upperBound)
     }
 }
+
+extension ClosedRange where Bound == Int {
+    var doubleRange: ClosedRange<Double> {
+        Double(lowerBound)...Double(upperBound)
+    }
+}

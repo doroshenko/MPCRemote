@@ -25,11 +25,19 @@ final class APIService {
         performPost(url: url, parameters: parameters, completion: completion)
     }
 
+    static func post(volume: Double, server: Server? = StorageService.server, completion: PostResult? = nil) {
+        post(volume: Int(volume), server: server, completion: completion)
+    }
+
     static func post(seek: Int, server: Server? = StorageService.server, completion: PostResult? = nil) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(seek: seek)
         performPost(url: url, parameters: parameters, completion: completion)
+    }
+
+    static func post(seek: Double, server: Server? = StorageService.server, completion: PostResult? = nil) {
+        post(seek: Int(seek), server: server, completion: completion)
     }
 
     static func getState(server: Server? = StorageService.server, completion: @escaping StateResult) {

@@ -27,13 +27,11 @@ struct Parameter {
     struct Seek {
         static let name = "percent"
         static let range: ClosedRange<Int> = 0...100
-        static let floatRange: ClosedRange<Float> = Float(range.lowerBound)...Float(range.upperBound)
     }
 
     struct Volume {
         static let name = "volume"
         static let range: ClosedRange<Int> = 0...100
-        static let floatRange: ClosedRange<Float> = Float(range.lowerBound)...Float(range.upperBound)
     }
 }
 
@@ -41,7 +39,7 @@ struct Port {
     static let `default`: UInt16 = 13579
 }
 
-struct Timeout {
+struct Interval {
     static let ping: TimeInterval = 1.0
     static let refresh: TimeInterval = 1.0
 }

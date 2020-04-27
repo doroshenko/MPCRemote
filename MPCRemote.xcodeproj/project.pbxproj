@@ -38,6 +38,7 @@
 		0CD0EA652408973100DE10E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA642408973100DE10E5 /* Assets.xcassets */; };
 		0CD0EA682408973100DE10E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */; };
 		0CE231E424573C710068820C /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE231E324573C710068820C /* PlayerViewModel.swift */; };
+		0CE231E82457AE9C0068820C /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE231E72457AE9C0068820C /* SliderView.swift */; };
 		0CF31E56244CC2290078F414 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF31E55244CC2290078F414 /* ContentView.swift */; };
 		0CFAC4CC2410A0C900EF83E1 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAC4CB2410A0C900EF83E1 /* PlayerState.swift */; };
 		ABB7103A3758090544BECD14 /* libPods-MPCRemoteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8E237D84CA8F64B517A74F /* libPods-MPCRemoteTests.a */; };
@@ -93,6 +94,7 @@
 		0CD0EA6E2408973100DE10E5 /* MPCRemoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MPCRemoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD0EA742408973100DE10E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CE231E324573C710068820C /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
+		0CE231E72457AE9C0068820C /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		0CF31E17244CBD700078F414 /* MPCRemote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MPCRemote.entitlements; sourceTree = "<group>"; };
 		0CF31E55244CC2290078F414 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0CFAC4CB2410A0C900EF83E1 /* PlayerState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				0C6773E12454DDE200FFD6DE /* Gradients.swift */,
 				0C6773DB24547BA700FFD6DE /* PlayerButton.swift */,
 				0C3A1E0B244DAD630030AF17 /* PlayerView.swift */,
+				0CE231E72457AE9C0068820C /* SliderView.swift */,
 				0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */,
 				0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */,
 			);
@@ -448,6 +451,7 @@
 				0C4AF23F240B71DF0057AC86 /* LogEnums.swift in Sources */,
 				0C78C3352455BED500589C3E /* PlayerStateFactory.swift in Sources */,
 				0C30E249240DD390001C1EC9 /* AsynchroneousOperation.swift in Sources */,
+				0CE231E82457AE9C0068820C /* SliderView.swift in Sources */,
 				0C18D5EC241719470035C3A5 /* StorageService.swift in Sources */,
 				0C6773DC24547BA700FFD6DE /* PlayerButton.swift in Sources */,
 				0C4AF23A240B3B5B0057AC86 /* Ping.swift in Sources */,
