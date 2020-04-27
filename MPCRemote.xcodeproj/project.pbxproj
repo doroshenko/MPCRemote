@@ -37,6 +37,7 @@
 		0CD0EA5E2408973100DE10E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */; };
 		0CD0EA652408973100DE10E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA642408973100DE10E5 /* Assets.xcassets */; };
 		0CD0EA682408973100DE10E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */; };
+		0CE231E424573C710068820C /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE231E324573C710068820C /* PlayerViewModel.swift */; };
 		0CF31E56244CC2290078F414 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF31E55244CC2290078F414 /* ContentView.swift */; };
 		0CFAC4CC2410A0C900EF83E1 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAC4CB2410A0C900EF83E1 /* PlayerState.swift */; };
 		ABB7103A3758090544BECD14 /* libPods-MPCRemoteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8E237D84CA8F64B517A74F /* libPods-MPCRemoteTests.a */; };
@@ -91,6 +92,7 @@
 		0CD0EA692408973100DE10E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CD0EA6E2408973100DE10E5 /* MPCRemoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MPCRemoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD0EA742408973100DE10E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CE231E324573C710068820C /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		0CF31E17244CBD700078F414 /* MPCRemote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MPCRemote.entitlements; sourceTree = "<group>"; };
 		0CF31E55244CC2290078F414 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0CFAC4CB2410A0C900EF83E1 /* PlayerState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			children = (
 				0CFAC4CB2410A0C900EF83E1 /* PlayerState.swift */,
 				0C78C3342455BED500589C3E /* PlayerStateFactory.swift */,
+				0CE231E324573C710068820C /* PlayerViewModel.swift */,
 				0C4FA77F2416B0A300F71F9E /* Server.swift */,
 			);
 			path = Models;
@@ -458,6 +461,7 @@
 				0C4FA7802416B0A300F71F9E /* Server.swift in Sources */,
 				0CFAC4CC2410A0C900EF83E1 /* PlayerState.swift in Sources */,
 				0C18D5E7241713390035C3A5 /* Comparable+Clamped.swift in Sources */,
+				0CE231E424573C710068820C /* PlayerViewModel.swift in Sources */,
 				0C48B3EB2426BEDF00EEFE98 /* PingError.swift in Sources */,
 				0C48B3E92426938C00EEFE98 /* APIService.swift in Sources */,
 				0C520B182455CE0700FB3D14 /* APIState.swift in Sources */,

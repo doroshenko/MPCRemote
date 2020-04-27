@@ -10,11 +10,7 @@ import SwiftUI
 
 struct PlayerView: View {
 
-    @State private var playerState: PlayerState = .default
-    @State var seek: Int = 0
-    @State var volume: Int = 0
-
-    let timer = Timer.publish(every: Timeout.refresh, on: .main, in: .common).autoconnect()
+    @ObservedObject var model: PlayerViewModel
 
     var body: some View {
         VStack {
@@ -30,13 +26,10 @@ struct PlayerView: View {
             controlView
         }
         .padding()
-        .onReceive(timer) { _ in
-            self.refreshPlayerState()
-        }
     }
 
     var titleView: some View {
-        Text(playerState.file)
+        Text(model.playerState.file)
             .multilineTextAlignment(.center)
             .lineLimit(3)
             .frame(width: nil, height: 50)
@@ -45,15 +38,15 @@ struct PlayerView: View {
     var seekView: some View {
         VStack {
             HStack {
-                Text(playerState.positionString)
+                Text(model.playerState.positionString)
                 Spacer()
-                Text(playerState.durationString)
+                Text(model.playerState.durationString)
             }
             Slider(value: Binding(get: {
-                Double(self.seek)
+                Double(self.model.seek)
             }, set: { newValue in
-                self.seek = Int(newValue)
-                self.post(seek: self.seek)
+                self.model.seek = Int(newValue)
+                self.model.postSeek()
             }),
                    in: Parameter.Seek.doubleRange,
                    step: 1)
@@ -63,17 +56,17 @@ struct PlayerView: View {
     var playbackView: some View {
         HStack {
             PlayerButton(action: {
-                self.post(command: .seekBackwardMedium)
+                self.model.post(command: .seekBackwardMedium)
             }, image: Image(systemName: "backward.fill"),
                scale: .medium)
             Spacer()
             PlayerButton(action: {
-                self.post(command: .playPause)
-            }, image: Image(systemName: playerState.isPlaying ? "pause.fill" : "play.fill"),
+                self.model.post(command: .playPause)
+            }, image: Image(systemName: model.playerState.isPlaying ? "pause.fill" : "play.fill"),
                scale: .large)
             Spacer()
             PlayerButton(action: {
-                self.post(command: .seekForwardMedium)
+                self.model.post(command: .seekForwardMedium)
             }, image: Image(systemName: "forward.fill"),
                scale: .medium)
         }
@@ -83,10 +76,10 @@ struct PlayerView: View {
         HStack {
             Image(systemName: "speaker.fill")
             Slider(value: Binding(get: {
-                Double(self.volume)
+                Double(self.model.volume)
             }, set: { newValue in
-                self.volume = Int(newValue)
-                self.post(volume: self.volume)
+                self.model.volume = Int(newValue)
+                self.model.postVolume()
             }),
                    in: Parameter.Volume.doubleRange,
                    step: 1)
@@ -98,65 +91,31 @@ struct PlayerView: View {
     var controlView: some View {
         HStack {
             PlayerButton(action: {
-                self.post(command: .mute)
-            }, image: Image(systemName: playerState.muted ? "speaker.2.fill" : "speaker.slash"),
+                self.model.post(command: .mute)
+            }, image: Image(systemName: model.playerState.muted ? "speaker.2.fill" : "speaker.slash"),
                scale: .small)
             Spacer()
             PlayerButton(action: {
-                self.post(command: .audioNext)
+                self.model.post(command: .audioNext)
             }, image: Image(systemName: "t.bubble"),
                scale: .small)
             Spacer()
             PlayerButton(action: {
-                self.post(command: .subtitleNext)
+                self.model.post(command: .subtitleNext)
             }, image: Image(systemName: "captions.bubble"),
                scale: .small)
             Spacer()
             PlayerButton(action: {
-                self.post(command: .fullscreen)
+                self.model.post(command: .fullscreen)
             }, image: Image(systemName: "viewfinder"),
                scale: .small)
         }
     }
 }
 
-extension PlayerView {
-
-    func refreshPlayerState() {
-        APIService.getState { result in
-            switch result {
-            case let .success(state):
-                self.playerState = state
-                self.seek = state.seek
-                self.volume = state.volume
-            case let .failure(error):
-                logDebug(error.localizedDescription, domain: .api)
-            }
-        }
-    }
-
-    var postCompletion: PostResult { { result in
-            guard case .success() = result else { return }
-            self.refreshPlayerState()
-        }
-    }
-
-    func post(command: Command) {
-        APIService.post(command: command, completion: postCompletion)
-    }
-
-    func post(seek: Int) {
-        APIService.post(seek: seek, completion: postCompletion)
-    }
-
-    func post(volume: Int) {
-        APIService.post(volume: volume, completion: postCompletion)
-    }
-}
-
 struct PlayerView_Previews: PreviewProvider {
 
    static var previews: some View {
-        PlayerView()
+        PlayerView(model: PlayerViewModel())
     }
 }
