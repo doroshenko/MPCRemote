@@ -26,12 +26,14 @@ struct Parameter {
 
     struct Seek {
         static let name = "percent"
-        static let range: ClosedRange<Double> = 0...100
+        static let range: ClosedRange<Int> = 0...100
+        static let doubleRange: ClosedRange<Double> = Double(range.lowerBound)...Double(range.upperBound)
     }
 
     struct Volume {
         static let name = "volume"
-        static let range: ClosedRange<Double> = 0...100
+        static let range: ClosedRange<Int> = 0...100
+        static let doubleRange: ClosedRange<Double> = Double(range.lowerBound)...Double(range.upperBound)
     }
 }
 
@@ -41,6 +43,7 @@ struct Port {
 
 struct Timeout {
     static let ping: TimeInterval = 1.0
+    static let refresh: TimeInterval = 1.0
 }
 
 enum Command: Int {

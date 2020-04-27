@@ -47,7 +47,7 @@ struct PlayerState: Codable {
     let positionString: String
     let duration: UInt64
     let durationString: String
-    let volume: UInt
+    let volume: Int
     let muted: Bool
     let playbackRate: Float
     let size: String
@@ -58,8 +58,8 @@ struct PlayerState: Codable {
         playbackState == .playing
     }
 
-    var isQuiet: Bool {
-        volume == 0
+    var seek: Int {
+        Int(UInt64(Parameter.Seek.range.upperBound) * position/duration)
     }
 }
 

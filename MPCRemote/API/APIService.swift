@@ -18,14 +18,14 @@ final class APIService {
         performPost(url: url, parameters: parameters, completion: completion)
     }
 
-    static func post(volume: Double, server: Server? = StorageService.server, completion: PostResult? = nil) {
+    static func post(volume: Int, server: Server? = StorageService.server, completion: PostResult? = nil) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(volume: volume)
         performPost(url: url, parameters: parameters, completion: completion)
     }
 
-    static func post(seek: Double, server: Server? = StorageService.server, completion: PostResult? = nil) {
+    static func post(seek: Int, server: Server? = StorageService.server, completion: PostResult? = nil) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(seek: seek)
@@ -82,7 +82,7 @@ private extension APIService {
                     return
                 }
 
-                logDebug("Request succeded: \(response.description)", domain: .api)
+                logDebug("Request successful", domain: .api)
                 completion(.success(state))
             case let .failure(error):
                 completion(.failure(.requestFailed(error)))
@@ -105,7 +105,7 @@ private extension APIService {
                     return
                 }
 
-                logDebug("Request succeded: \(response.description)", domain: .api)
+                logDebug("Request successful: \(response.description)", domain: .api)
                 completion(.success(output))
             case let .failure(error):
                 completion(.failure(.requestFailed(error)))

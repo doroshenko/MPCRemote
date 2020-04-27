@@ -11,10 +11,10 @@ import SwiftUI
 struct PlayerView: View {
 
     @State private var playerState: PlayerState = .default
-    @State private var seek: Double = 0
-    @State private var volume: Double = 0
+    @State var seek: Int = 0
+    @State var volume: Int = 0
 
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: Timeout.refresh, on: .main, in: .common).autoconnect()
 
     var body: some View {
         VStack {
@@ -49,24 +49,31 @@ struct PlayerView: View {
                 Spacer()
                 Text(playerState.durationString)
             }
-            Slider(value: $seek, in: Parameter.Seek.range, step: 0.1)
+            Slider(value: Binding(get: {
+                Double(self.seek)
+            }, set: { newValue in
+                self.seek = Int(newValue)
+                self.post(seek: self.seek)
+            }),
+                   in: Parameter.Seek.doubleRange,
+                   step: 1)
         }
     }
 
     var playbackView: some View {
         HStack {
             PlayerButton(action: {
-                APIService.post(command: .seekBackwardMedium)
+                self.post(command: .seekBackwardMedium)
             }, image: Image(systemName: "backward.fill"),
                scale: .medium)
             Spacer()
             PlayerButton(action: {
-                APIService.post(command: .playPause)
+                self.post(command: .playPause)
             }, image: Image(systemName: playerState.isPlaying ? "pause.fill" : "play.fill"),
                scale: .large)
             Spacer()
             PlayerButton(action: {
-                APIService.post(command: .seekForwardMedium)
+                self.post(command: .seekForwardMedium)
             }, image: Image(systemName: "forward.fill"),
                scale: .medium)
         }
@@ -74,9 +81,16 @@ struct PlayerView: View {
 
     var volumeView: some View {
         HStack {
-          Image(systemName: "speaker.fill")
-          Slider(value: $volume, in: Parameter.Seek.range, step: 0.1)
-          Image(systemName: "speaker.3.fill")
+            Image(systemName: "speaker.fill")
+            Slider(value: Binding(get: {
+                Double(self.volume)
+            }, set: { newValue in
+                self.volume = Int(newValue)
+                self.post(volume: self.volume)
+            }),
+                   in: Parameter.Volume.doubleRange,
+                   step: 1)
+            Image(systemName: "speaker.3.fill")
         }
         .foregroundColor(.accentColor)
     }
@@ -84,22 +98,22 @@ struct PlayerView: View {
     var controlView: some View {
         HStack {
             PlayerButton(action: {
-                APIService.post(command: .mute)
-            }, image: Image(systemName: playerState.isQuiet ? "speaker.2.fill" : "speaker.slash"),
+                self.post(command: .mute)
+            }, image: Image(systemName: playerState.muted ? "speaker.2.fill" : "speaker.slash"),
                scale: .small)
             Spacer()
             PlayerButton(action: {
-                APIService.post(command: .audioNext)
+                self.post(command: .audioNext)
             }, image: Image(systemName: "t.bubble"),
                scale: .small)
             Spacer()
             PlayerButton(action: {
-                APIService.post(command: .subtitleNext)
+                self.post(command: .subtitleNext)
             }, image: Image(systemName: "captions.bubble"),
                scale: .small)
             Spacer()
             PlayerButton(action: {
-                APIService.post(command: .fullscreen)
+                self.post(command: .fullscreen)
             }, image: Image(systemName: "viewfinder"),
                scale: .small)
         }
@@ -113,10 +127,30 @@ extension PlayerView {
             switch result {
             case let .success(state):
                 self.playerState = state
+                self.seek = state.seek
+                self.volume = state.volume
             case let .failure(error):
                 logDebug(error.localizedDescription, domain: .api)
             }
         }
+    }
+
+    var postCompletion: PostResult { { result in
+            guard case .success() = result else { return }
+            self.refreshPlayerState()
+        }
+    }
+
+    func post(command: Command) {
+        APIService.post(command: command, completion: postCompletion)
+    }
+
+    func post(seek: Int) {
+        APIService.post(seek: seek, completion: postCompletion)
+    }
+
+    func post(volume: Int) {
+        APIService.post(volume: volume, completion: postCompletion)
     }
 }
 
