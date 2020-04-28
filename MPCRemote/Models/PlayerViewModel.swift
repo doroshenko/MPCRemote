@@ -13,13 +13,12 @@ final class PlayerViewModel: ObservableObject {
 
     let didChange = PassthroughSubject<PlayerViewModel, Never>()
 
-    @Published var file = String()
-    @Published var state = PlaybackState.stopped
-    @Published var position = PlayerState.default.position
-    @Published var duration = PlayerState.default.duration
-    @Published var isMuted = PlayerState.default.isMuted
-
-    @Published var volume: Double = 0 {
+    @Published var file: String
+    @Published var state: PlaybackState
+    @Published var position: Double
+    @Published var duration: Double
+    @Published var isMuted: Bool
+    @Published var volume: Double {
         willSet {
             if isVolumeSliding {
                 post(volume: newValue)
@@ -29,7 +28,9 @@ final class PlayerViewModel: ObservableObject {
     }
 
     private var seek: Double {
-        Parameter.Seek.range.doubleRange.upperBound * position/duration
+        guard duration != 0 else { return 0 }
+
+        return Parameter.Seek.range.upperBound * position / duration
     }
 
     var isSeekSliding: Bool = false {
@@ -48,12 +49,14 @@ final class PlayerViewModel: ObservableObject {
         }
     }
 
-    var durationRange: ClosedRange<Double> {
-        0...duration
-    }
+    init(playerState: PlayerState = .placeholder) {
+        file = playerState.file
+        state = playerState.state
+        position = playerState.position
+        duration = playerState.duration
+        isMuted = playerState.isMuted
+        volume = playerState.volume
 
-    init() {
-        updateProperties()
         playerStateRefresh()
 
         Timer.scheduledTimer(withTimeInterval: Interval.refresh,
@@ -74,7 +77,7 @@ final class PlayerViewModel: ObservableObject {
         }
     }
 
-    private func updateProperties(with playerState: PlayerState = .default) {
+    private func updateProperties(with playerState: PlayerState) {
         file = playerState.file
         state = playerState.state
         duration = playerState.duration

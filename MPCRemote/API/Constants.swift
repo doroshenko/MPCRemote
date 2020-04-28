@@ -26,12 +26,12 @@ struct Parameter {
 
     struct Seek {
         static let name = "percent"
-        static let range: ClosedRange<Int> = 0...100
+        static let range: ClosedRange<Double> = 0...100
     }
 
     struct Volume {
         static let name = "volume"
-        static let range: ClosedRange<Int> = 0...100
+        static let range: ClosedRange<Double> = 0...100
     }
 }
 

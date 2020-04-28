@@ -43,10 +43,11 @@ struct PlayerView: View {
                 Text(model.duration.seekText)
             }
             SeekSliderView(value: $model.position,
-                           range: model.durationRange,
+                           range: 0...model.duration.clamped(to: 1...),
                            onEditingChanged: { isSliding in
                             self.model.isSeekSliding = isSliding
             })
+                .disabled(model.duration == 0)
         }
     }
 

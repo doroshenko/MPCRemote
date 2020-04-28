@@ -14,12 +14,10 @@ struct PlayerSlider: View {
     var onEditingChanged: (Bool) -> Void
 
     var body: some View {
-        VStack {
-            Slider(value: value,
-                   in: range,
-                   step: 1,
-                   onEditingChanged: onEditingChanged)
-        }
+        Slider(value: value,
+            in: range,
+            step: 1,
+            onEditingChanged: onEditingChanged)
     }
 }
 
@@ -41,7 +39,7 @@ struct SeekSliderView: View {
 
      var body: some View {
           PlayerSlider(value: value,
-                       range: Parameter.Volume.range.doubleRange,
+                       range: Parameter.Volume.range,
                        onEditingChanged: onEditingChanged)
      }
 }

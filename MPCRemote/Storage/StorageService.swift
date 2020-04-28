@@ -19,7 +19,7 @@ final class StorageService {
     @UserDefault(StorageService.Key.server, defaultValue: nil)
     static var server: Server?
 
-    @UserDefault(StorageService.Key.state, defaultValue: PlayerState.default)
+    @UserDefault(StorageService.Key.state, defaultValue: PlayerState.placeholder)
     static var state: PlayerState
 
     @UserDefault(StorageService.Key.servers, defaultValue: [])

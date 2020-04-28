@@ -26,13 +26,26 @@ final class PlayerStateFactory {
             let apiState = try? JSONDecoder().decode(APIState.self, from: json) else { return nil }
         return make(apiState: apiState)
     }
+}
 
-    private static func make(apiState: APIState) -> PlayerState {
-        PlayerState(file: apiState.file,
-                    state: PlaybackState(apiState.playbackState) ?? PlayerState.default.state,
-                    position: (Double(apiState.position) ?? PlayerState.default.position) / 1000,
-                    duration: (Double(apiState.duration) ?? PlayerState.default.duration) / 1000,
-                    volume: Double(apiState.volume) ?? PlayerState.default.volume,
-                    isMuted: Int(apiState.muted) != 0)
+private extension PlayerStateFactory {
+
+    static func make(apiState: APIState) -> PlayerState {
+        guard let playbackState = PlaybackState(apiState.playbackState),
+            let position = Double(apiState.position),
+            let duration = Double(apiState.duration),
+            let volume = Double(apiState.volume) else {
+                return .placeholder
+        }
+
+        let file = apiState.file
+        let isMuted = Int(apiState.muted) != 0
+
+        return PlayerState(file: file,
+                           state: playbackState,
+                           position: position / 1000,
+                           duration: duration / 1000,
+                           volume: volume,
+                           isMuted: isMuted)
     }
 }

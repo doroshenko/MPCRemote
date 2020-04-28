@@ -36,21 +36,14 @@ extension PlaybackState: CustomDebugStringConvertible {
 }
 
 struct PlayerState: Codable {
-    let file: String
-    let state: PlaybackState
-    let position: Double
-    let duration: Double
-    let volume: Double
-    let isMuted: Bool
+    var file: String = "..."
+    var state: PlaybackState = .stopped
+    var position: Double = 0
+    var duration: Double = 0
+    var volume: Double = 0
+    var isMuted: Bool = false
 }
 
 extension PlayerState {
-    static var `default`: PlayerState {
-        PlayerState(file: String(),
-                    state: .stopped,
-                    position: 0,
-                    duration: 1,
-                    volume: 0,
-                    isMuted: false)
-    }
+    static var placeholder = PlayerState()
 }

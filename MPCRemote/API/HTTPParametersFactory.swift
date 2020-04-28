@@ -16,12 +16,12 @@ final class HTTPParametersFactory {
         [Parameter.Command.name: "\(command.rawValue)"]
     }
 
-    static func make(volume: Int) -> HTTPParameters {
+    static func make(volume: Double) -> HTTPParameters {
         [Parameter.Command.name: "\(Command.volume.rawValue)",
          Parameter.Volume.name: "\(volume.clamped(to: Parameter.Volume.range))"]
     }
 
-    static func make(seek: Int) -> HTTPParameters {
+    static func make(seek: Double) -> HTTPParameters {
         [Parameter.Command.name: "\(Command.seek.rawValue)",
          Parameter.Seek.name: "\(seek.clamped(to: Parameter.Seek.range))"]
     }
