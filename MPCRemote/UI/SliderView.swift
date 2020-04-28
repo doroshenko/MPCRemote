@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct SeekSliderView: View {
-
     var value: Binding<Double>
     var onEditingChanged: (Bool) -> Void
 

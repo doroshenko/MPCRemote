@@ -43,7 +43,9 @@ struct PlayerView: View {
                 Text(model.playerState.durationString)
             }
             SeekSliderView(value: $model.seek,
-                           onEditingChanged: model.onSeekChanged)
+                           onEditingChanged: { isSliding in
+                            self.model.isSeekSliding = isSliding
+            })
         }
     }
 
@@ -70,7 +72,9 @@ struct PlayerView: View {
         HStack {
             Image(systemName: "speaker.fill")
             VolumeSliderView(value: $model.volume,
-                             onEditingChanged: model.onVolumeChanged)
+                             onEditingChanged: { isSliding in
+                                self.model.isVolumeSliding = isSliding
+            })
             Image(systemName: "speaker.3.fill")
         }
         .foregroundColor(.accentColor)

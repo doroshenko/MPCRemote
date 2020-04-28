@@ -24,26 +24,19 @@ final class PlayerViewModel: ObservableObject {
         }
     }
 
-    private var isSeekSliding: Bool = false
-    private var isVolumeSliding: Bool = false
-
-    lazy var onSeekChanged: (Bool) -> Void = { [weak self] isSliding in
-        guard let strongSelf = self else { return }
-
-        strongSelf.isSeekSliding = isSliding
-
-        if !isSliding {
-            strongSelf.post(seek: strongSelf.seek)
+    var isSeekSliding: Bool = false {
+        didSet {
+            if !isSeekSliding {
+                post(seek: seek)
+            }
         }
     }
 
-    lazy var onVolumeChanged: (Bool) -> Void = { [weak self] isSliding in
-        guard let strongSelf = self else { return }
-
-        strongSelf.isVolumeSliding = isSliding
-
-        if !isSliding {
-            strongSelf.post(volume: strongSelf.volume)
+    var isVolumeSliding: Bool = false {
+        didSet {
+            if !isVolumeSliding {
+                post(volume: volume)
+            }
         }
     }
 
@@ -57,7 +50,7 @@ final class PlayerViewModel: ObservableObject {
         })
     }
 
-    func playerStateRefresh() {
+    private func playerStateRefresh() {
         APIService.getState { result in
             switch result {
             case let .success(state):
