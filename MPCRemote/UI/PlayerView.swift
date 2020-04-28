@@ -38,9 +38,9 @@ struct PlayerView: View {
     var seekView: some View {
         VStack {
             HStack {
-                Text(model.playerState.positionString)
+                Text(model.position)
                 Spacer()
-                Text(model.playerState.durationString)
+                Text(model.duration)
             }
             SeekSliderView(value: $model.seek,
                            onEditingChanged: { isSliding in
@@ -70,21 +70,20 @@ struct PlayerView: View {
 
     var volumeView: some View {
         HStack {
-            Image(systemName: "speaker.fill")
+            Image(systemName: "speaker.1.fill")
             VolumeSliderView(value: $model.volume,
                              onEditingChanged: { isSliding in
                                 self.model.isVolumeSliding = isSliding
             })
             Image(systemName: "speaker.3.fill")
         }
-        .foregroundColor(.accentColor)
     }
 
     var controlView: some View {
         HStack {
             PlayerButton(action: {
                 self.model.post(command: .mute)
-            }, image: Image(systemName: model.playerState.muted ? "speaker.2.fill" : "speaker.slash"),
+            }, image: Image(systemName: model.playerState.muted ? "speaker.2.fill" : "speaker.slash.fill"),
                scale: .small)
             Spacer()
             PlayerButton(action: {
@@ -108,6 +107,12 @@ struct PlayerView: View {
 struct PlayerView_Previews: PreviewProvider {
 
    static var previews: some View {
-        PlayerView(model: PlayerViewModel())
+        ForEach([ColorScheme.light, .dark], id: \.self) { scheme in
+            ZStack {
+                Color(.systemBackground)
+                PlayerView(model: PlayerViewModel())
+            }
+                .environment(\.colorScheme, scheme)
+        }
     }
 }

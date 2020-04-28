@@ -40,6 +40,25 @@ final class PlayerViewModel: ObservableObject {
         }
     }
 
+    var position: String {
+        let timeInterval: Double
+        if isSeekSliding {
+            timeInterval = (seek * Double(playerState.duration)) / (Double(Parameter.Seek.range.upperBound) * 1000)
+        } else {
+            timeInterval = Double(playerState.position) / 1000
+        }
+        return TextFormatter.formatedTime(from: timeInterval)
+    }
+
+    var duration: String {
+        let timeInterval = Double(playerState.duration) / 1000
+        return TextFormatter.formatedTime(from: timeInterval)
+    }
+
+    var currentVolume: String {
+        TextFormatter.formattedVolume(from: volume)
+    }
+
     init() {
         playerStateRefresh()
 
