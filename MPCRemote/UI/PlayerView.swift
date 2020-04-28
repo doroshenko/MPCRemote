@@ -29,7 +29,7 @@ struct PlayerView: View {
     }
 
     var titleView: some View {
-        Text(model.playerState.file)
+        Text(model.file)
             .multilineTextAlignment(.center)
             .lineLimit(3)
             .frame(width: nil, height: 50)
@@ -38,11 +38,12 @@ struct PlayerView: View {
     var seekView: some View {
         VStack {
             HStack {
-                Text(model.position)
+                Text(model.position.seekText)
                 Spacer()
-                Text(model.duration)
+                Text(model.duration.seekText)
             }
-            SeekSliderView(value: $model.seek,
+            SeekSliderView(value: $model.position,
+                           range: model.durationRange,
                            onEditingChanged: { isSliding in
                             self.model.isSeekSliding = isSliding
             })
@@ -58,7 +59,7 @@ struct PlayerView: View {
             Spacer()
             PlayerButton(action: {
                 self.model.post(command: .playPause)
-            }, image: Image(systemName: model.playerState.isPlaying ? "pause.fill" : "play.fill"),
+            }, image: Image(systemName: model.state == .playing ? "pause.fill" : "play.fill"),
                scale: .large)
             Spacer()
             PlayerButton(action: {
@@ -83,7 +84,7 @@ struct PlayerView: View {
         HStack {
             PlayerButton(action: {
                 self.model.post(command: .mute)
-            }, image: Image(systemName: model.playerState.muted ? "speaker.2.fill" : "speaker.slash.fill"),
+            }, image: Image(systemName: model.isMuted ? "speaker.2.fill" : "speaker.slash.fill"),
                scale: .small)
             Spacer()
             PlayerButton(action: {

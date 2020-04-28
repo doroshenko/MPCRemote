@@ -9,7 +9,7 @@
 import Foundation
 
 final class TextFormatter {
-    static func formatedTime(from timeInterval: TimeInterval) -> String {
+    static func formattedTime(from timeInterval: TimeInterval) -> String {
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .positional
         formatter.allowedUnits = [.hour, .minute, .second]
@@ -25,5 +25,16 @@ final class TextFormatter {
 
         let formattedVolume = formatter.string(from: NSNumber(value: volume))
         return formattedVolume ?? "-"
+    }
+}
+
+extension Double {
+
+    var seekText: String {
+        TextFormatter.formattedTime(from: self)
+    }
+
+    var volumeText: String {
+        TextFormatter.formattedVolume(from: self)
     }
 }

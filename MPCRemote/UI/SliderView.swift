@@ -25,11 +25,12 @@ struct PlayerSlider: View {
 
 struct SeekSliderView: View {
     var value: Binding<Double>
+    var range: ClosedRange<Double>
     var onEditingChanged: (Bool) -> Void
 
     var body: some View {
          PlayerSlider(value: value,
-                      range: Parameter.Seek.range.doubleRange,
+                      range: range,
                       onEditingChanged: onEditingChanged)
     }
 }
@@ -54,7 +55,7 @@ struct SliderView_Previews: PreviewProvider {
             ZStack {
                 Color(.systemBackground)
                 VStack {
-                    SeekSliderView(value: $binding, onEditingChanged: { _ in })
+                    SeekSliderView(value: $binding, range: 0...60, onEditingChanged: { _ in })
                     VolumeSliderView(value: $binding, onEditingChanged: { _ in })
                 }
             }

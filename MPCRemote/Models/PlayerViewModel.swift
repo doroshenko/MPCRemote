@@ -13,8 +13,12 @@ final class PlayerViewModel: ObservableObject {
 
     let didChange = PassthroughSubject<PlayerViewModel, Never>()
 
-    @Published var playerState: PlayerState = .default
-    @Published var seek: Double = 0
+    @Published var file = String()
+    @Published var state = PlaybackState.stopped
+    @Published var position = PlayerState.default.position
+    @Published var duration = PlayerState.default.duration
+    @Published var isMuted = PlayerState.default.isMuted
+
     @Published var volume: Double = 0 {
         willSet {
             if isVolumeSliding {
@@ -22,6 +26,10 @@ final class PlayerViewModel: ObservableObject {
             }
             didChange.send(self)
         }
+    }
+
+    private var seek: Double {
+        Parameter.Seek.range.doubleRange.upperBound * position/duration
     }
 
     var isSeekSliding: Bool = false {
@@ -40,26 +48,12 @@ final class PlayerViewModel: ObservableObject {
         }
     }
 
-    var position: String {
-        let timeInterval: Double
-        if isSeekSliding {
-            timeInterval = (seek * Double(playerState.duration)) / (Double(Parameter.Seek.range.upperBound) * 1000)
-        } else {
-            timeInterval = Double(playerState.position) / 1000
-        }
-        return TextFormatter.formatedTime(from: timeInterval)
-    }
-
-    var duration: String {
-        let timeInterval = Double(playerState.duration) / 1000
-        return TextFormatter.formatedTime(from: timeInterval)
-    }
-
-    var currentVolume: String {
-        TextFormatter.formattedVolume(from: volume)
+    var durationRange: ClosedRange<Double> {
+        0...duration
     }
 
     init() {
+        updateProperties()
         playerStateRefresh()
 
         Timer.scheduledTimer(withTimeInterval: Interval.refresh,
@@ -73,16 +67,25 @@ final class PlayerViewModel: ObservableObject {
         APIService.getState { result in
             switch result {
             case let .success(state):
-                self.playerState = state
-                if !self.isSeekSliding {
-                    self.seek = Double(state.seek)
-                }
-                if !self.isVolumeSliding {
-                    self.volume = Double(state.volume)
-                }
+                self.updateProperties(with: state)
             case let .failure(error):
                 logDebug(error.localizedDescription, domain: .api)
             }
+        }
+    }
+
+    private func updateProperties(with playerState: PlayerState = .default) {
+        file = playerState.file
+        state = playerState.state
+        duration = playerState.duration
+        isMuted = playerState.isMuted
+
+        if !isSeekSliding {
+            position = playerState.position
+        }
+
+        if !isVolumeSliding {
+            volume = playerState.volume
         }
     }
 }

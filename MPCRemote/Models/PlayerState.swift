@@ -37,50 +37,20 @@ extension PlaybackState: CustomDebugStringConvertible {
 
 struct PlayerState: Codable {
     let file: String
-    let filePath: String
-    let filePathArg: String
-    let fileDir: String
-    let fileDirArg: String
-    let playbackState: PlaybackState
-    let playbackString: String
-    let position: UInt64
-    let positionString: String
-    let duration: UInt64
-    let durationString: String
-    let volume: Int
-    let muted: Bool
-    let playbackRate: Float
-    let size: String
-    let reloadTime: String
-    let version: String
-
-    var isPlaying: Bool {
-        playbackState == .playing
-    }
-
-    var seek: Int {
-        Int(UInt64(Parameter.Seek.range.upperBound) * position/duration)
-    }
+    let state: PlaybackState
+    let position: Double
+    let duration: Double
+    let volume: Double
+    let isMuted: Bool
 }
 
 extension PlayerState {
     static var `default`: PlayerState {
         PlayerState(file: String(),
-                    filePath: String(),
-                    filePathArg: String(),
-                    fileDir: String(),
-                    fileDirArg: String(),
-                    playbackState: .stopped,
-                    playbackString: String(),
+                    state: .stopped,
                     position: 0,
-                    positionString: "00:00:00",
                     duration: 1,
-                    durationString: "00:00:00",
                     volume: 0,
-                    muted: false,
-                    playbackRate: 1.0,
-                    size: String(),
-                    reloadTime: String(),
-                    version: "1.0.0.0")
+                    isMuted: false)
     }
 }

@@ -29,21 +29,10 @@ final class PlayerStateFactory {
 
     private static func make(apiState: APIState) -> PlayerState {
         PlayerState(file: apiState.file,
-                    filePath: apiState.filePath,
-                    filePathArg: apiState.filePathArg,
-                    fileDir: apiState.fileDir,
-                    fileDirArg: apiState.fileDirArg,
-                    playbackState: PlaybackState(apiState.playbackState) ?? PlayerState.default.playbackState,
-                    playbackString: apiState.playbackString,
-                    position: UInt64(apiState.position) ?? PlayerState.default.position,
-                    positionString: apiState.positionString,
-                    duration: UInt64(apiState.duration) ?? PlayerState.default.duration,
-                    durationString: apiState.durationString,
-                    volume: Int(apiState.volume) ?? PlayerState.default.volume,
-                    muted: Int(apiState.muted) != 0,
-                    playbackRate: Float(apiState.playbackRate) ?? PlayerState.default.playbackRate,
-                    size: apiState.size,
-                    reloadTime: apiState.reloadTime,
-                    version: apiState.version)
+                    state: PlaybackState(apiState.playbackState) ?? PlayerState.default.state,
+                    position: (Double(apiState.position) ?? PlayerState.default.position) / 1000,
+                    duration: (Double(apiState.duration) ?? PlayerState.default.duration) / 1000,
+                    volume: Double(apiState.volume) ?? PlayerState.default.volume,
+                    isMuted: Int(apiState.muted) != 0)
     }
 }
