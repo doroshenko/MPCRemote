@@ -19,7 +19,7 @@ struct PlayerButton: View {
             image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: scale.imageSize, height: scale.imageSize)
+                .frame(minWidth: scale.minImageSize, idealWidth: scale.maxImageSize, maxWidth: scale.maxImageSize, minHeight: scale.minImageSize, idealHeight: scale.maxImageSize, maxHeight: scale.maxImageSize)
                 .onTapGesture {
                     self.action()
                 }
@@ -28,6 +28,7 @@ struct PlayerButton: View {
                 }
         })
             .buttonStyle(PlayerButtonStyle(padding: scale.padding))
+            .aspectRatio(contentMode: .fit)
     }
 }
 
@@ -77,29 +78,40 @@ struct PlayerButtonShadow: ViewModifier {
 }
 
 enum PlayerButtonScale: CaseIterable {
-    case small
-    case medium
-    case large
+    case navigation
+    case control
+    case play
 
-    var imageSize: CGFloat {
+    var minImageSize: CGFloat {
         switch self {
-        case .small:
+        case .navigation:
+            return 15
+        case .control:
+            return 15
+        case .play:
+            return 30
+        }
+    }
+
+    var maxImageSize: CGFloat {
+        switch self {
+        case .navigation:
+            return 30
+        case .control:
             return 20
-        case .medium:
-            return 33
-        case .large:
-            return 35
+        case .play:
+            return 50
         }
     }
 
     var padding: CGFloat {
         switch self {
-        case .small:
+        case .navigation:
+            return 15
+        case .control:
+            return 15
+        case .play:
             return 20
-        case .medium:
-            return 30
-        case .large:
-            return 40
         }
     }
 }

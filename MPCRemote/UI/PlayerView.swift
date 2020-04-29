@@ -25,7 +25,7 @@ struct PlayerView: View {
             Divider()
             controlView
         }
-        .padding()
+        .padding(Constants.padding)
     }
 
     var titleView: some View {
@@ -58,34 +58,31 @@ struct PlayerView: View {
             }, longPressAction: {
                 self.model.post(command: .skipBackwardFile)
             }, image: Image(systemName: "backward.end.alt.fill"),
-               scale: .small)
-            Spacer()
+               scale: .navigation)
             PlayerButton(action: {
                 self.model.post(command: .seekBackwardMedium)
             }, longPressAction: {
                 self.model.post(command: .seekBackwardLarge)
             }, image: Image(systemName: "backward.fill"),
-               scale: .small)
-            Spacer()
+               scale: .navigation)
             PlayerButton(action: {
                 self.model.post(command: .playPause)
             }, image: Image(systemName: model.state == .playing ? "pause.fill" : "play.fill"),
-               scale: .medium)
-            Spacer()
+               scale: .play)
             PlayerButton(action: {
                 self.model.post(command: .seekForwardMedium)
             }, longPressAction: {
                 self.model.post(command: .seekForwardLarge)
             }, image: Image(systemName: "forward.fill"),
-               scale: .small)
-            Spacer()
+               scale: .navigation)
             PlayerButton(action: {
                 self.model.post(command: .skipForward)
             }, longPressAction: {
                 self.model.post(command: .skipForwardFile)
             }, image: Image(systemName: "forward.end.alt.fill"),
-               scale: .small)
+               scale: .navigation)
         }
+        .frame(maxWidth: UIScreen.main.bounds.width - Constants.padding)
     }
 
     var volumeView: some View {
@@ -102,28 +99,35 @@ struct PlayerView: View {
 
     var controlView: some View {
         HStack {
+            Spacer()
             PlayerButton(action: {
                 self.model.post(command: .mute)
             }, image: Image(systemName: model.isMuted ? "speaker.2.fill" : "speaker.slash.fill"),
-               scale: .small)
+               scale: .control)
             Spacer()
             PlayerButton(action: {
                 self.model.post(command: .audioNext)
             }, image: Image(systemName: "t.bubble"),
-               scale: .small)
+               scale: .control)
             Spacer()
             PlayerButton(action: {
                 self.model.post(command: .subtitleNext)
             }, image: Image(systemName: "captions.bubble"),
-               scale: .small)
+               scale: .control)
             Spacer()
             PlayerButton(action: {
                 self.model.post(command: .fullscreen)
             }, image: Image(systemName: "viewfinder"),
-               scale: .small)
+               scale: .control)
+            Spacer()
         }
-    .padding()
+        .padding(.top, Constants.padding)
+        .frame(maxWidth: UIScreen.main.bounds.width - Constants.padding)
     }
+}
+
+private struct Constants {
+    static let padding: CGFloat = 20
 }
 
 struct PlayerView_Previews: PreviewProvider {
