@@ -61,6 +61,11 @@ enum Command: Int {
     case seekBackwardLarge = 903
     case seekForwardLarge = 904
 
+    case skipBackwardFile = 919
+    case skipForwardFile = 920
+    case skipBackward = 921
+    case skipForward = 922
+
     case mute = 909
     case audioNext = 952
     case subtitleNext = 954

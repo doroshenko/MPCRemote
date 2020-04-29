@@ -10,15 +10,22 @@ import SwiftUI
 
 struct PlayerButton: View {
     var action: () -> Void
+    var longPressAction: (() -> Void)?
     var image: Image
     var scale: PlayerButtonScale
 
     var body: some View {
-        Button(action: action, label: {
+        Button(action: { }, label: {
             image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: scale.imageSize, height: scale.imageSize)
+                .onTapGesture {
+                    self.action()
+                }
+                .onLongPressGesture(minimumDuration: 0.1) {
+                    self.longPressAction?() ?? self.action()
+                }
         })
             .buttonStyle(PlayerButtonStyle(padding: scale.padding))
     }
@@ -79,7 +86,7 @@ enum PlayerButtonScale: CaseIterable {
         case .small:
             return 20
         case .medium:
-            return 28
+            return 33
         case .large:
             return 35
         }
@@ -90,7 +97,7 @@ enum PlayerButtonScale: CaseIterable {
         case .small:
             return 20
         case .medium:
-            return 25
+            return 30
         case .large:
             return 40
         }
@@ -99,12 +106,12 @@ enum PlayerButtonScale: CaseIterable {
 
 private struct Constants {
     enum Shadow {
-        static let radius: CGFloat = 10
-        static let highlighted: CGFloat = 5
-        static let normal: CGFloat = -10
+        static let radius: CGFloat = 6
+        static let highlighted: CGFloat = 3
+        static let normal: CGFloat = -6
     }
 
-    static let border: CGFloat = 4
+    static let border: CGFloat = 3
 }
 
 struct PlayerButton_Previews: PreviewProvider {
@@ -114,6 +121,8 @@ struct PlayerButton_Previews: PreviewProvider {
             VStack {
                 ForEach(PlayerButtonScale.allCases, id: \.self) { scale in
                     PlayerButton(action: {
+                        logDebug()
+                    }, longPressAction: {
                         logDebug()
                     }, image: Image(systemName: "backward.fill"),
                        scale: scale)

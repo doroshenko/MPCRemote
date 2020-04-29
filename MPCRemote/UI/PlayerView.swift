@@ -54,19 +54,37 @@ struct PlayerView: View {
     var playbackView: some View {
         HStack {
             PlayerButton(action: {
+                self.model.post(command: .skipBackward)
+            }, longPressAction: {
+                self.model.post(command: .skipBackwardFile)
+            }, image: Image(systemName: "backward.end.alt.fill"),
+               scale: .small)
+            Spacer()
+            PlayerButton(action: {
                 self.model.post(command: .seekBackwardMedium)
+            }, longPressAction: {
+                self.model.post(command: .seekBackwardLarge)
             }, image: Image(systemName: "backward.fill"),
-               scale: .medium)
+               scale: .small)
             Spacer()
             PlayerButton(action: {
                 self.model.post(command: .playPause)
             }, image: Image(systemName: model.state == .playing ? "pause.fill" : "play.fill"),
-               scale: .large)
+               scale: .medium)
             Spacer()
             PlayerButton(action: {
                 self.model.post(command: .seekForwardMedium)
+            }, longPressAction: {
+                self.model.post(command: .seekForwardLarge)
             }, image: Image(systemName: "forward.fill"),
-               scale: .medium)
+               scale: .small)
+            Spacer()
+            PlayerButton(action: {
+                self.model.post(command: .skipForward)
+            }, longPressAction: {
+                self.model.post(command: .skipForwardFile)
+            }, image: Image(systemName: "forward.end.alt.fill"),
+               scale: .small)
         }
     }
 
@@ -79,6 +97,7 @@ struct PlayerView: View {
             })
             Image(systemName: "speaker.3.fill")
         }
+        .padding(.vertical)
     }
 
     var controlView: some View {
@@ -103,6 +122,7 @@ struct PlayerView: View {
             }, image: Image(systemName: "viewfinder"),
                scale: .small)
         }
+    .padding()
     }
 }
 

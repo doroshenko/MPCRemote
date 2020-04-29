@@ -31,7 +31,7 @@ final class APIService {
         let parameters = HTTPParametersFactory.make(seek: seek)
         performPost(url: url, parameters: parameters, completion: completion)
     }
-    
+
     static func getState(server: Server? = StorageService.server, completion: @escaping StateResult) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .state)
