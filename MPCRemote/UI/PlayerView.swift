@@ -25,7 +25,7 @@ struct PlayerView: View {
             Divider()
             controlView
         }
-        .padding(Constants.padding)
+        .screenWidth(padding: Constants.padding)
         .foregroundColor(.main)
         .accentColor(.accentStart)
     }
@@ -33,8 +33,8 @@ struct PlayerView: View {
     var titleView: some View {
         Text(model.file)
             .multilineTextAlignment(.center)
-            .lineLimit(3)
-            .frame(width: nil, height: 50)
+            .frame(height: 70)
+            .screenWidth(padding: Constants.padding)
     }
 
     var seekView: some View {
@@ -84,7 +84,7 @@ struct PlayerView: View {
             }, image: Image(systemName: "forward.end.alt.fill"),
                scale: .navigation)
         }
-        .frame(maxWidth: UIScreen.main.bounds.width - Constants.padding)
+        .screenWidth(padding: Constants.padding)
     }
 
     var volumeView: some View {
@@ -124,7 +124,7 @@ struct PlayerView: View {
             Spacer()
         }
         .padding(.top, Constants.padding)
-        .frame(maxWidth: UIScreen.main.bounds.width - Constants.padding)
+        .screenWidth(padding: Constants.padding)
     }
 }
 

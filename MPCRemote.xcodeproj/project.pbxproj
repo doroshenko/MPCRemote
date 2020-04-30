@@ -33,6 +33,7 @@
 		0C8271732411EEEB00E5474B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8271722411EEEB00E5474B /* Constants.swift */; };
 		0C8D9110241844CF00439554 /* IPv4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D910F241844CF00439554 /* IPv4Tests.swift */; };
 		0C8D91122418452F00439554 /* IPv4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D91112418452F00439554 /* IPv4.swift */; };
+		0CA7AFC8245B1597007842A5 /* View+ScreenWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA7AFC7245B1597007842A5 /* View+ScreenWidth.swift */; };
 		0CB0F9AB245838D300C31A04 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB0F9AA245838D300C31A04 /* TimeFormatter.swift */; };
 		0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */; };
 		0CD0EA5E2408973100DE10E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */; };
@@ -86,6 +87,7 @@
 		0C8271722411EEEB00E5474B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0C8D910F241844CF00439554 /* IPv4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPv4Tests.swift; sourceTree = "<group>"; };
 		0C8D91112418452F00439554 /* IPv4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPv4.swift; sourceTree = "<group>"; };
+		0CA7AFC7245B1597007842A5 /* View+ScreenWidth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ScreenWidth.swift"; sourceTree = "<group>"; };
 		0CB0F9AA245838D300C31A04 /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
 		0CD0EA582408973100DE10E5 /* MPCRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPCRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				0C4AF23C240B59040057AC86 /* Logger.swift */,
 				0C4AF23E240B71DF0057AC86 /* LogEnums.swift */,
 				0CB0F9AA245838D300C31A04 /* TimeFormatter.swift */,
+				0CA7AFC7245B1597007842A5 /* View+ScreenWidth.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 			files = (
 				0CF31E56244CC2290078F414 /* ContentView.swift in Sources */,
 				0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */,
+				0CA7AFC8245B1597007842A5 /* View+ScreenWidth.swift in Sources */,
 				0C48B3E524267EC200EEFE98 /* Validation.swift in Sources */,
 				0C3A1E0C244DAD630030AF17 /* PlayerView.swift in Sources */,
 				0C4AF237240B35BF0057AC86 /* NetworkService.swift in Sources */,
