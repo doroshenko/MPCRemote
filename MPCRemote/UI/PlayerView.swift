@@ -13,21 +13,35 @@ struct PlayerView: View {
     @ObservedObject var model: PlayerViewModel
 
     var body: some View {
-        VStack {
-            Spacer()
-            titleView
-            Spacer()
-            seekView
-            Spacer()
-            playbackView
-            Spacer()
-            volumeView
-            Divider()
-            controlView
+        NavigationView {
+            VStack {
+                settingsView
+                titleView
+                Spacer()
+                seekView
+                Spacer()
+                playbackView
+                Spacer()
+                bottomView
+            }
+            .screenWidth(padding: Constants.padding)
         }
-        .screenWidth(padding: Constants.padding)
         .foregroundColor(.main)
         .accentColor(.accentStart)
+    }
+}
+
+private extension PlayerView {
+
+    var settingsView: some View {
+        NavigationLink(destination: SettingsView()) {
+            HStack {
+                Spacer()
+                Image(systemName: "gear")
+                    .resizable().frame(width: Constants.settings, height: Constants.settings)
+            }
+        }
+        .navigationBarTitle("MPC Remote", displayMode: .inline)
     }
 
     var titleView: some View {
@@ -61,22 +75,26 @@ struct PlayerView: View {
                 self.model.post(command: .skipBackwardFile)
             }, image: Image(systemName: "backward.end.alt.fill"),
                scale: .navigation)
+
             PlayerButton(action: {
                 self.model.post(command: .seekBackwardMedium)
             }, longPressAction: {
                 self.model.post(command: .seekBackwardLarge)
             }, image: Image(systemName: "backward.fill"),
                scale: .navigation)
+
             PlayerButton(action: {
                 self.model.post(command: .playPause)
             }, image: Image(systemName: model.state == .playing ? "pause.fill" : "play.fill"),
                scale: .play)
+
             PlayerButton(action: {
                 self.model.post(command: .seekForwardMedium)
             }, longPressAction: {
                 self.model.post(command: .seekForwardLarge)
             }, image: Image(systemName: "forward.fill"),
                scale: .navigation)
+
             PlayerButton(action: {
                 self.model.post(command: .skipForward)
             }, longPressAction: {
@@ -123,13 +141,22 @@ struct PlayerView: View {
                scale: .control)
             Spacer()
         }
-        .padding(.top, Constants.padding)
+        .padding(.vertical, Constants.padding)
         .screenWidth(padding: Constants.padding)
+    }
+
+    var bottomView: some View {
+        VStack {
+            volumeView
+            Divider()
+            controlView
+        }
     }
 }
 
 private struct Constants {
     static let padding: CGFloat = 20
+    static let settings: CGFloat = 44
 }
 
 struct PlayerView_Previews: PreviewProvider {

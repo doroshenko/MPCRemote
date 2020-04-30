@@ -11,21 +11,12 @@ import Combine
 
 final class PlayerViewModel: ObservableObject {
 
-    let didChange = PassthroughSubject<PlayerViewModel, Never>()
-
     @Published var file: String
     @Published var state: PlaybackState
     @Published var position: Double
     @Published var duration: Double
     @Published var isMuted: Bool
-    @Published var volume: Double {
-        willSet {
-            if isVolumeSliding {
-                post(volume: newValue)
-            }
-            didChange.send(self)
-        }
-    }
+    @Published var volume: Double
 
     private var seek: Double {
         guard duration != 0 else { return 0 }
@@ -80,11 +71,11 @@ final class PlayerViewModel: ObservableObject {
     private func updateProperties(with playerState: PlayerState) {
         file = playerState.file
         state = playerState.state
-        duration = playerState.duration
         isMuted = playerState.isMuted
 
         if !isSeekSliding {
             position = playerState.position
+            duration = playerState.duration
         }
 
         if !isVolumeSliding {

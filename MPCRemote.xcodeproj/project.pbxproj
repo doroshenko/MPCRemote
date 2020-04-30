@@ -41,7 +41,7 @@
 		0CD0EA682408973100DE10E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */; };
 		0CE231E424573C710068820C /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE231E324573C710068820C /* PlayerViewModel.swift */; };
 		0CE231E82457AE9C0068820C /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE231E72457AE9C0068820C /* SliderView.swift */; };
-		0CF31E56244CC2290078F414 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF31E55244CC2290078F414 /* ContentView.swift */; };
+		0CF31E56244CC2290078F414 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF31E55244CC2290078F414 /* SettingsView.swift */; };
 		0CFAC4CC2410A0C900EF83E1 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAC4CB2410A0C900EF83E1 /* PlayerState.swift */; };
 		ABB7103A3758090544BECD14 /* libPods-MPCRemoteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8E237D84CA8F64B517A74F /* libPods-MPCRemoteTests.a */; };
 		F1CDBB008BD9848EE0F83594 /* libPods-MPCRemote.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A90B73EB470EB98F0EED69 /* libPods-MPCRemote.a */; };
@@ -100,7 +100,7 @@
 		0CE231E324573C710068820C /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		0CE231E72457AE9C0068820C /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		0CF31E17244CBD700078F414 /* MPCRemote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MPCRemote.entitlements; sourceTree = "<group>"; };
-		0CF31E55244CC2290078F414 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0CF31E55244CC2290078F414 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0CFAC4CB2410A0C900EF83E1 /* PlayerState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
 		0F8E237D84CA8F64B517A74F /* libPods-MPCRemoteTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPCRemoteTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17197D0CED7CA9FAFADE9318 /* Pods-MPCRemoteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemoteTests.debug.xcconfig"; path = "Target Support Files/Pods-MPCRemoteTests/Pods-MPCRemoteTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -236,10 +236,10 @@
 			children = (
 				0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */,
 				0C6773DF2454D71F00FFD6DE /* Colors.swift */,
-				0CF31E55244CC2290078F414 /* ContentView.swift */,
 				0C6773E12454DDE200FFD6DE /* Gradients.swift */,
 				0C6773DB24547BA700FFD6DE /* PlayerButton.swift */,
 				0C3A1E0B244DAD630030AF17 /* PlayerView.swift */,
+				0CF31E55244CC2290078F414 /* SettingsView.swift */,
 				0CE231E72457AE9C0068820C /* SliderView.swift */,
 				0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */,
 				0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */,
@@ -449,7 +449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CF31E56244CC2290078F414 /* ContentView.swift in Sources */,
+				0CF31E56244CC2290078F414 /* SettingsView.swift in Sources */,
 				0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */,
 				0CA7AFC8245B1597007842A5 /* View+ScreenWidth.swift in Sources */,
 				0C48B3E524267EC200EEFE98 /* Validation.swift in Sources */,

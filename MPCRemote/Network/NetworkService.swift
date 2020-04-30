@@ -10,6 +10,22 @@ import Foundation
 
 final class NetworkService {
 
+    static var defaultAddress: String? {
+        logDebug(domain: .networking)
+        let localAddress = Connectivity.localIPAddress
+        guard let addressString = localAddress.address, let ip = IPv4(string: addressString) else {
+            logError("Invalid local IP address", domain: .networking)
+            return nil
+        }
+
+        guard let maskString = localAddress.mask, let mask = IPv4(string: maskString) else {
+            logError("Invalid network mask", domain: .networking)
+            return nil
+        }
+
+        return ip.firstUsableAddress(with: mask).address
+    }
+
     static func scan() {
         guard Connectivity.isConnectedToWifi else {
             logError("Not connected to LAN", domain: .networking)
