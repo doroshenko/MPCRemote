@@ -9,12 +9,12 @@
 import SwiftUI
 
 extension Color {
-    static let buttonGradientStart = Color("ButtonGradientStart")
-    static let buttonGradientEnd = Color("ButtonGradientEnd")
+    static let shadowStart = Color("ShadowStart")
+    static let shadowEnd = Color("ShadowEnd")
 
-    static let buttonHighlightStart = Color("ButtonHighlightStart")
-    static let buttonHighlightEnd = Color("ButtonHighlightEnd")
+    static let accentStart = Color("AccentStart")
+    static let accentEnd = Color("AccentEnd")
 
-    static let buttonIcon = Color("ButtonIcon")
-    static let buttonIconHighlight = Color("ButtonIconHighlight")
+    static let main = Color("Main")
+    static let mainAccent = Color("MainAccent")
 }

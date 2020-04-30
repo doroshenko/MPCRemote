@@ -9,9 +9,9 @@
 import SwiftUI
 
 extension LinearGradient {
-    static let buttonMain = LinearGradient(.buttonGradientStart, .buttonGradientEnd)
-    static let buttonHighlight = LinearGradient(.buttonHighlightStart, .buttonHighlightEnd)
-    static let buttonHighlightReversed = LinearGradient(.buttonHighlightEnd, .buttonHighlightStart)
+    static let shadow = LinearGradient(.shadowStart, .shadowEnd)
+    static let accent = LinearGradient(.accentStart, .accentEnd)
+    static let accentReversed = LinearGradient(.accentEnd, .accentStart)
 }
 
 private extension LinearGradient {

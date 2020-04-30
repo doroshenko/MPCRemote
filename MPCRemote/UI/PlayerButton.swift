@@ -39,7 +39,7 @@ struct PlayerButtonStyle: ButtonStyle {
         configuration.label
             .padding(padding)
             .contentShape(Circle())
-            .foregroundColor(configuration.isPressed ? Color.buttonIconHighlight : Color.buttonIcon)
+            .foregroundColor(configuration.isPressed ? Color.mainAccent : Color.main)
             .background(
                 PlayerButtonBackground(isHighlighted: configuration.isPressed, shape: Circle())
             )
@@ -54,12 +54,12 @@ struct PlayerButtonBackground<S: Shape>: View {
     var body: some View {
         shape
             .fill(gradient)
-            .overlay(shape.stroke(LinearGradient.buttonHighlight, lineWidth: Constants.border))
+            .overlay(shape.stroke(LinearGradient.accent, lineWidth: Constants.border))
             .modifier(PlayerButtonShadow(isHighlighted: isHighlighted))
     }
 
     private var gradient: LinearGradient {
-        isHighlighted ? .buttonHighlightReversed : .buttonMain
+        isHighlighted ? .accentReversed : .shadow
     }
 }
 
@@ -72,8 +72,8 @@ struct PlayerButtonShadow: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .shadow(color: Color.buttonGradientStart, radius: Constants.Shadow.radius, x: size, y: size)
-            .shadow(color: Color.buttonGradientEnd, radius: Constants.Shadow.radius, x: -size, y: -size)
+            .shadow(color: Color.shadowStart, radius: Constants.Shadow.radius, x: size, y: size)
+            .shadow(color: Color.shadowEnd, radius: Constants.Shadow.radius, x: -size, y: -size)
     }
 }
 

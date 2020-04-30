@@ -15,9 +15,9 @@ struct PlayerSlider: View {
 
     var body: some View {
         Slider(value: value,
-            in: range,
-            step: 1,
-            onEditingChanged: onEditingChanged)
+               in: range,
+               step: 1,
+               onEditingChanged: onEditingChanged)
     }
 }
 

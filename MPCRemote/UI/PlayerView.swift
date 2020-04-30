@@ -26,6 +26,8 @@ struct PlayerView: View {
             controlView
         }
         .padding(Constants.padding)
+        .foregroundColor(.main)
+        .accentColor(.accentStart)
     }
 
     var titleView: some View {
