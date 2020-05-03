@@ -65,12 +65,12 @@ private extension SettingsView {
     func pingAction() {
         logDebug()
         guard validateAddress() else { return }
-        NetworkService.ping(hostName: address)
+        NetworkService.ping(hostName: address, completion: { _ in })
     }
 
     func scanAction() {
         logDebug()
-        NetworkService.scan()
+        NetworkService.scan(complete: true, completion: { _ in })
     }
 
     func cancelAction() {

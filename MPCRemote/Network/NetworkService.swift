@@ -26,30 +26,36 @@ final class NetworkService {
         return ip.firstUsableAddress(with: mask).address
     }
 
-    static func scan() {
-        guard Connectivity.isConnectedToWifi else {
+    static func scan(complete: Bool, completion: @escaping (Server) -> Void) {
+        guard Connectivity.isConnectedToWifi, let addressRange = addressRange else {
             logError("Not connected to LAN", domain: .networking)
             return
         }
 
-        guard let addressRange = addressRange else { return }
-
         cancel()
 
         logDebug("Network scan initiated", domain: .networking)
+
+        var found: Bool = false
         addressRange.forEach { ip in
-            performPing(hostName: ip.address)
+            performPing(hostName: ip.address, completion: { serverResult in
+                if case let .success(server) = serverResult, complete || !found {
+                    found = true
+                    completion(server)
+                }
+            })
         }
     }
 
-    static func ping(hostName: String) {
+    static func ping(hostName: String, completion: @escaping ServerResult) {
         guard Connectivity.isHostReachable(hostName: hostName) else {
             logError("Cannot reach host: \(hostName)", domain: .networking)
+            completion(.failure(.invalidEndpoint))
             return
         }
 
         logDebug("Ping initated for host: \(hostName)", domain: .networking)
-        performPing(hostName: hostName)
+        performPing(hostName: hostName, completion: completion)
     }
 
     static func cancel() {
@@ -78,30 +84,31 @@ private extension NetworkService {
         return ip.usableAddressRange(with: mask)
     }
 
-    static func performPing(hostName: String) {
+    static func performPing(hostName: String, completion: @escaping ServerResult) {
         pingOperation(hostName: hostName) { pingResult in
             switch pingResult {
             case let .success(duration):
                 logDebug("Found host: \(hostName) after \(Int(duration * 1000)) ms", domain: .networking)
-                performValidation(hostName: hostName)
+                performValidation(hostName: hostName, completion: completion)
             case .failure:
                 // Uncomment to debug
                 // logDebug(error.localizedDescription, domain: .networking)
-                break
+                completion(.failure(.invalidEndpoint))
             }
         }
     }
 
-    static func performValidation(hostName: String) {
+    static func performValidation(hostName: String, completion: @escaping ServerResult) {
         let server = Server(address: hostName)
         validationOperation(server: server) { validateResult in
             switch validateResult {
             case let .success(state):
                 logInfo("Found MPC server at: \(hostName) with state: \(state)", domain: .networking)
-            case .failure:
+                completion(.success(server))
+            case let .failure(error):
                 // Uncomment to debug
                 // logDebug(error.localizedDescription, domain: .networking)
-                break
+                completion(.failure(error))
             }
         }
     }

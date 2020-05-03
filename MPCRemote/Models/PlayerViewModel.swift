@@ -57,7 +57,7 @@ final class PlayerViewModel: ObservableObject {
         })
     }
 
-    private func playerStateRefresh() {
+    func playerStateRefresh() {
         APIService.getState { result in
             switch result {
             case let .success(state):

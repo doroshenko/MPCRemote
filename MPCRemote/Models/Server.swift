@@ -12,10 +12,12 @@ struct Server: Codable {
     let address: String
     let port: UInt16
     let name: String
+    let isUserDefined: Bool
 
-    init(address: String, port: UInt16 = Port.default, name: String? = nil) {
+    init(address: String, port: UInt16 = Port.default, name: String? = nil, isUserDefined: Bool = false) {
         self.address = address
         self.port = port
         self.name = name ?? "\(address):\(port)"
+        self.isUserDefined = isUserDefined
     }
 }

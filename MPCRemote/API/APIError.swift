@@ -30,3 +30,4 @@ typealias APIResult<Value> = (Result<Value, APIError>) -> Void
 typealias PostResult = APIResult<Void>
 typealias StateResult = APIResult<PlayerState>
 typealias SnapshotResult = APIResult<UIImage>
+typealias ServerResult = APIResult<Server>
