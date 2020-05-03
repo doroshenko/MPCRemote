@@ -15,14 +15,14 @@ struct PlayerView: View {
     var body: some View {
         NavigationView {
             VStack {
-                settingsView
-                titleView
+                settingsView()
+                titleView()
                 Spacer()
-                seekView
+                seekView()
                 Spacer()
-                playbackView
+                playbackView()
                 Spacer()
-                bottomView
+                bottomView()
             }
             .screenWidth(padding: Constants.padding)
         }
@@ -33,7 +33,7 @@ struct PlayerView: View {
 
 private extension PlayerView {
 
-    var settingsView: some View {
+    func settingsView() -> some View {
         NavigationLink(destination: SettingsView()) {
             HStack {
                 Spacer()
@@ -41,17 +41,17 @@ private extension PlayerView {
                     .resizable().frame(width: Constants.settings, height: Constants.settings)
             }
         }
-        .navigationBarTitle("MPC Remote", displayMode: .inline)
+        .navigationBarTitle(Text(Bundle.main.displayName), displayMode: .inline)
     }
 
-    var titleView: some View {
+    func titleView() -> some View {
         Text(model.file)
             .multilineTextAlignment(.center)
             .frame(height: 70)
             .screenWidth(padding: Constants.padding)
     }
 
-    var seekView: some View {
+    func seekView() -> some View {
         VStack {
             HStack {
                 Text(model.position.seekText)
@@ -67,7 +67,7 @@ private extension PlayerView {
         }
     }
 
-    var playbackView: some View {
+    func playbackView() -> some View {
         HStack {
             PlayerButton(action: {
                 self.model.post(command: .skipBackward)
@@ -105,7 +105,7 @@ private extension PlayerView {
         .screenWidth(padding: Constants.padding)
     }
 
-    var volumeView: some View {
+    func volumeView() -> some View {
         HStack {
             Image(systemName: "speaker.1.fill")
             VolumeSliderView(value: $model.volume,
@@ -117,7 +117,7 @@ private extension PlayerView {
         .padding(.vertical)
     }
 
-    var controlView: some View {
+    func controlView() -> some View {
         HStack {
             Spacer()
             PlayerButton(action: {
@@ -145,11 +145,11 @@ private extension PlayerView {
         .screenWidth(padding: Constants.padding)
     }
 
-    var bottomView: some View {
+    func bottomView() -> some View {
         VStack {
-            volumeView
+            volumeView()
             Divider()
-            controlView
+            controlView()
         }
     }
 }

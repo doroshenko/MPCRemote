@@ -45,7 +45,7 @@ struct SettingsView: View {
             Spacer()
         }
         .alert(isPresented: $showingAlert, content: {
-            Alert(title: Text("MPCRemote"), message: Text("No host specified"))
+            Alert(title: Text(Bundle.main.displayName), message: Text("No host specified"))
         })
         .onAppear(perform: {
             // TODO: better place to use this. Consider implementing Bindable UserDefaults integration

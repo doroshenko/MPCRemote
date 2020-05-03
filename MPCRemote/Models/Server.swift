@@ -17,7 +17,7 @@ struct Server: Codable {
     init(address: String, port: UInt16 = Port.default, name: String? = nil, isUserDefined: Bool = false) {
         self.address = address
         self.port = port
-        self.name = name ?? "\(address):\(port)"
+        self.name = name ?? address
         self.isUserDefined = isUserDefined
     }
 }
