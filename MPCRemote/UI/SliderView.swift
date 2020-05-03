@@ -49,15 +49,10 @@ struct SliderView_Previews: PreviewProvider {
     @State private static var binding = Double(30)
 
     static var previews: some View {
-        ForEach([ColorScheme.light, .dark], id: \.self) { scheme in
-            ZStack {
-                Color(.systemBackground)
-                VStack {
-                    SeekSliderView(value: $binding, range: 0...60, onEditingChanged: { _ in })
-                    VolumeSliderView(value: $binding, onEditingChanged: { _ in })
-                }
-            }
-            .environment(\.colorScheme, scheme)
+        VStack {
+            SeekSliderView(value: $binding, range: 0...60, onEditingChanged: { _ in })
+            VolumeSliderView(value: $binding, onEditingChanged: { _ in })
         }
+        .previewStyle(.compact)
     }
 }

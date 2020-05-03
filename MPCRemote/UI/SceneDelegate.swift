@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             NetworkService.scan(complete: false, completion: { server in
                 logInfo("Using first found server as default: \(server.address)", domain: .networking)
                 StorageService.server = server
-                playerViewModel.playerStateRefresh()
+                playerViewModel.refresh()
             })
         }
 
@@ -66,11 +66,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
-    }
-}
-
-struct SceneDelegate_Previews: PreviewProvider {
-    static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }

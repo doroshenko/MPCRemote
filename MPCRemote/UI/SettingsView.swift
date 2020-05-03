@@ -49,7 +49,7 @@ struct SettingsView: View {
         })
         .onAppear(perform: {
             // TODO: better place to use this. Consider implementing Bindable UserDefaults integration
-            self.address = StorageService.server?.address ?? NetworkService.defaultAddress ?? "192.168.1.1"
+            self.address = StorageService.server?.address ?? NetworkService.defaultAddress ?? String()
         })
     }
 }
@@ -92,5 +92,6 @@ private extension SettingsView {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
+            .previewStyle(.full)
     }
 }

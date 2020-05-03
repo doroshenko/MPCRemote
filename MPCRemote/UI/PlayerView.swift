@@ -162,12 +162,7 @@ private struct Constants {
 struct PlayerView_Previews: PreviewProvider {
 
    static var previews: some View {
-        ForEach([ColorScheme.light, .dark], id: \.self) { scheme in
-            ZStack {
-                Color(.systemBackground)
-                PlayerView(model: PlayerViewModel())
-            }
-                .environment(\.colorScheme, scheme)
-        }
+        PlayerView(model: PlayerViewModel())
+            .previewStyle(.full)
     }
 }

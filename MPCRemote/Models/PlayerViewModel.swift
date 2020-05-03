@@ -48,16 +48,16 @@ final class PlayerViewModel: ObservableObject {
         isMuted = playerState.isMuted
         volume = playerState.volume
 
-        playerStateRefresh()
+        refresh()
 
         Timer.scheduledTimer(withTimeInterval: Interval.refresh,
                              repeats: true,
                              block: { [weak self] _ in
-                                self?.playerStateRefresh()
+                                self?.refresh()
         })
     }
 
-    func playerStateRefresh() {
+    func refresh() {
         APIService.getState { result in
             switch result {
             case let .success(state):
@@ -88,19 +88,19 @@ extension PlayerViewModel {
 
     func post(command: Command) {
         APIService.post(command: command) { _ in
-            self.playerStateRefresh()
+            self.refresh()
         }
     }
 
     func post(seek: Double) {
         APIService.post(seek: seek) { _ in
-            self.playerStateRefresh()
+            self.refresh()
         }
     }
 
     func post(volume: Double) {
         APIService.post(volume: volume) { _ in
-            self.playerStateRefresh()
+            self.refresh()
         }
     }
 }

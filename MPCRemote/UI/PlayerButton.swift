@@ -127,27 +127,17 @@ private struct Constants {
 }
 
 struct PlayerButton_Previews: PreviewProvider {
-    static var buttons: some View {
-        ZStack {
-            Color(.systemBackground)
-            VStack {
-                ForEach(PlayerButtonScale.allCases, id: \.self) { scale in
-                    PlayerButton(action: {
-                        logDebug()
-                    }, longPressAction: {
-                        logDebug()
-                    }, image: Image(systemName: "backward.fill"),
-                       scale: scale)
-                }
-            }
-        }
-    }
-
     static var previews: some View {
-        Group {
-            ForEach([ColorScheme.light, .dark], id: \.self) { scheme in
-                buttons.environment(\.colorScheme, scheme)
+        VStack {
+            ForEach(PlayerButtonScale.allCases, id: \.self) { scale in
+                PlayerButton(action: {
+                    logDebug()
+                }, longPressAction: {
+                    logDebug()
+                }, image: Image(systemName: "backward.fill"),
+                   scale: scale)
             }
         }
+        .previewStyle(.compact)
     }
 }
