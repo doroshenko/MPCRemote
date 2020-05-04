@@ -17,7 +17,7 @@ protocol Resolver {
 
 protocol ViewFactory {
     func playerView() -> PlayerView
-    func serverList() -> ServerList
+    func serverList(model: ServerListModel) -> ServerList
 }
 
 protocol ModelFactory {
@@ -57,11 +57,11 @@ extension DependencyContainer: Resolver {
 
 extension DependencyContainer: ViewFactory {
     func playerView() -> PlayerView {
-        PlayerView(factory: self, model: playerViewModel())
+        PlayerView(factory: self, playerModel: playerViewModel(), serverListModel: serverListModel())
     }
 
-    func serverList() -> ServerList {
-        ServerList(model: serverListModel())
+    func serverList(model: ServerListModel) -> ServerList {
+        ServerList(model: model)
     }
 }
 

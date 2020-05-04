@@ -13,12 +13,15 @@ final class ServerListModel: ObservableObject {
     private let networkService: NetworkService
     private let storageService: StorageService
 
-    @Published var servers: [Server]
+    @Published var servers = [Server]()
 
     init(resolver: Resolver) {
         self.networkService = resolver.resolve()
         self.storageService = resolver.resolve()
-        self.servers = self.storageService.servers
+    }
+
+    func setup() {
+        servers = storageService.servers
     }
 
     func set(server: Server) {

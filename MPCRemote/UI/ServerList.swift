@@ -21,6 +21,10 @@ struct ServerList: View {
                 ServerView(server: server)
             })
         }
+        .onAppear(perform: {
+            logDebug(domain: .ui)
+            self.model.setup()
+        })
         .onDisappear(perform: {
             logDebug(domain: .ui)
             self.model.cancel()
@@ -36,8 +40,9 @@ struct ServerList: View {
 }
 
 struct ServerList_Previews: PreviewProvider {
+    static let container = DependencyContainer()
     static var previews: some View {
-        DependencyContainer().serverList()
+        container.serverList(model: container.serverListModel())
             .previewStyle(.full)
     }
 }
