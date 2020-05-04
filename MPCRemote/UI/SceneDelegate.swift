@@ -27,6 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             NetworkService.scan(complete: false, completion: { server in
                 logInfo("Using first found server as default: \(server)", domain: .ui)
                 StorageService.server = server
+                StorageService.servers.appendUnique(server)
                 playerViewModel.refresh()
             })
         }

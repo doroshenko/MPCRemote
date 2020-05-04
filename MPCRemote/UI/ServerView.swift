@@ -20,13 +20,13 @@ struct ServerView: View {
             VStack(alignment: .leading) {
                 Text(server.name)
                     .font(.headline)
-                Text("\(server.address):\(server.port.portDescription)")
+                Text(server.id)
                     .font(.subheadline)
             }
 
             Spacer()
 
-            Image(systemName: server.isUserDefined ? "star.fill" : "star")
+            Image(systemName: server.favorite ? "star.fill" : "star")
                 .font(.title)
         }
         .padding()

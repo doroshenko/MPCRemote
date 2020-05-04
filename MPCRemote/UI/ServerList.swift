@@ -10,10 +10,10 @@ import SwiftUI
 
 struct ServerList: View {
 
-    @State var servers = [Server]()
+    @ObservedObject var model = ServerListModel()
 
     var body: some View {
-        List(servers) { server in
+        List(model.servers) { server in
             Button(action: {
                 logInfo("Server set as default: \(server)", domain: .ui)
                 StorageService.server = server
@@ -22,39 +22,22 @@ struct ServerList: View {
             })
         }
         .onDisappear(perform: {
-            self.cancelAction()
+            logDebug(domain: .ui)
+            self.model.cancelAction()
         })
         .navigationBarTitle(Text("Server List"), displayMode: .inline)
         .navigationBarItems(trailing:
             Button("Scan") {
-                self.scanAction()
+                logDebug(domain: .ui)
+                self.model.scanAction()
             }
         )
-    }
-
-    private func scanAction() {
-        logDebug(domain: .ui)
-        servers = []
-        NetworkService.scan(complete: true, completion: { server in
-            self.servers.append(server)
-        })
-    }
-
-    private func cancelAction() {
-        logDebug(domain: .ui)
-        NetworkService.cancel()
     }
 }
 
 struct ServerList_Previews: PreviewProvider {
-
-    static let fallbackServers = [Server(address: "192.0.2.0"),
-                                  Server(address: "192.0.2.1"),
-                                  Server(address: "192.0.2.2")]
-    static let servers = StorageService.servers.isEmpty ? fallbackServers : StorageService.servers
-
     static var previews: some View {
-        ServerList(servers: servers)
+        ServerList()
             .previewStyle(.full)
     }
 }

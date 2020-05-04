@@ -15,6 +15,7 @@ struct PlayerView: View {
     var body: some View {
         NavigationView {
             VStack {
+                Spacer()
                 titleView()
                 Spacer()
                 seekView()

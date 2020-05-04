@@ -8,17 +8,33 @@
 
 import Foundation
 
-struct Server: Codable, Identifiable {
-    var id = UUID()
+struct Server: Codable {
     let address: String
     let port: UInt16
     let name: String
-    let isUserDefined: Bool
+    let favorite: Bool
 
-    init(address: String, port: UInt16 = Port.default, name: String? = nil, isUserDefined: Bool = false) {
+    init(address: String, port: UInt16 = Port.default, name: String? = nil, favorite: Bool = false) {
         self.address = address
         self.port = port
         self.name = name ?? address
-        self.isUserDefined = isUserDefined
+        self.favorite = favorite
+    }
+}
+
+extension Server: Identifiable {
+    var id: String {
+        "\(address):\(port.portDescription)"
+    }
+}
+
+extension Array where Element == Server {
+
+    mutating func appendUnique(_ newElement: Element) {
+        guard !contains(where: { $0.id == newElement.id }) else {
+            return
+        }
+
+        append(newElement)
     }
 }
