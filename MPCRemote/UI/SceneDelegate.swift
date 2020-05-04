@@ -23,9 +23,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let playerView = PlayerView(model: playerViewModel)
 
         if StorageService.server == nil {
-            logInfo("No server preset found", domain: .networking)
+            logInfo("No server preset found", domain: .ui)
             NetworkService.scan(complete: false, completion: { server in
-                logInfo("Using first found server as default: \(server.address)", domain: .networking)
+                logInfo("Using first found server as default: \(server)", domain: .ui)
                 StorageService.server = server
                 playerViewModel.refresh()
             })

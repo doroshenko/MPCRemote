@@ -131,9 +131,9 @@ struct PlayerButton_Previews: PreviewProvider {
         VStack {
             ForEach(PlayerButtonScale.allCases, id: \.self) { scale in
                 PlayerButton(action: {
-                    logDebug()
+                    logDebug(domain: .ui)
                 }, longPressAction: {
-                    logDebug()
+                    logDebug(domain: .ui)
                 }, image: Image(systemName: "backward.fill"),
                    scale: scale)
             }

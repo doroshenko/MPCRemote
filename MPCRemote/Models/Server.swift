@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct Server: Codable {
+struct Server: Codable, Identifiable {
+    var id = UUID()
     let address: String
     let port: UInt16
     let name: String

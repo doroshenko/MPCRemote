@@ -15,7 +15,6 @@ struct PlayerView: View {
     var body: some View {
         NavigationView {
             VStack {
-                settingsView()
                 titleView()
                 Spacer()
                 seekView()
@@ -24,25 +23,20 @@ struct PlayerView: View {
                 Spacer()
                 bottomView()
             }
+            .foregroundColor(.main)
             .screenWidth(padding: Constants.padding)
+            .navigationBarTitle(Text(Bundle.main.displayName), displayMode: .inline)
+            .navigationBarItems(trailing:
+                NavigationLink(destination: ServerList()) {
+                    Text("Settings")
+                }
+            )
         }
-        .foregroundColor(.main)
         .accentColor(.accentStart)
     }
 }
 
 private extension PlayerView {
-
-    func settingsView() -> some View {
-        NavigationLink(destination: SettingsView()) {
-            HStack {
-                Spacer()
-                Image(systemName: "gear")
-                    .resizable().frame(width: Constants.settings, height: Constants.settings)
-            }
-        }
-        .navigationBarTitle(Text(Bundle.main.displayName), displayMode: .inline)
-    }
 
     func titleView() -> some View {
         Text(model.file)
@@ -54,9 +48,9 @@ private extension PlayerView {
     func seekView() -> some View {
         VStack {
             HStack {
-                Text(model.position.seekText)
+                Text(model.position.seekDescription)
                 Spacer()
-                Text(model.duration.seekText)
+                Text(model.duration.seekDescription)
             }
             SeekSliderView(value: $model.position,
                            range: 0...model.duration.clamped(to: 1...),

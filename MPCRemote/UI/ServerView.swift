@@ -10,11 +10,26 @@ import SwiftUI
 
 struct ServerView: View {
 
-    var server: Server
+    @State var server: Server
 
     var body: some View {
+        HStack {
+            Image(systemName: "desktopcomputer")
+                .font(.title)
 
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            VStack(alignment: .leading) {
+                Text(server.name)
+                    .font(.headline)
+                Text("\(server.address):\(server.port.portDescription)")
+                    .font(.subheadline)
+            }
+
+            Spacer()
+
+            Image(systemName: server.isUserDefined ? "star.fill" : "star")
+                .font(.title)
+        }
+        .padding()
     }
 }
 

@@ -53,7 +53,7 @@ extension IPv4 {
 
 extension IPv4 {
     var address: String {
-        bigEndianBytes.map { String(describing: $0) }.joined(separator: ".")
+        bigEndianBytes.map { String($0) }.joined(separator: ".")
     }
 }
 

@@ -12,6 +12,7 @@ enum LogDomain {
     case `default`
     case networking
     case api
+    case ui
 }
 
 extension LogDomain: CustomDebugStringConvertible {
@@ -23,6 +24,8 @@ extension LogDomain: CustomDebugStringConvertible {
             return "[NETWORKING]"
         case .api:
             return "[API]"
+        case .ui:
+            return "[UI]"
         }
     }
 }

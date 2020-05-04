@@ -36,7 +36,8 @@
 		0CA7AFC8245B1597007842A5 /* View+ScreenWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA7AFC7245B1597007842A5 /* View+ScreenWidth.swift */; };
 		0CA8AB3D245F26A8005E15F4 /* ServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA8AB3C245F26A8005E15F4 /* ServerView.swift */; };
 		0CA8AB3F245F349C005E15F4 /* PreviewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA8AB3E245F349C005E15F4 /* PreviewStyle.swift */; };
-		0CB0F9AB245838D300C31A04 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB0F9AA245838D300C31A04 /* TimeFormatter.swift */; };
+		0CB0F9AB245838D300C31A04 /* TextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB0F9AA245838D300C31A04 /* TextFormatter.swift */; };
+		0CB4389D245F74D3001A7638 /* ServerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB4389C245F74D3001A7638 /* ServerList.swift */; };
 		0CB4389F245F78A1001A7638 /* Bundle+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB4389E245F78A1001A7638 /* Bundle+Convenience.swift */; };
 		0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */; };
 		0CD0EA5E2408973100DE10E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */; };
@@ -93,7 +94,8 @@
 		0CA7AFC7245B1597007842A5 /* View+ScreenWidth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ScreenWidth.swift"; sourceTree = "<group>"; };
 		0CA8AB3C245F26A8005E15F4 /* ServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerView.swift; sourceTree = "<group>"; };
 		0CA8AB3E245F349C005E15F4 /* PreviewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewStyle.swift; sourceTree = "<group>"; };
-		0CB0F9AA245838D300C31A04 /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
+		0CB0F9AA245838D300C31A04 /* TextFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFormatter.swift; sourceTree = "<group>"; };
+		0CB4389C245F74D3001A7638 /* ServerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerList.swift; sourceTree = "<group>"; };
 		0CB4389E245F78A1001A7638 /* Bundle+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Convenience.swift"; sourceTree = "<group>"; };
 		0CD0EA582408973100DE10E5 /* MPCRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPCRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -175,7 +177,7 @@
 				0C4AF23C240B59040057AC86 /* Logger.swift */,
 				0C4AF23E240B71DF0057AC86 /* LogEnums.swift */,
 				0CA8AB3E245F349C005E15F4 /* PreviewStyle.swift */,
-				0CB0F9AA245838D300C31A04 /* TimeFormatter.swift */,
+				0CB0F9AA245838D300C31A04 /* TextFormatter.swift */,
 				0CA7AFC7245B1597007842A5 /* View+ScreenWidth.swift */,
 			);
 			path = Utility;
@@ -251,6 +253,7 @@
 				0CE231E72457AE9C0068820C /* SliderView.swift */,
 				0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */,
 				0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */,
+				0CB4389C245F74D3001A7638 /* ServerList.swift */,
 				0CA8AB3C245F26A8005E15F4 /* ServerView.swift */,
 			);
 			path = UI;
@@ -479,12 +482,13 @@
 				0C8D91122418452F00439554 /* IPv4.swift in Sources */,
 				0CA8AB3F245F349C005E15F4 /* PreviewStyle.swift in Sources */,
 				0C48B3E7242691D800EEFE98 /* APIError.swift in Sources */,
-				0CB0F9AB245838D300C31A04 /* TimeFormatter.swift in Sources */,
+				0CB0F9AB245838D300C31A04 /* TextFormatter.swift in Sources */,
 				0C4AF23D240B59040057AC86 /* Logger.swift in Sources */,
 				0C30E24B240DD3BA001C1EC9 /* Connectivity.swift in Sources */,
 				0C4FA7802416B0A300F71F9E /* Server.swift in Sources */,
 				0CFAC4CC2410A0C900EF83E1 /* PlayerState.swift in Sources */,
 				0C18D5E7241713390035C3A5 /* Comparable+Clamped.swift in Sources */,
+				0CB4389D245F74D3001A7638 /* ServerList.swift in Sources */,
 				0CE231E424573C710068820C /* PlayerViewModel.swift in Sources */,
 				0C48B3EB2426BEDF00EEFE98 /* PingError.swift in Sources */,
 				0C48B3E92426938C00EEFE98 /* APIService.swift in Sources */,

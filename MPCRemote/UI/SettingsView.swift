@@ -57,30 +57,30 @@ struct SettingsView: View {
 private extension SettingsView {
 
     func saveAction() {
-        logDebug()
+        logDebug(domain: .ui)
         guard validateAddress() else { return }
         StorageService.server = Server(address: address)
     }
 
     func pingAction() {
-        logDebug()
+        logDebug(domain: .ui)
         guard validateAddress() else { return }
         NetworkService.ping(hostName: address, completion: { _ in })
     }
 
     func scanAction() {
-        logDebug()
+        logDebug(domain: .ui)
         NetworkService.scan(complete: true, completion: { _ in })
     }
 
     func cancelAction() {
-        logDebug()
+        logDebug(domain: .ui)
         NetworkService.cancel()
     }
 
     func validateAddress() -> Bool {
         guard !address.isEmpty else {
-            logError("No host specified", domain: .default)
+            logError("No host specified", domain: .ui)
             showingAlert.toggle()
             return false
         }
