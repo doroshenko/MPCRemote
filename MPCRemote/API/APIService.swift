@@ -11,34 +11,34 @@ import Alamofire
 
 final class APIService {
 
-    static func post(command: Command, server: Server? = StorageService.server, completion: PostResult? = nil) {
+    func post(command: Command, server: Server?, completion: PostResult? = nil) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(command: command)
         performPost(url: url, parameters: parameters, completion: completion)
     }
 
-    static func post(volume: Double, server: Server? = StorageService.server, completion: PostResult? = nil) {
+    func post(volume: Double, server: Server?, completion: PostResult? = nil) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(volume: volume)
         performPost(url: url, parameters: parameters, completion: completion)
     }
 
-    static func post(seek: Double, server: Server? = StorageService.server, completion: PostResult? = nil) {
+    func post(seek: Double, server: Server?, completion: PostResult? = nil) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(seek: seek)
         performPost(url: url, parameters: parameters, completion: completion)
     }
 
-    static func getState(server: Server? = StorageService.server, completion: @escaping StateResult) {
+    func getState(server: Server?, completion: @escaping StateResult) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .state)
         performGetState(url: url, completion: completion)
     }
 
-    static func getSnapshot(server: Server? = StorageService.server, completion: @escaping SnapshotResult) {
+    func getSnapshot(server: Server?, completion: @escaping SnapshotResult) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .snapshot)
         performGetSnapshot(url: url, completion: completion)
@@ -49,7 +49,7 @@ final class APIService {
 
 private extension APIService {
 
-    static func performPost(url: URL?, parameters: HTTPParameters, completion: PostResult?) {
+    func performPost(url: URL?, parameters: HTTPParameters, completion: PostResult?) {
         guard let url = url else {
             completion?(.failure(.invalidEndpoint))
             return
@@ -67,7 +67,7 @@ private extension APIService {
         }
     }
 
-    static func performGetState(url: URL?, completion: @escaping StateResult) {
+    func performGetState(url: URL?, completion: @escaping StateResult) {
         guard let url = url else {
             completion(.failure(.invalidEndpoint))
             return
@@ -90,7 +90,7 @@ private extension APIService {
         }
     }
 
-    static func performGetSnapshot(url: URL?, completion: @escaping SnapshotResult) {
+    func performGetSnapshot(url: URL?, completion: @escaping SnapshotResult) {
         guard let url = url else {
             completion(.failure(.invalidEndpoint))
             return

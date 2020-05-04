@@ -15,6 +15,7 @@
 		0C30E24B240DD3BA001C1EC9 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C30E24A240DD3BA001C1EC9 /* Connectivity.swift */; };
 		0C30E254240DD5A1001C1EC9 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C30E250240DD5A1001C1EC9 /* SimplePing.m */; };
 		0C329E1F246067D100974713 /* ServerListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C329E1E246067D100974713 /* ServerListModel.swift */; };
+		0C329E2124608BDB00974713 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C329E2024608BDB00974713 /* DependencyContainer.swift */; };
 		0C3A1E0C244DAD630030AF17 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3A1E0B244DAD630030AF17 /* PlayerView.swift */; };
 		0C48B3E324266FC500EEFE98 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C48B3E224266FC500EEFE98 /* UserDefault.swift */; };
 		0C48B3E524267EC200EEFE98 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C48B3E424267EC200EEFE98 /* Validation.swift */; };
@@ -46,7 +47,6 @@
 		0CD0EA682408973100DE10E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */; };
 		0CE231E424573C710068820C /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE231E324573C710068820C /* PlayerViewModel.swift */; };
 		0CE231E82457AE9C0068820C /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE231E72457AE9C0068820C /* SliderView.swift */; };
-		0CF31E56244CC2290078F414 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF31E55244CC2290078F414 /* SettingsView.swift */; };
 		0CFAC4CC2410A0C900EF83E1 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAC4CB2410A0C900EF83E1 /* PlayerState.swift */; };
 		ABB7103A3758090544BECD14 /* libPods-MPCRemoteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8E237D84CA8F64B517A74F /* libPods-MPCRemoteTests.a */; };
 		F1CDBB008BD9848EE0F83594 /* libPods-MPCRemote.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A90B73EB470EB98F0EED69 /* libPods-MPCRemote.a */; };
@@ -73,6 +73,7 @@
 		0C30E250240DD5A1001C1EC9 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
 		0C30E252240DD5A1001C1EC9 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
 		0C329E1E246067D100974713 /* ServerListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListModel.swift; sourceTree = "<group>"; };
+		0C329E2024608BDB00974713 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		0C3A1E0B244DAD630030AF17 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		0C48B3E224266FC500EEFE98 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		0C48B3E424267EC200EEFE98 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
@@ -110,7 +111,6 @@
 		0CE231E324573C710068820C /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		0CE231E72457AE9C0068820C /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		0CF31E17244CBD700078F414 /* MPCRemote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MPCRemote.entitlements; sourceTree = "<group>"; };
-		0CF31E55244CC2290078F414 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0CFAC4CB2410A0C900EF83E1 /* PlayerState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
 		0F8E237D84CA8F64B517A74F /* libPods-MPCRemoteTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPCRemoteTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17197D0CED7CA9FAFADE9318 /* Pods-MPCRemoteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemoteTests.debug.xcconfig"; path = "Target Support Files/Pods-MPCRemoteTests/Pods-MPCRemoteTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -157,6 +157,15 @@
 			path = Dependencies;
 			sourceTree = "<group>";
 		};
+		0C329E222460926200974713 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0CFAC4CB2410A0C900EF83E1 /* PlayerState.swift */,
+				0C4FA77F2416B0A300F71F9E /* Server.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		0C4AF231240B34970057AC86 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,10 +197,9 @@
 		0C78C3332455BE9600589C3E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0CFAC4CB2410A0C900EF83E1 /* PlayerState.swift */,
+				0C329E2024608BDB00974713 /* DependencyContainer.swift */,
 				0C78C3342455BED500589C3E /* PlayerStateFactory.swift */,
 				0CE231E324573C710068820C /* PlayerViewModel.swift */,
-				0C4FA77F2416B0A300F71F9E /* Server.swift */,
 				0C329E1E246067D100974713 /* ServerListModel.swift */,
 			);
 			path = Models;
@@ -221,10 +229,11 @@
 			isa = PBXGroup;
 			children = (
 				0C30E24E240DD528001C1EC9 /* Dependencies */,
-				0C4AF231240B34970057AC86 /* Network */,
 				0CFAC4C82410A03200EF83E1 /* API */,
-				0C78C3332455BE9600589C3E /* Models */,
+				0C4AF231240B34970057AC86 /* Network */,
 				0C18D5EA241719240035C3A5 /* Storage */,
+				0C329E222460926200974713 /* Data */,
+				0C78C3332455BE9600589C3E /* Models */,
 				0CF31E18244CBE650078F414 /* UI */,
 				0C4AF23B240B58ED0057AC86 /* Utility */,
 				0C4AF232240B35020057AC86 /* MPCRemote-Bridging-Header.h */,
@@ -252,7 +261,6 @@
 				0C6773E12454DDE200FFD6DE /* Gradients.swift */,
 				0C6773DB24547BA700FFD6DE /* PlayerButton.swift */,
 				0C3A1E0B244DAD630030AF17 /* PlayerView.swift */,
-				0CF31E55244CC2290078F414 /* SettingsView.swift */,
 				0CE231E72457AE9C0068820C /* SliderView.swift */,
 				0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */,
 				0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */,
@@ -465,8 +473,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CB4389F245F78A1001A7638 /* Bundle+Convenience.swift in Sources */,
-				0CF31E56244CC2290078F414 /* SettingsView.swift in Sources */,
 				0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */,
+				0C329E2124608BDB00974713 /* DependencyContainer.swift in Sources */,
 				0CA7AFC8245B1597007842A5 /* View+ScreenWidth.swift in Sources */,
 				0C48B3E524267EC200EEFE98 /* Validation.swift in Sources */,
 				0C3A1E0C244DAD630030AF17 /* PlayerView.swift in Sources */,

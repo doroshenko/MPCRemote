@@ -10,6 +10,10 @@ import SwiftUI
 
 final class PlayerViewModel: ObservableObject {
 
+    private var apiService: APIService
+    private var networkService: NetworkService
+    private var storageService: StorageService
+
     @Published var file: String
     @Published var state: PlaybackState
     @Published var position: Double
@@ -39,7 +43,12 @@ final class PlayerViewModel: ObservableObject {
         }
     }
 
-    init(playerState: PlayerState = .placeholder) {
+    init(resolver: Resolver) {
+        self.apiService = resolver.resolve()
+        self.networkService = resolver.resolve()
+        self.storageService = resolver.resolve()
+
+        let playerState: PlayerState = resolver.resolve()
         file = playerState.file
         state = playerState.state
         position = playerState.position
@@ -47,7 +56,7 @@ final class PlayerViewModel: ObservableObject {
         isMuted = playerState.isMuted
         volume = playerState.volume
 
-        refresh()
+        setup()
 
         Timer.scheduledTimer(withTimeInterval: Interval.refresh,
                              repeats: true,
@@ -56,8 +65,23 @@ final class PlayerViewModel: ObservableObject {
         })
     }
 
-    func refresh() {
-        APIService.getState { result in
+    private func setup() {
+        guard storageService.server == nil else {
+            refresh()
+            return
+        }
+
+        logInfo("No server preset found", domain: .ui)
+        networkService.scan(complete: false, completion: { server in
+            logInfo("Using first found server as default: \(server)", domain: .ui)
+            self.storageService.server = server
+            self.storageService.servers.appendUnique(server)
+            self.refresh()
+        })
+    }
+
+    private func refresh() {
+        apiService.getState(server: storageService.server) { result in
             switch result {
             case let .success(state):
                 self.updateProperties(with: state)
@@ -86,19 +110,19 @@ final class PlayerViewModel: ObservableObject {
 extension PlayerViewModel {
 
     func post(command: Command) {
-        APIService.post(command: command) { _ in
+        apiService.post(command: command, server: storageService.server) { _ in
             self.refresh()
         }
     }
 
     func post(seek: Double) {
-        APIService.post(seek: seek) { _ in
+        apiService.post(seek: seek, server: storageService.server) { _ in
             self.refresh()
         }
     }
 
     func post(volume: Double) {
-        APIService.post(volume: volume) { _ in
+        apiService.post(volume: volume, server: storageService.server) { _ in
             self.refresh()
         }
     }

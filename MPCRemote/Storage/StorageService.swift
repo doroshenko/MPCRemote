@@ -6,9 +6,11 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-import Foundation
+import Combine
 
-final class StorageService {
+final class StorageService: ObservableObject {
+
+    let objectWillChange = PassthroughSubject<Void, Never>()
 
     private enum Key: String, UserDefaultKey {
         case server
@@ -17,11 +19,23 @@ final class StorageService {
     }
 
     @UserDefault(StorageService.Key.server, defaultValue: nil)
-    static var server: Server?
+    var server: Server? {
+        willSet {
+            objectWillChange.send()
+        }
+    }
 
-    @UserDefault(StorageService.Key.state, defaultValue: PlayerState.placeholder)
-    static var state: PlayerState
+    @UserDefault(StorageService.Key.state, defaultValue: PlayerState())
+    var state: PlayerState {
+        willSet {
+            objectWillChange.send()
+        }
+    }
 
     @UserDefault(StorageService.Key.servers, defaultValue: [])
-    static var servers: [Server]
+    var servers: [Server] {
+        willSet {
+            objectWillChange.send()
+        }
+    }
 }

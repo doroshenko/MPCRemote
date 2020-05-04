@@ -19,18 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         // Create the SwiftUI view that provides the window contents.
 
-        let playerViewModel = PlayerViewModel()
-        let playerView = PlayerView(model: playerViewModel)
-
-        if StorageService.server == nil {
-            logInfo("No server preset found", domain: .ui)
-            NetworkService.scan(complete: false, completion: { server in
-                logInfo("Using first found server as default: \(server)", domain: .ui)
-                StorageService.server = server
-                StorageService.servers.appendUnique(server)
-                playerViewModel.refresh()
-            })
-        }
+        let resolver = DependencyContainer()
+        let playerView = resolver.playerView()
 
         // Use a UIHostingController as window root view controller.
         guard let windowScene = scene as? UIWindowScene else { return }

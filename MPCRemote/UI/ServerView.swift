@@ -35,7 +35,7 @@ struct ServerView: View {
 
 struct ServerView_Previews: PreviewProvider {
 
-    static let server = StorageService.server ?? Server(address: "192.0.2.0")
+    static let server = StorageService().server ?? Server(address: "192.0.2.0")
 
     static var previews: some View {
         ServerView(server: server)

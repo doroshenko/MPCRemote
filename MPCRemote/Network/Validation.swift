@@ -10,12 +10,15 @@ import Foundation
 
 final class Validation: AsynchronousOperation {
 
-    private let completionHandler: StateResult
-    private let server: Server
+    private let apiService: APIService
 
-    init(server: Server, completion: @escaping StateResult) {
-        self.completionHandler = completion
+    private let server: Server
+    private let completionHandler: StateResult
+
+    init(resolver: Resolver, server: Server, completion: @escaping StateResult) {
+        apiService = resolver.resolve()
         self.server = server
+        completionHandler = completion
 
         super.init()
     }
@@ -24,7 +27,7 @@ final class Validation: AsynchronousOperation {
         super.start()
 
         DispatchQueue.main.async {
-            APIService.getState(server: self.server) { result in
+            self.apiService.getState(server: self.server) { result in
                 self.completionHandler(result)
                 self.finish()
             }

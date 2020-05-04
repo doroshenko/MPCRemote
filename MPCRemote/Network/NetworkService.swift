@@ -10,23 +10,13 @@ import Foundation
 
 final class NetworkService {
 
-    static var defaultAddress: String? {
-        logDebug(domain: .networking)
-        let localAddress = Connectivity.localIPAddress
-        guard let addressString = localAddress.address, let ip = IPv4(string: addressString) else {
-            logError("Invalid local IP address", domain: .networking)
-            return nil
-        }
+    let factory: Factory
 
-        guard let maskString = localAddress.mask, let mask = IPv4(string: maskString) else {
-            logError("Invalid network mask", domain: .networking)
-            return nil
-        }
-
-        return ip.firstUsableAddress(with: mask).address
+    init(factory: Factory) {
+        self.factory = factory
     }
 
-    static func scan(complete: Bool, completion: @escaping (Server) -> Void) {
+    func scan(complete: Bool, completion: @escaping (Server) -> Void) {
         guard Connectivity.isConnectedToWifi, let addressRange = addressRange else {
             logError("Not connected to LAN", domain: .networking)
             return
@@ -47,7 +37,7 @@ final class NetworkService {
         }
     }
 
-    static func ping(hostName: String, completion: @escaping ServerResult) {
+    func ping(hostName: String, completion: @escaping ServerResult) {
         guard Connectivity.isHostReachable(hostName: hostName) else {
             logError("Cannot reach host: \(hostName)", domain: .networking)
             completion(.failure(.invalidEndpoint))
@@ -58,7 +48,7 @@ final class NetworkService {
         performPing(hostName: hostName, completion: completion)
     }
 
-    static func cancel() {
+    func cancel() {
         logDebug("All active operations canceled", domain: .networking)
         NetworkService.operationQueue.cancelAllOperations()
     }
@@ -68,7 +58,7 @@ final class NetworkService {
 
 private extension NetworkService {
 
-    static var addressRange: CountableClosedRange<IPv4>? {
+    var addressRange: CountableClosedRange<IPv4>? {
         logDebug(domain: .networking)
         let localAddress = Connectivity.localIPAddress
         guard let addressString = localAddress.address, let ip = IPv4(string: addressString) else {
@@ -84,12 +74,12 @@ private extension NetworkService {
         return ip.usableAddressRange(with: mask)
     }
 
-    static func performPing(hostName: String, completion: @escaping ServerResult) {
+    func performPing(hostName: String, completion: @escaping ServerResult) {
         pingOperation(hostName: hostName) { pingResult in
             switch pingResult {
             case let .success(duration):
                 logDebug("Found host: \(hostName) after \(Int(duration * 1000)) ms", domain: .networking)
-                performValidation(hostName: hostName, completion: completion)
+                self.performValidation(hostName: hostName, completion: completion)
             case .failure:
                 // Uncomment to debug
                 // logDebug(error.localizedDescription, domain: .networking)
@@ -98,7 +88,7 @@ private extension NetworkService {
         }
     }
 
-    static func performValidation(hostName: String, completion: @escaping ServerResult) {
+    func performValidation(hostName: String, completion: @escaping ServerResult) {
         let server = Server(address: hostName)
         validationOperation(server: server) { validateResult in
             switch validateResult {
@@ -125,13 +115,13 @@ private extension NetworkService {
         return queue
     }()
 
-    static func pingOperation(hostName: String, completion: @escaping PingResult) {
+    func pingOperation(hostName: String, completion: @escaping PingResult) {
         let ping = Ping(hostName: hostName, completion: completion)
         NetworkService.operationQueue.addOperation(ping)
     }
 
-    static func validationOperation(server: Server, completion: @escaping StateResult) {
-        let validation = Validation(server: server, completion: completion)
+    func validationOperation(server: Server, completion: @escaping StateResult) {
+        let validation = factory.validation(server: server, completion: completion)
         NetworkService.operationQueue.addOperation(validation)
     }
 }

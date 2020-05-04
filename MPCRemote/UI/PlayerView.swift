@@ -10,6 +10,8 @@ import SwiftUI
 
 struct PlayerView: View {
 
+    let factory: Factory
+
     @ObservedObject var model: PlayerViewModel
 
     var body: some View {
@@ -28,7 +30,7 @@ struct PlayerView: View {
             .screenWidth(padding: Constants.padding)
             .navigationBarTitle(Text(Bundle.main.displayName), displayMode: .inline)
             .navigationBarItems(trailing:
-                NavigationLink(destination: ServerList()) {
+                NavigationLink(destination: factory.serverList()) {
                     Text("Settings")
                 }
             )
@@ -157,7 +159,7 @@ private struct Constants {
 struct PlayerView_Previews: PreviewProvider {
 
    static var previews: some View {
-        PlayerView(model: PlayerViewModel())
+        DependencyContainer().playerView()
             .previewStyle(.full)
     }
 }

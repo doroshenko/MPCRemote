@@ -35,7 +35,7 @@ private extension PlayerStateFactory {
             let position = Double(apiState.position),
             let duration = Double(apiState.duration),
             let volume = Double(apiState.volume) else {
-                return .placeholder
+                return PlayerState()
         }
 
         let file = apiState.file

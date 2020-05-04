@@ -10,19 +10,29 @@ import SwiftUI
 
 final class ServerListModel: ObservableObject {
 
+    private let networkService: NetworkService
+    private let storageService: StorageService
+
     @Published var servers: [Server]
 
-    init() {
-        servers = StorageService.servers
+    init(resolver: Resolver) {
+        self.networkService = resolver.resolve()
+        self.storageService = resolver.resolve()
+        self.servers = self.storageService.servers
     }
 
-    func scanAction() {
-        NetworkService.scan(complete: true, completion: { server in
+    func set(server: Server) {
+        storageService.server = server
+        storageService.servers.appendUnique(server)
+    }
+
+    func scan() {
+        networkService.scan(complete: true, completion: { server in
             self.servers.appendUnique(server)
         })
     }
 
-    func cancelAction() {
-        NetworkService.cancel()
+    func cancel() {
+        networkService.cancel()
     }
 }
