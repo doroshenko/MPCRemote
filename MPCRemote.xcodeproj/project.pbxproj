@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C0BF7392460BAE8004CAC22 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0BF7382460BAE8004CAC22 /* Service.swift */; };
 		0C18D5E52416D31B0035C3A5 /* URLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C18D5E42416D31B0035C3A5 /* URLFactory.swift */; };
 		0C18D5E7241713390035C3A5 /* Comparable+Clamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C18D5E6241713390035C3A5 /* Comparable+Clamped.swift */; };
 		0C18D5E9241714C80035C3A5 /* HTTPParametersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C18D5E8241714C80035C3A5 /* HTTPParametersFactory.swift */; };
@@ -64,6 +65,7 @@
 
 /* Begin PBXFileReference section */
 		0115685AAFD50309556E0E25 /* Pods-MPCRemote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemote.debug.xcconfig"; path = "Target Support Files/Pods-MPCRemote/Pods-MPCRemote.debug.xcconfig"; sourceTree = "<group>"; };
+		0C0BF7382460BAE8004CAC22 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		0C18D5E42416D31B0035C3A5 /* URLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLFactory.swift; sourceTree = "<group>"; };
 		0C18D5E6241713390035C3A5 /* Comparable+Clamped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Clamped.swift"; sourceTree = "<group>"; };
 		0C18D5E8241714C80035C3A5 /* HTTPParametersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPParametersFactory.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				0C78C3342455BED500589C3E /* PlayerStateFactory.swift */,
 				0CE231E324573C710068820C /* PlayerViewModel.swift */,
 				0C329E1E246067D100974713 /* ServerListModel.swift */,
+				0C0BF7382460BAE8004CAC22 /* Service.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				0C18D5EC241719470035C3A5 /* StorageService.swift in Sources */,
 				0CA8AB3D245F26A8005E15F4 /* ServerView.swift in Sources */,
 				0C6773DC24547BA700FFD6DE /* PlayerButton.swift in Sources */,
+				0C0BF7392460BAE8004CAC22 /* Service.swift in Sources */,
 				0C4AF23A240B3B5B0057AC86 /* Ping.swift in Sources */,
 				0C18D5E9241714C80035C3A5 /* HTTPParametersFactory.swift in Sources */,
 				0C6773E22454DDE200FFD6DE /* Gradients.swift in Sources */,

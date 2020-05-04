@@ -6,7 +6,7 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-typealias Factory = ViewFactory & ViewModelFactory
+typealias Factory = ViewFactory & ModelFactory
 
 protocol Resolver {
     func resolve() -> APIService
@@ -20,18 +20,20 @@ protocol ViewFactory {
     func serverList() -> ServerList
 }
 
-protocol ViewModelFactory {
+protocol ModelFactory {
     func playerViewModel() -> PlayerViewModel
     func serverListModel() -> ServerListModel
+
+    func playerState(string: String) -> PlayerState?
 
     func ping(hostName: String, completion: @escaping PingResult) -> Ping
     func validation(server: Server, completion: @escaping StateResult) -> Validation
 }
 
 class DependencyContainer {
-    private lazy var apiService = APIService()
+    private lazy var apiService = APIService(factory: self)
     private lazy var networkService = NetworkService(factory: self)
-    private lazy var storageService = StorageService()
+    private lazy var storageService = StorageService(factory: self)
     private lazy var playerState = PlayerState()
 }
 
@@ -63,13 +65,17 @@ extension DependencyContainer: ViewFactory {
     }
 }
 
-extension DependencyContainer: ViewModelFactory {
+extension DependencyContainer: ModelFactory {
     func playerViewModel() -> PlayerViewModel {
         PlayerViewModel(resolver: self)
     }
 
     func serverListModel() -> ServerListModel {
         ServerListModel(resolver: self)
+    }
+
+    func playerState(string: String) -> PlayerState? {
+        PlayerStateFactory.make(string: string)
     }
 
     func ping(hostName: String, completion: @escaping PingResult) -> Ping {

@@ -8,13 +8,7 @@
 
 import Foundation
 
-final class NetworkService {
-
-    let factory: Factory
-
-    init(factory: Factory) {
-        self.factory = factory
-    }
+final class NetworkService: Service {
 
     func scan(complete: Bool, completion: @escaping (Server) -> Void) {
         guard Connectivity.isConnectedToWifi, let addressRange = addressRange else {

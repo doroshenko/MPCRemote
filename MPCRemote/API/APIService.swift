@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-final class APIService {
+final class APIService: Service {
 
     func post(command: Command, server: Server?, completion: PostResult? = nil) {
         logDebug(domain: .api)
@@ -77,7 +77,7 @@ private extension APIService {
         AF.request(url, method: .get).validate().responseString { response in
             switch response.result {
             case .success(let string):
-                guard let state = PlayerStateFactory.make(string: string) else {
+                guard let state = self.factory.playerState(string: string) else {
                     completion(.failure(.conversionFailed))
                     return
                 }

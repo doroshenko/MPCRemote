@@ -8,7 +8,7 @@
 
 import Combine
 
-final class StorageService: ObservableObject {
+final class StorageService: Service, ObservableObject {
 
     let objectWillChange = PassthroughSubject<Void, Never>()
 

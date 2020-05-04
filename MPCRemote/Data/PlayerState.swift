@@ -43,7 +43,3 @@ struct PlayerState: Codable {
     var volume: Double = 0
     var isMuted: Bool = false
 }
-
-extension PlayerState {
-    static var placeholder = PlayerState()
-}
