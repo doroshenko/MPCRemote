@@ -9,7 +9,7 @@
 import Foundation
 
 struct APIState: Decodable {
-    let file: String
+    let file: String?
     let filePath: String
     let filePathArg: String
     let fileDir: String
@@ -23,9 +23,9 @@ struct APIState: Decodable {
     let volume: String
     let muted: String
     let playbackRate: String
-    let size: String
+    let size: String?
     let reloadTime: String
-    let version: String
+    let version: String?
 
     enum CodingKeys: String, CodingKey {
         case file
