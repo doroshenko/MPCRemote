@@ -6,7 +6,6 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-import Foundation
 import Alamofire
 
 enum APIError: Error {
@@ -25,9 +24,3 @@ enum APIError: Error {
         }
     }
 }
-
-typealias APIResult<Value> = (Result<Value, APIError>) -> Void
-typealias PostResult = APIResult<Void>
-typealias StateResult = APIResult<PlayerState>
-typealias SnapshotResult = APIResult<UIImage>
-typealias ServerResult = APIResult<Server>

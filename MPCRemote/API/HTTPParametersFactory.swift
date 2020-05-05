@@ -6,8 +6,6 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-import Foundation
-
 typealias HTTPParameters = [String: String]
 
 final class HTTPParametersFactory {

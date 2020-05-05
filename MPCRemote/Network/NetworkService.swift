@@ -6,9 +6,15 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-import Foundation
+protocol NetworkServiceType {
+    func scan(complete: Bool, completion: @escaping (Server) -> Void)
+    func ping(hostName: String, completion: @escaping ServerHandler)
+    func cancel()
+}
 
-final class NetworkService: Service {
+struct NetworkService: NetworkServiceType {
+
+    let operationProvider: OperationProviderType
 
     func scan(complete: Bool, completion: @escaping (Server) -> Void) {
         guard Connectivity.isConnectedToWifi, let addressRange = addressRange else {
@@ -31,7 +37,7 @@ final class NetworkService: Service {
         }
     }
 
-    func ping(hostName: String, completion: @escaping ServerResult) {
+    func ping(hostName: String, completion: @escaping ServerHandler) {
         guard Connectivity.isHostReachable(hostName: hostName) else {
             logError("Cannot reach host: \(hostName)", domain: .networking)
             completion(.failure(.invalidEndpoint))
@@ -44,7 +50,7 @@ final class NetworkService: Service {
 
     func cancel() {
         logDebug("All active operations canceled", domain: .networking)
-        NetworkService.operationQueue.cancelAllOperations()
+        operationProvider.cancel()
     }
 }
 
@@ -68,8 +74,8 @@ private extension NetworkService {
         return ip.usableAddressRange(with: mask)
     }
 
-    func performPing(hostName: String, completion: @escaping ServerResult) {
-        pingOperation(hostName: hostName) { pingResult in
+    func performPing(hostName: String, completion: @escaping ServerHandler) {
+        operationProvider.queuePing(hostName: hostName) { pingResult in
             switch pingResult {
             case let .success(duration):
                 logDebug("Found host: \(hostName) after \(Int(duration * 1000)) ms", domain: .networking)
@@ -82,9 +88,9 @@ private extension NetworkService {
         }
     }
 
-    func performValidation(hostName: String, completion: @escaping ServerResult) {
+    func performValidation(hostName: String, completion: @escaping ServerHandler) {
         let server = Server(address: hostName)
-        validationOperation(server: server) { validateResult in
+        operationProvider.queueValidation(server: server) { validateResult in
             switch validateResult {
             case let .success(state):
                 logInfo("Found MPC server at: \(hostName) with state: \(state)", domain: .networking)
@@ -95,27 +101,5 @@ private extension NetworkService {
                 completion(.failure(error))
             }
         }
-    }
-}
-
-// MARK: - Operations
-
-private extension NetworkService {
-
-    static let operationQueue: OperationQueue = {
-        let queue = OperationQueue()
-        queue.name = "network_scanner_queue"
-        queue.maxConcurrentOperationCount = 50
-        return queue
-    }()
-
-    func pingOperation(hostName: String, completion: @escaping PingResult) {
-        let ping = Ping(hostName: hostName, completion: completion)
-        NetworkService.operationQueue.addOperation(ping)
-    }
-
-    func validationOperation(server: Server, completion: @escaping StateResult) {
-        let validation = factory.validation(server: server, completion: completion)
-        NetworkService.operationQueue.addOperation(validation)
     }
 }

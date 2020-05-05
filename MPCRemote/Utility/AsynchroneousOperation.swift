@@ -6,8 +6,6 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-import Foundation
-
 /// Subclass of `Operation` supporting the execution of asynchronous tasks
 /// Usage:
 /// - override the `start` method and make sure to call `super.start()`

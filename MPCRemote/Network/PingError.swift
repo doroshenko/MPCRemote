@@ -6,8 +6,6 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-import Foundation
-
 enum PingError: Error {
     case startupFailure(Error)
     case sendingFailure(Error)
@@ -22,5 +20,3 @@ enum PingError: Error {
         }
     }
 }
-
-typealias PingResult = (Result<TimeInterval, PingError>) -> Void

@@ -6,8 +6,6 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-import Foundation
-
 final class TextFormatter {
     static var time: DateComponentsFormatter {
         let formatter = DateComponentsFormatter()

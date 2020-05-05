@@ -6,17 +6,15 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-import Foundation
-
 final class Validation: AsynchronousOperation {
 
-    private let apiService: APIService
+    private let apiService: APIServiceType
 
     private let server: Server
-    private let completionHandler: StateResult
+    private let completionHandler: StateHandler
 
-    init(resolver: Resolver, server: Server, completion: @escaping StateResult) {
-        apiService = resolver.resolve()
+    init(apiService: APIServiceType, server: Server, completion: @escaping StateHandler) {
+        self.apiService = apiService
         self.server = server
         completionHandler = completion
 

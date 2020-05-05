@@ -6,8 +6,6 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-import Foundation
-
 struct APIState: Decodable {
     let file: String?
     let filePath: String

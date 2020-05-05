@@ -8,41 +8,42 @@
 
 import SwiftUI
 
-struct ServerList: View {
+struct ServerListView: View {
 
-    @ObservedObject var model: ServerListModel
+    @ObservedObject private(set) var model: ServerListViewModel
+    let action: ServerListViewActionCreator?
+    let composer: ServerListViewComposer?
 
     var body: some View {
-        List(model.servers) { server in
+        List(model.serverList) { server in
             Button(action: {
                 logInfo("Server set as default: \(server)", domain: .ui)
-                self.model.set(server: server)
+                self.action?.add(server: server)
             }, label: {
                 ServerView(server: server)
             })
         }
-        .onAppear(perform: {
+        .onAppear {
             logDebug(domain: .ui)
-            self.model.setup()
-        })
-        .onDisappear(perform: {
+            self.action?.setup()
+        }
+        .onDisappear {
             logDebug(domain: .ui)
-            self.model.cancel()
-        })
+            self.action?.cancel()
+        }
         .navigationBarTitle(Text("Server List"), displayMode: .inline)
         .navigationBarItems(trailing:
             Button("Scan") {
                 logDebug(domain: .ui)
-                self.model.scan()
+                self.action?.scan()
             }
         )
     }
 }
 
-struct ServerList_Previews: PreviewProvider {
-    static let container = DependencyContainer()
+struct ServerListView_Previews: PreviewProvider {
     static var previews: some View {
-        container.serverList(model: container.serverListModel())
+        Core.composer.serverListView()
             .previewStyle(.full)
     }
 }

@@ -6,39 +6,46 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-import Foundation
 import Alamofire
 
-final class APIService: Service {
+protocol APIServiceType {
+    func post(command: Command, server: Server?, completion: @escaping PostHandler)
+    func post(volume: Double, server: Server?, completion: @escaping PostHandler)
+    func post(seek: Double, server: Server?, completion: @escaping PostHandler)
+    func getState(server: Server?, completion: @escaping StateHandler)
+    func getSnapshot(server: Server?, completion: @escaping SnapshotHandler)
+}
 
-    func post(command: Command, server: Server?, completion: PostResult? = nil) {
+struct APIService: APIServiceType {
+
+    func post(command: Command, server: Server?, completion: @escaping PostHandler) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(command: command)
         performPost(url: url, parameters: parameters, completion: completion)
     }
 
-    func post(volume: Double, server: Server?, completion: PostResult? = nil) {
+    func post(volume: Double, server: Server?, completion: @escaping PostHandler) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(volume: volume)
         performPost(url: url, parameters: parameters, completion: completion)
     }
 
-    func post(seek: Double, server: Server?, completion: PostResult? = nil) {
+    func post(seek: Double, server: Server?, completion: @escaping PostHandler) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .command)
         let parameters = HTTPParametersFactory.make(seek: seek)
         performPost(url: url, parameters: parameters, completion: completion)
     }
 
-    func getState(server: Server?, completion: @escaping StateResult) {
+    func getState(server: Server?, completion: @escaping StateHandler) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .state)
         performGetState(url: url, completion: completion)
     }
 
-    func getSnapshot(server: Server?, completion: @escaping SnapshotResult) {
+    func getSnapshot(server: Server?, completion: @escaping SnapshotHandler) {
         logDebug(domain: .api)
         let url = URLFactory.make(server: server, endpoint: .snapshot)
         performGetSnapshot(url: url, completion: completion)
@@ -49,9 +56,9 @@ final class APIService: Service {
 
 private extension APIService {
 
-    func performPost(url: URL?, parameters: HTTPParameters, completion: PostResult?) {
+    func performPost(url: URL?, parameters: HTTPParameters, completion: @escaping PostHandler) {
         guard let url = url else {
-            completion?(.failure(.invalidEndpoint))
+            completion(.failure(.invalidEndpoint))
             return
         }
 
@@ -60,14 +67,14 @@ private extension APIService {
             switch response.result {
             case .success:
                 logDebug("Request successful", domain: .api)
-                completion?(.success(()))
+                completion(.success(()))
             case let .failure(error):
-                completion?(.failure(.requestFailed(error)))
+                completion(.failure(.requestFailed(error)))
             }
         }
     }
 
-    func performGetState(url: URL?, completion: @escaping StateResult) {
+    func performGetState(url: URL?, completion: @escaping StateHandler) {
         guard let url = url else {
             completion(.failure(.invalidEndpoint))
             return
@@ -77,7 +84,7 @@ private extension APIService {
         AF.request(url, method: .get).validate().responseString { response in
             switch response.result {
             case .success(let string):
-                guard let state = self.factory.playerState(string: string) else {
+                guard let state = PlayerStateFactory.make(string: string) else {
                     completion(.failure(.conversionFailed))
                     return
                 }
@@ -90,7 +97,7 @@ private extension APIService {
         }
     }
 
-    func performGetSnapshot(url: URL?, completion: @escaping SnapshotResult) {
+    func performGetSnapshot(url: URL?, completion: @escaping SnapshotHandler) {
         guard let url = url else {
             completion(.failure(.invalidEndpoint))
             return

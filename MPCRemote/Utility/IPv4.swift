@@ -6,8 +6,6 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-import Foundation
-
 typealias IPv4 = UInt32
 
 extension IPv4 {

@@ -6,17 +6,15 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-import Foundation
-
 final class Ping: AsynchronousOperation {
 
-    private let completionHandler: PingResult
+    private let completionHandler: PingHandler
     private let simplePing: SimplePing
 
     private var timer: Timer?
     private var sendTime: TimeInterval = 0.0
 
-    init(hostName: String, completion: @escaping PingResult) {
+    init(hostName: String, completion: @escaping PingHandler) {
         self.completionHandler = completion
         self.simplePing = SimplePing(hostName: hostName)
 
@@ -46,7 +44,7 @@ final class Ping: AsynchronousOperation {
 
     private func setupTimer() {
         sendTime = Date.timeIntervalSinceReferenceDate
-        timer = Timer.scheduledTimer(withTimeInterval: Interval.ping, repeats: false, block: { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: .ping, repeats: false, block: { [weak self] _ in
             self?.timeout()
         })
     }

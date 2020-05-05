@@ -10,10 +10,12 @@ import SwiftUI
 
 struct PlayerView: View {
 
-    let factory: Factory
+    @ObservedObject private(set) var model: PlayerViewModel
 
-    @ObservedObject var playerModel: PlayerViewModel
-    @ObservedObject var serverListModel: ServerListModel
+    let action: PlayerViewActionCreator?
+    let composer: PlayerViewComposer?
+
+    let timer = Timer.publish(every: .fetch, on: .main, in: .common).autoconnect()
 
     var body: some View {
         NavigationView {
@@ -31,19 +33,25 @@ struct PlayerView: View {
             .screenWidth(padding: Constants.padding)
             .navigationBarTitle(Text(Bundle.main.displayName), displayMode: .inline)
             .navigationBarItems(trailing:
-                NavigationLink(destination: factory.serverList(model: serverListModel)) {
+                NavigationLink(destination: composer?.showServerListView()) {
                     Text("Settings")
                 }
             )
         }
         .accentColor(.accentStart)
+        .onAppear {
+            self.action?.setup()
+        }
+        .onReceive(timer) { _ in
+            self.action?.getState()
+        }
     }
 }
 
 private extension PlayerView {
 
     func titleView() -> some View {
-        Text(playerModel.file)
+        Text(model.playerState.file)
             .multilineTextAlignment(.center)
             .frame(height: 70)
             .screenWidth(padding: Constants.padding)
@@ -52,51 +60,52 @@ private extension PlayerView {
     func seekView() -> some View {
         VStack {
             HStack {
-                Text(playerModel.position.seekDescription)
+                Text(model.playerState.position.seekDescription)
                 Spacer()
-                Text(playerModel.duration.seekDescription)
+                Text(model.playerState.duration.seekDescription)
             }
-            SeekSliderView(value: $playerModel.position,
-                           range: 0...playerModel.duration.clamped(to: 1...),
-                           onEditingChanged: { isSliding in
-                            self.playerModel.isSeekSliding = isSliding
-            })
-                .disabled(playerModel.duration == 0)
+            SeekSliderView(getter: {
+                self.model.playerState.position
+            }, setter: { seek in
+                self.action?.post(seek: seek)
+            },
+               range: 0...model.playerState.duration.clamped(to: 1...))
+                .disabled(model.playerState.duration == 0)
         }
     }
 
     func playbackView() -> some View {
         HStack {
             PlayerButton(action: {
-                self.playerModel.post(command: .skipBackward)
+                self.action?.post(command: .skipBackward)
             }, longPressAction: {
-                self.playerModel.post(command: .skipBackwardFile)
+                self.action?.post(command: .skipBackwardFile)
             }, image: Image(systemName: "backward.end.alt.fill"),
                scale: .navigation)
 
             PlayerButton(action: {
-                self.playerModel.post(command: .seekBackwardMedium)
+                self.action?.post(command: .seekBackwardMedium)
             }, longPressAction: {
-                self.playerModel.post(command: .seekBackwardLarge)
+                self.action?.post(command: .seekBackwardLarge)
             }, image: Image(systemName: "backward.fill"),
                scale: .navigation)
 
             PlayerButton(action: {
-                self.playerModel.post(command: .playPause)
-            }, image: Image(systemName: playerModel.state == .playing ? "pause.fill" : "play.fill"),
+                self.action?.post(command: .playPause)
+            }, image: Image(systemName: model.playerState.state == .playing ? "pause.fill" : "play.fill"),
                scale: .play)
 
             PlayerButton(action: {
-                self.playerModel.post(command: .seekForwardMedium)
+                self.action?.post(command: .seekForwardMedium)
             }, longPressAction: {
-                self.playerModel.post(command: .seekForwardLarge)
+                self.action?.post(command: .seekForwardLarge)
             }, image: Image(systemName: "forward.fill"),
                scale: .navigation)
 
             PlayerButton(action: {
-                self.playerModel.post(command: .skipForward)
+                self.action?.post(command: .skipForward)
             }, longPressAction: {
-                self.playerModel.post(command: .skipForwardFile)
+                self.action?.post(command: .skipForwardFile)
             }, image: Image(systemName: "forward.end.alt.fill"),
                scale: .navigation)
         }
@@ -106,9 +115,10 @@ private extension PlayerView {
     func volumeView() -> some View {
         HStack {
             Image(systemName: "speaker.1.fill")
-            VolumeSliderView(value: $playerModel.volume,
-                             onEditingChanged: { isSliding in
-                                self.playerModel.isVolumeSliding = isSliding
+            VolumeSliderView(getter: {
+                self.model.playerState.volume
+            }, setter: { volume in
+                self.action?.post(volume: volume)
             })
             Image(systemName: "speaker.3.fill")
         }
@@ -119,22 +129,22 @@ private extension PlayerView {
         HStack {
             Spacer()
             PlayerButton(action: {
-                self.playerModel.post(command: .mute)
-            }, image: Image(systemName: playerModel.isMuted ? "speaker.2.fill" : "speaker.slash.fill"),
+                self.action?.post(command: .mute)
+            }, image: Image(systemName: model.playerState.isMuted ? "speaker.2.fill" : "speaker.slash.fill"),
                scale: .control)
             Spacer()
             PlayerButton(action: {
-                self.playerModel.post(command: .audioNext)
+                self.action?.post(command: .audioNext)
             }, image: Image(systemName: "t.bubble"),
                scale: .control)
             Spacer()
             PlayerButton(action: {
-                self.playerModel.post(command: .subtitleNext)
+                self.action?.post(command: .subtitleNext)
             }, image: Image(systemName: "captions.bubble"),
                scale: .control)
             Spacer()
             PlayerButton(action: {
-                self.playerModel.post(command: .fullscreen)
+                self.action?.post(command: .fullscreen)
             }, image: Image(systemName: "viewfinder"),
                scale: .control)
             Spacer()
@@ -160,7 +170,7 @@ private struct Constants {
 struct PlayerView_Previews: PreviewProvider {
 
    static var previews: some View {
-        DependencyContainer().playerView()
+        Core.composer.playerView()
             .previewStyle(.full)
     }
 }

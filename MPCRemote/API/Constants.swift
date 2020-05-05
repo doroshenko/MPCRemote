@@ -6,8 +6,6 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-import Foundation
-
 enum Scheme: String {
     case http
     case https
@@ -39,9 +37,9 @@ struct Port {
     static let `default`: UInt16 = 13579
 }
 
-struct Interval {
+extension TimeInterval {
     static let ping: TimeInterval = 1.0
-    static let refresh: TimeInterval = 1.0
+    static let fetch: TimeInterval = 1.0
 }
 
 enum Command: Int {

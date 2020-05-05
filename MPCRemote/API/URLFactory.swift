@@ -6,9 +6,6 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-import Foundation
-import UIKit
-
 final class URLFactory {
 
     static func make(scheme: Scheme = .http, server: Server?, endpoint: Endpoint) -> URL? {

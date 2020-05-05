@@ -6,8 +6,6 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-import Foundation
-
 struct Server: Codable {
     let address: String
     let port: UInt16

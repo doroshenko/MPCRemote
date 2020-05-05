@@ -6,7 +6,6 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-import Foundation
 import Alamofire
 
 final class Connectivity {
