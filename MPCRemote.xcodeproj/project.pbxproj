@@ -28,6 +28,7 @@
 		0C4AF23F240B71DF0057AC86 /* LogEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF23E240B71DF0057AC86 /* LogEnums.swift */; };
 		0C4FA7802416B0A300F71F9E /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4FA77F2416B0A300F71F9E /* Server.swift */; };
 		0C520B182455CE0700FB3D14 /* APIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C520B172455CE0700FB3D14 /* APIState.swift */; };
+		0C5F836A24642B1D00A3E626 /* TimerHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5F836924642B1D00A3E626 /* TimerHolder.swift */; };
 		0C6773DC24547BA700FFD6DE /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6773DB24547BA700FFD6DE /* PlayerButton.swift */; };
 		0C6773E02454D71F00FFD6DE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6773DF2454D71F00FFD6DE /* Colors.swift */; };
 		0C6773E22454DDE200FFD6DE /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6773E12454DDE200FFD6DE /* Gradients.swift */; };
@@ -107,6 +108,7 @@
 		0C4AF23E240B71DF0057AC86 /* LogEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEnums.swift; sourceTree = "<group>"; };
 		0C4FA77F2416B0A300F71F9E /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		0C520B172455CE0700FB3D14 /* APIState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIState.swift; sourceTree = "<group>"; };
+		0C5F836924642B1D00A3E626 /* TimerHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerHolder.swift; sourceTree = "<group>"; };
 		0C6773DB24547BA700FFD6DE /* PlayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
 		0C6773DF2454D71F00FFD6DE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		0C6773E12454DDE200FFD6DE /* Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				0C4AF23E240B71DF0057AC86 /* LogEnums.swift */,
 				0CA8AB3E245F349C005E15F4 /* PreviewStyle.swift */,
 				0CB0F9AA245838D300C31A04 /* TextFormatter.swift */,
+				0C5F836924642B1D00A3E626 /* TimerHolder.swift */,
 				0CA7AFC7245B1597007842A5 /* View+ScreenWidth.swift */,
 			);
 			path = Utility;
@@ -625,6 +628,7 @@
 				0CE231E424573C710068820C /* PlayerViewModel.swift in Sources */,
 				0CBB87332462F07100BAF7C6 /* Core.swift in Sources */,
 				0C48B3EB2426BEDF00EEFE98 /* PingError.swift in Sources */,
+				0C5F836A24642B1D00A3E626 /* TimerHolder.swift in Sources */,
 				0C83A77F2461B2830078CBB6 /* ComposerType.swift in Sources */,
 				0C48B3E92426938C00EEFE98 /* APIService.swift in Sources */,
 				0C83A7752461AA4D0078CBB6 /* PingResult.swift in Sources */,

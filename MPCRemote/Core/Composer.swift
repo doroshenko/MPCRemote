@@ -26,6 +26,7 @@ extension Composer {
         PlayerView(
             model: PlayerViewModel(data: data),
             action: PlayerViewActionCreator(provider: resolver.resolve(),
+                                            timerHolder: resolver.resolve(),
                                             dispatch: action(to: PlayerViewReducer())),
             composer: PlayerViewComposer(parent: self)
         )

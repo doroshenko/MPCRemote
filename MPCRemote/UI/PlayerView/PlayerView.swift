@@ -15,40 +15,42 @@ struct PlayerView: View {
     let action: PlayerViewActionCreator?
     let composer: PlayerViewComposer?
 
-    let timer = Timer.publish(every: .fetch, on: .main, in: .common).autoconnect()
-
     var body: some View {
         NavigationView {
-            VStack {
-                Spacer()
-                titleView()
-                Spacer()
-                seekView()
-                Spacer()
-                playbackView()
-                Spacer()
-                bottomView()
-            }
-            .foregroundColor(.main)
-            .screenWidth(padding: Constants.padding)
-            .navigationBarTitle(Text(Bundle.main.displayName), displayMode: .inline)
-            .navigationBarItems(trailing:
-                NavigationLink(destination: composer?.showServerListView()) {
-                    Text("Settings")
+            playerStack()
+                .navigationBarTitle(Text(Bundle.main.displayName), displayMode: .inline)
+                .navigationBarItems(trailing:
+                    NavigationLink(destination: composer?.showServerListView()) {
+                        Text("Settings")
+                    }
+                )
+                .onAppear {
+                    self.action?.setup()
                 }
-            )
+                .onDisappear {
+                    self.action?.stopFetch()
+                }
         }
         .accentColor(.accentStart)
-        .onAppear {
-            self.action?.setup()
-        }
-        .onReceive(timer) { _ in
-            self.action?.getState()
-        }
     }
 }
 
 private extension PlayerView {
+
+    func playerStack() -> some View {
+        VStack {
+            Spacer()
+            titleView()
+            Spacer()
+            seekView()
+            Spacer()
+            playbackView()
+            Spacer()
+            bottomView()
+        }
+        .foregroundColor(.main)
+        .screenWidth(padding: Constants.padding)
+    }
 
     func titleView() -> some View {
         Text(model.playerState.file)

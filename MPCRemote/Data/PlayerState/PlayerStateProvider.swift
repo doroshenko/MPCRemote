@@ -8,8 +8,8 @@
 
 protocol PlayerStateProviderType {
     var hasServer: Bool { get }
-
     func findServer(completion: @escaping () -> Void)
+
     func getState(completion: @escaping StateHandler)
     func post(command: Command, completion: @escaping PostHandler)
     func post(seek: Double, completion: @escaping PostHandler)
@@ -17,6 +17,7 @@ protocol PlayerStateProviderType {
 }
 
 struct PlayerStateProvider: PlayerStateProviderType {
+
     private let apiService: APIServiceType
     private let settingsService: SettingsServiceType
     private let networkService: NetworkServiceType
