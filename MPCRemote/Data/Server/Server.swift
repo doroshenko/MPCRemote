@@ -6,7 +6,7 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-struct Server: Codable {
+struct Server {
     let address: String
     let port: UInt16
     let name: String
@@ -19,6 +19,8 @@ struct Server: Codable {
         self.favorite = favorite
     }
 }
+
+extension Server: Codable, Equatable { }
 
 extension Server: Identifiable {
     var id: String {

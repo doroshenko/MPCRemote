@@ -6,13 +6,13 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-final class PlayerState: ObservableObject {
-    @Published var file: String
-    @Published var state: PlaybackState
-    @Published var position: Double
-    @Published var duration: Double
-    @Published var volume: Double
-    @Published var isMuted: Bool
+struct PlayerState {
+    let file: String
+    let state: PlaybackState
+    let position: Double
+    let duration: Double
+    let volume: Double
+    let isMuted: Bool
 
     init(file: String = "...", state: PlaybackState = .stopped, position: Double = 0, duration: Double = 0, volume: Double = 0, isMuted: Bool = false) {
         self.file = file
@@ -23,3 +23,5 @@ final class PlayerState: ObservableObject {
         self.isMuted = isMuted
     }
 }
+
+extension PlayerState: Equatable { }

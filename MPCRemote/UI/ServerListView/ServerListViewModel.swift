@@ -19,6 +19,7 @@ final class ServerListViewModel: ObservableObject {
 
         // One-way binding to the value in DataStore
         data.$serverList
+            .removeDuplicates()
             .assign(to: \Self.serverList, on: self)
             .store(in: &cancellable)
     }

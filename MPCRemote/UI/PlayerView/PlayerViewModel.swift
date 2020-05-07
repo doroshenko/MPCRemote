@@ -19,6 +19,7 @@ final class PlayerViewModel: ObservableObject {
 
         // One-way binding to the value in DataStore
         data.$playerState
+            .removeDuplicates()
             .assign(to: \Self.playerState, on: self)
             .store(in: &cancellable)
     }
