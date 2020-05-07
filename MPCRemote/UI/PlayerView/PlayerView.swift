@@ -60,20 +60,16 @@ private extension PlayerView {
     }
 
     func seekView() -> some View {
-        VStack {
-            HStack {
-                Text(model.playerState.position.seekDescription)
-                Spacer()
-                Text(model.playerState.duration.seekDescription)
-            }
-            SeekSliderView(getter: {
-                self.model.playerState.position
-            }, setter: { seek in
-                self.action?.post(seek: seek)
-            },
-               range: 0...model.playerState.duration.clamped(to: 1...))
-                .disabled(model.playerState.duration == 0)
-        }
+        SeekSliderView(position: $model.position,
+                       duration: model.playerState.duration,
+                       onEditingChanged: { isEditing in
+                        self.model.isUpdatingPosition = isEditing
+
+                        if !isEditing {
+                            self.action?.post(seek: self.model.seek)
+                        }
+        })
+            .disabled(model.playerState.duration == 0)
     }
 
     func playbackView() -> some View {
@@ -117,10 +113,13 @@ private extension PlayerView {
     func volumeView() -> some View {
         HStack {
             Image(systemName: "speaker.1.fill")
-            VolumeSliderView(getter: {
-                self.model.playerState.volume
-            }, setter: { volume in
-                self.action?.post(volume: volume)
+            VolumeSliderView(volume: $model.volume,
+                             onEditingChanged: { isEditing in
+                                self.model.isUpdatingVolume = isEditing
+
+                                if !isEditing {
+                                    self.action?.post(volume: self.model.volume)
+                                }
             })
             Image(systemName: "speaker.3.fill")
         }
