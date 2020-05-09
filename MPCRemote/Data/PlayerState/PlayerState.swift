@@ -14,7 +14,7 @@ struct PlayerState {
     let volume: Double
     let isMuted: Bool
 
-    init(file: String = "...", state: PlaybackState = .stopped, position: Double = 0, duration: Double = 0, volume: Double = 0, isMuted: Bool = false) {
+    init(file: String = "...", state: PlaybackState = .unknown, position: Double = 0, duration: Double = 0, volume: Double = 0, isMuted: Bool = false) {
         self.file = file
         self.state = state
         self.position = position

@@ -10,7 +10,8 @@ protocol ServerListProviderType {
     func fetch() -> [Server]
     func add(server: Server) -> [Server]
 
-    func scan(complete: Bool, completion: @escaping (Server) -> Void)
+    func scan(complete: Bool, completion: @escaping (ServerState) -> Void)
+    func ping(server: Server, completion: @escaping ServerStateHandler)
     func cancel()
 }
 
@@ -38,8 +39,12 @@ extension ServerListProvider {
 
 extension ServerListProvider {
 
-    func scan(complete: Bool, completion: @escaping (Server) -> Void) {
-        networkService.scan(complete: true, completion: completion)
+    func scan(complete: Bool, completion: @escaping (ServerState) -> Void) {
+        networkService.scan(completion: completion)
+    }
+
+    func ping(server: Server, completion: @escaping ServerStateHandler) {
+        networkService.ping(address: server.address, completion: completion)
     }
 
     func cancel() {

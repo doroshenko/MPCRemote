@@ -21,6 +21,11 @@ struct ServerListView: View {
                 self.action?.add(server: server)
             }, label: {
                 ServerView(server: server)
+                    .onAppear {
+                        self.action?.ping(server: server) { _ in
+                            // TOOO: change cell appearance based on server availability
+                        }
+                }
             })
         }
         .onAppear {

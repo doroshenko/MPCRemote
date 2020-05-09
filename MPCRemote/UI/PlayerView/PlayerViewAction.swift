@@ -25,10 +25,10 @@ extension PlayerViewActionCreator {
 
     func setup() {
         if provider.hasServer {
-            self.getState()
+            getState()
         } else {
-            provider.findServer {
-                self.getState()
+            provider.findServer { state in
+                self.dispatch(.set(state))
             }
         }
     }

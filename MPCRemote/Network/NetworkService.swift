@@ -7,8 +7,8 @@
 //
 
 protocol NetworkServiceType {
-    func scan(complete: Bool, completion: @escaping (Server) -> Void)
-    func ping(hostName: String, completion: @escaping ServerHandler)
+    func scan(completion: @escaping (ServerState) -> Void)
+    func ping(address: String, completion: @escaping ServerStateHandler)
     func cancel()
 }
 
@@ -16,7 +16,7 @@ struct NetworkService: NetworkServiceType {
 
     let operationProvider: OperationProviderType
 
-    func scan(complete: Bool, completion: @escaping (Server) -> Void) {
+    func scan(completion: @escaping (ServerState) -> Void) {
         guard Connectivity.isConnectedToWifi, let addressRange = addressRange else {
             logError("Not connected to LAN", domain: .networking)
             return
@@ -26,26 +26,24 @@ struct NetworkService: NetworkServiceType {
 
         logDebug("Network scan initiated", domain: .networking)
 
-        var found: Bool = false
         addressRange.forEach { ip in
-            performPing(hostName: ip.address, completion: { serverResult in
-                if case let .success(server) = serverResult, complete || !found {
-                    found = true
-                    completion(server)
+            performPing(address: ip.address, completion: { result in
+                if case let .success(serverState) = result {
+                    completion(serverState)
                 }
             })
         }
     }
 
-    func ping(hostName: String, completion: @escaping ServerHandler) {
-        guard Connectivity.isHostReachable(hostName: hostName) else {
-            logError("Cannot reach host: \(hostName)", domain: .networking)
+    func ping(address: String, completion: @escaping ServerStateHandler) {
+        guard Connectivity.isHostReachable(hostName: address) else {
+            logError("Cannot reach host: \(address)", domain: .networking)
             completion(.failure(.invalidEndpoint))
             return
         }
 
-        logDebug("Ping initated for host: \(hostName)", domain: .networking)
-        performPing(hostName: hostName, completion: completion)
+        logDebug("Ping initated for host: \(address)", domain: .networking)
+        performPing(address: address, completion: completion)
     }
 
     func cancel() {
@@ -74,12 +72,12 @@ private extension NetworkService {
         return ip.usableAddressRange(with: mask)
     }
 
-    func performPing(hostName: String, completion: @escaping ServerHandler) {
-        operationProvider.queuePing(hostName: hostName) { pingResult in
+    func performPing(address: String, completion: @escaping ServerStateHandler) {
+        operationProvider.queuePing(hostName: address) { pingResult in
             switch pingResult {
             case let .success(duration):
-                logDebug("Found host: \(hostName) after \(Int(duration * 1000)) ms", domain: .networking)
-                self.performValidation(hostName: hostName, completion: completion)
+                logDebug("Found host: \(address) after \(Int(duration * 1000)) ms", domain: .networking)
+                self.performValidation(hostName: address, completion: completion)
             case .failure:
                 // Uncomment to debug
                 // logDebug(error.localizedDescription, domain: .networking)
@@ -88,13 +86,14 @@ private extension NetworkService {
         }
     }
 
-    func performValidation(hostName: String, completion: @escaping ServerHandler) {
+    func performValidation(hostName: String, completion: @escaping ServerStateHandler) {
         let server = Server(address: hostName)
         operationProvider.queueValidation(server: server) { validateResult in
             switch validateResult {
             case let .success(state):
                 logInfo("Found MPC server at: \(hostName) with state: \(state)", domain: .networking)
-                completion(.success(server))
+                let serverState = ServerState(server: server, state: state)
+                completion(.success(serverState))
             case let .failure(error):
                 // Uncomment to debug
                 // logDebug(error.localizedDescription, domain: .networking)

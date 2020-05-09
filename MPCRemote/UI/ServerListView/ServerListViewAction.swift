@@ -36,8 +36,18 @@ extension ServerListViewActionCreator {
     }
 
     func scan() {
-        provider.scan(complete: true) { server in
-            self.dispatch(.append(server))
+        provider.scan(complete: true) { serverState in
+            self.dispatch(.append(serverState.server))
+        }
+    }
+
+    func ping(server: Server, completion: @escaping (Bool) -> Void) {
+        provider.ping(server: server) { result in
+            if case .success = result {
+                completion(true)
+            } else {
+                completion(false)
+            }
         }
     }
 
