@@ -8,45 +8,38 @@
 
 import SwiftUI
 
-struct SliderView<T: BinaryFloatingPoint>: View where T.Stride: BinaryFloatingPoint {
-    @ObservedObject private(set) var model: SliderViewModel<T>
+struct SliderView: View {
+    @ObservedObject private(set) var model: SliderViewModel<Double>
 
     let action: SliderViewActionCreatorType?
     let composer: SliderViewComposer?
 
-    private var range: ClosedRange<T> {
+    private var range: ClosedRange<Double> {
         0...model.maxValue.clamped(to: 1...)
     }
 
     var body: some View {
-        Slider(value: $model.value,
-               in: range,
-               step: 1,
-               onEditingChanged: { isEditing in
-                self.model.isUpdating = isEditing
+        VStack {
+            HStack {
+                Text(model.formattedDescription(model.value))
+                Spacer()
+                Text(model.formattedDescription(model.maxValue))
+            }
+            Slider(value: $model.value,
+            in: range,
+            step: 1,
+            onEditingChanged: { isEditing in
+                self.action?.set(isEditing)
 
                 if !isEditing {
                     self.action?.post(self.model.formattedValue)
                 }
-               })
-                .disabled(model.maxValue == 0)
-    }
-}
-
-struct SeekSliderView: View {
-    @Binding var position: Double
-    let duration: Double
-
-    var body: some View {
-        VStack {
-            HStack {
-                Text(position.seekDescription)
-                Spacer()
-                Text(duration.seekDescription)
-            }
+            })
+             .disabled(model.maxValue == 0)
         }
     }
 }
+
 //
 //struct SliderView_Previews: PreviewProvider {
 //

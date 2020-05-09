@@ -12,34 +12,62 @@ class SliderViewModel<T: Equatable>: ObservableObject {
 
     @Published var value: T
     var maxValue: T
-    var formattedValue: T {
-        value
-    }
 
-    var isUpdating: Bool = false
+    @Published private(set) var isUpdating: Bool
 
-    private var cancellable = Set<AnyCancellable>()
+    private var cancellablePlayer = Set<AnyCancellable>()
+    private var cancellableSlider = Set<AnyCancellable>()
 
-    init(data: DataStore, maxValue: T, keyPath: KeyPath<PlayerState, T>) {
-        self.value = data.playerState[keyPath: keyPath]
+    init(data: DataStore, maxValue: T, valueKeyPath: KeyPath<PlayerState, T>, updatingKeyPath: KeyPath<SliderState, Bool>) {
+        self.value = data.playerState[keyPath: valueKeyPath]
+        self.isUpdating = data.sliderState[keyPath: updatingKeyPath]
         self.maxValue = maxValue
 
         // One-way binding to the value in DataStore
         data.$playerState
-            .map { $0[keyPath: keyPath] }
+            .map { $0[keyPath: valueKeyPath] }
             .removeDuplicates()
             .filter { _ in
                 !self.isUpdating
             }
             .assign(to: \Self.value, on: self)
-            .store(in: &cancellable)
+            .store(in: &cancellablePlayer)
+
+        data.$sliderState
+            .map { $0[keyPath: updatingKeyPath] }
+            .assign(to: \Self.isUpdating, on: self)
+            .store(in: &cancellableSlider)
+    }
+
+    // MARK: - Formatting
+
+    var formattedValue: T {
+        value
+    }
+
+    func formattedDescription(_ value: T) -> String {
+        String()
     }
 }
 
-final class PositionSliderViewModel: SliderViewModel<Double> {
+final class SeekSliderViewModel: SliderViewModel<Double> {
+
+    private var cancellableDuration = Set<AnyCancellable>()
 
     init(data: DataStore) {
-        super.init(data: data, maxValue: data.playerState.duration, keyPath: \.position)
+        super.init(data: data,
+                   maxValue: data.playerState.duration,
+                   valueKeyPath: \.position,
+                   updatingKeyPath: \.isSeekUpdating)
+
+        data.$playerState
+            .map { $0.duration }
+            .removeDuplicates()
+            .filter { _ in
+                !self.isUpdating
+            }
+            .assign(to: \Self.maxValue, on: self)
+            .store(in: &cancellableDuration)
     }
 
     override var formattedValue: Double {
@@ -47,11 +75,18 @@ final class PositionSliderViewModel: SliderViewModel<Double> {
 
         return value * Parameter.Seek.range.upperBound / maxValue
     }
+
+    override func formattedDescription(_ value: Double) -> String {
+        value.seekDescription
+    }
 }
 
 final class VolumeSliderViewModel: SliderViewModel<Double> {
 
     init(data: DataStore) {
-        super.init(data: data, maxValue: Parameter.Volume.range.upperBound, keyPath: \.volume)
+        super.init(data: data,
+                   maxValue: Parameter.Volume.range.upperBound,
+                   valueKeyPath: \.volume,
+                   updatingKeyPath: \.isVolumeUpdating)
     }
 }

@@ -8,15 +8,16 @@
 
 enum SliderViewAction: ActionType {
     case set(PlayerState)
+    case setSeekUpdating(Bool)
+    case setVolumeUpdating(Bool)
 }
 
 protocol SliderViewActionCreatorType: ActionCreatorType {
-    associatedtype SliderValueType
-
-    func post(_ value: SliderValueType)
+    func post(_ value: Double)
+    func set(_ isUpdating: Bool)
 }
 
-struct PositionSliderViewActionCreator: SliderViewActionCreatorType {
+struct SeekSliderViewActionCreator: SliderViewActionCreatorType {
 
     private let provider: PlayerStateProviderType
     private let dispatch: (SliderViewAction) -> Void
@@ -27,16 +28,20 @@ struct PositionSliderViewActionCreator: SliderViewActionCreatorType {
     }
 }
 
-extension PositionSliderViewActionCreator {
+extension SeekSliderViewActionCreator {
 
     func post(_ value: Double) {
         provider.post(seek: value) { result in
             self.handlePostResult(result)
         }
     }
+
+    func set(_ isUpdating: Bool) {
+        dispatch(.setSeekUpdating(isUpdating))
+    }
 }
 
-private extension PositionSliderViewActionCreator {
+private extension SeekSliderViewActionCreator {
 
     func performGetState() {
         provider.getState { result in
@@ -45,7 +50,7 @@ private extension PositionSliderViewActionCreator {
     }
 }
 
-private extension PositionSliderViewActionCreator {
+private extension SeekSliderViewActionCreator {
 
     func handleStateResult(_ result: StateResult) {
         switch result {
@@ -83,6 +88,10 @@ extension VolumeSliderViewActionCreator {
         provider.post(volume: value) { result in
             self.handlePostResult(result)
         }
+    }
+
+    func set(_ isUpdating: Bool) {
+        dispatch(.setVolumeUpdating(isUpdating))
     }
 }
 

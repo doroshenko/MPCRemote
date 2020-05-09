@@ -22,3 +22,14 @@ extension PlayerViewComposer {
         parent.serverListView()
     }
 }
+
+extension PlayerViewComposer {
+
+    func seekSliderView(_ viewModel: SeekSliderViewModel) -> some View {
+        parent.seekSliderView(viewModel)
+    }
+
+    func volumeSliderView(_ viewModel: VolumeSliderViewModel) -> some View {
+        parent.volumeSliderView(viewModel)
+    }
+}

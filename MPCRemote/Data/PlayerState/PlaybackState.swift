@@ -7,6 +7,7 @@
 //
 
 enum PlaybackState: Int, Codable {
+    case unknown = -1
     case stopped
     case paused
     case playing
@@ -23,6 +24,8 @@ enum PlaybackState: Int, Codable {
 extension PlaybackState: CustomDebugStringConvertible {
     var debugDescription: String {
         switch self {
+        case .unknown:
+            return "Unknown"
         case .stopped:
             return "Stopped"
         case .paused:

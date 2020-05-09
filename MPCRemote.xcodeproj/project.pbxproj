@@ -30,6 +30,7 @@
 		0C4DC97C24663C0600BD8F83 /* SliderViewAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4DC97924663C0600BD8F83 /* SliderViewAction.swift */; };
 		0C4DC97D24663C0600BD8F83 /* SliderViewComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4DC97A24663C0600BD8F83 /* SliderViewComposer.swift */; };
 		0C4DC97E24663C0600BD8F83 /* SliderViewReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4DC97B24663C0600BD8F83 /* SliderViewReducer.swift */; };
+		0C4DC9812466C8C300BD8F83 /* SliderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4DC9802466C8C300BD8F83 /* SliderState.swift */; };
 		0C4FA7802416B0A300F71F9E /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4FA77F2416B0A300F71F9E /* Server.swift */; };
 		0C520B182455CE0700FB3D14 /* APIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C520B172455CE0700FB3D14 /* APIState.swift */; };
 		0C6773DC24547BA700FFD6DE /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6773DB24547BA700FFD6DE /* PlayerButton.swift */; };
@@ -113,6 +114,7 @@
 		0C4DC97924663C0600BD8F83 /* SliderViewAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderViewAction.swift; sourceTree = "<group>"; };
 		0C4DC97A24663C0600BD8F83 /* SliderViewComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderViewComposer.swift; sourceTree = "<group>"; };
 		0C4DC97B24663C0600BD8F83 /* SliderViewReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderViewReducer.swift; sourceTree = "<group>"; };
+		0C4DC9802466C8C300BD8F83 /* SliderState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderState.swift; sourceTree = "<group>"; };
 		0C4FA77F2416B0A300F71F9E /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		0C520B172455CE0700FB3D14 /* APIState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIState.swift; sourceTree = "<group>"; };
 		0C6773DB24547BA700FFD6DE /* PlayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				0C83A77B2461B1CB0078CBB6 /* Types */,
 				0C83A762246189BC0078CBB6 /* PlayerState */,
 				0C83A763246189CD0078CBB6 /* Server */,
+				0C4DC97F2466C89D00BD8F83 /* SliderState */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -256,6 +259,14 @@
 				0C4DC97B24663C0600BD8F83 /* SliderViewReducer.swift */,
 			);
 			path = SliderView;
+			sourceTree = "<group>";
+		};
+		0C4DC97F2466C89D00BD8F83 /* SliderState */ = {
+			isa = PBXGroup;
+			children = (
+				0C4DC9802466C8C300BD8F83 /* SliderState.swift */,
+			);
+			path = SliderState;
 			sourceTree = "<group>";
 		};
 		0C83A762246189BC0078CBB6 /* PlayerState */ = {
@@ -621,6 +632,7 @@
 				0C83A75D24617F7C0078CBB6 /* PlaybackState.swift in Sources */,
 				0C30E249240DD390001C1EC9 /* AsynchroneousOperation.swift in Sources */,
 				0C83A77A2461B1A90078CBB6 /* PlayerViewComposer.swift in Sources */,
+				0C4DC9812466C8C300BD8F83 /* SliderState.swift in Sources */,
 				0CE231E82457AE9C0068820C /* SliderView.swift in Sources */,
 				0C18D5EC241719470035C3A5 /* SettingsService.swift in Sources */,
 				0C83A7852461C35F0078CBB6 /* ServerListViewAction.swift in Sources */,

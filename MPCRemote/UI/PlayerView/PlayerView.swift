@@ -62,16 +62,7 @@ private extension PlayerView {
     }
 
     func seekView() -> some View {
-//        SeekSliderView(position: $model.position.value,
-//                       duration: model.playerState.duration,
-//                       onEditingChanged: { isEditing in
-//                        self.model.isUpdating = isEditing
-//
-//                        if !isEditing {
-//                            self.action?.post(seek: self.model.seek)
-//                        }
-//        })
-//            .disabled(model.playerState.duration == 0)
+        composer?.seekSliderView(model.seekModel)
     }
 
     func playbackView() -> some View {
@@ -115,14 +106,7 @@ private extension PlayerView {
     func volumeView() -> some View {
         HStack {
             Image(systemName: "speaker.1.fill")
-//            VolumeSliderView(volume: $model.volume.value,
-//                             onEditingChanged: { isEditing in
-//                                self.model.volume.isUpdating = isEditing
-//
-//                                if !isEditing {
-//                                    self.action?.post(volume: self.model.volume.value)
-//                                }
-//            })
+            composer?.volumeSliderView(model.volumeModel)
             Image(systemName: "speaker.3.fill")
         }
         .padding(.vertical)
