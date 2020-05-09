@@ -17,7 +17,6 @@ final class ServerListViewModel: ObservableObject {
     init(data: DataStore) {
         self.serverList = data.serverList
 
-        // One-way binding to the value in DataStore
         data.$serverList
             .removeDuplicates()
             .assign(to: \Self.serverList, on: self)

@@ -46,11 +46,22 @@ extension Composer {
 
 extension Composer {
 
+    func seekSliderView() -> some View {
+        seekSliderView(SeekSliderViewModel(data: data))
+    }
+
     func seekSliderView(_ viewModel: SeekSliderViewModel) -> some View {
         SliderView(model: viewModel,
                    action: SeekSliderViewActionCreator(provider: resolver.resolve(),
                                                        dispatch: action(to: SliderViewReducer())),
                    composer: SliderViewComposer(parent: self))
+    }
+}
+
+extension Composer {
+
+    func volumeSliderView() -> some View {
+        volumeSliderView(VolumeSliderViewModel(data: data))
     }
 
     func volumeSliderView(_ viewModel: VolumeSliderViewModel) -> some View {

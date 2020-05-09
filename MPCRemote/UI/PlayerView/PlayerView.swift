@@ -109,7 +109,7 @@ private extension PlayerView {
             composer?.volumeSliderView(model.volumeModel)
             Image(systemName: "speaker.3.fill")
         }
-        .padding(.vertical)
+        .padding(.bottom)
     }
 
     func controlView() -> some View {

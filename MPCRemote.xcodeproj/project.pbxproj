@@ -316,6 +316,7 @@
 		0C83A76F24619D380078CBB6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0C4DC970246632F900BD8F83 /* SliderView */,
 				0C6773DB24547BA700FFD6DE /* PlayerButton.swift */,
 				0CA8AB3C245F26A8005E15F4 /* ServerView.swift */,
 			);
@@ -400,7 +401,6 @@
 			children = (
 				0C83A76A246199EA0078CBB6 /* PlayerView */,
 				0C83A76B246199FB0078CBB6 /* ServerListView */,
-				0C4DC970246632F900BD8F83 /* SliderView */,
 				0C83A76F24619D380078CBB6 /* Components */,
 				0C6773DF2454D71F00FFD6DE /* Colors.swift */,
 				0C6773E12454DDE200FFD6DE /* Gradients.swift */,

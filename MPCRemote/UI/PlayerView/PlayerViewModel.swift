@@ -22,7 +22,6 @@ final class PlayerViewModel: ObservableObject {
         self.seekModel = SeekSliderViewModel(data: data)
         self.volumeModel = VolumeSliderViewModel(data: data)
 
-        // One-way binding to the value in DataStore
         data.$playerState
             .removeDuplicates()
             .assign(to: \Self.playerState, on: self)

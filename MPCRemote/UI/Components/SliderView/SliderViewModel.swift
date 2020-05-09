@@ -12,18 +12,19 @@ class SliderViewModel<T: Equatable>: ObservableObject {
 
     @Published var value: T
     var maxValue: T
+    private(set) var showDescriptions: Bool
 
     @Published private(set) var isUpdating: Bool
 
     private var cancellablePlayer = Set<AnyCancellable>()
     private var cancellableSlider = Set<AnyCancellable>()
 
-    init(data: DataStore, maxValue: T, valueKeyPath: KeyPath<PlayerState, T>, updatingKeyPath: KeyPath<SliderState, Bool>) {
+    init(data: DataStore, maxValue: T, showDescriptions: Bool, valueKeyPath: KeyPath<PlayerState, T>, updatingKeyPath: KeyPath<SliderState, Bool>) {
         self.value = data.playerState[keyPath: valueKeyPath]
         self.isUpdating = data.sliderState[keyPath: updatingKeyPath]
         self.maxValue = maxValue
+        self.showDescriptions = showDescriptions
 
-        // One-way binding to the value in DataStore
         data.$playerState
             .map { $0[keyPath: valueKeyPath] }
             .removeDuplicates()
@@ -46,7 +47,7 @@ class SliderViewModel<T: Equatable>: ObservableObject {
     }
 
     func formattedDescription(_ value: T) -> String {
-        String()
+        "\(value)"
     }
 }
 
@@ -57,6 +58,7 @@ final class SeekSliderViewModel: SliderViewModel<Double> {
     init(data: DataStore) {
         super.init(data: data,
                    maxValue: data.playerState.duration,
+                   showDescriptions: true,
                    valueKeyPath: \.position,
                    updatingKeyPath: \.isSeekUpdating)
 
@@ -86,6 +88,7 @@ final class VolumeSliderViewModel: SliderViewModel<Double> {
     init(data: DataStore) {
         super.init(data: data,
                    maxValue: Parameter.Volume.range.upperBound,
+                   showDescriptions: false,
                    valueKeyPath: \.volume,
                    updatingKeyPath: \.isVolumeUpdating)
     }
