@@ -11,8 +11,6 @@ struct PlayerViewReducer: ReducerType {
     func reduce(_ data: DataStore, _ action: PlayerViewAction) {
         let playerState: PlayerState
         switch action {
-        case .clear:
-            playerState = PlayerState()
         case let .set(newValue):
             playerState = newValue
         }

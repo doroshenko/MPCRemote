@@ -7,7 +7,6 @@
 //
 
 enum PlayerViewAction: ActionType {
-    case clear
     case set(PlayerState)
 }
 
@@ -26,10 +25,10 @@ extension PlayerViewActionCreator {
 
     func setup() {
         if provider.hasServer {
-            self.performGetState()
+            self.getState()
         } else {
             provider.findServer {
-                self.performGetState()
+                self.getState()
             }
         }
     }
@@ -38,54 +37,14 @@ extension PlayerViewActionCreator {
 extension PlayerViewActionCreator {
 
     func getState() {
-        performGetState()
+        provider.getState { state in
+            self.dispatch(.set(state))
+        }
     }
 
     func post(command: Command) {
-        provider.post(command: command) { result in
-            self.handlePostResult(result)
-        }
-    }
-
-    func post(seek: Double) {
-        provider.post(seek: seek) { result in
-            self.handlePostResult(result)
-        }
-    }
-
-    func post(volume: Double) {
-        provider.post(volume: volume) { result in
-            self.handlePostResult(result)
-        }
-    }
-}
-
-private extension PlayerViewActionCreator {
-
-    func performGetState() {
-        provider.getState { result in
-            self.handleStateResult(result)
-        }
-    }
-}
-
-private extension PlayerViewActionCreator {
-
-    func handleStateResult(_ result: StateResult) {
-        switch result {
-        case let .success(state):
+        provider.post(command: command) { state in
             self.dispatch(.set(state))
-        case let .failure(error):
-            logDebug(error.localizedDescription, domain: .api)
-        }
-    }
-
-    func handlePostResult(_ result: PostResult) {
-        switch result {
-        case .success:
-            performGetState()
-        case let .failure(error):
-            logDebug(error.localizedDescription, domain: .api)
         }
     }
 }

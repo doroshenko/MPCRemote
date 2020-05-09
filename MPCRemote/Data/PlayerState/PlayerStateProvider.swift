@@ -10,10 +10,10 @@ protocol PlayerStateProviderType {
     var hasServer: Bool { get }
     func findServer(completion: @escaping () -> Void)
 
-    func getState(completion: @escaping StateHandler)
-    func post(command: Command, completion: @escaping PostHandler)
-    func post(seek: Double, completion: @escaping PostHandler)
-    func post(volume: Double, completion: @escaping PostHandler)
+    func getState(completion: @escaping (PlayerState) -> Void)
+    func post(command: Command, completion: @escaping (PlayerState) -> Void)
+    func post(seek: Double, completion: @escaping (PlayerState) -> Void)
+    func post(volume: Double, completion: @escaping (PlayerState) -> Void)
 }
 
 struct PlayerStateProvider: PlayerStateProviderType {
@@ -47,19 +47,48 @@ extension PlayerStateProvider {
 
 extension PlayerStateProvider {
 
-    func getState(completion: @escaping StateHandler) {
-        apiService.getState(server: settingsService.server, completion: completion)
+    func getState(completion: @escaping (PlayerState) -> Void) {
+       apiService.getState(server: settingsService.server) { result in
+            self.handleStateResult(result, completion: completion)
+        }
     }
 
-    func post(command: Command, completion: @escaping PostHandler) {
-        apiService.post(command: command, server: settingsService.server, completion: completion)
+    func post(command: Command, completion: @escaping (PlayerState) -> Void) {
+        apiService.post(command: command, server: settingsService.server) { result in
+            self.handlePostResult(result, completion: completion)
+        }
     }
 
-    func post(seek: Double, completion: @escaping PostHandler) {
-        apiService.post(seek: seek, server: settingsService.server, completion: completion)
+    func post(seek: Double, completion: @escaping (PlayerState) -> Void) {
+        apiService.post(seek: seek, server: settingsService.server) { result in
+            self.handlePostResult(result, completion: completion)
+        }
     }
 
-    func post(volume: Double, completion: @escaping PostHandler) {
-        apiService.post(volume: volume, server: settingsService.server, completion: completion)
+    func post(volume: Double, completion: @escaping (PlayerState) -> Void) {
+        apiService.post(volume: volume, server: settingsService.server) { result in
+            self.handlePostResult(result, completion: completion)
+        }
+    }
+}
+
+private extension PlayerStateProvider {
+
+    func handleStateResult(_ result: StateResult, completion: @escaping (PlayerState) -> Void) {
+        switch result {
+        case let .success(state):
+            completion(state)
+        case let .failure(error):
+            logDebug(error.localizedDescription, domain: .api)
+        }
+    }
+
+    func handlePostResult(_ result: PostResult, completion: @escaping (PlayerState) -> Void) {
+        switch result {
+        case .success:
+            getState(completion: completion)
+        case let .failure(error):
+            logDebug(error.localizedDescription, domain: .api)
+        }
     }
 }
