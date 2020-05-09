@@ -81,7 +81,7 @@ private extension APIService {
         }
 
         logDebug("Making a GET request to url: \(url)", domain: .api)
-        AF.request(url, method: .get).validate().responseString { response in
+        AF.request(url, method: .get).validate().responseString(encoding: .utf8) { response in
             switch response.result {
             case .success(let string):
                 guard let state = PlayerStateFactory.make(string: string) else {
