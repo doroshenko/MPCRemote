@@ -14,8 +14,6 @@ protocol Resolver {
     func resolve() -> OperationProviderType
     func resolve() -> PlayerStateProviderType
     func resolve() -> ServerListProviderType
-
-    func resolve() -> TimerHolderType
 }
 
 extension Resolver {
@@ -48,13 +46,6 @@ extension Resolver {
     func resolve() -> ServerListProviderType {
         ServerListProvider(networkService: resolve(),
                            settingsService: resolve())
-    }
-}
-
-extension Resolver {
-
-    func resolve() -> TimerHolderType {
-        TimerHolder()
     }
 }
 

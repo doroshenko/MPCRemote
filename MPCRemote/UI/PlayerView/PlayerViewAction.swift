@@ -14,12 +14,10 @@ enum PlayerViewAction: ActionType {
 struct PlayerViewActionCreator: ActionCreatorType {
 
     private let provider: PlayerStateProviderType
-    private let timerHolder: TimerHolderType
     private let dispatch: (PlayerViewAction) -> Void
 
-    init(provider: PlayerStateProviderType, timerHolder: TimerHolderType, dispatch: @escaping (PlayerViewAction) -> Void) {
+    init(provider: PlayerStateProviderType, dispatch: @escaping (PlayerViewAction) -> Void) {
         self.provider = provider
-        self.timerHolder = timerHolder
         self.dispatch = dispatch
     }
 }
@@ -28,27 +26,12 @@ extension PlayerViewActionCreator {
 
     func setup() {
         if provider.hasServer {
-            self.startFetch()
+            self.performGetState()
         } else {
             provider.findServer {
-                self.startFetch()
+                self.performGetState()
             }
         }
-    }
-}
-
-extension PlayerViewActionCreator {
-
-    func startFetch() {
-        performGetState()
-
-        timerHolder.schedule {
-            self.startFetch()
-        }
-    }
-
-    func stopFetch() {
-        timerHolder.cancel()
     }
 }
 
@@ -100,7 +83,7 @@ private extension PlayerViewActionCreator {
     func handlePostResult(_ result: PostResult) {
         switch result {
         case .success:
-            startFetch()
+            performGetState()
         case let .failure(error):
             logDebug(error.localizedDescription, domain: .api)
         }

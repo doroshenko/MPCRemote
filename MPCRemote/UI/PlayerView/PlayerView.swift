@@ -15,6 +15,8 @@ struct PlayerView: View {
     let action: PlayerViewActionCreator?
     let composer: PlayerViewComposer?
 
+    let timer = Timer.publish(every: .fetch, on: .main, in: .common).autoconnect()
+
     var body: some View {
         NavigationView {
             playerStack()
@@ -27,11 +29,11 @@ struct PlayerView: View {
                 .onAppear {
                     self.action?.setup()
                 }
-                .onDisappear {
-                    self.action?.stopFetch()
-                }
         }
         .accentColor(.accentStart)
+        .onReceive(timer) { _ in
+            self.action?.getState()
+        }
     }
 }
 
@@ -60,16 +62,16 @@ private extension PlayerView {
     }
 
     func seekView() -> some View {
-        SeekSliderView(position: $model.position,
-                       duration: model.playerState.duration,
-                       onEditingChanged: { isEditing in
-                        self.model.isUpdatingPosition = isEditing
-
-                        if !isEditing {
-                            self.action?.post(seek: self.model.seek)
-                        }
-        })
-            .disabled(model.playerState.duration == 0)
+//        SeekSliderView(position: $model.position.value,
+//                       duration: model.playerState.duration,
+//                       onEditingChanged: { isEditing in
+//                        self.model.isUpdating = isEditing
+//
+//                        if !isEditing {
+//                            self.action?.post(seek: self.model.seek)
+//                        }
+//        })
+//            .disabled(model.playerState.duration == 0)
     }
 
     func playbackView() -> some View {
@@ -113,14 +115,14 @@ private extension PlayerView {
     func volumeView() -> some View {
         HStack {
             Image(systemName: "speaker.1.fill")
-            VolumeSliderView(volume: $model.volume,
-                             onEditingChanged: { isEditing in
-                                self.model.isUpdatingVolume = isEditing
-
-                                if !isEditing {
-                                    self.action?.post(volume: self.model.volume)
-                                }
-            })
+//            VolumeSliderView(volume: $model.volume.value,
+//                             onEditingChanged: { isEditing in
+//                                self.model.volume.isUpdating = isEditing
+//
+//                                if !isEditing {
+//                                    self.action?.post(volume: self.model.volume.value)
+//                                }
+//            })
             Image(systemName: "speaker.3.fill")
         }
         .padding(.vertical)

@@ -26,9 +26,12 @@
 		0C4AF23A240B3B5B0057AC86 /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF239240B3B5B0057AC86 /* Ping.swift */; };
 		0C4AF23D240B59040057AC86 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF23C240B59040057AC86 /* Logger.swift */; };
 		0C4AF23F240B71DF0057AC86 /* LogEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AF23E240B71DF0057AC86 /* LogEnums.swift */; };
+		0C4DC9722466333300BD8F83 /* SliderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4DC9712466333300BD8F83 /* SliderViewModel.swift */; };
+		0C4DC97C24663C0600BD8F83 /* SliderViewAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4DC97924663C0600BD8F83 /* SliderViewAction.swift */; };
+		0C4DC97D24663C0600BD8F83 /* SliderViewComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4DC97A24663C0600BD8F83 /* SliderViewComposer.swift */; };
+		0C4DC97E24663C0600BD8F83 /* SliderViewReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4DC97B24663C0600BD8F83 /* SliderViewReducer.swift */; };
 		0C4FA7802416B0A300F71F9E /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4FA77F2416B0A300F71F9E /* Server.swift */; };
 		0C520B182455CE0700FB3D14 /* APIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C520B172455CE0700FB3D14 /* APIState.swift */; };
-		0C5F836A24642B1D00A3E626 /* TimerHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5F836924642B1D00A3E626 /* TimerHolder.swift */; };
 		0C6773DC24547BA700FFD6DE /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6773DB24547BA700FFD6DE /* PlayerButton.swift */; };
 		0C6773E02454D71F00FFD6DE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6773DF2454D71F00FFD6DE /* Colors.swift */; };
 		0C6773E22454DDE200FFD6DE /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6773E12454DDE200FFD6DE /* Gradients.swift */; };
@@ -106,9 +109,12 @@
 		0C4AF239240B3B5B0057AC86 /* Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
 		0C4AF23C240B59040057AC86 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		0C4AF23E240B71DF0057AC86 /* LogEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEnums.swift; sourceTree = "<group>"; };
+		0C4DC9712466333300BD8F83 /* SliderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderViewModel.swift; sourceTree = "<group>"; };
+		0C4DC97924663C0600BD8F83 /* SliderViewAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderViewAction.swift; sourceTree = "<group>"; };
+		0C4DC97A24663C0600BD8F83 /* SliderViewComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderViewComposer.swift; sourceTree = "<group>"; };
+		0C4DC97B24663C0600BD8F83 /* SliderViewReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderViewReducer.swift; sourceTree = "<group>"; };
 		0C4FA77F2416B0A300F71F9E /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		0C520B172455CE0700FB3D14 /* APIState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIState.swift; sourceTree = "<group>"; };
-		0C5F836924642B1D00A3E626 /* TimerHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerHolder.swift; sourceTree = "<group>"; };
 		0C6773DB24547BA700FFD6DE /* PlayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
 		0C6773DF2454D71F00FFD6DE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		0C6773E12454DDE200FFD6DE /* Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
@@ -235,10 +241,21 @@
 				0C4AF23E240B71DF0057AC86 /* LogEnums.swift */,
 				0CA8AB3E245F349C005E15F4 /* PreviewStyle.swift */,
 				0CB0F9AA245838D300C31A04 /* TextFormatter.swift */,
-				0C5F836924642B1D00A3E626 /* TimerHolder.swift */,
 				0CA7AFC7245B1597007842A5 /* View+ScreenWidth.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		0C4DC970246632F900BD8F83 /* SliderView */ = {
+			isa = PBXGroup;
+			children = (
+				0CE231E72457AE9C0068820C /* SliderView.swift */,
+				0C4DC9712466333300BD8F83 /* SliderViewModel.swift */,
+				0C4DC97924663C0600BD8F83 /* SliderViewAction.swift */,
+				0C4DC97A24663C0600BD8F83 /* SliderViewComposer.swift */,
+				0C4DC97B24663C0600BD8F83 /* SliderViewReducer.swift */,
+			);
+			path = SliderView;
 			sourceTree = "<group>";
 		};
 		0C83A762246189BC0078CBB6 /* PlayerState */ = {
@@ -290,7 +307,6 @@
 			children = (
 				0C6773DB24547BA700FFD6DE /* PlayerButton.swift */,
 				0CA8AB3C245F26A8005E15F4 /* ServerView.swift */,
-				0CE231E72457AE9C0068820C /* SliderView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -373,6 +389,7 @@
 			children = (
 				0C83A76A246199EA0078CBB6 /* PlayerView */,
 				0C83A76B246199FB0078CBB6 /* ServerListView */,
+				0C4DC970246632F900BD8F83 /* SliderView */,
 				0C83A76F24619D380078CBB6 /* Components */,
 				0C6773DF2454D71F00FFD6DE /* Colors.swift */,
 				0C6773E12454DDE200FFD6DE /* Gradients.swift */,
@@ -588,8 +605,10 @@
 				0C83A76724618A340078CBB6 /* PlayerViewReducer.swift in Sources */,
 				0C83A7872461C51D0078CBB6 /* ServerListProvider.swift in Sources */,
 				0C83A7732461A8EE0078CBB6 /* APIResult.swift in Sources */,
+				0C4DC97D24663C0600BD8F83 /* SliderViewComposer.swift in Sources */,
 				0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */,
 				0C329E2124608BDB00974713 /* Resolver.swift in Sources */,
+				0C4DC9722466333300BD8F83 /* SliderViewModel.swift in Sources */,
 				0CA7AFC8245B1597007842A5 /* View+ScreenWidth.swift in Sources */,
 				0C48B3E524267EC200EEFE98 /* Validation.swift in Sources */,
 				0C83A76924618CD80078CBB6 /* ServerListViewReducer.swift in Sources */,
@@ -597,6 +616,7 @@
 				0C4AF237240B35BF0057AC86 /* NetworkService.swift in Sources */,
 				0C83A78B2461E6420078CBB6 /* UserSettings.swift in Sources */,
 				0C4AF23F240B71DF0057AC86 /* LogEnums.swift in Sources */,
+				0C4DC97E24663C0600BD8F83 /* SliderViewReducer.swift in Sources */,
 				0C78C3352455BED500589C3E /* PlayerStateFactory.swift in Sources */,
 				0C83A75D24617F7C0078CBB6 /* PlaybackState.swift in Sources */,
 				0C30E249240DD390001C1EC9 /* AsynchroneousOperation.swift in Sources */,
@@ -619,6 +639,7 @@
 				0C83A7812461B2A10078CBB6 /* ModelType.swift in Sources */,
 				0CB0F9AB245838D300C31A04 /* TextFormatter.swift in Sources */,
 				0C4AF23D240B59040057AC86 /* Logger.swift in Sources */,
+				0C4DC97C24663C0600BD8F83 /* SliderViewAction.swift in Sources */,
 				0C30E24B240DD3BA001C1EC9 /* Connectivity.swift in Sources */,
 				0C83A7712461A1760078CBB6 /* PlayerStateProvider.swift in Sources */,
 				0C4FA7802416B0A300F71F9E /* Server.swift in Sources */,
@@ -628,7 +649,6 @@
 				0CE231E424573C710068820C /* PlayerViewModel.swift in Sources */,
 				0CBB87332462F07100BAF7C6 /* Core.swift in Sources */,
 				0C48B3EB2426BEDF00EEFE98 /* PingError.swift in Sources */,
-				0C5F836A24642B1D00A3E626 /* TimerHolder.swift in Sources */,
 				0C83A77F2461B2830078CBB6 /* ComposerType.swift in Sources */,
 				0C48B3E92426938C00EEFE98 /* APIService.swift in Sources */,
 				0C83A7752461AA4D0078CBB6 /* PingResult.swift in Sources */,

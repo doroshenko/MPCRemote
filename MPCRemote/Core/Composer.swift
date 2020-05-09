@@ -26,7 +26,6 @@ extension Composer {
         PlayerView(
             model: PlayerViewModel(data: data),
             action: PlayerViewActionCreator(provider: resolver.resolve(),
-                                            timerHolder: resolver.resolve(),
                                             dispatch: action(to: PlayerViewReducer())),
             composer: PlayerViewComposer(parent: self)
         )
@@ -42,6 +41,16 @@ extension Composer {
                                                 dispatch: action(to: ServerListViewReducer())),
             composer: ServerListViewComposer(parent: self)
         )
+    }
+}
+
+extension Composer {
+
+    func positionSliderView() -> some View {
+        SliderView<Double>(model: PositionSliderViewModel(data: data),
+                           action: PositionSliderViewActionCreator(provider: resolver.resolve(),
+                                                                   dispatch: action(to: SliderViewReducer())),
+                           composer: SliderViewComposer(parent: self))
     }
 }
 
