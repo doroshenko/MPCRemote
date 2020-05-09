@@ -8,21 +8,21 @@
 
 struct APIState: Decodable {
     let file: String?
-    let filePath: String
+    let filePath: String?
     let filePathArg: String
-    let fileDir: String
-    let fileDirArg: String
+    let fileDir: String?
+    let fileDirArg: String?
     let playbackState: String
     let playbackString: String
     let position: String
-    let positionString: String
+    let positionString: String?
     let duration: String
-    let durationString: String
+    let durationString: String?
     let volume: String
     let muted: String
-    let playbackRate: String
+    let playbackRate: String?
     let size: String?
-    let reloadTime: String
+    let reloadTime: String?
     let version: String?
 
     enum CodingKeys: String, CodingKey {

@@ -36,7 +36,7 @@ private extension PlayerStateFactory {
                 return PlayerState()
         }
 
-        let fallbackFile = String(apiState.filePath.split(separator: "\\").last ?? "...")
+        let fallbackFile = String(apiState.filePath?.split(separator: "\\").last ?? "...")
         let file = apiState.file ?? fallbackFile
         let isMuted = Int(apiState.muted) != 0
 
