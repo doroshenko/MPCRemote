@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C17862D2469B747001B3D4C /* ServerListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C17862C2469B747001B3D4C /* ServerListItem.swift */; };
+		0C17862F2469B93C001B3D4C /* Array+UpdateOrAppend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C17862E2469B93C001B3D4C /* Array+UpdateOrAppend.swift */; };
+		0C1786312469C8DB001B3D4C /* ArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1786302469C8DB001B3D4C /* ArrayTests.swift */; };
 		0C18D5E52416D31B0035C3A5 /* URLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C18D5E42416D31B0035C3A5 /* URLFactory.swift */; };
 		0C18D5E7241713390035C3A5 /* Comparable+Clamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C18D5E6241713390035C3A5 /* Comparable+Clamped.swift */; };
 		0C18D5E9241714C80035C3A5 /* HTTPParametersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C18D5E8241714C80035C3A5 /* HTTPParametersFactory.swift */; };
@@ -92,6 +95,9 @@
 
 /* Begin PBXFileReference section */
 		0115685AAFD50309556E0E25 /* Pods-MPCRemote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPCRemote.debug.xcconfig"; path = "Target Support Files/Pods-MPCRemote/Pods-MPCRemote.debug.xcconfig"; sourceTree = "<group>"; };
+		0C17862C2469B747001B3D4C /* ServerListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerListItem.swift; sourceTree = "<group>"; };
+		0C17862E2469B93C001B3D4C /* Array+UpdateOrAppend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+UpdateOrAppend.swift"; sourceTree = "<group>"; };
+		0C1786302469C8DB001B3D4C /* ArrayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayTests.swift; sourceTree = "<group>"; };
 		0C18D5E42416D31B0035C3A5 /* URLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLFactory.swift; sourceTree = "<group>"; };
 		0C18D5E6241713390035C3A5 /* Comparable+Clamped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Clamped.swift"; sourceTree = "<group>"; };
 		0C18D5E8241714C80035C3A5 /* HTTPParametersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPParametersFactory.swift; sourceTree = "<group>"; };
@@ -242,6 +248,7 @@
 		0C4AF23B240B58ED0057AC86 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				0C17862E2469B93C001B3D4C /* Array+UpdateOrAppend.swift */,
 				0C30E248240DD390001C1EC9 /* AsynchroneousOperation.swift */,
 				0CB4389E245F78A1001A7638 /* Bundle+Convenience.swift */,
 				0C18D5E6241713390035C3A5 /* Comparable+Clamped.swift */,
@@ -293,6 +300,7 @@
 			children = (
 				0C4FA77F2416B0A300F71F9E /* Server.swift */,
 				0C5622912466F5CD002932EB /* ServerState.swift */,
+				0C17862C2469B747001B3D4C /* ServerListItem.swift */,
 				0C83A7862461C51D0078CBB6 /* ServerListProvider.swift */,
 			);
 			path = Server;
@@ -399,6 +407,7 @@
 		0CD0EA712408973100DE10E5 /* MPCRemoteTests */ = {
 			isa = PBXGroup;
 			children = (
+				0C1786302469C8DB001B3D4C /* ArrayTests.swift */,
 				0C8D910F241844CF00439554 /* IPv4Tests.swift */,
 				0CD0EA742408973100DE10E5 /* Info.plist */,
 			);
@@ -624,6 +633,7 @@
 				0C83A757246179E50078CBB6 /* DataStore.swift in Sources */,
 				0C83A76724618A340078CBB6 /* PlayerViewReducer.swift in Sources */,
 				0C83A7872461C51D0078CBB6 /* ServerListProvider.swift in Sources */,
+				0C17862F2469B93C001B3D4C /* Array+UpdateOrAppend.swift in Sources */,
 				0C83A7732461A8EE0078CBB6 /* APIResult.swift in Sources */,
 				0C4DC97D24663C0600BD8F83 /* SliderViewComposer.swift in Sources */,
 				0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */,
@@ -679,6 +689,7 @@
 				0C83A77D2461B2110078CBB6 /* ActionType.swift in Sources */,
 				0C520B182455CE0700FB3D14 /* APIState.swift in Sources */,
 				0C83A7892461C9CA0078CBB6 /* ServerListViewComposer.swift in Sources */,
+				0C17862D2469B747001B3D4C /* ServerListItem.swift in Sources */,
 				0C6773E02454D71F00FFD6DE /* Colors.swift in Sources */,
 				0C8271732411EEEB00E5474B /* Constants.swift in Sources */,
 				0C83A7782461AFBA0078CBB6 /* Composer.swift in Sources */,
@@ -694,6 +705,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C8D9110241844CF00439554 /* IPv4Tests.swift in Sources */,
+				0C1786312469C8DB001B3D4C /* ArrayTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

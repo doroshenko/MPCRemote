@@ -10,7 +10,7 @@ import Combine
 
 final class ServerListViewModel: ObservableObject {
 
-    @Published private(set) var serverList: [Server]
+    @Published private(set) var serverList: [ServerListItem]
     @Published private(set) var isScanning: Bool
 
     private var cancellableServerList = Set<AnyCancellable>()

@@ -7,8 +7,8 @@
 //
 
 protocol ServerListProviderType {
-    func fetch() -> [Server]
-    func add(server: Server) -> [Server]
+    func fetch() -> [ServerListItem]
+    func select(server: Server)
 
     func scan(serverFound: @escaping (ServerState) -> Void, scanFinished: (() -> Void)?)
     func ping(server: Server, completion: @escaping ServerStateHandler)
@@ -27,12 +27,11 @@ struct ServerListProvider: ServerListProviderType {
 
 extension ServerListProvider {
 
-    func fetch() -> [Server] {
+    func fetch() -> [ServerListItem] {
         settingsService.servers
     }
 
-    @discardableResult
-    func add(server: Server) -> [Server] {
+    func select(server: Server) {
         settingsService.add(server: server)
     }
 }

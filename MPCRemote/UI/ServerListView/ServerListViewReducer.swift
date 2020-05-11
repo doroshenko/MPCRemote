@@ -15,9 +15,11 @@ struct ServerListViewReducer: ReducerType {
         case let .set(servers):
             data.serverList = servers
         case let .append(server):
-            data.serverList.appendUnique(server)
+            data.serverList.updateOrAppend(server)
         case let .setScanning(isScanning):
             data.isScanning = isScanning
         }
+
+        data.serverList.sort { $0.isFavorite && !$1.isFavorite }
     }
 }

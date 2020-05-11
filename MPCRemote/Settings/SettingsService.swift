@@ -10,7 +10,7 @@ import SwiftUI
 
 protocol SettingsServiceType {
     var server: Server? { get }
-    var servers: [Server] { get }
+    var servers: [ServerListItem] { get }
     var isEmpty: Bool { get }
 
     @discardableResult
@@ -27,8 +27,8 @@ extension SettingsService {
         userSettings.server
     }
 
-    var servers: [Server] {
-        userSettings.servers
+    var servers: [ServerListItem] {
+        userSettings.servers.compactMap { ServerListItem(server: $0, isFavorite: true, isOnline: false) }
     }
 
     var isEmpty: Bool {
@@ -36,9 +36,6 @@ extension SettingsService {
     }
 
     func add(server: Server) -> [Server] {
-        userSettings.server = server
-        userSettings.servers.appendUnique(server)
-
-        return userSettings.servers
+        userSettings.add(server: server)
     }
 }

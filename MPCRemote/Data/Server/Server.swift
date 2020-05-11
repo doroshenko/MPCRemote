@@ -10,13 +10,11 @@ struct Server {
     let address: String
     let port: UInt16
     let name: String
-    let favorite: Bool
 
-    init(address: String, port: UInt16 = Port.default, name: String? = nil, favorite: Bool = false) {
+    init(address: String, port: UInt16 = Port.default, name: String? = nil) {
         self.address = address
         self.port = port
         self.name = name ?? address
-        self.favorite = favorite
     }
 }
 
@@ -25,16 +23,5 @@ extension Server: Codable, Equatable { }
 extension Server: Identifiable {
     var id: String {
         "\(address):\(port.portDescription)"
-    }
-}
-
-extension Array where Element == Server {
-
-    mutating func appendUnique(_ newElement: Element) {
-        guard !contains(where: { $0.id == newElement.id }) else {
-            return
-        }
-
-        append(newElement)
     }
 }

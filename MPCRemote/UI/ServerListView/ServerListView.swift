@@ -15,17 +15,12 @@ struct ServerListView: View {
     let composer: ServerListViewComposer?
 
     var body: some View {
-        List(model.serverList) { server in
+        List(model.serverList) { serverListItem in
             Button(action: {
-                logInfo("Server set as default: \(server)", domain: .ui)
-                self.action?.add(server: server)
+                logInfo("Server set as default: \(serverListItem.server)", domain: .ui)
+                self.action?.select(serverListItem: serverListItem)
             }, label: {
-                ServerView(server: server)
-                    .onAppear {
-                        self.action?.ping(server: server) { _ in
-                            // TOOO: change cell appearance based on server availability
-                        }
-                }
+                ServerView(serverListItem: serverListItem)
             })
         }
         .onAppear {

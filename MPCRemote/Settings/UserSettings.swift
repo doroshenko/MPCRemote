@@ -26,7 +26,7 @@ extension UserSettings {
 
     func add(server: Server) -> [Server] {
         self.server = server
-        self.servers.appendUnique(server)
+        self.servers.updateOrAppend(server)
 
         return servers
     }

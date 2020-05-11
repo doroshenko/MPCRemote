@@ -8,8 +8,8 @@
 
 enum ServerListViewAction: ActionType {
     case clear
-    case append(Server)
-    case set([Server])
+    case append(ServerListItem)
+    case set([ServerListItem])
     case setScanning(Bool)
 }
 
@@ -31,15 +31,18 @@ extension ServerListViewActionCreator {
         dispatch(.set(servers))
     }
 
-    func add(server: Server) {
-        let servers = provider.add(server: server)
-        dispatch(.set(servers))
+    func select(serverListItem: ServerListItem) {
+        provider.select(server: serverListItem.server)
+        // TODO: toggle Favorite status
+        dispatch(.append(serverListItem))
     }
 
     func scan() {
+        setup()
         dispatch(.setScanning(true))
         provider.scan(serverFound: { serverState in
-            self.dispatch(.append(serverState.server))
+            let serverListItem = ServerListItem(server: serverState.server, isFavorite: false, isOnline: true)
+            self.dispatch(.append(serverListItem))
         }, scanFinished: {
             self.dispatch(.setScanning(false))
         })
