@@ -37,12 +37,12 @@ extension PlayerStateProvider {
 
     func findServer(completion: @escaping (PlayerState) -> Void) {
         logInfo("No server preset found", domain: .ui)
-        networkService.scan { serverState in
+        networkService.scan(serverFound: { serverState in
             self.networkService.cancel()
             logInfo("Using first found server as default: \(serverState.server)", domain: .ui)
             self.settingsService.add(server: serverState.server)
             completion(serverState.state)
-        }
+        }, scanFinished: nil)
     }
 }
 

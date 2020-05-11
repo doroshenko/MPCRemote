@@ -11,15 +11,23 @@ import Combine
 final class ServerListViewModel: ObservableObject {
 
     @Published private(set) var serverList: [Server]
+    @Published private(set) var isScanning: Bool
 
-    private var cancellable = Set<AnyCancellable>()
+    private var cancellableServerList = Set<AnyCancellable>()
+    private var cancellableScanning = Set<AnyCancellable>()
 
     init(data: DataStore) {
         self.serverList = data.serverList
+        self.isScanning = data.isScanning
 
         data.$serverList
             .removeDuplicates()
             .assign(to: \Self.serverList, on: self)
-            .store(in: &cancellable)
+            .store(in: &cancellableServerList)
+
+        data.$isScanning
+            .removeDuplicates()
+            .assign(to: \Self.isScanning, on: self)
+            .store(in: &cancellableScanning)
     }
 }

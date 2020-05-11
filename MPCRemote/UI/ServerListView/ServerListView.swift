@@ -38,9 +38,13 @@ struct ServerListView: View {
         }
         .navigationBarTitle(Text("Server List"), displayMode: .inline)
         .navigationBarItems(trailing:
-            Button("Scan") {
+            Button(model.isScanning ? "Cancel" : "Scan") {
                 logDebug(domain: .ui)
-                self.action?.scan()
+                if self.model.isScanning {
+                    self.action?.cancel()
+                } else {
+                    self.action?.scan()
+                }
             }
         )
     }

@@ -12,4 +12,5 @@ final class DataStore: ObservableObject {
     @Published var playerState = PlayerState()
     @Published var sliderState = SliderState()
     @Published var serverList = [Server]()
+    @Published var isScanning = false
 }

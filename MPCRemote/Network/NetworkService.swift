@@ -7,7 +7,7 @@
 //
 
 protocol NetworkServiceType {
-    func scan(completion: @escaping (ServerState) -> Void)
+    func scan(serverFound: @escaping (ServerState) -> Void, scanFinished: (() -> Void)?)
     func ping(address: String, completion: @escaping ServerStateHandler)
     func cancel()
 }
@@ -16,7 +16,7 @@ struct NetworkService: NetworkServiceType {
 
     let operationProvider: OperationProviderType
 
-    func scan(completion: @escaping (ServerState) -> Void) {
+    func scan(serverFound: @escaping (ServerState) -> Void, scanFinished: (() -> Void)?) {
         guard Connectivity.isConnectedToWifi, let addressRange = addressRange else {
             logError("Not connected to LAN", domain: .networking)
             return
@@ -26,12 +26,20 @@ struct NetworkService: NetworkServiceType {
 
         logDebug("Network scan initiated", domain: .networking)
 
+        let scanGroup = DispatchGroup()
+
         addressRange.forEach { ip in
+            scanGroup.enter()
             performPing(address: ip.address, completion: { result in
+                scanGroup.leave()
                 if case let .success(serverState) = result {
-                    completion(serverState)
+                    serverFound(serverState)
                 }
             })
+        }
+
+        scanGroup.notify(queue: .main) {
+            scanFinished?()
         }
     }
 

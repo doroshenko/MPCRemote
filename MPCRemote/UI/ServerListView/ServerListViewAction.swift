@@ -10,6 +10,7 @@ enum ServerListViewAction: ActionType {
     case clear
     case append(Server)
     case set([Server])
+    case setScanning(Bool)
 }
 
 struct ServerListViewActionCreator: ActionCreatorType {
@@ -36,9 +37,12 @@ extension ServerListViewActionCreator {
     }
 
     func scan() {
-        provider.scan(complete: true) { serverState in
+        dispatch(.setScanning(true))
+        provider.scan(serverFound: { serverState in
             self.dispatch(.append(serverState.server))
-        }
+        }, scanFinished: {
+            self.dispatch(.setScanning(false))
+        })
     }
 
     func ping(server: Server, completion: @escaping (Bool) -> Void) {
@@ -52,6 +56,7 @@ extension ServerListViewActionCreator {
     }
 
     func cancel() {
+        dispatch(.setScanning(false))
         provider.cancel()
     }
 }

@@ -53,7 +53,7 @@ class SliderViewModel<T: Equatable>: ObservableObject {
 
 final class SeekSliderViewModel: SliderViewModel<Double> {
 
-    private var cancellableDuration = Set<AnyCancellable>()
+    private var cancellable = Set<AnyCancellable>()
 
     init(data: DataStore) {
         super.init(data: data,
@@ -69,7 +69,7 @@ final class SeekSliderViewModel: SliderViewModel<Double> {
                 !self.isUpdating
             }
             .assign(to: \Self.maxValue, on: self)
-            .store(in: &cancellableDuration)
+            .store(in: &cancellable)
     }
 
     override var formattedValue: Double {

@@ -9,17 +9,15 @@
 struct ServerListViewReducer: ReducerType {
 
     func reduce(_ data: DataStore, _ action: ServerListViewAction) {
-        var serverList: [Server]
         switch action {
         case .clear:
-            serverList = []
+            data.serverList = []
         case let .set(servers):
-            serverList = servers
+            data.serverList = servers
         case let .append(server):
-            serverList = data.serverList
-            serverList.appendUnique(server)
+            data.serverList.appendUnique(server)
+        case let .setScanning(isScanning):
+            data.isScanning = isScanning
         }
-
-        data.serverList = serverList
     }
 }
