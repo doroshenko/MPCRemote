@@ -25,3 +25,9 @@ extension Server: Identifiable {
         "\(address):\(port.portDescription)"
     }
 }
+
+extension Server: Comparable {
+    static func < (lhs: Server, rhs: Server) -> Bool {
+        lhs.name.compare(rhs.name, options: .numeric) == .orderedAscending
+    }
+}

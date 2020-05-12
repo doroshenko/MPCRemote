@@ -29,13 +29,13 @@ final class PlayerStateFactory {
 private extension PlayerStateFactory {
 
     static func make(apiState: APIState) -> PlayerState {
-        guard let playbackState = PlaybackState(apiState.playbackState),
-            let position = Double(apiState.position),
+        guard let position = Double(apiState.position),
             let duration = Double(apiState.duration),
             let volume = Double(apiState.volume) else {
                 return PlayerState()
         }
 
+        let playbackState = PlaybackState(apiState.playbackState)
         let fallbackFile = String(apiState.filePath?.split(separator: "\\").last ?? "...")
         let file = apiState.file ?? fallbackFile
         let isMuted = Int(apiState.muted) != 0

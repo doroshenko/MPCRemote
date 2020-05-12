@@ -15,13 +15,21 @@ struct ServerListView: View {
     let composer: ServerListViewComposer?
 
     var body: some View {
-        List(model.serverList) { serverListItem in
-            Button(action: {
-                logInfo("Server set as default: \(serverListItem.server)", domain: .ui)
-                self.action?.select(serverListItem: serverListItem)
-            }, label: {
-                ServerView(serverListItem: serverListItem)
-            })
+        List {
+            ForEach(model.serverList) { serverListItem in
+                Button(action: {
+                    logInfo("Server set as default: \(serverListItem.server)", domain: .ui)
+                    self.action?.select(serverListItem)
+                }, label: {
+                    ServerView(serverListItem: serverListItem)
+                })
+            }
+            .onDelete { indexSet in
+                indexSet.forEach { index in
+                    let server = self.model.serverList[index]
+                    self.action?.delete(server)
+                }
+            }
         }
         .onAppear {
             logDebug(domain: .ui)

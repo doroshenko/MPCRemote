@@ -12,11 +12,11 @@ enum PlaybackState: Int, Codable {
     case paused
     case playing
 
-    init?(_ string: String) {
+    init(_ string: String) {
         if let intValue = Int(string) {
-            self.init(rawValue: intValue)
+            self = PlaybackState(rawValue: intValue) ?? .unknown
         } else {
-            return nil
+            self = .unknown
         }
     }
 }

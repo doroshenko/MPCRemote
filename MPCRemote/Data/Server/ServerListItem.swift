@@ -19,3 +19,17 @@ extension ServerListItem: Identifiable {
         server.id
     }
 }
+
+extension ServerListItem: Comparable {
+    static func < (lhs: ServerListItem, rhs: ServerListItem) -> Bool {
+        guard lhs.isFavorite == rhs.isFavorite else {
+            return lhs.isFavorite && !rhs.isFavorite
+        }
+
+        guard lhs.isOnline == rhs.isOnline else {
+            return lhs.isOnline && !rhs.isOnline
+        }
+
+        return lhs.server < rhs.server
+    }
+}

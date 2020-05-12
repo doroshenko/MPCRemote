@@ -20,12 +20,14 @@ struct VolumeSliderViewActionCreator: SliderViewActionCreatorType {
 extension VolumeSliderViewActionCreator {
 
     func post(_ value: Double) {
+        logDebug("New volume value \(value)", domain: .ui)
         provider.post(volume: value) { state in
             self.dispatch(.set(state))
         }
     }
 
     func set(_ isUpdating: Bool) {
+        logDebug("Volume slider updating \(isUpdating)", domain: .ui)
         dispatch(.setVolumeUpdating(isUpdating))
     }
 }

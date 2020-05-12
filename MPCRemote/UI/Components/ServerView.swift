@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ServerView: View {
 
-    @State var serverListItem: ServerListItem
+    var serverListItem: ServerListItem
 
     var body: some View {
         HStack {

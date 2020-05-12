@@ -10,11 +10,14 @@ import SwiftUI
 
 protocol SettingsServiceType {
     var server: Server? { get }
-    var servers: [ServerListItem] { get }
+    var servers: [Server] { get }
     var isEmpty: Bool { get }
 
     @discardableResult
     func add(server: Server) -> [Server]
+
+    @discardableResult
+    func remove(server: Server) -> [Server]
 }
 
 struct SettingsService: SettingsServiceType {
@@ -27,8 +30,8 @@ extension SettingsService {
         userSettings.server
     }
 
-    var servers: [ServerListItem] {
-        userSettings.servers.compactMap { ServerListItem(server: $0, isFavorite: true, isOnline: false) }
+    var servers: [Server] {
+        userSettings.servers
     }
 
     var isEmpty: Bool {
@@ -37,5 +40,9 @@ extension SettingsService {
 
     func add(server: Server) -> [Server] {
         userSettings.add(server: server)
+    }
+
+    func remove(server: Server) -> [Server] {
+        userSettings.remove(server: server)
     }
 }

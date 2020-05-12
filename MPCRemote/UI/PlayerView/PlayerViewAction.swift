@@ -24,6 +24,7 @@ struct PlayerViewActionCreator: ActionCreatorType {
 extension PlayerViewActionCreator {
 
     func setup() {
+        logDebug("Player view setup", domain: .ui)
         if provider.hasServer {
             getState()
         } else {
@@ -37,12 +38,14 @@ extension PlayerViewActionCreator {
 extension PlayerViewActionCreator {
 
     func getState() {
+        //logDebug("New player state requested", domain: .ui)
         provider.getState { state in
             self.dispatch(.set(state))
         }
     }
 
     func post(command: Command) {
+        logDebug("Player command posted \(command)", domain: .ui)
         provider.post(command: command) { state in
             self.dispatch(.set(state))
         }

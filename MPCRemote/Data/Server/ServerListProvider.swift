@@ -9,8 +9,9 @@
 protocol ServerListProviderType {
     func fetch() -> [ServerListItem]
     func select(server: Server)
+    func remove(server: Server)
 
-    func scan(serverFound: @escaping (ServerState) -> Void, scanFinished: (() -> Void)?)
+    func scan(serverFound: @escaping (ServerListItem) -> Void, scanFinished: (() -> Void)?)
     func ping(server: Server, completion: @escaping ServerStateHandler)
     func cancel()
 }
@@ -28,18 +29,26 @@ struct ServerListProvider: ServerListProviderType {
 extension ServerListProvider {
 
     func fetch() -> [ServerListItem] {
-        settingsService.servers
+        settingsService.servers.serverList()
     }
 
     func select(server: Server) {
         settingsService.add(server: server)
     }
+
+    func remove(server: Server) {
+        settingsService.remove(server: server)
+    }
 }
 
 extension ServerListProvider {
 
-    func scan(serverFound: @escaping (ServerState) -> Void, scanFinished: (() -> Void)?) {
-        networkService.scan(serverFound: serverFound, scanFinished: scanFinished)
+    func scan(serverFound: @escaping (ServerListItem) -> Void, scanFinished: (() -> Void)?) {
+        networkService.scan(serverFound: { serverState in
+            let server = serverState.server
+            let serverListItem = ServerListItem(server: server, isFavorite: self.isFavorite(server), isOnline: true)
+            serverFound(serverListItem)
+        }, scanFinished: scanFinished)
     }
 
     func ping(server: Server, completion: @escaping ServerStateHandler) {
@@ -48,5 +57,12 @@ extension ServerListProvider {
 
     func cancel() {
         networkService.cancel()
+    }
+}
+
+private extension ServerListProvider {
+
+    func isFavorite(_ server: Server) -> Bool {
+        settingsService.servers.contains(server)
     }
 }
