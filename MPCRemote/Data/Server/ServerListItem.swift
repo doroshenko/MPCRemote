@@ -12,6 +12,13 @@ struct ServerListItem {
     let isOnline: Bool
 }
 
+extension ServerListItem {
+
+    var favoriteItem: ServerListItem {
+        ServerListItem(server: self.server, isFavorite: true, isOnline: self.isOnline)
+    }
+}
+
 extension ServerListItem: Equatable { }
 
 extension ServerListItem: Identifiable {

@@ -36,8 +36,7 @@ extension ServerListViewActionCreator {
     func select(_ serverListItem: ServerListItem) {
         logDebug("Server selected \(serverListItem.server)", domain: .ui)
         provider.select(server: serverListItem.server)
-        // TODO: toggle Favorite status
-        dispatch(.append(serverListItem))
+        dispatch(.append(serverListItem.favoriteItem))
     }
 
     func delete(_ serverListItem: ServerListItem) {
