@@ -39,6 +39,7 @@ struct Port {
 
 extension TimeInterval {
     static let ping: TimeInterval = 1.0
+    static let timeout: TimeInterval = 2.0
     static let fetch: TimeInterval = 1.0
 }
 

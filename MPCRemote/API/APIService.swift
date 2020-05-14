@@ -63,7 +63,7 @@ private extension APIService {
         }
 
         logDebug("Making a POST request to url: \(url) with parameters: \(parameters)", domain: .api)
-        AF.request(url, method: .post, parameters: parameters).validate().response { response in
+        AF.request(url, method: .post, parameters: parameters, requestModifier: { $0.timeoutInterval = TimeInterval.timeout }).validate().response { response in
             switch response.result {
             case .success:
                 logDebug("Request successful", domain: .api)
@@ -81,7 +81,7 @@ private extension APIService {
         }
 
         logDebug("Making a GET request to url: \(url)", domain: .api)
-        AF.request(url, method: .get).validate().responseString(encoding: .utf8) { response in
+        AF.request(url, method: .get, requestModifier: { $0.timeoutInterval = TimeInterval.timeout }).validate().responseString(encoding: .utf8) { response in
             switch response.result {
             case .success(let string):
                 guard let state = PlayerStateFactory.make(string: string) else {
@@ -104,7 +104,7 @@ private extension APIService {
         }
 
         logDebug("Making a GET request to url: \(url)", domain: .api)
-        AF.request(url, method: .get).validate().responseData { response in
+        AF.request(url, method: .get, requestModifier: { $0.timeoutInterval = TimeInterval.timeout }).validate().responseData { response in
             switch response.result {
             case .success(let data):
                 guard let output = UIImage(data: data) else {
