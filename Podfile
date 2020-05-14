@@ -3,7 +3,7 @@ inhibit_all_warnings!
 
 def common_pods
     pod 'SwiftLint', '~> 0.39.2'
-    pod 'Alamofire', '~> 5.0.2'
+    pod 'Alamofire', '~> 5.1.0'
 end
 
 target 'MPCRemote' do
