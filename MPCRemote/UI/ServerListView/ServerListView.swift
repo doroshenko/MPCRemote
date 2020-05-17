@@ -33,6 +33,7 @@ struct ServerListView: View {
         }
         .onAppear {
             logDebug(domain: .ui)
+            UITableView.appearance().tableFooterView = UIView()
             self.action?.setup()
         }
         .onDisappear {
