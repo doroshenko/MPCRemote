@@ -24,23 +24,23 @@ class UserSettings: ObservableObject {
 
 extension UserSettings {
 
-    func add(server: Server) -> [Server] {
+    func add(server: Server) -> Server? {
         self.server = server
 
         var servers = self.servers
         servers.updateOrAppend(server)
         self.servers = servers.sorted()
 
-        return servers
+        return self.server
     }
 
-    func remove(server: Server) -> [Server] {
+    func remove(server: Server) -> Server? {
         self.servers.removeAll { $0 == server }
 
         if self.server == server {
             self.server = nil
         }
 
-        return self.servers
+        return self.server
     }
 }

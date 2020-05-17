@@ -11,10 +11,12 @@ import SwiftUI
 struct ServerView: View {
 
     var serverListItem: ServerListItem
+    var isActive: Bool
 
     var body: some View {
         HStack {
-            Image(systemName: "desktopcomputer").foregroundColor(serverListItem.isOnline ? .green : .gray)
+            Image(systemName: "desktopcomputer")
+                .foregroundColor(serverListItem.isOnline ? Color(.systemGreen) : Color(.systemGray))
                 .font(.title)
 
             VStack(alignment: .leading) {
@@ -27,6 +29,7 @@ struct ServerView: View {
             Spacer()
 
             Image(systemName: serverListItem.isFavorite ? "star.fill" : "star")
+                .foregroundColor(isActive ? .accentStart : .main)
                 .font(.title)
         }
         .padding()
@@ -41,9 +44,9 @@ struct ServerView_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
-            ServerView(serverListItem: offline)
-            ServerView(serverListItem: online)
-            ServerView(serverListItem: favorite)
+            ServerView(serverListItem: offline, isActive: false)
+            ServerView(serverListItem: online, isActive: true)
+            ServerView(serverListItem: favorite, isActive: true)
         }
             .previewStyle(.compact)
     }

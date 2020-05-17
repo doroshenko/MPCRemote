@@ -7,10 +7,12 @@
 //
 
 enum ServerListViewAction: ActionType {
-    case clear
-    case append(ServerListItem)
-    case delete(ServerListItem)
-    case set([ServerListItem])
+    case appendServerList(ServerListItem)
+    case deleteServerList(ServerListItem)
+    case setServerList([ServerListItem])
+
+    case setServer(Server?)
+
     case setScanning(Bool)
 }
 
@@ -29,21 +31,26 @@ extension ServerListViewActionCreator {
 
     func setup() {
         logDebug("Server list setup", domain: .ui)
-        let servers = provider.fetch()
-        dispatch(.set(servers))
+        let servers = provider.getServerList()
+        dispatch(.setServerList(servers))
+
+        let server = provider.getServer()
+        dispatch(.setServer(server))
     }
 
     func select(_ serverListItem: ServerListItem) {
         logDebug("Server selected \(serverListItem.server)", domain: .ui)
-        provider.select(server: serverListItem.server)
-        dispatch(.append(serverListItem.favoriteItem))
+        let server = provider.select(server: serverListItem.server)
+        dispatch(.setServer(server))
+        dispatch(.appendServerList(serverListItem.favoriteItem))
     }
 
     func delete(_ serverListItem: ServerListItem) {
         logDebug("Server deleted \(serverListItem.server)", domain: .ui)
 
-        provider.remove(server: serverListItem.server)
-        dispatch(.delete(serverListItem))
+        let server = provider.remove(server: serverListItem.server)
+        dispatch(.setServer(server))
+        dispatch(.deleteServerList(serverListItem))
     }
 }
 
@@ -55,7 +62,7 @@ extension ServerListViewActionCreator {
         dispatch(.setScanning(true))
         provider.scan(serverFound: { serverListItem in
             logDebug("Server found: \(serverListItem)", domain: .ui)
-            self.dispatch(.append(serverListItem))
+            self.dispatch(.appendServerList(serverListItem))
         }, scanFinished: {
             logDebug("Scan finished", domain: .ui)
             self.dispatch(.setScanning(false))

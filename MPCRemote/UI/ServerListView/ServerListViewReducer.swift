@@ -10,14 +10,14 @@ struct ServerListViewReducer: ReducerType {
 
     func reduce(_ data: DataStore, _ action: ServerListViewAction) {
         switch action {
-        case .clear:
-            data.serverList = []
-        case let .set(servers):
+        case let .setServerList(servers):
             data.serverList = servers
-        case let .append(server):
+        case let .appendServerList(server):
             data.serverList.updateOrAppend(server)
-        case let .delete(server):
+        case let .deleteServerList(server):
             data.serverList.removeAll { $0 == server }
+        case let .setServer(server):
+            data.server = server
         case let .setScanning(isScanning):
             data.isScanning = isScanning
         }

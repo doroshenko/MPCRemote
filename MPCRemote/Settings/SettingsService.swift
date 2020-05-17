@@ -14,10 +14,10 @@ protocol SettingsServiceType {
     var isEmpty: Bool { get }
 
     @discardableResult
-    func add(server: Server) -> [Server]
+    func add(server: Server) -> Server?
 
     @discardableResult
-    func remove(server: Server) -> [Server]
+    func remove(server: Server) -> Server?
 }
 
 struct SettingsService: SettingsServiceType {
@@ -38,11 +38,11 @@ extension SettingsService {
         server == nil && servers.isEmpty
     }
 
-    func add(server: Server) -> [Server] {
+    func add(server: Server) -> Server? {
         userSettings.add(server: server)
     }
 
-    func remove(server: Server) -> [Server] {
+    func remove(server: Server) -> Server? {
         userSettings.remove(server: server)
     }
 }

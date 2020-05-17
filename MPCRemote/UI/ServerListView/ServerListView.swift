@@ -21,7 +21,7 @@ struct ServerListView: View {
                     logInfo("Server set as default: \(serverListItem.server)", domain: .ui)
                     self.action?.select(serverListItem)
                 }, label: {
-                    ServerView(serverListItem: serverListItem)
+                    ServerView(serverListItem: serverListItem, isActive: self.model.server == serverListItem.server)
                 })
             }
             .onDelete { indexSet in
