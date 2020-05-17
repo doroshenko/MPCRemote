@@ -65,6 +65,7 @@
 		0C83A78B2461E6420078CBB6 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C83A78A2461E6420078CBB6 /* UserSettings.swift */; };
 		0C8D9110241844CF00439554 /* IPv4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D910F241844CF00439554 /* IPv4Tests.swift */; };
 		0C8D91122418452F00439554 /* IPv4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D91112418452F00439554 /* IPv4.swift */; };
+		0CA386AE2471E2DF00EB1B97 /* AddServerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA386AD2471E2DF00EB1B97 /* AddServerButton.swift */; };
 		0CA7AFC8245B1597007842A5 /* View+ScreenWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA7AFC7245B1597007842A5 /* View+ScreenWidth.swift */; };
 		0CA8AB3D245F26A8005E15F4 /* ServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA8AB3C245F26A8005E15F4 /* ServerView.swift */; };
 		0CA8AB3F245F349C005E15F4 /* PreviewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA8AB3E245F349C005E15F4 /* PreviewStyle.swift */; };
@@ -156,6 +157,7 @@
 		0C83A78A2461E6420078CBB6 /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		0C8D910F241844CF00439554 /* IPv4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPv4Tests.swift; sourceTree = "<group>"; };
 		0C8D91112418452F00439554 /* IPv4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPv4.swift; sourceTree = "<group>"; };
+		0CA386AD2471E2DF00EB1B97 /* AddServerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddServerButton.swift; sourceTree = "<group>"; };
 		0CA7AFC7245B1597007842A5 /* View+ScreenWidth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ScreenWidth.swift"; sourceTree = "<group>"; };
 		0CA8AB3C245F26A8005E15F4 /* ServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerView.swift; sourceTree = "<group>"; };
 		0CA8AB3E245F349C005E15F4 /* PreviewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewStyle.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				0C4DC970246632F900BD8F83 /* SliderView */,
+				0CA386AD2471E2DF00EB1B97 /* AddServerButton.swift */,
 				0C6773DB24547BA700FFD6DE /* PlayerButton.swift */,
 				0CA8AB3C245F26A8005E15F4 /* ServerView.swift */,
 			);
@@ -646,6 +649,7 @@
 				0C48B3E524267EC200EEFE98 /* Validation.swift in Sources */,
 				0C83A76924618CD80078CBB6 /* ServerListViewReducer.swift in Sources */,
 				0C3A1E0C244DAD630030AF17 /* PlayerView.swift in Sources */,
+				0CA386AE2471E2DF00EB1B97 /* AddServerButton.swift in Sources */,
 				0C4A3E3C246B0094003199CE /* ServerListItem+Server.swift in Sources */,
 				0C4AF237240B35BF0057AC86 /* NetworkService.swift in Sources */,
 				0C83A78B2461E6420078CBB6 /* UserSettings.swift in Sources */,

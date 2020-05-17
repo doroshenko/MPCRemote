@@ -15,42 +15,55 @@ struct ServerListView: View {
     let composer: ServerListViewComposer?
 
     var body: some View {
-        List {
-            ForEach(model.serverList) { serverListItem in
-                Button(action: {
-                    logInfo("Server set as default: \(serverListItem.server)", domain: .ui)
-                    self.action?.select(serverListItem)
-                }, label: {
-                    ServerView(serverListItem: serverListItem, isActive: self.model.server == serverListItem.server)
-                })
-            }
-            .onDelete { indexSet in
-                indexSet.forEach { index in
-                    let server = self.model.serverList[index]
-                    self.action?.delete(server)
+        ZStack {
+            List {
+                ForEach(model.serverList) { serverListItem in
+                    Button(action: {
+                        logInfo("Server set as default: \(serverListItem.server)", domain: .ui)
+                        self.action?.select(serverListItem)
+                    }, label: {
+                        ServerView(serverListItem: serverListItem, isActive: self.model.server == serverListItem.server)
+                    })
+                }
+                .onDelete { indexSet in
+                    indexSet.forEach { index in
+                        let server = self.model.serverList[index]
+                        self.action?.delete(server)
+                    }
                 }
             }
-        }
-        .onAppear {
-            logDebug(domain: .ui)
-            UITableView.appearance().tableFooterView = UIView()
-            self.action?.setup()
-        }
-        .onDisappear {
-            logDebug(domain: .ui)
-            self.action?.cancel()
-        }
-        .navigationBarTitle(Text("Server List"), displayMode: .inline)
-        .navigationBarItems(trailing:
-            Button(model.isScanning ? "Cancel" : "Scan") {
+            .onAppear {
                 logDebug(domain: .ui)
-                if self.model.isScanning {
-                    self.action?.cancel()
-                } else {
-                    self.action?.scan()
+                UITableView.appearance().tableFooterView = UIView()
+                self.action?.setup()
+            }
+            .onDisappear {
+                logDebug(domain: .ui)
+                self.action?.cancel()
+            }
+            .navigationBarTitle(Text("Server List"), displayMode: .inline)
+            .navigationBarItems(trailing:
+                Button(model.isScanning ? "Cancel" : "Scan") {
+                    logDebug(domain: .ui)
+                    if self.model.isScanning {
+                        self.action?.cancel()
+                    } else {
+                        self.action?.scan()
+                    }
+                }
+            )
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    AddServerButton { self.showAlert() }
                 }
             }
-        )
+        }
+    }
+
+    private func showAlert() {
+        // TODO: present UI to manually enter server name, address and port
     }
 }
 
