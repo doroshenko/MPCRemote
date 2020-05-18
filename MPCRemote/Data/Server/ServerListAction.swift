@@ -1,5 +1,5 @@
 //
-//  ServerAction.swift
+//  ServerListAction.swift
 //  MPCRemote
 //
 //  Created by doroshenko on 19.05.20.

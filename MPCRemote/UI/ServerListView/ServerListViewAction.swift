@@ -6,10 +6,6 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-enum ScanningAction: ActionType {
-    case set(Bool)
-}
-
 enum ServerListViewAction: ActionType {
     indirect case serverList(ServerListAction)
     indirect case server(ServerAction)
