@@ -7,9 +7,16 @@
 //
 
 enum SliderViewAction: ActionType {
-    case set(PlayerState)
-    case setSeekUpdating(Bool)
-    case setVolumeUpdating(Bool)
+    indirect case playerState(PlayerStateAction)
+    indirect case sliderState(SliderStateAction)
+
+    init(_ playerStateAction: PlayerStateAction) {
+        self = .playerState(playerStateAction)
+    }
+
+    init(_ sliderStateAction: SliderStateAction) {
+        self = .sliderState(sliderStateAction)
+    }
 }
 
 protocol SliderViewActionCreatorType: ActionCreatorType {

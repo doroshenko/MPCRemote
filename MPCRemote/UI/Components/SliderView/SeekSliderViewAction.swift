@@ -22,12 +22,12 @@ extension SeekSliderViewActionCreator {
     func post(_ value: Double) {
         logDebug("New seek value \(value)", domain: .ui)
         provider.post(seek: value) { state in
-            self.dispatch(.set(state))
+            self.dispatch(SliderViewAction(.set(state)))
         }
     }
 
     func set(_ isUpdating: Bool) {
         logDebug("Seek slider updating \(isUpdating)", domain: .ui)
-        dispatch(.setSeekUpdating(isUpdating))
+        dispatch(SliderViewAction(.setSeekUpdating(isUpdating)))
     }
 }

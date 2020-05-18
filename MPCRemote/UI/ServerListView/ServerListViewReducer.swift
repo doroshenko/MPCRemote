@@ -8,20 +8,49 @@
 
 struct ServerListViewReducer: ReducerType {
 
-    func reduce(_ data: DataStore, _ action: ServerListViewAction) {
+    func reduce(_ composer: Composer, _ data: DataStore, _ action: ServerListViewAction) {
         switch action {
-        case let .setServerList(servers):
+        case let .serverList(serverListAction):
+            composer.action(to: ServerListReducer(), with: serverListAction)
+        case let .server(serverAction):
+            composer.action(to: ServerReducer(), with: serverAction)
+        case let .scanning(scanningAction):
+            composer.action(to: ScanningReducer(), with: scanningAction)
+        }
+    }
+}
+
+struct ServerListReducer: ReducerType {
+
+    func reduce(_ composer: Composer, _ data: DataStore, _ action: ServerListAction) {
+        switch action {
+        case let .set(servers):
             data.serverList = servers
-        case let .appendServerList(server):
+        case let .append(server):
             data.serverList.updateOrAppend(server)
-        case let .deleteServerList(server):
+        case let .delete(server):
             data.serverList.removeAll { $0 == server }
-        case let .setServer(server):
+        }
+        data.serverList.sort()
+    }
+}
+
+struct ServerReducer: ReducerType {
+
+    func reduce(_ composer: Composer, _ data: DataStore, _ action: ServerAction) {
+        switch action {
+        case let .set(server):
             data.server = server
-        case let .setScanning(isScanning):
+        }
+    }
+}
+
+struct ScanningReducer: ReducerType {
+
+    func reduce(_ composer: Composer, _ data: DataStore, _ action: ScanningAction) {
+        switch action {
+        case let .set(isScanning):
             data.isScanning = isScanning
         }
-
-        data.serverList.sort()
     }
 }

@@ -7,7 +7,11 @@
 //
 
 enum PlayerViewAction: ActionType {
-    case set(PlayerState)
+    indirect case playerState(PlayerStateAction)
+
+    init(_ playerStateAction: PlayerStateAction) {
+        self = .playerState(playerStateAction)
+    }
 }
 
 struct PlayerViewActionCreator: ActionCreatorType {
@@ -29,7 +33,7 @@ extension PlayerViewActionCreator {
             getState()
         } else {
             provider.findServer { state in
-                self.dispatch(.set(state))
+                self.dispatch(PlayerViewAction(.set(state)))
             }
         }
     }
@@ -40,14 +44,14 @@ extension PlayerViewActionCreator {
     func getState() {
         //logDebug("New player state requested", domain: .ui)
         provider.getState { state in
-            self.dispatch(.set(state))
+            self.dispatch(PlayerViewAction(.set(state)))
         }
     }
 
     func post(command: Command) {
         logDebug("Player command posted \(command)", domain: .ui)
         provider.post(command: command) { state in
-            self.dispatch(.set(state))
+            self.dispatch(PlayerViewAction(.set(state)))
         }
     }
 }

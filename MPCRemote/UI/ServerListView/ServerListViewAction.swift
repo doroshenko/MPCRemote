@@ -6,14 +6,26 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
+enum ScanningAction: ActionType {
+    case set(Bool)
+}
+
 enum ServerListViewAction: ActionType {
-    case appendServerList(ServerListItem)
-    case deleteServerList(ServerListItem)
-    case setServerList([ServerListItem])
+    indirect case serverList(ServerListAction)
+    indirect case server(ServerAction)
+    indirect case scanning(ScanningAction)
 
-    case setServer(Server?)
+    init(_ serverListAction: ServerListAction) {
+        self = .serverList(serverListAction)
+    }
 
-    case setScanning(Bool)
+    init(_ serverAction: ServerAction) {
+        self = .server(serverAction)
+    }
+
+    init(_ scanningAction: ScanningAction) {
+        self = .scanning(scanningAction)
+    }
 }
 
 struct ServerListViewActionCreator: ActionCreatorType {
@@ -30,27 +42,28 @@ struct ServerListViewActionCreator: ActionCreatorType {
 extension ServerListViewActionCreator {
 
     func setup() {
+
         logDebug("Server list setup", domain: .ui)
         let servers = provider.getServerList()
-        dispatch(.setServerList(servers))
+        dispatch(ServerListViewAction(.set(servers)))
 
         let server = provider.getServer()
-        dispatch(.setServer(server))
+        dispatch(ServerListViewAction(.set(server)))
     }
 
     func select(_ serverListItem: ServerListItem) {
         logDebug("Server selected \(serverListItem.server)", domain: .ui)
         let server = provider.select(server: serverListItem.server)
-        dispatch(.setServer(server))
-        dispatch(.appendServerList(serverListItem.favoriteItem))
+        dispatch(.server(.set(server)))
+        dispatch(.serverList(.append(serverListItem.favoriteItem)))
     }
 
     func delete(_ serverListItem: ServerListItem) {
         logDebug("Server deleted \(serverListItem.server)", domain: .ui)
 
         let server = provider.remove(server: serverListItem.server)
-        dispatch(.setServer(server))
-        dispatch(.deleteServerList(serverListItem))
+        dispatch(ServerListViewAction(.set(server)))
+        dispatch(ServerListViewAction(.delete(serverListItem)))
     }
 }
 
@@ -59,13 +72,13 @@ extension ServerListViewActionCreator {
     func scan() {
         logDebug("Scan started", domain: .ui)
         setup()
-        dispatch(.setScanning(true))
+        dispatch(ServerListViewAction(.set(true)))
         provider.scan(serverFound: { serverListItem in
             logDebug("Server found: \(serverListItem)", domain: .ui)
-            self.dispatch(.appendServerList(serverListItem))
+            self.dispatch(ServerListViewAction(.append(serverListItem)))
         }, scanFinished: {
             logDebug("Scan finished", domain: .ui)
-            self.dispatch(.setScanning(false))
+            self.dispatch(ServerListViewAction(.set(false)))
         })
     }
 
@@ -82,7 +95,7 @@ extension ServerListViewActionCreator {
 
     func cancel() {
         logDebug("Scan canceled", domain: .ui)
-        dispatch(.setScanning(false))
+        dispatch(ServerListViewAction(.set(false)))
         provider.cancel()
     }
 }

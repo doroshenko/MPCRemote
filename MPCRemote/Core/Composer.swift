@@ -72,11 +72,17 @@ extension Composer {
     }
 }
 
-private extension Composer {
+// TODO: refactor this. keep reducer creation localized to a single point
+extension Composer {
 
     func action<Action, Reducer>(to reducer: Reducer) -> (Action) -> Void
         where Reducer: ReducerType, Reducer.Action == Action { { action in
-            reducer.reduce(self.data, action)
+            reducer.reduce(self, self.data, action)
         }
+    }
+
+    func action<Action, Reducer>(to reducer: Reducer, with newAction: Action)
+        where Reducer: ReducerType, Reducer.Action == Action {
+            action(to: reducer)(newAction)
     }
 }

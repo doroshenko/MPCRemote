@@ -8,13 +8,10 @@
 
 struct PlayerViewReducer: ReducerType {
 
-    func reduce(_ data: DataStore, _ action: PlayerViewAction) {
-        let playerState: PlayerState
+    func reduce(_ composer: Composer, _ data: DataStore, _ action: PlayerViewAction) {
         switch action {
-        case let .set(newValue):
-            playerState = newValue
+        case let .playerState(playerStateAction):
+            composer.action(to: PlayerStateReducer(), with: playerStateAction)
         }
-
-        data.playerState = playerState
     }
 }

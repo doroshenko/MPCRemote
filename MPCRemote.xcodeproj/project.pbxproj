@@ -74,6 +74,11 @@
 		0CB4389F245F78A1001A7638 /* Bundle+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB4389E245F78A1001A7638 /* Bundle+Convenience.swift */; };
 		0CBB87332462F07100BAF7C6 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB87322462F07100BAF7C6 /* Core.swift */; };
 		0CBB87372462FB1C00BAF7C6 /* OperationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB87362462FB1C00BAF7C6 /* OperationProvider.swift */; };
+		0CCDE2E124733C62002E614D /* PlayerStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDE2E024733C62002E614D /* PlayerStateReducer.swift */; };
+		0CCDE2E524733D3E002E614D /* SliderStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDE2E424733D3E002E614D /* SliderStateReducer.swift */; };
+		0CCDE2E724733DB9002E614D /* SliderStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDE2E624733DB9002E614D /* SliderStateAction.swift */; };
+		0CCDE2E924733E00002E614D /* PlayerStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDE2E824733E00002E614D /* PlayerStateAction.swift */; };
+		0CCDE2EC24733E84002E614D /* ServerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDE2EB24733E84002E614D /* ServerAction.swift */; };
 		0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */; };
 		0CD0EA5E2408973100DE10E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */; };
 		0CD0EA652408973100DE10E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA642408973100DE10E5 /* Assets.xcassets */; };
@@ -166,6 +171,11 @@
 		0CB4389E245F78A1001A7638 /* Bundle+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Convenience.swift"; sourceTree = "<group>"; };
 		0CBB87322462F07100BAF7C6 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		0CBB87362462FB1C00BAF7C6 /* OperationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationProvider.swift; sourceTree = "<group>"; };
+		0CCDE2E024733C62002E614D /* PlayerStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStateReducer.swift; sourceTree = "<group>"; };
+		0CCDE2E424733D3E002E614D /* SliderStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderStateReducer.swift; sourceTree = "<group>"; };
+		0CCDE2E624733DB9002E614D /* SliderStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderStateAction.swift; sourceTree = "<group>"; };
+		0CCDE2E824733E00002E614D /* PlayerStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStateAction.swift; sourceTree = "<group>"; };
+		0CCDE2EB24733E84002E614D /* ServerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerAction.swift; sourceTree = "<group>"; };
 		0CD0EA582408973100DE10E5 /* MPCRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPCRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -284,6 +294,8 @@
 			isa = PBXGroup;
 			children = (
 				0C4DC9802466C8C300BD8F83 /* SliderState.swift */,
+				0CCDE2E624733DB9002E614D /* SliderStateAction.swift */,
+				0CCDE2E424733D3E002E614D /* SliderStateReducer.swift */,
 			);
 			path = SliderState;
 			sourceTree = "<group>";
@@ -295,6 +307,8 @@
 				0CFAC4CB2410A0C900EF83E1 /* PlayerState.swift */,
 				0C78C3342455BED500589C3E /* PlayerStateFactory.swift */,
 				0C83A7702461A1760078CBB6 /* PlayerStateProvider.swift */,
+				0CCDE2E824733E00002E614D /* PlayerStateAction.swift */,
+				0CCDE2E024733C62002E614D /* PlayerStateReducer.swift */,
 			);
 			path = PlayerState;
 			sourceTree = "<group>";
@@ -307,6 +321,7 @@
 				0C17862C2469B747001B3D4C /* ServerListItem.swift */,
 				0C4A3E3B246B0094003199CE /* ServerListItem+Server.swift */,
 				0C83A7862461C51D0078CBB6 /* ServerListProvider.swift */,
+				0CCDE2EB24733E84002E614D /* ServerAction.swift */,
 			);
 			path = Server;
 			sourceTree = "<group>";
@@ -636,11 +651,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CB4389F245F78A1001A7638 /* Bundle+Convenience.swift in Sources */,
+				0CCDE2EC24733E84002E614D /* ServerAction.swift in Sources */,
 				0C83A757246179E50078CBB6 /* DataStore.swift in Sources */,
 				0C83A76724618A340078CBB6 /* PlayerViewReducer.swift in Sources */,
 				0C83A7872461C51D0078CBB6 /* ServerListProvider.swift in Sources */,
 				0C17862F2469B93C001B3D4C /* Array+UpdateOrAppend.swift in Sources */,
 				0C83A7732461A8EE0078CBB6 /* APIResult.swift in Sources */,
+				0CCDE2E924733E00002E614D /* PlayerStateAction.swift in Sources */,
 				0C4DC97D24663C0600BD8F83 /* SliderViewComposer.swift in Sources */,
 				0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */,
 				0C329E2124608BDB00974713 /* Resolver.swift in Sources */,
@@ -648,9 +665,11 @@
 				0CA7AFC8245B1597007842A5 /* View+ScreenWidth.swift in Sources */,
 				0C48B3E524267EC200EEFE98 /* Validation.swift in Sources */,
 				0C83A76924618CD80078CBB6 /* ServerListViewReducer.swift in Sources */,
+				0CCDE2E124733C62002E614D /* PlayerStateReducer.swift in Sources */,
 				0C3A1E0C244DAD630030AF17 /* PlayerView.swift in Sources */,
 				0CA386AE2471E2DF00EB1B97 /* AddServerButton.swift in Sources */,
 				0C4A3E3C246B0094003199CE /* ServerListItem+Server.swift in Sources */,
+				0CCDE2E524733D3E002E614D /* SliderStateReducer.swift in Sources */,
 				0C4AF237240B35BF0057AC86 /* NetworkService.swift in Sources */,
 				0C83A78B2461E6420078CBB6 /* UserSettings.swift in Sources */,
 				0C4AF23F240B71DF0057AC86 /* LogEnums.swift in Sources */,
@@ -666,6 +685,7 @@
 				0C5622902466E85E002932EB /* VolumeSliderViewAction.swift in Sources */,
 				0C56228E2466E837002932EB /* SeekSliderViewAction.swift in Sources */,
 				0CA8AB3D245F26A8005E15F4 /* ServerView.swift in Sources */,
+				0CCDE2E724733DB9002E614D /* SliderStateAction.swift in Sources */,
 				0C5622922466F5CD002932EB /* ServerState.swift in Sources */,
 				0C6773DC24547BA700FFD6DE /* PlayerButton.swift in Sources */,
 				0C4AF23A240B3B5B0057AC86 /* Ping.swift in Sources */,

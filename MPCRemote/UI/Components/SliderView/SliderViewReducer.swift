@@ -8,14 +8,12 @@
 
 struct SliderViewReducer: ReducerType {
 
-    func reduce(_ data: DataStore, _ action: SliderViewAction) {
+    func reduce(_ composer: Composer, _ data: DataStore, _ action: SliderViewAction) {
         switch action {
-        case let .setSeekUpdating(isSeekUpdating):
-            data.sliderState.isSeekUpdating = isSeekUpdating
-        case let .setVolumeUpdating(isVolumeUpdating):
-            data.sliderState.isVolumeUpdating = isVolumeUpdating
-        case let .set(playerState):
-            data.playerState = playerState
+        case let .playerState(playerStateAction):
+            composer.action(to: PlayerStateReducer(), with: playerStateAction)
+        case let .sliderState(sliderStateAction):
+            composer.action(to: SliderStateReducer(), with: sliderStateAction)
         }
     }
 }
