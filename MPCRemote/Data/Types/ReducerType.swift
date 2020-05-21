@@ -9,6 +9,5 @@
 protocol ReducerType {
     associatedtype Action: ActionType
 
-    // TODO: avoid passing composer directly
-    func reduce(_ composer: Composer, _ data: DataStore, _ action: Action)
+    func reduce(_ dispatcher: Dispatcher, _ data: DataStore, _ action: Action)
 }

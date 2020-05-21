@@ -8,7 +8,7 @@
 
 struct ServerReducer: ReducerType {
 
-    func reduce(_ composer: Composer, _ data: DataStore, _ action: ServerAction) {
+    func reduce(_ dispatcher: Dispatcher, _ data: DataStore, _ action: ServerAction) {
         switch action {
         case let .set(server):
             data.server = server
@@ -18,7 +18,7 @@ struct ServerReducer: ReducerType {
 
 struct ServerListReducer: ReducerType {
 
-    func reduce(_ composer: Composer, _ data: DataStore, _ action: ServerListAction) {
+    func reduce(_ dispatcher: Dispatcher, _ data: DataStore, _ action: ServerListAction) {
         switch action {
         case let .set(servers):
             data.serverList = servers

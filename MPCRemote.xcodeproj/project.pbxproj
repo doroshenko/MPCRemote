@@ -74,6 +74,7 @@
 		0CB4389F245F78A1001A7638 /* Bundle+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB4389E245F78A1001A7638 /* Bundle+Convenience.swift */; };
 		0CBB87332462F07100BAF7C6 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB87322462F07100BAF7C6 /* Core.swift */; };
 		0CBB87372462FB1C00BAF7C6 /* OperationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB87362462FB1C00BAF7C6 /* OperationProvider.swift */; };
+		0CC5B2562476B6E800D94753 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC5B2552476B6E800D94753 /* Dispatcher.swift */; };
 		0CCDE2E124733C62002E614D /* PlayerStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDE2E024733C62002E614D /* PlayerStateReducer.swift */; };
 		0CCDE2E524733D3E002E614D /* SliderStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDE2E424733D3E002E614D /* SliderStateReducer.swift */; };
 		0CCDE2E724733DB9002E614D /* SliderStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDE2E624733DB9002E614D /* SliderStateAction.swift */; };
@@ -174,6 +175,7 @@
 		0CB4389E245F78A1001A7638 /* Bundle+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Convenience.swift"; sourceTree = "<group>"; };
 		0CBB87322462F07100BAF7C6 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		0CBB87362462FB1C00BAF7C6 /* OperationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationProvider.swift; sourceTree = "<group>"; };
+		0CC5B2552476B6E800D94753 /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 		0CCDE2E024733C62002E614D /* PlayerStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStateReducer.swift; sourceTree = "<group>"; };
 		0CCDE2E424733D3E002E614D /* SliderStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderStateReducer.swift; sourceTree = "<group>"; };
 		0CCDE2E624733DB9002E614D /* SliderStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderStateAction.swift; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 				0CBB87322462F07100BAF7C6 /* Core.swift */,
 				0C83A7772461AFBA0078CBB6 /* Composer.swift */,
 				0C83A756246179E50078CBB6 /* DataStore.swift */,
+				0CC5B2552476B6E800D94753 /* Dispatcher.swift */,
 				0C329E2024608BDB00974713 /* Resolver.swift */,
 				0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */,
 				0CD0EA662408973100DE10E5 /* LaunchScreen.storyboard */,
@@ -698,6 +701,7 @@
 				0C83A77A2461B1A90078CBB6 /* PlayerViewComposer.swift in Sources */,
 				0C4DC9812466C8C300BD8F83 /* SliderState.swift in Sources */,
 				0CE231E82457AE9C0068820C /* SliderView.swift in Sources */,
+				0CC5B2562476B6E800D94753 /* Dispatcher.swift in Sources */,
 				0C18D5EC241719470035C3A5 /* SettingsService.swift in Sources */,
 				0C83A7852461C35F0078CBB6 /* ServerListViewAction.swift in Sources */,
 				0C5622902466E85E002932EB /* VolumeSliderViewAction.swift in Sources */,

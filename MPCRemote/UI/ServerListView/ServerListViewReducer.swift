@@ -8,14 +8,14 @@
 
 struct ServerListViewReducer: ReducerType {
 
-    func reduce(_ composer: Composer, _ data: DataStore, _ action: ServerListViewAction) {
+    func reduce(_ dispatcher: Dispatcher, _ data: DataStore, _ action: ServerListViewAction) {
         switch action {
         case let .serverList(serverListAction):
-            composer.action(to: ServerListReducer(), with: serverListAction)
+            dispatcher.dispatch(action: serverListAction, to: ServerListReducer())
         case let .server(serverAction):
-            composer.action(to: ServerReducer(), with: serverAction)
+            dispatcher.dispatch(action: serverAction, to: ServerReducer())
         case let .scanning(scanningAction):
-            composer.action(to: ScanningReducer(), with: scanningAction)
+            dispatcher.dispatch(action: scanningAction, to: ScanningReducer())
         }
     }
 }

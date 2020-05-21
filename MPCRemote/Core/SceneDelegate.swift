@@ -29,6 +29,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 extension UISceneDelegate {
 
     var resolver: Resolver { Core.resolver }
-
+    var dispatch: Dispatcher { Core.dispatcher }
     var composer: Composer { Core.composer }
 }

@@ -8,7 +8,7 @@
 
 struct ScanningReducer: ReducerType {
 
-    func reduce(_ composer: Composer, _ data: DataStore, _ action: ScanningAction) {
+    func reduce(_ dispatcher: Dispatcher, _ data: DataStore, _ action: ScanningAction) {
         switch action {
         case let .set(isScanning):
             data.isScanning = isScanning

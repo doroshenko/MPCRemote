@@ -9,5 +9,6 @@
 struct Core {
     static let data: DataStore = DataStore()
     static let resolver: Resolver = Dependency()
-    static let composer: Composer = Composer(resolver: resolver, data: data)
+    static let dispatcher: Dispatcher = Dispatcher(data: data)
+    static let composer: Composer = Composer(resolver: resolver, dispatcher: dispatcher, data: data)
 }

@@ -8,7 +8,7 @@
 
 struct SliderStateReducer: ReducerType {
 
-    func reduce(_ composer: Composer, _ data: DataStore, _ action: SliderStateAction) {
+    func reduce(_ dispatcher: Dispatcher, _ data: DataStore, _ action: SliderStateAction) {
         switch action {
         case let .setSeekUpdating(isSeekUpdating):
             data.sliderState.isSeekUpdating = isSeekUpdating

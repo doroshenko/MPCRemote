@@ -10,10 +10,12 @@ import SwiftUI
 
 struct Composer {
     private let resolver: Resolver
+    private let dispatcher: Dispatcher
     private let data: DataStore
 
-    init(resolver: Resolver, data: DataStore) {
+    init(resolver: Resolver, dispatcher: Dispatcher, data: DataStore) {
         self.resolver = resolver
+        self.dispatcher = dispatcher
         self.data = data
     }
 }
@@ -26,7 +28,7 @@ extension Composer {
         PlayerView(
             model: PlayerViewModel(data: data),
             action: PlayerViewActionCreator(provider: resolver.resolve(),
-                                            dispatch: action(to: PlayerViewReducer())),
+                                            dispatch: dispatcher.dispatch(to: PlayerViewReducer())),
             composer: PlayerViewComposer(parent: self)
         )
     }
@@ -38,7 +40,7 @@ extension Composer {
         ServerListView(
             model: ServerListViewModel(data: data),
             action: ServerListViewActionCreator(provider: resolver.resolve(),
-                                                dispatch: action(to: ServerListViewReducer())),
+                                                dispatch: dispatcher.dispatch(to: ServerListViewReducer())),
             composer: ServerListViewComposer(parent: self)
         )
     }
@@ -53,7 +55,7 @@ extension Composer {
     func seekSliderView(_ viewModel: SeekSliderViewModel) -> some View {
         SliderView(model: viewModel,
                    action: SeekSliderViewActionCreator(provider: resolver.resolve(),
-                                                       dispatch: action(to: SliderViewReducer())),
+                                                       dispatch: dispatcher.dispatch(to: SliderViewReducer())),
                    composer: SliderViewComposer(parent: self))
     }
 }
@@ -67,22 +69,7 @@ extension Composer {
     func volumeSliderView(_ viewModel: VolumeSliderViewModel) -> some View {
         SliderView(model: viewModel,
                    action: VolumeSliderViewActionCreator(provider: resolver.resolve(),
-                                                         dispatch: action(to: SliderViewReducer())),
+                                                         dispatch: dispatcher.dispatch(to: SliderViewReducer())),
                    composer: SliderViewComposer(parent: self))
-    }
-}
-
-// TODO: refactor this. keep reducer creation localized to a single point
-extension Composer {
-
-    func action<Action, Reducer>(to reducer: Reducer) -> (Action) -> Void
-        where Reducer: ReducerType, Reducer.Action == Action { { action in
-            reducer.reduce(self, self.data, action)
-        }
-    }
-
-    func action<Action, Reducer>(to reducer: Reducer, with newAction: Action)
-        where Reducer: ReducerType, Reducer.Action == Action {
-            action(to: reducer)(newAction)
     }
 }
