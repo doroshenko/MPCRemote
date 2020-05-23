@@ -35,7 +35,9 @@ struct ServerListView: View {
             .onAppear {
                 logDebug(domain: .ui)
                 UITableView.appearance().tableFooterView = UIView()
-                self.action?.setup()
+                DispatchQueue.main.async {
+                    self.action?.setup()
+                }
             }
             .onDisappear {
                 logDebug(domain: .ui)
