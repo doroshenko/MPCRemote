@@ -1,5 +1,5 @@
 //
-//  PlayerViewAction.swift
+//  ServerListViewAction.swift
 //  MPCRemote
 //
 //  Created by doroshenko on 05.05.20.
@@ -9,7 +9,7 @@
 enum ServerListViewAction: ActionType {
     indirect case serverList(ServerListAction)
     indirect case server(ServerAction)
-    indirect case scanning(ScanningAction)
+    indirect case serverListState(ServerListStateAction)
 
     init(_ serverListAction: ServerListAction) {
         self = .serverList(serverListAction)
@@ -19,8 +19,8 @@ enum ServerListViewAction: ActionType {
         self = .server(serverAction)
     }
 
-    init(_ scanningAction: ScanningAction) {
-        self = .scanning(scanningAction)
+    init(_ serverListStateAction: ServerListStateAction) {
+        self = .serverListState(serverListStateAction)
     }
 }
 
@@ -38,7 +38,6 @@ struct ServerListViewActionCreator: ActionCreatorType {
 extension ServerListViewActionCreator {
 
     func setup() {
-
         logDebug("Server list setup", domain: .ui)
         let servers = provider.getServerList()
         dispatch(ServerListViewAction(.set(servers)))
@@ -56,7 +55,6 @@ extension ServerListViewActionCreator {
 
     func delete(_ serverListItem: ServerListItem) {
         logDebug("Server deleted \(serverListItem.server)", domain: .ui)
-
         let server = provider.remove(server: serverListItem.server)
         dispatch(ServerListViewAction(.set(server)))
         dispatch(ServerListViewAction(.delete(serverListItem)))
@@ -68,13 +66,13 @@ extension ServerListViewActionCreator {
     func scan() {
         logDebug("Scan started", domain: .ui)
         setup()
-        dispatch(ServerListViewAction(.set(true)))
+        dispatch(ServerListViewAction(.setScanning(true)))
         provider.scan(serverFound: { serverListItem in
             logDebug("Server found: \(serverListItem)", domain: .ui)
             self.dispatch(ServerListViewAction(.append(serverListItem)))
         }, scanFinished: {
             logDebug("Scan finished", domain: .ui)
-            self.dispatch(ServerListViewAction(.set(false)))
+            self.dispatch(ServerListViewAction(.setScanning(false)))
         })
     }
 
@@ -91,7 +89,15 @@ extension ServerListViewActionCreator {
 
     func cancel() {
         logDebug("Scan canceled", domain: .ui)
-        dispatch(ServerListViewAction(.set(false)))
+        dispatch(ServerListViewAction(.setScanning(false)))
         provider.cancel()
+    }
+}
+
+extension ServerListViewActionCreator {
+
+    func setEditing(_ isEditing: Bool) {
+        logDebug("Server editing \(isEditing ? "started" : "finished")", domain: .ui)
+        dispatch(ServerListViewAction(.setEditing(isEditing)))
     }
 }

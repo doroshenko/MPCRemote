@@ -16,7 +16,7 @@ struct ServerView: View {
     var body: some View {
         HStack {
             Image(systemName: "desktopcomputer")
-                .foregroundColor(serverListItem.isOnline ? Color(.systemGreen) : Color(.systemGray))
+                .foregroundColor(serverListItem.isOnline ? Color.accentStart : Color(.systemGray))
                 .font(.title)
 
             VStack(alignment: .leading) {

@@ -14,6 +14,15 @@
 		0C18D5E7241713390035C3A5 /* Comparable+Clamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C18D5E6241713390035C3A5 /* Comparable+Clamped.swift */; };
 		0C18D5E9241714C80035C3A5 /* HTTPParametersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C18D5E8241714C80035C3A5 /* HTTPParametersFactory.swift */; };
 		0C18D5EC241719470035C3A5 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C18D5EB241719470035C3A5 /* SettingsService.swift */; };
+		0C224B4824794E8C00458334 /* ServerEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C224B4724794E8C00458334 /* ServerEditView.swift */; };
+		0C224B4A2479586F00458334 /* TextLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C224B492479586F00458334 /* TextLabelView.swift */; };
+		0C224B4F24795E5B00458334 /* ServerEditViewAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C224B4B24795E5B00458334 /* ServerEditViewAction.swift */; };
+		0C224B5024795E5B00458334 /* ServerEditViewComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C224B4C24795E5B00458334 /* ServerEditViewComposer.swift */; };
+		0C224B5124795E5B00458334 /* ServerEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C224B4D24795E5B00458334 /* ServerEditViewModel.swift */; };
+		0C224B5224795E5B00458334 /* ServerEditViewReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C224B4E24795E5B00458334 /* ServerEditViewReducer.swift */; };
+		0C224B622479712600458334 /* ServerListStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C224B5F2479712600458334 /* ServerListStateReducer.swift */; };
+		0C224B632479712600458334 /* ServerListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C224B602479712600458334 /* ServerListState.swift */; };
+		0C224B642479712600458334 /* ServerListStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C224B612479712600458334 /* ServerListStateAction.swift */; };
 		0C30E249240DD390001C1EC9 /* AsynchroneousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C30E248240DD390001C1EC9 /* AsynchroneousOperation.swift */; };
 		0C30E24B240DD3BA001C1EC9 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C30E24A240DD3BA001C1EC9 /* Connectivity.swift */; };
 		0C30E254240DD5A1001C1EC9 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C30E250240DD5A1001C1EC9 /* SimplePing.m */; };
@@ -81,8 +90,6 @@
 		0CCDE2E924733E00002E614D /* PlayerStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDE2E824733E00002E614D /* PlayerStateAction.swift */; };
 		0CCDE2EC24733E84002E614D /* ServerListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDE2EB24733E84002E614D /* ServerListAction.swift */; };
 		0CCDE2F0247341DC002E614D /* ServerListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDE2EF247341DC002E614D /* ServerListReducer.swift */; };
-		0CCDE2F3247342F5002E614D /* ScanningReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDE2F2247342F5002E614D /* ScanningReducer.swift */; };
-		0CCDE2F524734311002E614D /* ScanningAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDE2F424734311002E614D /* ScanningAction.swift */; };
 		0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */; };
 		0CD0EA5E2408973100DE10E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */; };
 		0CD0EA652408973100DE10E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0EA642408973100DE10E5 /* Assets.xcassets */; };
@@ -113,6 +120,15 @@
 		0C18D5E6241713390035C3A5 /* Comparable+Clamped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Clamped.swift"; sourceTree = "<group>"; };
 		0C18D5E8241714C80035C3A5 /* HTTPParametersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPParametersFactory.swift; sourceTree = "<group>"; };
 		0C18D5EB241719470035C3A5 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		0C224B4724794E8C00458334 /* ServerEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerEditView.swift; sourceTree = "<group>"; };
+		0C224B492479586F00458334 /* TextLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabelView.swift; sourceTree = "<group>"; };
+		0C224B4B24795E5B00458334 /* ServerEditViewAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerEditViewAction.swift; sourceTree = "<group>"; };
+		0C224B4C24795E5B00458334 /* ServerEditViewComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerEditViewComposer.swift; sourceTree = "<group>"; };
+		0C224B4D24795E5B00458334 /* ServerEditViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerEditViewModel.swift; sourceTree = "<group>"; };
+		0C224B4E24795E5B00458334 /* ServerEditViewReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerEditViewReducer.swift; sourceTree = "<group>"; };
+		0C224B5F2479712600458334 /* ServerListStateReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerListStateReducer.swift; sourceTree = "<group>"; };
+		0C224B602479712600458334 /* ServerListState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerListState.swift; sourceTree = "<group>"; };
+		0C224B612479712600458334 /* ServerListStateAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerListStateAction.swift; sourceTree = "<group>"; };
 		0C30E248240DD390001C1EC9 /* AsynchroneousOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsynchroneousOperation.swift; sourceTree = "<group>"; };
 		0C30E24A240DD3BA001C1EC9 /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		0C30E250240DD5A1001C1EC9 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
@@ -182,8 +198,6 @@
 		0CCDE2E824733E00002E614D /* PlayerStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStateAction.swift; sourceTree = "<group>"; };
 		0CCDE2EB24733E84002E614D /* ServerListAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListAction.swift; sourceTree = "<group>"; };
 		0CCDE2EF247341DC002E614D /* ServerListReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListReducer.swift; sourceTree = "<group>"; };
-		0CCDE2F2247342F5002E614D /* ScanningReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningReducer.swift; sourceTree = "<group>"; };
-		0CCDE2F424734311002E614D /* ScanningAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningAction.swift; sourceTree = "<group>"; };
 		0CD0EA582408973100DE10E5 /* MPCRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPCRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD0EA5B2408973100DE10E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CD0EA5D2408973100DE10E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -233,6 +247,28 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		0C224B4624794E7100458334 /* ServerEditView */ = {
+			isa = PBXGroup;
+			children = (
+				0C224B4724794E8C00458334 /* ServerEditView.swift */,
+				0C224B4D24795E5B00458334 /* ServerEditViewModel.swift */,
+				0C224B4B24795E5B00458334 /* ServerEditViewAction.swift */,
+				0C224B4C24795E5B00458334 /* ServerEditViewComposer.swift */,
+				0C224B4E24795E5B00458334 /* ServerEditViewReducer.swift */,
+			);
+			path = ServerEditView;
+			sourceTree = "<group>";
+		};
+		0C224B5E2479712600458334 /* ServerListState */ = {
+			isa = PBXGroup;
+			children = (
+				0C224B602479712600458334 /* ServerListState.swift */,
+				0C224B612479712600458334 /* ServerListStateAction.swift */,
+				0C224B5F2479712600458334 /* ServerListStateReducer.swift */,
+			);
+			path = ServerListState;
+			sourceTree = "<group>";
+		};
 		0C30E24E240DD528001C1EC9 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,8 +283,8 @@
 			children = (
 				0C83A77B2461B1CB0078CBB6 /* Types */,
 				0C83A762246189BC0078CBB6 /* PlayerState */,
-				0CCDE2F1247342D8002E614D /* Scanning */,
 				0C83A763246189CD0078CBB6 /* Server */,
+				0C224B5E2479712600458334 /* ServerListState */,
 				0C4DC97F2466C89D00BD8F83 /* SliderState */,
 			);
 			path = Data;
@@ -367,6 +403,7 @@
 				0CA386AD2471E2DF00EB1B97 /* AddServerButton.swift */,
 				0C6773DB24547BA700FFD6DE /* PlayerButton.swift */,
 				0CA8AB3C245F26A8005E15F4 /* ServerView.swift */,
+				0C224B492479586F00458334 /* TextLabelView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -395,15 +432,6 @@
 				0C83A760246188F30078CBB6 /* ReducerType.swift */,
 			);
 			path = Types;
-			sourceTree = "<group>";
-		};
-		0CCDE2F1247342D8002E614D /* Scanning */ = {
-			isa = PBXGroup;
-			children = (
-				0CCDE2F2247342F5002E614D /* ScanningReducer.swift */,
-				0CCDE2F424734311002E614D /* ScanningAction.swift */,
-			);
-			path = Scanning;
 			sourceTree = "<group>";
 		};
 		0CD0EA4F2408973100DE10E5 = {
@@ -460,6 +488,7 @@
 			children = (
 				0C83A76A246199EA0078CBB6 /* PlayerView */,
 				0C83A76B246199FB0078CBB6 /* ServerListView */,
+				0C224B4624794E7100458334 /* ServerEditView */,
 				0C83A76F24619D380078CBB6 /* Components */,
 				0C6773DF2454D71F00FFD6DE /* Colors.swift */,
 				0C6773E12454DDE200FFD6DE /* Gradients.swift */,
@@ -682,6 +711,7 @@
 				0CD0EA5C2408973100DE10E5 /* AppDelegate.swift in Sources */,
 				0C329E2124608BDB00974713 /* Resolver.swift in Sources */,
 				0C4DC9722466333300BD8F83 /* SliderViewModel.swift in Sources */,
+				0C224B5024795E5B00458334 /* ServerEditViewComposer.swift in Sources */,
 				0CA7AFC8245B1597007842A5 /* View+ScreenWidth.swift in Sources */,
 				0C48B3E524267EC200EEFE98 /* Validation.swift in Sources */,
 				0C83A76924618CD80078CBB6 /* ServerListViewReducer.swift in Sources */,
@@ -713,9 +743,7 @@
 				0C4AF23A240B3B5B0057AC86 /* Ping.swift in Sources */,
 				0C18D5E9241714C80035C3A5 /* HTTPParametersFactory.swift in Sources */,
 				0C6773E22454DDE200FFD6DE /* Gradients.swift in Sources */,
-				0CCDE2F524734311002E614D /* ScanningAction.swift in Sources */,
 				0CBB87372462FB1C00BAF7C6 /* OperationProvider.swift in Sources */,
-				0CCDE2F3247342F5002E614D /* ScanningReducer.swift in Sources */,
 				0C48B3E324266FC500EEFE98 /* UserDefault.swift in Sources */,
 				0C329E1F246067D100974713 /* ServerListViewModel.swift in Sources */,
 				0C8D91122418452F00439554 /* IPv4.swift in Sources */,
@@ -725,15 +753,19 @@
 				0C83A7812461B2A10078CBB6 /* ModelType.swift in Sources */,
 				0CB0F9AB245838D300C31A04 /* TextFormatter.swift in Sources */,
 				0C4AF23D240B59040057AC86 /* Logger.swift in Sources */,
+				0C224B4A2479586F00458334 /* TextLabelView.swift in Sources */,
 				0C4DC97C24663C0600BD8F83 /* SliderViewAction.swift in Sources */,
 				0C30E24B240DD3BA001C1EC9 /* Connectivity.swift in Sources */,
+				0C224B4824794E8C00458334 /* ServerEditView.swift in Sources */,
 				0C83A7712461A1760078CBB6 /* PlayerStateProvider.swift in Sources */,
 				0C4FA7802416B0A300F71F9E /* Server.swift in Sources */,
+				0C224B642479712600458334 /* ServerListStateAction.swift in Sources */,
 				0CFAC4CC2410A0C900EF83E1 /* PlayerState.swift in Sources */,
 				0C18D5E7241713390035C3A5 /* Comparable+Clamped.swift in Sources */,
 				0CB4389D245F74D3001A7638 /* ServerListView.swift in Sources */,
 				0CE231E424573C710068820C /* PlayerViewModel.swift in Sources */,
 				0CBB87332462F07100BAF7C6 /* Core.swift in Sources */,
+				0C224B5224795E5B00458334 /* ServerEditViewReducer.swift in Sources */,
 				0C48B3EB2426BEDF00EEFE98 /* PingError.swift in Sources */,
 				0C83A77F2461B2830078CBB6 /* ComposerType.swift in Sources */,
 				0C48B3E92426938C00EEFE98 /* APIService.swift in Sources */,
@@ -741,8 +773,12 @@
 				0C83A77D2461B2110078CBB6 /* ActionType.swift in Sources */,
 				0C520B182455CE0700FB3D14 /* APIState.swift in Sources */,
 				0C83A7892461C9CA0078CBB6 /* ServerListViewComposer.swift in Sources */,
+				0C224B622479712600458334 /* ServerListStateReducer.swift in Sources */,
+				0C224B632479712600458334 /* ServerListState.swift in Sources */,
 				0C17862D2469B747001B3D4C /* ServerListItem.swift in Sources */,
 				0C6773E02454D71F00FFD6DE /* Colors.swift in Sources */,
+				0C224B4F24795E5B00458334 /* ServerEditViewAction.swift in Sources */,
+				0C224B5124795E5B00458334 /* ServerEditViewModel.swift in Sources */,
 				0C8271732411EEEB00E5474B /* Constants.swift in Sources */,
 				0C83A7782461AFBA0078CBB6 /* Composer.swift in Sources */,
 				0CD0EA5E2408973100DE10E5 /* SceneDelegate.swift in Sources */,

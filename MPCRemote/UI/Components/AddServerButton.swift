@@ -39,3 +39,10 @@ private struct Constants {
         static let radius: CGFloat = 6
     }
 }
+
+struct AddServerButton_Previews: PreviewProvider {
+    static var previews: some View {
+        AddServerButton { }
+            .previewStyle(.compact)
+    }
+}

@@ -1,17 +1,15 @@
 //
-//  ServerListViewReducer.swift
+//  ServerEditViewReducer.swift
 //  MPCRemote
 //
 //  Created by doroshenko on 05.05.20.
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-struct ServerListViewReducer: ReducerType {
+struct ServerEditViewReducer: ReducerType {
 
-    func reduce(_ dispatcher: Dispatcher, _ data: DataStore, _ action: ServerListViewAction) {
+    func reduce(_ dispatcher: Dispatcher, _ data: DataStore, _ action: ServerEditViewAction) {
         switch action {
-        case let .serverList(serverListAction):
-            dispatcher.dispatch(action: serverListAction, to: ServerListReducer())
         case let .server(serverAction):
             dispatcher.dispatch(action: serverAction, to: ServerReducer())
         case let .serverListState(serverListStateAction):

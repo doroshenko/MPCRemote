@@ -15,3 +15,14 @@ struct ServerListViewComposer: ComposerType {
         self.parent = parent
     }
 }
+
+extension ServerListViewComposer {
+
+    func showServerCreateView() -> some View {
+           parent.serverCreateView()
+       }
+
+    func showServerEditView(_ server: Server) -> some View {
+        parent.serverEditView(server)
+    }
+}

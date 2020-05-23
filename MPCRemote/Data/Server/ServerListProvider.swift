@@ -12,6 +12,7 @@ protocol ServerListProviderType {
 
     func select(server: Server) -> Server?
     func remove(server: Server) -> Server?
+    func verify(server: Server, completion: @escaping VerifyHandler)
 
     func scan(serverFound: @escaping (ServerListItem) -> Void, scanFinished: (() -> Void)?)
     func ping(server: Server, completion: @escaping ServerStateHandler)
@@ -47,6 +48,11 @@ extension ServerListProvider {
 
     func remove(server: Server) -> Server? {
         settingsService.remove(server: server)
+    }
+
+    func verify(server: Server, completion: @escaping VerifyHandler) {
+        // TODO: implement this
+        completion(.success(server))
     }
 }
 

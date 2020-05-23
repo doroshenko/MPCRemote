@@ -12,16 +12,16 @@ final class ServerListViewModel: ObservableObject {
 
     @Published private(set) var serverList: [ServerListItem]
     @Published private(set) var server: Server?
-    @Published private(set) var isScanning: Bool
+    @Published private(set) var serverListState: ServerListState
 
     private var cancellableServerList = Set<AnyCancellable>()
     private var cancellableServer = Set<AnyCancellable>()
-    private var cancellableScanning = Set<AnyCancellable>()
+    private var cancellableServerListState = Set<AnyCancellable>()
 
     init(data: DataStore) {
         self.serverList = data.serverList
         self.server = data.server
-        self.isScanning = data.isScanning
+        self.serverListState = data.serverListState
 
         data.$serverList
             .removeDuplicates()
@@ -33,9 +33,8 @@ final class ServerListViewModel: ObservableObject {
             .assign(to: \Self.server, on: self)
             .store(in: &cancellableServer)
 
-        data.$isScanning
-            .removeDuplicates()
-            .assign(to: \Self.isScanning, on: self)
-            .store(in: &cancellableScanning)
+        data.$serverListState
+            .assign(to: \Self.serverListState, on: self)
+            .store(in: &cancellableServerListState)
     }
 }

@@ -30,6 +30,7 @@ struct PlayerView: View {
                     self.action?.setup()
                 }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .accentColor(.accentStart)
         .onReceive(timer) { _ in
             self.action?.getState()

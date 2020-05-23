@@ -48,6 +48,22 @@ extension Composer {
 
 extension Composer {
 
+    func serverCreateView() -> some View {
+        serverEditView(nil)
+    }
+
+    func serverEditView(_ server: Server?) -> some View {
+        ServerEditView(
+            model: ServerEditViewModel(server: server),
+            action: ServerEditViewActionCreator(provider: resolver.resolve(),
+                                                dispatch: dispatcher.dispatch(to: ServerEditViewReducer())),
+            composer: ServerEditViewComposer(parent: self)
+        )
+    }
+}
+
+extension Composer {
+
     func seekSliderView() -> some View {
         seekSliderView(SeekSliderViewModel(data: data))
     }

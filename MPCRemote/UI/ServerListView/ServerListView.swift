@@ -43,9 +43,9 @@ struct ServerListView: View {
             }
             .navigationBarTitle(Text("Server List"), displayMode: .inline)
             .navigationBarItems(trailing:
-                Button(model.isScanning ? "Cancel" : "Scan") {
+                Button(model.serverListState.isScanning ? "Cancel" : "Scan") {
                     logDebug(domain: .ui)
-                    if self.model.isScanning {
+                    if self.model.serverListState.isScanning {
                         self.action?.cancel()
                     } else {
                         self.action?.scan()
@@ -56,14 +56,19 @@ struct ServerListView: View {
                 Spacer()
                 HStack {
                     Spacer()
-                    AddServerButton { self.showAlert() }
+                    AddServerButton {
+                        self.action?.setEditing(true)
+                    }
+                    .popover(isPresented: Binding<Bool>(get: {
+                        self.model.serverListState.isEditing
+                    }, set: { newValue in
+                        self.action?.setEditing(newValue)
+                    }), arrowEdge: .bottom) {
+                        self.composer?.showServerCreateView()
+                    }
                 }
             }
         }
-    }
-
-    private func showAlert() {
-        // TODO: present UI to manually enter server name, address and port
     }
 }
 
