@@ -35,14 +35,6 @@ struct ServerEditView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .accentColor(.accentStart)
-        .frame(idealWidth: Constants.Popover.width, idealHeight: Constants.Popover.height)
-    }
-}
-
-private struct Constants {
-    enum Popover {
-        static let width: CGFloat = 500
-        static let height: CGFloat = 420
     }
 }
 

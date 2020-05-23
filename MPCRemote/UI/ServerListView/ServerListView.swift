@@ -61,11 +61,11 @@ struct ServerListView: View {
                     AddServerButton {
                         self.action?.setEditing(true)
                     }
-                    .popover(isPresented: Binding<Bool>(get: {
+                    .sheet(isPresented: Binding<Bool>(get: {
                         self.model.serverListState.isEditing
                     }, set: { newValue in
                         self.action?.setEditing(newValue)
-                    }), arrowEdge: .bottom) {
+                    })) {
                         self.composer?.showServerCreateView()
                     }
                 }
