@@ -16,11 +16,15 @@ struct AddServerButton: View {
         Button(action: {
             self.action()
         }, label: {
-            Image(systemName: "plus.circle.fill")
-                .resizable()
-                .frame(width: Constants.size, height: Constants.size)
-                .foregroundColor(Color.accentStart)
-                .shadow(color: Color.shadowEnd, radius: Constants.Shadow.radius, x: Constants.Shadow.normal, y: Constants.Shadow.normal)
+            ZStack {
+                Circle()
+                    .foregroundColor(Color.mainAccent)
+                    .shadow(color: Color.shadowEnd, radius: Constants.Shadow.radius, x: Constants.Shadow.normal, y: Constants.Shadow.normal)
+                Image(systemName: "plus.circle.fill")
+                    .resizable()
+                    .foregroundColor(Color.accentStart)
+            }
+            .frame(width: Constants.size, height: Constants.size)
         })
         .padding()
     }
