@@ -17,9 +17,9 @@ struct ServerEditView: View {
     var body: some View {
         NavigationView {
             Form {
-                TextLabelView(label: "Name", placeholder: "Server name", text: model.server.name)
-                TextLabelView(label: "Address", placeholder: "Server address", text: model.server.address)
-                TextLabelView(label: "Port", placeholder: "Server port", text: String(model.server.port))
+                TextLabelView(model: model.nameModel)
+                TextLabelView(model: model.addressModel)
+                TextLabelView(model: model.portModel)
             }
             .navigationBarTitle(Text(model.isNewServer ? "Add Server" : "Edit Server"), displayMode: .inline)
             .navigationBarItems(leading:
@@ -29,7 +29,9 @@ struct ServerEditView: View {
                 }, trailing:
                 Button("Save") {
                     logDebug(domain: .ui)
-                    self.action?.save(self.model.server)
+                    // TODO: validation
+                    let server = Server(address: self.model.addressModel.text, port: UInt16(self.model.portModel.text)!, name: self.model.nameModel.text)
+                    self.action?.save(server)
                 }
             )
         }
@@ -40,7 +42,7 @@ struct ServerEditView: View {
 
 struct ServerEditView_Previews: PreviewProvider {
     static var previews: some View {
-        Core.composer.serverCreateView()
+        Core.composer.serverEditView()
             .previewStyle(.full)
     }
 }

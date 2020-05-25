@@ -8,5 +8,7 @@
 
 struct ServerListState {
     var isEditing: Bool = false
+    var editingServer: Server?
+
     var isScanning: Bool = false
 }

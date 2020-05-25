@@ -49,8 +49,8 @@ extension ServerListViewActionCreator {
     func select(_ serverListItem: ServerListItem) {
         logDebug("Server selected \(serverListItem.server)", domain: .ui)
         let server = provider.select(server: serverListItem.server)
-        dispatch(.server(.set(server)))
-        dispatch(.serverList(.append(serverListItem.favoriteItem)))
+        dispatch(ServerListViewAction(.set(server)))
+        dispatch(ServerListViewAction(.update(serverListItem.favoriteItem)))
     }
 
     func delete(_ serverListItem: ServerListItem) {
@@ -96,8 +96,8 @@ extension ServerListViewActionCreator {
 
 extension ServerListViewActionCreator {
 
-    func setEditing(_ isEditing: Bool) {
-        logDebug("Server editing \(isEditing ? "started" : "finished")", domain: .ui)
-        dispatch(ServerListViewAction(.setEditing(isEditing)))
+    func setEditing(_ isEditing: Bool, server: Server?) {
+        logDebug("Server editing \(isEditing ? "started" : "finished") for server: \(String(describing: server))", domain: .ui)
+        dispatch(ServerListViewAction(.setEditing(isEditing, server)))
     }
 }

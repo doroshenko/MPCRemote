@@ -28,7 +28,7 @@ extension UserSettings {
         self.server = server
 
         var servers = self.servers
-        servers.updateOrAppend(server)
+        servers.appendUnique(server)
         self.servers = servers.sorted()
 
         return self.server

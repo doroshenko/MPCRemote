@@ -12,6 +12,7 @@ enum ServerAction: ActionType {
 
 enum ServerListAction: ActionType {
     case append(ServerListItem)
+    case update(ServerListItem)
     case delete(ServerListItem)
     case set([ServerListItem])
 }

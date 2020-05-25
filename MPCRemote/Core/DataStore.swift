@@ -11,7 +11,8 @@ import SwiftUI
 final class DataStore: ObservableObject {
     @Published var playerState = PlayerState()
     @Published var sliderState = SliderState()
+    @Published var serverListState = ServerListState()
+
     @Published var server: Server?
     @Published var serverList = [ServerListItem]()
-    @Published var serverListState = ServerListState()
 }

@@ -7,6 +7,6 @@
 //
 
 enum ServerListStateAction: ActionType {
-    case setEditing(Bool)
+    case setEditing(Bool, Server?)
     case setScanning(Bool)
 }

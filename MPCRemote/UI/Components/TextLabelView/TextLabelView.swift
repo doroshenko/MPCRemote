@@ -9,16 +9,15 @@
 import SwiftUI
 
 struct TextLabelView: View {
-    var label: String
-    var placeholder: String
-    @State var text = String()
+
+    @ObservedObject var model: TextLabelViewModel
 
     var body: some View {
 
         VStack(alignment: .leading) {
-            Text(label)
+            Text(model.label)
                 .font(.headline)
-            TextField(placeholder, text: $text)
+            TextField(model.placeholder, text: $model.text)
                 .font(.body)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
         }
@@ -26,8 +25,9 @@ struct TextLabelView: View {
 }
 
 struct TextLabelView_Previews: PreviewProvider {
+
     static var previews: some View {
-        TextLabelView(label: "Label", placeholder: "Placeholder")
+        Core.composer.textLabelView()
             .previewStyle(.compact)
     }
 }

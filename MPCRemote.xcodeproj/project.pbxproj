@@ -28,6 +28,7 @@
 		0C30E254240DD5A1001C1EC9 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C30E250240DD5A1001C1EC9 /* SimplePing.m */; };
 		0C329E1F246067D100974713 /* ServerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C329E1E246067D100974713 /* ServerListViewModel.swift */; };
 		0C329E2124608BDB00974713 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C329E2024608BDB00974713 /* Resolver.swift */; };
+		0C35B0C8247C340D00B7FF6F /* TextLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35B0C7247C340D00B7FF6F /* TextLabelViewModel.swift */; };
 		0C3A1E0C244DAD630030AF17 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3A1E0B244DAD630030AF17 /* PlayerView.swift */; };
 		0C48B3E324266FC500EEFE98 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C48B3E224266FC500EEFE98 /* UserDefault.swift */; };
 		0C48B3E524267EC200EEFE98 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C48B3E424267EC200EEFE98 /* Validation.swift */; };
@@ -135,6 +136,7 @@
 		0C30E252240DD5A1001C1EC9 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
 		0C329E1E246067D100974713 /* ServerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListViewModel.swift; sourceTree = "<group>"; };
 		0C329E2024608BDB00974713 /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
+		0C35B0C7247C340D00B7FF6F /* TextLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabelViewModel.swift; sourceTree = "<group>"; };
 		0C3A1E0B244DAD630030AF17 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		0C48B3E224266FC500EEFE98 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		0C48B3E424267EC200EEFE98 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
@@ -237,6 +239,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C11ABB1247C023400D0135A /* TextLabelView */ = {
+			isa = PBXGroup;
+			children = (
+				0C224B492479586F00458334 /* TextLabelView.swift */,
+				0C35B0C7247C340D00B7FF6F /* TextLabelViewModel.swift */,
+			);
+			path = TextLabelView;
+			sourceTree = "<group>";
+		};
 		0C18D5EA241719240035C3A5 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,10 +411,10 @@
 			isa = PBXGroup;
 			children = (
 				0C4DC970246632F900BD8F83 /* SliderView */,
+				0C11ABB1247C023400D0135A /* TextLabelView */,
 				0CA386AD2471E2DF00EB1B97 /* AddServerButton.swift */,
 				0C6773DB24547BA700FFD6DE /* PlayerButton.swift */,
 				0CA8AB3C245F26A8005E15F4 /* ServerView.swift */,
-				0C224B492479586F00458334 /* TextLabelView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -739,6 +750,7 @@
 				0CA8AB3D245F26A8005E15F4 /* ServerView.swift in Sources */,
 				0CCDE2E724733DB9002E614D /* SliderStateAction.swift in Sources */,
 				0C5622922466F5CD002932EB /* ServerState.swift in Sources */,
+				0C35B0C8247C340D00B7FF6F /* TextLabelViewModel.swift in Sources */,
 				0C6773DC24547BA700FFD6DE /* PlayerButton.swift in Sources */,
 				0C4AF23A240B3B5B0057AC86 /* Ping.swift in Sources */,
 				0C18D5E9241714C80035C3A5 /* HTTPParametersFactory.swift in Sources */,

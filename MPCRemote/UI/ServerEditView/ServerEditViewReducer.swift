@@ -12,6 +12,8 @@ struct ServerEditViewReducer: ReducerType {
         switch action {
         case let .server(serverAction):
             dispatcher.dispatch(action: serverAction, to: ServerReducer())
+        case let .serverList(serverListAction):
+            dispatcher.dispatch(action: serverListAction, to: ServerListReducer())
         case let .serverListState(serverListStateAction):
             dispatcher.dispatch(action: serverListStateAction, to: ServerListStateReducer())
         }

@@ -30,10 +30,15 @@ typealias VerifyHandler = (VerifyResult) -> Void
 
 enum ServerEditViewAction: ActionType {
     indirect case server(ServerAction)
+    indirect case serverList(ServerListAction)
     indirect case serverListState(ServerListStateAction)
 
     init(_ serverAction: ServerAction) {
         self = .server(serverAction)
+    }
+
+    init(_ serverListAction: ServerListAction) {
+        self = .serverList(serverListAction)
     }
 
     init(_ serverListStateAction: ServerListStateAction) {
@@ -61,7 +66,11 @@ extension ServerEditViewActionCreator {
 
     func save(_ server: Server) {
         logDebug("Server changes saved \(server)", domain: .ui)
+        // TODO: check if any of these could be removed. Verify all add/replace scenarios
+        let serverListItem = ServerListItem(server: server, isFavorite: true, isOnline: false)
+        let server = provider.select(server: server)
         dispatch(ServerEditViewAction(.set(server)))
+        dispatch(ServerEditViewAction(.update(serverListItem)))
         dismiss()
     }
 }
@@ -70,6 +79,6 @@ extension ServerEditViewActionCreator {
 
     func dismiss() {
         logDebug("View dismissed", domain: .ui)
-        dispatch(ServerEditViewAction(.setEditing(false)))
+        dispatch(ServerEditViewAction(.setEditing(false, nil)))
     }
 }

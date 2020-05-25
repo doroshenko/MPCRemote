@@ -48,13 +48,9 @@ extension Composer {
 
 extension Composer {
 
-    func serverCreateView() -> some View {
-        serverEditView(nil)
-    }
-
-    func serverEditView(_ server: Server?) -> some View {
+    func serverEditView() -> some View {
         ServerEditView(
-            model: ServerEditViewModel(server: server),
+            model: ServerEditViewModel(data: data),
             action: ServerEditViewActionCreator(provider: resolver.resolve(),
                                                 dispatch: dispatcher.dispatch(to: ServerEditViewReducer())),
             composer: ServerEditViewComposer(parent: self)
@@ -87,5 +83,16 @@ extension Composer {
                    action: VolumeSliderViewActionCreator(provider: resolver.resolve(),
                                                          dispatch: dispatcher.dispatch(to: SliderViewReducer())),
                    composer: SliderViewComposer(parent: self))
+    }
+}
+
+extension Composer {
+
+    func textLabelView() -> some View {
+        textLabelView(TextLabelViewModel(""))
+    }
+
+    func textLabelView(_ viewModel: TextLabelViewModel) -> some View {
+        TextLabelView(model: viewModel)
     }
 }

@@ -23,6 +23,7 @@ struct ServerListView: View {
                         self.action?.select(serverListItem)
                     }, label: {
                         ServerView(serverListItem: serverListItem, isActive: self.model.server == serverListItem.server)
+                            .contextMenu { self.contextMenu(serverListItem) }
                     })
                 }
                 .onDelete { indexSet in
@@ -54,20 +55,42 @@ struct ServerListView: View {
                     }
                 }
             )
-            VStack {
+            floatingButton()
+        }
+    }
+
+    func contextMenu(_ serverListItem: ServerListItem) -> some View {
+        VStack {
+            Button(action: {
+                self.action?.setEditing(true, server: serverListItem.server)
+            }, label: {
+                Text("Edit")
+                Image(systemName: "pencil")
+            })
+            Button(action: {
+                self.action?.delete(serverListItem)
+            }, label: {
+                Text("Delete")
+                Image(systemName: "trash").accentColor(Color(.systemRed))
+            })
+        }
+    }
+
+    func floatingButton() -> some View {
+        VStack {
+            Spacer()
+            HStack {
                 Spacer()
-                HStack {
-                    Spacer()
-                    AddServerButton {
-                        self.action?.setEditing(true)
-                    }
-                    .sheet(isPresented: Binding<Bool>(get: {
-                        self.model.serverListState.isEditing
-                    }, set: { newValue in
-                        self.action?.setEditing(newValue)
-                    })) {
-                        self.composer?.showServerCreateView()
-                    }
+                AddServerButton {
+                    self.action?.cancel()
+                    self.action?.setEditing(true, server: nil)
+                }
+                .sheet(isPresented: Binding<Bool>(get: {
+                    self.model.serverListState.isEditing
+                }, set: { editing in
+                    self.action?.setEditing(editing, server: nil)
+                })) {
+                    self.composer?.showServerEditView()
                 }
             }
         }
