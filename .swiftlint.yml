@@ -53,7 +53,7 @@ included: # paths to include during linting. `--path` is ignored if present.
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
 attributes:
-  always_on_same_line: ["@objc", "@IBAction"]
+  always_on_same_line: ["@objc", "@IBAction", "@discardableResult"]
 closure_body_length:
   warning: 50
 multiline_arguments:

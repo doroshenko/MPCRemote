@@ -31,7 +31,7 @@ struct ServerEditView: View {
                     logDebug(domain: .ui)
                     // TODO: validation
                     let server = Server(address: self.model.addressModel.text, port: UInt16(self.model.portModel.text)!, name: self.model.nameModel.text)
-                    self.action?.save(server)
+                    self.action?.save(server, editingServer: self.model.editingServer)
                 }
             )
         }

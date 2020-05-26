@@ -6,7 +6,13 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-class TextLabelViewModel: ObservableObject {
+protocol TextLabelViewModelType {
+    var label: String { get }
+    var placeholder: String { get }
+    var text: String { get set }
+}
+
+class TextLabelViewModel: TextLabelViewModelType, ObservableObject {
 
     private(set) var label: String
     private(set) var placeholder: String
@@ -29,8 +35,8 @@ final class TextLabelNameViewModel: TextLabelViewModel {
         "Server name"
     }
 
-    init(_ server: Server?) {
-        super.init(server?.name)
+    init(_ serverListItem: ServerListItem?) {
+        super.init(serverListItem?.server.name)
     }
 }
 
@@ -44,8 +50,8 @@ final class TextLabelAddressViewModel: TextLabelViewModel {
         "Server address"
     }
 
-    init(_ server: Server?) {
-        super.init(server?.address)
+    init(_ serverListItem: ServerListItem?) {
+        super.init(serverListItem?.server.address)
     }
 }
 
@@ -59,7 +65,7 @@ final class TextLabelPortViewModel: TextLabelViewModel {
         "Server port"
     }
 
-    init(_ server: Server?) {
-        super.init(String(server?.port ?? Port.default))
+    init(_ serverListItem: ServerListItem?) {
+        super.init(String(serverListItem?.server.port ?? Port.default))
     }
 }

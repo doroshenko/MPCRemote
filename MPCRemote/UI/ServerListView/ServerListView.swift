@@ -62,7 +62,7 @@ struct ServerListView: View {
     func contextMenu(_ serverListItem: ServerListItem) -> some View {
         VStack {
             Button(action: {
-                self.action?.setEditing(true, server: serverListItem.server)
+                self.action?.setEditing(true, editingServer: serverListItem)
             }, label: {
                 Text("Edit")
                 Image(systemName: "pencil")
@@ -83,12 +83,12 @@ struct ServerListView: View {
                 Spacer()
                 AddServerButton {
                     self.action?.cancel()
-                    self.action?.setEditing(true, server: nil)
+                    self.action?.setEditing(true, editingServer: nil)
                 }
                 .sheet(isPresented: Binding<Bool>(get: {
                     self.model.serverListState.isEditing
                 }, set: { editing in
-                    self.action?.setEditing(editing, server: nil)
+                    self.action?.setEditing(editing, editingServer: nil)
                 })) {
                     self.composer?.showServerEditView()
                 }

@@ -10,9 +10,9 @@ struct ServerListStateReducer: ReducerType {
 
     func reduce(_ dispatcher: Dispatcher, _ data: DataStore, _ action: ServerListStateAction) {
         switch action {
-        case let .setEditing(isEditing, server):
+        case let .setEditing(isEditing, editingServer):
             data.serverListState.isEditing = isEditing
-            data.serverListState.editingServer = server
+            data.serverListState.editingServer = editingServer
         case let .setScanning(isScanning):
             data.serverListState.isScanning = isScanning
         }

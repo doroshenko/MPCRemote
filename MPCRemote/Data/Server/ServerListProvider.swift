@@ -10,8 +10,8 @@ protocol ServerListProviderType {
     func getServer() -> Server?
     func getServerList() -> [ServerListItem]
 
-    func select(server: Server) -> Server?
-    func remove(server: Server) -> Server?
+    @discardableResult func add(server: Server) -> Server?
+    @discardableResult func remove(server: Server) -> Server?
     func verify(server: Server, completion: @escaping VerifyHandler)
 
     func scan(serverFound: @escaping (ServerListItem) -> Void, scanFinished: (() -> Void)?)
@@ -42,7 +42,7 @@ extension ServerListProvider {
 
 extension ServerListProvider {
 
-    func select(server: Server) -> Server? {
+    func add(server: Server) -> Server? {
         settingsService.add(server: server)
     }
 

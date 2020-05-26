@@ -60,18 +60,26 @@ struct ServerEditViewActionCreator: ActionCreatorType {
 extension ServerEditViewActionCreator {
 
     func verify(_ server: Server, completion: @escaping VerifyHandler) {
-        logDebug("Server verification \(server)", domain: .ui)
+        logDebug("Verifying server: \(server)", domain: .ui)
         provider.verify(server: server, completion: completion)
     }
 
-    func save(_ server: Server) {
-        logDebug("Server changes saved \(server)", domain: .ui)
-        // TODO: check if any of these could be removed. Verify all add/replace scenarios
+    func save(_ server: Server, editingServer: ServerListItem?) {
+        delete(editingServer)
+
+        logDebug("Saving new or updated server: \(server)", domain: .ui)
         let serverListItem = ServerListItem(server: server, isFavorite: true, isOnline: false)
-        let server = provider.select(server: server)
-        dispatch(ServerEditViewAction(.set(server)))
+        provider.add(server: server)
         dispatch(ServerEditViewAction(.append(serverListItem)))
         dismiss()
+    }
+
+    func delete(_ serverListItem: ServerListItem?) {
+        guard let serverListItem = serverListItem else { return }
+
+        logDebug("Deleting old server from the list: \(String(describing: serverListItem.server))", domain: .ui)
+        provider.remove(server: serverListItem.server)
+        dispatch(ServerEditViewAction(.delete(serverListItem)))
     }
 }
 

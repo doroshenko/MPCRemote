@@ -10,27 +10,27 @@ import Combine
 
 final class ServerEditViewModel: ObservableObject {
 
-    private(set) var server: Server?
+    private(set) var editingServer: ServerListItem?
     private(set) var nameModel: TextLabelNameViewModel
     private(set) var addressModel: TextLabelAddressViewModel
     private(set) var portModel: TextLabelPortViewModel
 
     var isNewServer: Bool {
-        server == nil
+        editingServer == nil
     }
 
     private var cancellable = Set<AnyCancellable>()
 
     init(data: DataStore) {
-        self.server = data.serverListState.editingServer
+        self.editingServer = data.serverListState.editingServer
 
-        nameModel = TextLabelNameViewModel(server)
-        addressModel = TextLabelAddressViewModel(server)
-        portModel = TextLabelPortViewModel(server)
+        nameModel = TextLabelNameViewModel(editingServer)
+        addressModel = TextLabelAddressViewModel(editingServer)
+        portModel = TextLabelPortViewModel(editingServer)
 
         data.$serverListState
             .map { $0.editingServer }
-            .assign(to: \Self.server, on: self)
+            .assign(to: \Self.editingServer, on: self)
             .store(in: &cancellable)
     }
 }
