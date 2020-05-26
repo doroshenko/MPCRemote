@@ -15,3 +15,18 @@ struct ServerEditViewComposer: ComposerType {
         self.parent = parent
     }
 }
+
+extension ServerEditViewComposer {
+
+    func textLabelAddressView(_ viewModel: TextLabelAddressViewModel) -> some View {
+        parent.textLabelAddressView(viewModel)
+    }
+
+    func textLabelPortView(_ viewModel: TextLabelPortViewModel) -> some View {
+        parent.textLabelPortView(viewModel)
+    }
+
+    func textLabelNameView(_ viewModel: TextLabelNameViewModel) -> some View {
+        parent.textLabelNameView(viewModel)
+    }
+}

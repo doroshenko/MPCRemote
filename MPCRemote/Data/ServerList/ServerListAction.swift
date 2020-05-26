@@ -6,10 +6,6 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-enum ServerAction: ActionType {
-    case set(Server?)
-}
-
 enum ServerListAction: ActionType {
     case append(ServerListItem)
     case update(ServerListItem)

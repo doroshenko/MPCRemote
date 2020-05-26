@@ -88,11 +88,36 @@ extension Composer {
 
 extension Composer {
 
-    func textLabelView() -> some View {
-        textLabelView(TextLabelViewModel(""))
+    func textLabelAddressView() -> some View {
+        textLabelAddressView(TextLabelAddressViewModel(nil))
     }
 
-    func textLabelView(_ viewModel: TextLabelViewModel) -> some View {
-        TextLabelView(model: viewModel)
+    func textLabelAddressView(_ viewModel: TextLabelAddressViewModel) -> some View {
+        TextLabelView(model: viewModel,
+                      action: TextLabelAddressViewActionCreator(provider: resolver.resolve()))
+    }
+}
+
+extension Composer {
+
+    func textLabelPortView() -> some View {
+        textLabelPortView(TextLabelPortViewModel(nil))
+    }
+
+    func textLabelPortView(_ viewModel: TextLabelPortViewModel) -> some View {
+        TextLabelView(model: viewModel,
+                      action: TextLabelPortViewActionCreator(provider: resolver.resolve()))
+    }
+}
+
+extension Composer {
+
+    func textLabelNameView() -> some View {
+        textLabelNameView(TextLabelNameViewModel(nil))
+    }
+
+    func textLabelNameView(_ viewModel: TextLabelNameViewModel) -> some View {
+        TextLabelView(model: viewModel,
+                      action: TextLabelNameViewActionCreator(provider: resolver.resolve()))
     }
 }

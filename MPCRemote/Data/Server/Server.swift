@@ -14,7 +14,12 @@ struct Server {
     init(address: String, port: UInt16 = Port.default, name: String? = nil) {
         self.address = address
         self.port = port
-        self.name = name ?? address
+
+        if let name = name, !name.isEmpty {
+            self.name = name
+        } else {
+            self.name = address
+        }
     }
 }
 

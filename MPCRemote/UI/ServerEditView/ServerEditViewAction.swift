@@ -37,9 +37,9 @@ struct ServerEditViewActionCreator: ActionCreatorType {
 
 extension ServerEditViewActionCreator {
 
-    func verify(address: String, port: String, name: String, completion: @escaping ServerVerifyHandler) {
+    func verify(address: String, port: String, name: String) -> Server? {
         logDebug("Verifying server address: \(address), port: \(port), name: \(name)", domain: .ui)
-        provider.verify(address: address, port: port, name: name, completion: completion)
+        return provider.verify(address: address, port: port, name: name)
     }
 
     func save(_ server: Server, editingServer: ServerListItem?, isActive: Bool) {

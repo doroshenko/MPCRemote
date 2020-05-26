@@ -12,20 +12,26 @@ protocol ServerListProviderType {
 
     @discardableResult func add(server: Server) -> Server?
     @discardableResult func remove(server: Server) -> Server?
-    func verify(address: String, port: String, name: String, completion: @escaping ServerVerifyHandler)
 
     func scan(serverFound: @escaping (ServerListItem) -> Void, scanFinished: (() -> Void)?)
     func ping(server: Server, completion: @escaping ServerStateHandler)
     func cancel()
+
+    func verify(address: String, port: String, name: String) -> Server?
+    func verify(address: String) -> String?
+    func verify(port: String) -> UInt16?
+    func verify(name: String) -> String?
 }
 
 struct ServerListProvider: ServerListProviderType {
     private let networkService: NetworkServiceType
     private let settingsService: SettingsServiceType
+    private let serverVerificationService: ServerVerificationServiceType
 
-    init(networkService: NetworkServiceType, settingsService: SettingsServiceType) {
+    init(networkService: NetworkServiceType, settingsService: SettingsServiceType, serverVerificationService: ServerVerificationServiceType) {
         self.networkService = networkService
         self.settingsService = settingsService
+        self.serverVerificationService = serverVerificationService
     }
 }
 
@@ -49,25 +55,24 @@ extension ServerListProvider {
     func remove(server: Server) -> Server? {
         settingsService.remove(server: server)
     }
+}
 
-    func verify(address: String, port: String, name: String, completion: @escaping ServerVerifyHandler) {
-        guard name.count < Name.maxLength else {
-            completion(.failure(.invalidName))
-            return
-        }
+extension ServerListProvider {
 
-        guard address.count < Name.maxLength, address.trimmingCharacters(in: .urlHostAllowed).isEmpty else {
-            completion(.failure(.invalidAddress))
-            return
-        }
+    func verify(address: String, port: String, name: String) -> Server? {
+        serverVerificationService.verify(address: address, port: port, name: name)
+    }
 
-        guard let port = UInt16(port) else {
-            completion(.failure(.invalidPort))
-            return
-        }
+    func verify(address: String) -> String? {
+        serverVerificationService.verify(address: address)
+    }
 
-        let server = Server(address: address, port: port, name: name)
-        completion(.success(server))
+    func verify(port: String) -> UInt16? {
+        serverVerificationService.verify(port: port)
+    }
+
+    func verify(name: String) -> String? {
+        serverVerificationService.verify(name: name)
     }
 }
 

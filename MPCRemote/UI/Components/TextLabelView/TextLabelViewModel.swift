@@ -10,7 +10,7 @@ protocol TextLabelViewModelType {
     var label: String { get }
     var placeholder: String { get }
     var text: String { get set }
-    var isInvalid: Bool { get set }
+    var isValid: Bool { get set }
 }
 
 class TextLabelViewModel: TextLabelViewModelType, ObservableObject {
@@ -18,28 +18,13 @@ class TextLabelViewModel: TextLabelViewModelType, ObservableObject {
     private(set) var label: String
     private(set) var placeholder: String
     @Published var text: String
-    @Published var isInvalid: Bool
+    @Published var isValid: Bool
 
     init(_ text: String?) {
         self.label = ""
         self.placeholder = ""
         self.text = text ?? ""
-        self.isInvalid = false
-    }
-}
-
-final class TextLabelNameViewModel: TextLabelViewModel {
-
-    override var label: String {
-        "Name"
-    }
-
-    override var placeholder: String {
-        "Server name"
-    }
-
-    init(_ serverListItem: ServerListItem?) {
-        super.init(serverListItem?.server.name)
+        self.isValid = true
     }
 }
 
@@ -70,5 +55,20 @@ final class TextLabelPortViewModel: TextLabelViewModel {
 
     init(_ serverListItem: ServerListItem?) {
         super.init(String(serverListItem?.server.port ?? Port.default))
+    }
+}
+
+final class TextLabelNameViewModel: TextLabelViewModel {
+
+    override var label: String {
+        "Name"
+    }
+
+    override var placeholder: String {
+        "Server name"
+    }
+
+    init(_ serverListItem: ServerListItem?) {
+        super.init(serverListItem?.server.name)
     }
 }

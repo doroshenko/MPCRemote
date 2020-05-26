@@ -17,9 +17,9 @@ struct ServerEditView: View {
     var body: some View {
         NavigationView {
             Form {
-                TextLabelView(model: model.nameModel)
-                TextLabelView(model: model.addressModel)
-                TextLabelView(model: model.portModel)
+                composer?.textLabelNameView(model.nameModel)
+                composer?.textLabelAddressView(model.addressModel)
+                composer?.textLabelPortView(model.portModel)
             }
             .navigationBarTitle(Text(model.isNewServer ? "Add Server" : "Edit Server"), displayMode: .inline)
             .navigationBarItems(leading:
@@ -29,26 +29,13 @@ struct ServerEditView: View {
                 }, trailing:
                 Button("Save") {
                     logDebug(domain: .ui)
-                    self.action?.verify(address: self.model.addressModel.text, port: self.model.portModel.text, name: self.model.nameModel.text) { result in
-                        self.model.nameModel.isInvalid = false
-                        self.model.addressModel.isInvalid = false
-                        self.model.portModel.isInvalid = false
-
-                        switch result {
-                        case let .success(server):
-                            self.action?.save(server, editingServer: self.model.editingServer, isActive: self.model.isActiveServer)
-                        case let .failure(error):
-                            logDebug("Server verification error: \(error) ", domain: .ui)
-                            switch error {
-                            case .invalidName:
-                                self.model.nameModel.isInvalid = true
-                            case .invalidAddress:
-                                self.model.addressModel.isInvalid = true
-                            case .invalidPort:
-                                self.model.portModel.isInvalid = true
-                            }
-                        }
+                    guard let server = self.action?.verify(address: self.model.addressModel.text,
+                                                           port: self.model.portModel.text,
+                                                           name: self.model.nameModel.text) else {
+                        return
                     }
+
+                    self.action?.save(server, editingServer: self.model.editingServer, isActive: self.model.isActiveServer)
                 }
             )
         }

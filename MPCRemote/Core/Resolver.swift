@@ -11,6 +11,8 @@ protocol Resolver {
     func resolve() -> NetworkServiceType
     func resolve() -> SettingsServiceType
 
+    func resolve() -> ServerVerificationServiceType
+
     func resolve() -> OperationProviderType
     func resolve() -> PlayerStateProviderType
     func resolve() -> ServerListProviderType
@@ -45,7 +47,15 @@ extension Resolver {
 
     func resolve() -> ServerListProviderType {
         ServerListProvider(networkService: resolve(),
-                           settingsService: resolve())
+                           settingsService: resolve(),
+                           serverVerificationService: resolve())
+    }
+}
+
+extension Resolver {
+
+    func resolve() -> ServerVerificationServiceType {
+        ServerVerificationService()
     }
 }
 

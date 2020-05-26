@@ -11,16 +11,20 @@ import SwiftUI
 struct TextLabelView: View {
 
     @ObservedObject var model: TextLabelViewModel
+    let action: TextLabelViewActionCreatorType?
 
     var body: some View {
 
         VStack(alignment: .leading) {
             Text(model.label)
                 .font(.headline)
-            TextField(model.placeholder, text: $model.text)
+            TextField(model.placeholder, text: $model.text, onEditingChanged: { _ in
+                guard let isValid = self.action?.verify(self.model.text) else { return }
+                self.model.isValid = isValid
+            })
                 .font(.body)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .border(model.isInvalid ? Color.red : Color.accentStart)
+                .border(model.isValid ? Color.accentStart : Color.red)
         }
     }
 }
@@ -28,7 +32,7 @@ struct TextLabelView: View {
 struct TextLabelView_Previews: PreviewProvider {
 
     static var previews: some View {
-        Core.composer.textLabelView()
+        Core.composer.textLabelAddressView()
             .previewStyle(.compact)
     }
 }
