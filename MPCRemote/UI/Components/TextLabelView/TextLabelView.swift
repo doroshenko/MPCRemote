@@ -13,18 +13,19 @@ struct TextLabelView: View {
     @ObservedObject var model: TextLabelViewModel
     let action: TextLabelViewActionCreatorType?
 
+    var isValid: Bool {
+        action?.verify(self.model.text) ?? true
+    }
+
     var body: some View {
 
         VStack(alignment: .leading) {
             Text(model.label)
                 .font(.headline)
-            TextField(model.placeholder, text: $model.text, onEditingChanged: { _ in
-                guard let isValid = self.action?.verify(self.model.text) else { return }
-                self.model.isValid = isValid
-            })
+            TextField(model.placeholder, text: $model.text)
                 .font(.body)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .border(model.isValid ? Color.accentStart : Color.red)
+                .border(isValid ? Color.accentStart : Color.red)
         }
     }
 }
