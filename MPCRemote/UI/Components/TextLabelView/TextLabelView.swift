@@ -20,6 +20,7 @@ struct TextLabelView: View {
             TextField(model.placeholder, text: $model.text)
                 .font(.body)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                .border(model.isInvalid ? Color.red : Color.accentStart)
         }
     }
 }

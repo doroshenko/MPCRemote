@@ -30,11 +30,23 @@ struct ServerEditView: View {
                 Button("Save") {
                     logDebug(domain: .ui)
                     self.action?.verify(address: self.model.addressModel.text, port: self.model.portModel.text, name: self.model.nameModel.text) { result in
+                        self.model.nameModel.isInvalid = false
+                        self.model.addressModel.isInvalid = false
+                        self.model.portModel.isInvalid = false
+
                         switch result {
                         case let .success(server):
-                            self.action?.save(server, editingServer: self.model.editingServer)
+                            self.action?.save(server, editingServer: self.model.editingServer, isActive: self.model.isActiveServer)
                         case let .failure(error):
                             logDebug("Server verification error: \(error) ", domain: .ui)
+                            switch error {
+                            case .invalidName:
+                                self.model.nameModel.isInvalid = true
+                            case .invalidAddress:
+                                self.model.addressModel.isInvalid = true
+                            case .invalidPort:
+                                self.model.portModel.isInvalid = true
+                            }
                         }
                     }
                 }

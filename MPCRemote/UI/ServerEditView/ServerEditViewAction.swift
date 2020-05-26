@@ -42,12 +42,15 @@ extension ServerEditViewActionCreator {
         provider.verify(address: address, port: port, name: name, completion: completion)
     }
 
-    func save(_ server: Server, editingServer: ServerListItem?) {
+    func save(_ server: Server, editingServer: ServerListItem?, isActive: Bool) {
         delete(editingServer)
 
         logDebug("Saving new or updated server: \(server)", domain: .ui)
         let serverListItem = ServerListItem(server: server, isFavorite: true, isOnline: false)
         provider.add(server: server)
+        if isActive {
+            dispatch(ServerEditViewAction(.set(server)))
+        }
         dispatch(ServerEditViewAction(.append(serverListItem)))
         dismiss()
     }

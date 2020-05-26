@@ -10,6 +10,7 @@ protocol TextLabelViewModelType {
     var label: String { get }
     var placeholder: String { get }
     var text: String { get set }
+    var isInvalid: Bool { get set }
 }
 
 class TextLabelViewModel: TextLabelViewModelType, ObservableObject {
@@ -17,11 +18,13 @@ class TextLabelViewModel: TextLabelViewModelType, ObservableObject {
     private(set) var label: String
     private(set) var placeholder: String
     @Published var text: String
+    @Published var isInvalid: Bool
 
     init(_ text: String?) {
-        self.text = text ?? ""
         self.label = ""
         self.placeholder = ""
+        self.text = text ?? ""
+        self.isInvalid = false
     }
 }
 
