@@ -6,28 +6,6 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-// TODO: move elsewhere
-enum VerifyError: Error {
-    case invalidName
-    case invalidAddress
-    case invalidPort
-
-    var localizedDescription: String {
-        switch self {
-        case .invalidName:
-            return "Invalid server name"
-        case .invalidAddress:
-            return "Invalid server address"
-        case .invalidPort:
-            return "Invalid server port"
-        }
-    }
-}
-
-// TODO: move elsewhere
-typealias VerifyResult = Result<Server, VerifyError>
-typealias VerifyHandler = (VerifyResult) -> Void
-
 enum ServerEditViewAction: ActionType {
     indirect case server(ServerAction)
     indirect case serverList(ServerListAction)
@@ -59,9 +37,9 @@ struct ServerEditViewActionCreator: ActionCreatorType {
 
 extension ServerEditViewActionCreator {
 
-    func verify(_ server: Server, completion: @escaping VerifyHandler) {
-        logDebug("Verifying server: \(server)", domain: .ui)
-        provider.verify(server: server, completion: completion)
+    func verify(address: String, port: String, name: String, completion: @escaping ServerVerifyHandler) {
+        logDebug("Verifying server address: \(address), port: \(port), name: \(name)", domain: .ui)
+        provider.verify(address: address, port: port, name: name, completion: completion)
     }
 
     func save(_ server: Server, editingServer: ServerListItem?) {

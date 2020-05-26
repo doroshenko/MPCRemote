@@ -12,7 +12,7 @@ protocol ServerListProviderType {
 
     @discardableResult func add(server: Server) -> Server?
     @discardableResult func remove(server: Server) -> Server?
-    func verify(server: Server, completion: @escaping VerifyHandler)
+    func verify(address: String, port: String, name: String, completion: @escaping ServerVerifyHandler)
 
     func scan(serverFound: @escaping (ServerListItem) -> Void, scanFinished: (() -> Void)?)
     func ping(server: Server, completion: @escaping ServerStateHandler)
@@ -50,8 +50,23 @@ extension ServerListProvider {
         settingsService.remove(server: server)
     }
 
-    func verify(server: Server, completion: @escaping VerifyHandler) {
-        // TODO: implement this
+    func verify(address: String, port: String, name: String, completion: @escaping ServerVerifyHandler) {
+        guard name.count < Name.maxLength else {
+            completion(.failure(.invalidName))
+            return
+        }
+
+        guard address.count < Name.maxLength, address.trimmingCharacters(in: .urlHostAllowed).isEmpty else {
+            completion(.failure(.invalidAddress))
+            return
+        }
+
+        guard let port = UInt16(port) else {
+            completion(.failure(.invalidPort))
+            return
+        }
+
+        let server = Server(address: address, port: port, name: name)
         completion(.success(server))
     }
 }

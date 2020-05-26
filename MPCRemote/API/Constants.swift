@@ -33,6 +33,10 @@ struct Parameter {
     }
 }
 
+struct Name {
+    static let maxLength = 254
+}
+
 struct Port {
     static let `default`: UInt16 = 13579
 }

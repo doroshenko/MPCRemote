@@ -85,6 +85,7 @@
 		0CBB87332462F07100BAF7C6 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB87322462F07100BAF7C6 /* Core.swift */; };
 		0CBB87372462FB1C00BAF7C6 /* OperationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB87362462FB1C00BAF7C6 /* OperationProvider.swift */; };
 		0CC5B2562476B6E800D94753 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC5B2552476B6E800D94753 /* Dispatcher.swift */; };
+		0CC9F34F247D5AEC002D4A05 /* ServerVerifyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9F34E247D5AEC002D4A05 /* ServerVerifyError.swift */; };
 		0CCDE2E124733C62002E614D /* PlayerStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDE2E024733C62002E614D /* PlayerStateReducer.swift */; };
 		0CCDE2E524733D3E002E614D /* SliderStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDE2E424733D3E002E614D /* SliderStateReducer.swift */; };
 		0CCDE2E724733DB9002E614D /* SliderStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDE2E624733DB9002E614D /* SliderStateAction.swift */; };
@@ -194,6 +195,7 @@
 		0CBB87322462F07100BAF7C6 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		0CBB87362462FB1C00BAF7C6 /* OperationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationProvider.swift; sourceTree = "<group>"; };
 		0CC5B2552476B6E800D94753 /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
+		0CC9F34E247D5AEC002D4A05 /* ServerVerifyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerVerifyError.swift; sourceTree = "<group>"; };
 		0CCDE2E024733C62002E614D /* PlayerStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStateReducer.swift; sourceTree = "<group>"; };
 		0CCDE2E424733D3E002E614D /* SliderStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderStateReducer.swift; sourceTree = "<group>"; };
 		0CCDE2E624733DB9002E614D /* SliderStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderStateAction.swift; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				0C83A7862461C51D0078CBB6 /* ServerListProvider.swift */,
 				0CCDE2EB24733E84002E614D /* ServerListAction.swift */,
 				0CCDE2EF247341DC002E614D /* ServerListReducer.swift */,
+				0CC9F34E247D5AEC002D4A05 /* ServerVerifyError.swift */,
 			);
 			path = Server;
 			sourceTree = "<group>";
@@ -782,6 +785,7 @@
 				0C83A77F2461B2830078CBB6 /* ComposerType.swift in Sources */,
 				0C48B3E92426938C00EEFE98 /* APIService.swift in Sources */,
 				0C83A7752461AA4D0078CBB6 /* PingResult.swift in Sources */,
+				0CC9F34F247D5AEC002D4A05 /* ServerVerifyError.swift in Sources */,
 				0C83A77D2461B2110078CBB6 /* ActionType.swift in Sources */,
 				0C520B182455CE0700FB3D14 /* APIState.swift in Sources */,
 				0C83A7892461C9CA0078CBB6 /* ServerListViewComposer.swift in Sources */,

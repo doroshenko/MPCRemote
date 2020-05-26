@@ -29,9 +29,14 @@ struct ServerEditView: View {
                 }, trailing:
                 Button("Save") {
                     logDebug(domain: .ui)
-                    // TODO: validation
-                    let server = Server(address: self.model.addressModel.text, port: UInt16(self.model.portModel.text)!, name: self.model.nameModel.text)
-                    self.action?.save(server, editingServer: self.model.editingServer)
+                    self.action?.verify(address: self.model.addressModel.text, port: self.model.portModel.text, name: self.model.nameModel.text) { result in
+                        switch result {
+                        case let .success(server):
+                            self.action?.save(server, editingServer: self.model.editingServer)
+                        case let .failure(error):
+                            logDebug("Server verification error: \(error) ", domain: .ui)
+                        }
+                    }
                 }
             )
         }
