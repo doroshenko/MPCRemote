@@ -1,14 +1,12 @@
 //
-//  Array+UpdateOrAppend.swift
+//  Array+Unique.swift
 //  MPCRemote
 //
 //  Created by doroshenko on 11.05.20.
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-// TODO: cleanup. fix unit tests
-
-extension Array where Element == Server {
+extension Array where Element: Identifiable {
 
     mutating func appendUnique(_ newElement: Element) {
         if let index = firstIndex(where: { $0.id == newElement.id }) {
@@ -21,12 +19,12 @@ extension Array where Element == Server {
 
 extension Array where Element == ServerListItem {
 
-    mutating func updateOrAppend(_ newElement: Element, overwrite: Bool) {
+    mutating func updateUnique(_ newElement: Element) {
         if let index = firstIndex(where: { $0.id == newElement.id }) {
             let updatedElement = ServerListItem(server: self[index].server,
                                                 isFavorite: self[index].isFavorite,
                                                 isOnline: newElement.isOnline)
-            self[index] = overwrite ? newElement : updatedElement
+            self[index] = updatedElement
         } else {
             append(newElement)
         }

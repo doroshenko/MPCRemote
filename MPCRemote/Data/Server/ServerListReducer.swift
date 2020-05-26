@@ -23,9 +23,9 @@ struct ServerListReducer: ReducerType {
         case let .set(servers):
             data.serverList = servers
         case let .append(server):
-            data.serverList.updateOrAppend(server, overwrite: false)
+            data.serverList.appendUnique(server)
         case let .update(server):
-            data.serverList.updateOrAppend(server, overwrite: true)
+            data.serverList.updateUnique(server)
         case let .delete(server):
             data.serverList.removeAll { $0 == server }
         }

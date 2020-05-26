@@ -50,7 +50,7 @@ extension ServerListViewActionCreator {
         logDebug("Server selected \(serverListItem.server)", domain: .ui)
         let server = provider.select(server: serverListItem.server)
         dispatch(ServerListViewAction(.set(server)))
-        dispatch(ServerListViewAction(.update(serverListItem.favoriteItem)))
+        dispatch(ServerListViewAction(.append(serverListItem.favoriteItem)))
     }
 
     func delete(_ serverListItem: ServerListItem) {
@@ -69,7 +69,7 @@ extension ServerListViewActionCreator {
         dispatch(ServerListViewAction(.setScanning(true)))
         provider.scan(serverFound: { serverListItem in
             logDebug("Server found: \(serverListItem)", domain: .ui)
-            self.dispatch(ServerListViewAction(.append(serverListItem)))
+            self.dispatch(ServerListViewAction(.update(serverListItem)))
         }, scanFinished: {
             logDebug("Scan finished", domain: .ui)
             self.dispatch(ServerListViewAction(.setScanning(false)))

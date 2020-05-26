@@ -70,7 +70,7 @@ extension ServerEditViewActionCreator {
         let serverListItem = ServerListItem(server: server, isFavorite: true, isOnline: false)
         let server = provider.select(server: server)
         dispatch(ServerEditViewAction(.set(server)))
-        dispatch(ServerEditViewAction(.update(serverListItem)))
+        dispatch(ServerEditViewAction(.append(serverListItem)))
         dismiss()
     }
 }

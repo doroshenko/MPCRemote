@@ -25,7 +25,7 @@ class ArrayTests: XCTestCase {
 
     func testAppend() {
         let newItem = ServerListItem(server: Server(address: "192.0.2.3"), isFavorite: true, isOnline: true)
-        array.updateOrAppend(newItem)
+        array.appendUnique(newItem)
 
         XCTAssertEqual(array.count, 4)
         XCTAssertEqual(array[0], ServerList.offline)
@@ -36,7 +36,7 @@ class ArrayTests: XCTestCase {
 
     func testUpdateFirst() {
         let newItem = ServerListItem(server: Server(address: "192.0.2.0"), isFavorite: true, isOnline: true)
-        array.updateOrAppend(newItem)
+        array.appendUnique(newItem)
 
         XCTAssertEqual(array.count, 3)
         XCTAssertEqual(array[0], newItem)
@@ -46,7 +46,7 @@ class ArrayTests: XCTestCase {
 
     func testUpdateMiddle() {
         let newItem = ServerListItem(server: Server(address: "192.0.2.1"), isFavorite: true, isOnline: true)
-        array.updateOrAppend(newItem)
+        array.appendUnique(newItem)
 
         XCTAssertEqual(array.count, 3)
         XCTAssertEqual(array[0], ServerList.offline)
@@ -56,7 +56,7 @@ class ArrayTests: XCTestCase {
 
     func testUpdateLast() {
         let newItem = ServerListItem(server: Server(address: "192.0.2.2"), isFavorite: false, isOnline: false)
-        array.updateOrAppend(newItem)
+        array.appendUnique(newItem)
 
         XCTAssertEqual(array.count, 3)
         XCTAssertEqual(array[0], ServerList.offline)
