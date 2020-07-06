@@ -6,7 +6,7 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-struct Core {
+enum Core {
     static let data: DataStore = DataStore()
     static let resolver: Resolver = Dependency()
     static let dispatcher: Dispatcher = Dispatcher(data: data)

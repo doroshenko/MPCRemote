@@ -6,7 +6,7 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-final class PlayerStateFactory {
+enum PlayerStateFactory {
 
     static func make(string: String) -> PlayerState? {
         let regex = try? NSRegularExpression(pattern: #"<p id=\"(?<key>\S+)\">(?<value>.+)</p>"#, options: .caseInsensitive)

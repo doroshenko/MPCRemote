@@ -8,7 +8,7 @@
 
 typealias HTTPParameters = [String: String]
 
-final class HTTPParametersFactory {
+enum HTTPParametersFactory {
 
     static func make(command: Command) -> HTTPParameters {
         [Parameter.Command.name: "\(command.rawValue)"]

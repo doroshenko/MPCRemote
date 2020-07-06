@@ -8,7 +8,7 @@
 
 import Alamofire
 
-final class Connectivity {
+enum Connectivity {
 
     static var isConnectedToWifi: Bool {
         NetworkReachabilityManager()?.isReachableOnEthernetOrWiFi == true

@@ -6,7 +6,7 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-private struct Logger {
+enum Logger {
 
     static var dateFormatter: DateFormatter {
       let formatter = DateFormatter()

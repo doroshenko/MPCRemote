@@ -116,7 +116,7 @@ enum PlayerButtonScale: CaseIterable {
     }
 }
 
-private struct Constants {
+private enum Constants {
     enum Shadow {
         static let radius: CGFloat = 6
         static let highlighted: CGFloat = 3

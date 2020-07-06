@@ -15,6 +15,8 @@ opt_in_rules:
   - contains_over_filter_count
   - contains_over_filter_is_empty
   - contains_over_first_not_nil
+  - contains_over_range_nil_comparison
+  - convenience_type
   - discouraged_object_literal
   - discouraged_optional_boolean
   - empty_collection_literal
@@ -27,22 +29,34 @@ opt_in_rules:
   - fatal_error_message
   - first_where
   - identical_operands
+  - identifier_name
   - implicit_return
+  - joined_default_parameter
   - last_where
+  - legacy_multiple
   - legacy_random
   - lower_acl_than_parent
   - modifier_order
   - multiline_arguments
+  - multiline_function_chains
   - multiline_parameters
+  - optional_enum_case_matching
+  - overridden_super_call
   - pattern_matching_keywords
-  - strict_fileprivate
+  - prefer_self_type_over_type_of_self
+  - prohibited_super_call
+  - raw_value_for_camel_cased_codable_enum
   - reduce_into
+  - redundant_nil_coalescing
   - single_test_class
   - sorted_first_last
   - static_operator
+  - strict_fileprivate
   - toggle_bool
   - unavailable_function
   - unneeded_parentheses_in_closure_argument
+  - unused_declaration
+  - unused_import
   - untyped_error_in_catch
   - vertical_whitespace_closing_braces
   - xct_specific_matcher

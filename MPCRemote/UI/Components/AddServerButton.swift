@@ -30,7 +30,7 @@ struct AddServerButton: View {
     }
 }
 
-private struct Constants {
+private enum Constants {
 
     static let size: CGFloat = 60
 

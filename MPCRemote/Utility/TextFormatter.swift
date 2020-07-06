@@ -6,7 +6,7 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-final class TextFormatter {
+enum TextFormatter {
     static var time: DateComponentsFormatter {
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .positional

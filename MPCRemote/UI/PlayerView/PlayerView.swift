@@ -150,7 +150,7 @@ private extension PlayerView {
     }
 }
 
-private struct Constants {
+private enum Constants {
     static let padding: CGFloat = 20
     static let settings: CGFloat = 44
 }

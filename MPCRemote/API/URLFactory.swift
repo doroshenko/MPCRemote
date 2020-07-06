@@ -6,7 +6,7 @@
 //  Copyright © 2020 doroshenko. All rights reserved.
 //
 
-final class URLFactory {
+enum URLFactory {
 
     static func make(scheme: Scheme = .http, server: Server?, endpoint: Endpoint) -> URL? {
         guard let server = server else {

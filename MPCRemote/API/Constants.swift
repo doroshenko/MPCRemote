@@ -17,27 +17,27 @@ enum Endpoint: String {
     case snapshot = "/snapshot.jpg"
 }
 
-struct Parameter {
-    struct Command {
+enum Parameter {
+    enum Command {
         static let name = "wm_command"
     }
 
-    struct Seek {
+    enum Seek {
         static let name = "percent"
         static let range: ClosedRange<Double> = 0...100
     }
 
-    struct Volume {
+    enum Volume {
         static let name = "volume"
         static let range: ClosedRange<Double> = 0...100
     }
 }
 
-struct Name {
+enum Name {
     static let maxLength = 254
 }
 
-struct Port {
+enum Port {
     static let `default`: UInt16 = 13579
 }
 
